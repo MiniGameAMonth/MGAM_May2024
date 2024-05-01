@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhktw4y7gkww3"]
+
+[ext_resource type="Script" path="res://Sources/Player.gd" id="1_50jbu"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_50jbu")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+current = true
+size = 7.538

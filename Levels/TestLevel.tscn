@@ -15,16 +15,32 @@ material = SubResource("StandardMaterial3D_s4npl")
 script = ExtResource("1_8e3lv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10.9696, 0, 0, 0, 10.9696, 0, 0, 0, 10.9696, -0.0623945, 0, 0.0553364)
 mesh = SubResource("PlaneMesh_d5mny")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34719, 0, 0)
+transform = Transform3D(6.52185, 0, 0, 0, 6.52185, 0, 0, 0, 6.52185, -16.0617, 6.53833, 1.72631)
 mesh = SubResource("CylinderMesh_l1j4w")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36459, 0, -2.4851)
+transform = Transform3D(6.52185, 0, 0, 0, 6.52185, 0, 0, 0, 6.52185, 8.14594, 6.53833, -14.4811)
 mesh = SubResource("CylinderMesh_l1j4w")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36459, 0, 1.5618)
+transform = Transform3D(6.52185, 0, 0, 0, 6.52185, 0, 0, 0, 6.52185, 8.14594, 6.53833, 11.9121)
 mesh = SubResource("CylinderMesh_l1j4w")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.980552, -0.0165312, -6.4477, -0.00677471, 6.52183, -0.015691, 6.44772, 0.00433846, -0.980566, 25.7466, 6.55026, 13.2969)
+mesh = SubResource("CylinderMesh_l1j4w")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.980552, -0.0165312, -6.4477, -0.00677471, 6.52183, -0.015691, 6.44772, 0.00433846, -0.980566, 38.1302, 6.56411, 39.6662)
+mesh = SubResource("CylinderMesh_l1j4w")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.980552, -0.0165312, -6.4477, -0.00677471, 6.52183, -0.015691, 6.44772, 0.00433846, -0.980566, 12.037, 6.50061, 35.698)
+mesh = SubResource("CylinderMesh_l1j4w")
+
+[node name="PlayerSpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3601, 0, 44.678)
