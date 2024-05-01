@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://204i3o81yrff"]
+
+[ext_resource type="Script" path="res://Sources/Main.gd" id="1_bpvgw"]
+[ext_resource type="PackedScene" uid="uid://du7l74rq77kfn" path="res://Menu.tscn" id="1_xfmy7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d5mny"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4npl"]
+albedo_color = Color(1, 0.384877, 0.438979, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l1j4w"]
+material = SubResource("StandardMaterial3D_s4npl")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2r3ab"]
+
+[sub_resource type="Sky" id="Sky_ceull"]
+sky_material = SubResource("ProceduralSkyMaterial_2r3ab")
+
+[sub_resource type="Environment" id="Environment_jpnql"]
+background_mode = 2
+sky = SubResource("Sky_ceull")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_kl4rv"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_bpvgw")
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level"]
+mesh = SubResource("PlaneMesh_d5mny")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34719, 0, 0)
+mesh = SubResource("CylinderMesh_l1j4w")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36459, 0, -2.4851)
+mesh = SubResource("CylinderMesh_l1j4w")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36459, 0, 1.5618)
+mesh = SubResource("CylinderMesh_l1j4w")
+
+[node name="UICanvas" type="CanvasLayer" parent="."]
+
+[node name="Menu" parent="UICanvas" instance=ExtResource("1_xfmy7")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.987411, 0.158175, 0, -0.158175, 0.987411, 0, 2, 6)
+projection = 1
+current = true
+size = 3.692
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jpnql")
+camera_attributes = SubResource("CameraAttributesPhysical_kl4rv")
