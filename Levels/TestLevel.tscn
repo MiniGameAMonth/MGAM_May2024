@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvmk2co1ypq26"]
+
+[ext_resource type="Script" path="res://Sources/Level.gd" id="1_8e3lv"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d5mny"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4npl"]
+albedo_color = Color(1, 0.384877, 0.438979, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l1j4w"]
+material = SubResource("StandardMaterial3D_s4npl")
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_8e3lv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_d5mny")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34719, 0, 0)
+mesh = SubResource("CylinderMesh_l1j4w")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36459, 0, -2.4851)
+mesh = SubResource("CylinderMesh_l1j4w")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36459, 0, 1.5618)
+mesh = SubResource("CylinderMesh_l1j4w")
