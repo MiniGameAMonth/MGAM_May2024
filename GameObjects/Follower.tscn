@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://p8tja5k556cu"]
+
+[ext_resource type="Script" path="res://Sources/Follower.gd" id="1_1x2tb"]
+[ext_resource type="Texture2D" uid="uid://bhpfw5vnfged" path="res://Images/grumpy cat.jpg" id="1_a7eg0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bf51k"]
+
+[node name="Follower" type="CharacterBody3D" node_paths=PackedStringArray("followTarget")]
+script = ExtResource("1_1x2tb")
+followTarget = NodePath("")
+speed = 5.0
+stopAtDistance = 5.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00965, 0)
+shape = SubResource("CapsuleShape3D_bf51k")
+
+[node name="Graphics" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28395, 0)
+texture = ExtResource("1_a7eg0")

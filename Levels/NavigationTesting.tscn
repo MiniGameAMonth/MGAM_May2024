@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://da0tiairiydsl"]
+
+[ext_resource type="PackedScene" uid="uid://p8tja5k556cu" path="res://GameObjects/Follower.tscn" id="1_lrq6f"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_8qdxv"]
+vertices = PackedVector3Array(-4.5, 0.5, -4.5, -4.5, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pn7md"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tfdhs"]
+size = Vector3(9.98425, 0.525513, 9.99365)
+
+[node name="NavigationTesting" type="Node3D"]
+
+[node name="Follower" parent="." node_paths=PackedStringArray("followTarget") instance=ExtResource("1_lrq6f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17974, 0, -3.22742)
+followTarget = NodePath("../Node3D")
+stopAtDistance = 1.0
+lookAtTarget = false
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_8qdxv")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="NavigationRegion3D"]
+mesh = SubResource("PlaneMesh_pn7md")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/CSGMesh3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/CSGMesh3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0198364, -0.237244, 0.0222168)
+shape = SubResource("BoxShape3D_tfdhs")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.917185, 0.398461, 0, -0.398461, 0.917185, 0, 4.77551, 6.52856)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59631, 1.49573, 2.98877)
