@@ -5,9 +5,8 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bf51k"]
 
-[node name="Follower" type="CharacterBody3D" node_paths=PackedStringArray("followTarget")]
+[node name="Follower" type="CharacterBody3D"]
 script = ExtResource("1_1x2tb")
-followTarget = NodePath("")
 speed = 5.0
 stopAtDistance = 5.0
 

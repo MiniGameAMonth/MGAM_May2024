@@ -12,6 +12,7 @@ extends CharacterBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	agent.target_desired_distance = stopAtDistance
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,9 +27,8 @@ func _process(delta):
 			look_at_position(nextPosition, delta)
 
 func move_to_position(pos : Vector3):
-	var distance = global_position.distance_to(pos)
 
-	if distance < stopAtDistance + 0.01:
+	if agent.is_target_reached():
 		velocity = Vector3.ZERO
 	else:
 		velocity = global_position.direction_to(pos) * speed

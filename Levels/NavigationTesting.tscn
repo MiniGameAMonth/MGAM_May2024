@@ -15,7 +15,7 @@ size = Vector3(9.98425, 0.525513, 9.99365)
 [node name="NavigationTesting" type="Node3D"]
 
 [node name="Follower" parent="." node_paths=PackedStringArray("followTarget") instance=ExtResource("1_lrq6f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17974, 0, -3.22742)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50115, 0, -2.60738)
 followTarget = NodePath("../Node3D")
 stopAtDistance = 1.0
 lookAtTarget = false
@@ -36,4 +36,4 @@ shape = SubResource("BoxShape3D_tfdhs")
 transform = Transform3D(1, 0, 0, 0, 0.917185, 0.398461, 0, -0.398461, 0.917185, 0, 4.77551, 6.52856)
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59631, 1.49573, 2.98877)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59656, 1.49573, 1.56009)
