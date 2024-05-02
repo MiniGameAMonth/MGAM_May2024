@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_narjk")
-mushroomName = ""
-mushroomType = 0
+mushroomName = "Normal Mushroom"
+mushroomType = 2

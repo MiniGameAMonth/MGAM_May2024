@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://p8tja5k556cu"]
+[gd_scene load_steps=4 format=3 uid="uid://ceeche661uee3"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_1x2tb"]
 [ext_resource type="Texture2D" uid="uid://bhpfw5vnfged" path="res://Images/grumpy cat.jpg" id="1_a7eg0"]

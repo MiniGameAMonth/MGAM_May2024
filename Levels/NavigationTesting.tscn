@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://da0tiairiydsl"]
+[gd_scene load_steps=5 format=3 uid="uid://jtk1yqeawnsk"]
 
-[ext_resource type="PackedScene" uid="uid://p8tja5k556cu" path="res://GameObjects/Follower.tscn" id="1_lrq6f"]
+[ext_resource type="PackedScene" uid="uid://ceeche661uee3" path="res://GameObjects/Follower.tscn" id="1_lrq6f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8qdxv"]
 vertices = PackedVector3Array(-4.5, 0.5, -4.5, -4.5, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.5)
