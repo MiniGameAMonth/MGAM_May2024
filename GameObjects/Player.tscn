@@ -11,6 +11,7 @@ mouse_sensitivity = 0.2
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 current = true
+fov = 60.0
 size = 7.538
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
