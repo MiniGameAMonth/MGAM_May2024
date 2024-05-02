@@ -17,6 +17,7 @@ sky = SubResource("Sky_ceull")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_bpvgw")
+controls_mode = 1
 
 [node name="Level" type="Node" parent="."]
 
