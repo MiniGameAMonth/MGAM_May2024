@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://204i3o81yrff"]
+[gd_scene load_steps=7 format=3 uid="uid://204i3o81yrff"]
 
-[ext_resource type="Script" path="res://Sources/Main.gd" id="1_bpvgw"]
 [ext_resource type="PackedScene" uid="uid://du7l74rq77kfn" path="res://Menu.tscn" id="1_xfmy7"]
 [ext_resource type="PackedScene" uid="uid://bco76v17yedv5" path="res://HUD.tscn" id="3_odx7y"]
 
@@ -16,8 +15,6 @@ sky = SubResource("Sky_ceull")
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_kl4rv"]
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_bpvgw")
-controls_mode = 1
 
 [node name="Level" type="Node" parent="."]
 
