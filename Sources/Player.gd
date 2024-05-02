@@ -19,6 +19,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	var input_dir = root_node.get_movement_input()
+	print(input_dir)
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	if direction:
