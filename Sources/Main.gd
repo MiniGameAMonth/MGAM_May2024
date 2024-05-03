@@ -1,11 +1,13 @@
 extends Node
 
 enum ControlsMode { WASD_MOUSE, MOUSE_ONLY }
+enum GameMode { MENU, FIRST_PERSON }
 
 #################################################################################
 ################################### Variables ###################################
 
 @export var controls_mode = ControlsMode.WASD_MOUSE
+var game_mode = GameMode.MENU #check added to not capture mouse while in menu
 var level = null
 var local_delta = 0
 
@@ -14,7 +16,8 @@ var local_delta = 0
 
 func _ready():
 	scale_window() # Remove this before exporting the game for the web
-	load_level("res://Levels/TestLevel.tscn")
+	#load_level("res://Levels/TestLevel.tscn")
+	load_level("UI/MainMenu.tscn")
 
 
 func _process(delta):
@@ -41,6 +44,11 @@ func load_level(path):
 	level = load(path).instantiate()
 	add_child(level)
 
+func change_level(path):
+	if level != null:
+		level.queue_free()
+	load_level(path)
+
 
 func center_window():
 	var screen_size = DisplayServer.screen_get_size()
@@ -59,9 +67,10 @@ func _input(event):
 				level.player.global_position += event.get_relative().y * local_delta * level.player.transform.basis.z
 
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if !Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		if level and game_mode == GameMode.FIRST_PERSON:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				if !Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func get_movement_input():
