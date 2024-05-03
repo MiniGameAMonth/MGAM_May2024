@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://w0g0wie7bl7j"]
+[gd_scene load_steps=3 format=3 uid="uid://w0g0wie7bl7j"]
 
 [ext_resource type="PackedScene" uid="uid://bbbrng7qphqh1" path="res://UI/Helpers/DropdownSetting.tscn" id="1_67ehw"]
+[ext_resource type="Script" path="res://UI/Settings.gd" id="1_wksqq"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -9,6 +10,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wksqq")
+mainMenuScene = "res://UI/MainMenu.tscn"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -17,10 +20,57 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 34.0
 offset_top = -110.0
-offset_right = 181.0
+offset_right = 430.0
 offset_bottom = 110.0
 grow_vertical = 2
 
-[node name="DropdownSetting" parent="VBoxContainer" instance=ExtResource("1_67ehw")]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Control scheme:"
+
+[node name="DropdownSetting" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_67ehw")]
+layout_mode = 2
+popup/item_0/text = "Mouse"
+popup/item_1/text = "WASD"
 setting_name = "Main Controls"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Difficulty:"
+
+[node name="DropdownSetting" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_67ehw")]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Full Moon"
+popup/item_1/text = "Half Moon"
+popup/item_2/text = "New Moon"
+popup/item_2/id = 2
+setting_name = "Difficulty"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 233.0
+offset_right = 85.0
+offset_bottom = 252.0
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

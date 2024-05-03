@@ -1,23 +1,24 @@
-class_name ConfigSetting
-extends Node
+class_name DropdownSetting
+extends ConfigSetting
 
-@export var setting_section: String = "Configuration";
-@export var setting_name: String;
 
-var menu;
+@onready var menu = $".";
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	menu = get_node(".") as MenuButton;
 	print(menu)
+	menu = get_node(".") as MenuButton;
+	
 	if menu.get_popup().item_count == 0:
 		return
 
-	var setting_value = "autload stuff" #GC.get_config_value(setting_section, setting_name)
+	var setting_value = GC.get_config_value(setting_section, setting_name)
 	if setting_value != null:
 		menu.text = setting_value
 	else:
 		menu.text = menu.get_popup().get_item_text(0); 
+		update_setting(menu.text)
+		
 	
 	menu.get_popup().connect("index_pressed", on_change)
 
@@ -25,5 +26,5 @@ func _ready():
 func on_change(index):
 	if(index != -1):
 		menu.text = menu.get_popup().get_item_text(index)
-		#GC.set_config_value(setting_section, setting_name, text)
-
+		update_setting(menu.text)
+		

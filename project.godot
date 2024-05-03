@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Main="*res://Sources/Main.gd"
+GC="*res://Sources/GameSettings.gd"
 
 [display]
 

@@ -17,6 +17,8 @@ func load_config():
 func get_config_value(section: String, value_name: String):
     if not configFile.has_section(section):
         return null
+    if not configFile.has_section_key(section, value_name):
+        return null
     return configFile.get_value(section, value_name, null)
 
 func set_config_value(section: String, value_name: String, value):
