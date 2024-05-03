@@ -5,7 +5,6 @@ var configFile = ConfigFile.new()
 
 func _ready():
     load_config()
-    GameConfig.new()
 
 func save_config():
     configFile.save("user://config.cfg")
