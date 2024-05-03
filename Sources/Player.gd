@@ -14,25 +14,28 @@ func _ready():
 
 func _physics_process(delta):
 	local_delta = delta
-	# Movement
-	if not is_on_floor():
-		velocity.y -= gravity * delta
+	
 
-	var input_dir = root_node.get_movement_input()
-	print(input_dir)
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if root_node.is_in_game():
+		# Movement
+		if not is_on_floor():
+			velocity.y -= gravity * delta
 
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		var input_dir = root_node.get_movement_input()
+		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-	move_and_slide()
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+
+		move_and_slide()
 
 	
 func _input(event):
-	if event is InputEventMouseMotion:
-		if !Input.is_action_pressed("Mouse Only - Strafe Mode"):
-			rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta
+	if root_node.is_in_game():
+		if event is InputEventMouseMotion:
+			if !Input.is_action_pressed("Mouse Only - Strafe Mode"):
+				rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta

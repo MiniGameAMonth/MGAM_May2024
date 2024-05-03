@@ -14,16 +14,16 @@ sky = SubResource("Sky_ceull")
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_kl4rv"]
 
-[node name="Node3D" type="Node3D"]
+[node name="MainRoot" type="Node3D"]
 
 [node name="Level" type="Node" parent="."]
 
 [node name="UICanvas" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Menu" parent="UICanvas" instance=ExtResource("1_xfmy7")]
 
-[node name="Hud" parent="UICanvas" instance=ExtResource("3_odx7y")]
+[node name="HUD" parent="UICanvas" instance=ExtResource("3_odx7y")]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jpnql")
