@@ -1,5 +1,6 @@
 extends Node3D
 
+var player = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +18,7 @@ func spawn_player():
 	if spawn_point == null:
 		push_error("Player spawn position not found on the level")
 
-	var player = load("res://GameObjects/Player.tscn").instantiate()
+	player = load("res://GameObjects/Player.tscn").instantiate()
 	player.global_transform = spawn_point.global_transform
 	player.get_node("Camera").current = true
 	add_child(player)
