@@ -39,7 +39,7 @@ func _physics_process(delta):
 
 
 func subscribe_to_menu_events():	
-	menu_node.connect("start_game",Callable(self,"start_game"))
+	menu_node.connect("start_game",Callable(self, "start_game"))
 
 
 func is_in_game():
