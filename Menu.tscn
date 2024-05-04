@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://du7l74rq77kfn"]
+[gd_scene load_steps=7 format=3 uid="uid://du7l74rq77kfn"]
 
 [ext_resource type="Script" path="res://Sources/Menu.gd" id="1_wgstm"]
 [ext_resource type="Texture2D" uid="uid://up2fq5y7ko3e" path="res://Assets/Images/Menu/MenuBG.png" id="2_77vwl"]
 [ext_resource type="Texture2D" uid="uid://bnvun2ufarn1y" path="res://Assets/Images/LogoPixelated.png" id="3_4f48k"]
 [ext_resource type="Theme" uid="uid://b52ts8rtppg4j" path="res://Themes/MenuTheme.tres" id="3_cx58u"]
 [ext_resource type="PackedScene" uid="uid://dqev3j3woaqm3" path="res://GameObjects/Menu/SubMenu.tscn" id="3_kfsru"]
+[ext_resource type="FontFile" uid="uid://cdlklu6q1dr1m" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="6_vjpoo"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -101,16 +102,15 @@ text = "Customize Controls"
 [node name="CreditsMenu" parent="." instance=ExtResource("3_kfsru")]
 visible = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CreditsMenu"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CreditsMenu"]
 layout_mode = 0
-offset_left = -240.0
-offset_right = -123.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="CreditsMenu/VBoxContainer"]
-layout_mode = 2
-text = "CREDITS MENU
-"
+offset_left = -218.0
+offset_top = 71.0
+offset_right = 227.0
+offset_bottom = 234.0
+theme_override_fonts/normal_font = ExtResource("6_vjpoo")
+theme_override_font_sizes/normal_font_size = 8
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Luctus accumsan tortor posuere ac ut consequat semper viverra nam. Cras semper auctor neque vitae tempus quam pellentesque. Nibh venenatis cras sed felis eget velit aliquet sagittis id. Sem viverra aliquet eget sit amet. Mattis vulputate enim nulla aliquet porttitor lacus. Nibh praesent tristique magna sit amet purus gravida quis. Ipsum nunc aliquet bibendum enim facilisis gravida neque convallis. Morbi tincidunt ornare massa eget. Eget magna fermentum iaculis eu non diam phasellus vestibulum. Libero justo laoreet sit amet cursus sit. Sapien et ligula ullamcorper malesuada proin. Morbi tincidunt augue interdum velit euismod in. Ornare massa eget egestas purus viverra accumsan. A cras semper auctor neque. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Id diam maecenas ultricies mi eget mauris pharetra et ultrices."
 
 [node name="CustomizeControlsMenu" parent="." node_paths=PackedStringArray("parent_menu") instance=ExtResource("3_kfsru")]
 visible = false
