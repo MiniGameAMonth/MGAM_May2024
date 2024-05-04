@@ -12,7 +12,7 @@ func _ready():
 		sprite.play("default")
 	else:
 		print("No animations found for mushroom : " + str(mushroomData.mushroomName))
-	pass # Replace with function body.
+	add_to_group(GroupNames.Mushrooms)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,6 +20,7 @@ func _process(delta):
 	pass
 
 func pick_up():
+	remove_from_group(GroupNames.Mushrooms)
 	print("picked up")
 	#play animation pick up
 	#play sound

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://jtk1yqeawnsk"]
 
 [ext_resource type="Script" path="res://Sources/Level.gd" id="1_aehdo"]
-[ext_resource type="PackedScene" uid="uid://ceeche661uee3" path="res://GameObjects/Follower.tscn" id="1_lrq6f"]
+[ext_resource type="PackedScene" uid="uid://djrq4nf2gldyn" path="res://GameObjects/Cat.tscn" id="3_pvegq"]
 [ext_resource type="PackedScene" uid="uid://bkjqoodkmlp54" path="res://GameObjects/Interactable/Mushroom.tscn" id="3_uejod"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8qdxv"]
@@ -16,12 +16,6 @@ size = Vector3(9.98425, 0.525513, 9.99365)
 
 [node name="NavigationTesting" type="Node3D"]
 script = ExtResource("1_aehdo")
-
-[node name="Follower" parent="." node_paths=PackedStringArray("followTarget") instance=ExtResource("1_lrq6f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50115, 0, -2.60738)
-followTarget = NodePath("../Node3D")
-stopAtDistance = 1.0
-lookAtTarget = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_8qdxv")
@@ -46,3 +40,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
 
 [node name="Mushroom" parent="." instance=ExtResource("3_uejod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+
+[node name="Mushroom2" parent="." instance=ExtResource("3_uejod")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+
+[node name="Cat" parent="." instance=ExtResource("3_pvegq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+stopAtDistance = 1.1
