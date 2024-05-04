@@ -2,7 +2,8 @@ class_name Weapon
 extends Node3D
 
 @export var attackDistance : float = 0 
-@export var weaponDamage : float = 0 
+@export var weaponDamage : float = 0
+@export var cooldownTime : float = 0 
 
 @onready var cooldown : Timer = $Cooldown
 
@@ -17,11 +18,10 @@ func is_target_in_range(_target : Node3D):
         return false
 
 func try_deal_damage(_target : Node3D):
-    var targetManager : CharacterManager = _target
-    targetManager.take_damage(weaponDamage)
-
-    isTimerOver = not (cooldown.time_left > 0)
-    cooldown.start()
+    if isTimerOver:
+        var targetManager : CharacterManager = _target
+        targetManager.take_damage(weaponDamage)
+        cooldown.start(cooldownTime)
 
 func _on_cooldown_timeout():
     isTimerOver = true

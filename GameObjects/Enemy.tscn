@@ -25,6 +25,7 @@ shape = SubResource("CapsuleShape3D_sx0fy")
 script = ExtResource("2_e0arb")
 attackDistance = 5.0
 weaponDamage = 10.0
+cooldownTime = 2.0
 
 [node name="Cooldown" type="Timer" parent="Weapon"]
 
