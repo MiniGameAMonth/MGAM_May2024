@@ -1,21 +1,32 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://b52ts8rtppg4j"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b52ts8rtppg4j"]
 
-[ext_resource type="FontFile" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_pol6h"]
+[ext_resource type="FontFile" uid="uid://cdlklu6q1dr1m" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_pol6h"]
 [ext_resource type="Texture2D" uid="uid://bnnrcovdnn05w" path="res://Assets/Images/Menu/MenuButtonFocus.png" id="2_5258k"]
 [ext_resource type="Texture2D" uid="uid://6rejn6uliab7" path="res://Assets/Images/Menu/MenuButton.png" id="3_qa67b"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rk7h2"]
+content_margin_left = 6.0
+content_margin_right = 5.0
 texture = ExtResource("2_5258k")
 texture_margin_top = 5.0
 texture_margin_bottom = 5.0
-axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5accv"]
+content_margin_left = 6.0
+content_margin_right = 5.0
 texture = ExtResource("3_qa67b")
 texture_margin_top = 5.0
 texture_margin_bottom = 5.0
-axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pik5i"]
+content_margin_left = 6.0
+content_margin_top = 7.0
+content_margin_right = 5.0
+texture = ExtResource("2_5258k")
+texture_margin_top = 5.0
+texture_margin_bottom = 5.0
 axis_stretch_vertical = 1
 
 [resource]
@@ -25,4 +36,6 @@ Button/fonts/font = ExtResource("1_pol6h")
 Button/styles/focus = SubResource("StyleBoxTexture_rk7h2")
 Button/styles/hover = SubResource("StyleBoxTexture_rk7h2")
 Button/styles/normal = SubResource("StyleBoxTexture_5accv")
+Button/styles/pressed = SubResource("StyleBoxTexture_pik5i")
+Label/font_sizes/font_size = 8
 Label/fonts/font = ExtResource("1_pol6h")

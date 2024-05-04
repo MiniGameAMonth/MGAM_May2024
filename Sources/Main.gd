@@ -39,7 +39,8 @@ func _physics_process(delta):
 
 
 func subscribe_to_menu_events():	
-	menu_node.connect("start_game",Callable(self, "start_game"))
+	menu_node.connect("start_game", Callable(self, "start_game"))
+	menu_node.connect("quit_game", Callable(self, "quit_game"))
 
 
 func is_in_game():
@@ -63,6 +64,10 @@ func start_game():
 	game_mode = GameMode.IN_GAME
 	update_menu()
 
+
+func quit_game():
+	get_tree().quit()
+	
 
 func load_level(path):
 	level = load(path).instantiate()
