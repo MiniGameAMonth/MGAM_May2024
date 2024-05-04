@@ -1,8 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhktw4y7gkww3"]
+[gd_scene load_steps=5 format=3 uid="uid://dhktw4y7gkww3"]
 
 [ext_resource type="Script" path="res://Sources/Player.gd" id="1_l3ge4"]
+[ext_resource type="PackedScene" uid="uid://c18ga08e55buv" path="res://GameObjects/Interactable/InteractionArea.tscn" id="2_ppcc5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5s06"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o0bt6"]
+size = Vector3(2, 1, 2)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_l3ge4")
@@ -17,3 +21,9 @@ size = 7.538
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_f5s06")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_ppcc5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0334473, 0.480469, 0.0345764)
+shape = SubResource("BoxShape3D_o0bt6")
