@@ -1,23 +1,30 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b52ts8rtppg4j"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://b52ts8rtppg4j"]
 
 [ext_resource type="FontFile" uid="uid://cdlklu6q1dr1m" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_pol6h"]
 [ext_resource type="Texture2D" uid="uid://bnnrcovdnn05w" path="res://Assets/Images/Menu/MenuButtonFocus.png" id="2_5258k"]
 [ext_resource type="Texture2D" uid="uid://6rejn6uliab7" path="res://Assets/Images/Menu/MenuButton.png" id="3_qa67b"]
+[ext_resource type="Texture2D" uid="uid://barxaxei2w87j" path="res://Assets/Images/Menu/CheckboxOn.png" id="4_0bqky"]
+[ext_resource type="Texture2D" uid="uid://vmd7s420xrsi" path="res://Assets/Images/Menu/CheckboxOff.png" id="5_fn3vh"]
+[ext_resource type="Texture2D" uid="uid://dilgp7nsynqt" path="res://Assets/Images/Menu/ArrowDown.png" id="6_8o3m4"]
+[ext_resource type="Texture2D" uid="uid://wq7pcvn5egff" path="res://Assets/Images/Menu/RadioOn.png" id="7_ruhee"]
+[ext_resource type="Texture2D" uid="uid://bc4tmhooo6xq2" path="res://Assets/Images/Menu/RadioOff.png" id="8_xiq0v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rk7h2"]
-content_margin_left = 6.0
-content_margin_right = 5.0
+content_margin_left = 5.0
 texture = ExtResource("2_5258k")
+texture_margin_left = 4.0
 texture_margin_top = 5.0
+texture_margin_right = 3.0
 texture_margin_bottom = 5.0
 axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5accv"]
-content_margin_left = 6.0
-content_margin_right = 5.0
+content_margin_left = 5.0
 texture = ExtResource("3_qa67b")
-texture_margin_top = 5.0
-texture_margin_bottom = 5.0
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
 axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pik5i"]
@@ -25,11 +32,40 @@ content_margin_left = 6.0
 content_margin_top = 7.0
 content_margin_right = 5.0
 texture = ExtResource("2_5258k")
+texture_margin_left = 4.0
 texture_margin_top = 5.0
+texture_margin_right = 3.0
 texture_margin_bottom = 5.0
 axis_stretch_vertical = 1
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_25vgh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ijpr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ugteo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mm7wq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xi6nn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hb0gl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7053f"]
+texture = ExtResource("3_qa67b")
+texture_margin_left = 4.0
+texture_margin_top = 5.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_low22"]
+bg_color = Color(0, 0.72549, 0.745098, 1)
+border_width_top = 1
+border_color = Color(0, 0.72549, 0.745098, 1)
+border_blend = true
+
 [resource]
+default_font = ExtResource("1_pol6h")
+default_font_size = 8
 Button/colors/font_color = Color(1, 0.933333, 0.8, 1)
 Button/font_sizes/font_size = 8
 Button/fonts/font = ExtResource("1_pol6h")
@@ -37,5 +73,20 @@ Button/styles/focus = SubResource("StyleBoxTexture_rk7h2")
 Button/styles/hover = SubResource("StyleBoxTexture_rk7h2")
 Button/styles/normal = SubResource("StyleBoxTexture_5accv")
 Button/styles/pressed = SubResource("StyleBoxTexture_pik5i")
+CheckBox/icons/checked = ExtResource("4_0bqky")
+CheckBox/icons/unchecked = ExtResource("5_fn3vh")
+CheckBox/styles/disabled = SubResource("StyleBoxEmpty_25vgh")
+CheckBox/styles/focus = SubResource("StyleBoxEmpty_4ijpr")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_ugteo")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_mm7wq")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_xi6nn")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_hb0gl")
 Label/font_sizes/font_size = 8
 Label/fonts/font = ExtResource("1_pol6h")
+OptionButton/font_sizes/font_size = 8
+OptionButton/icons/arrow = ExtResource("6_8o3m4")
+PopupMenu/constants/v_separation = 0
+PopupMenu/icons/radio_checked = ExtResource("7_ruhee")
+PopupMenu/icons/radio_unchecked = ExtResource("8_xiq0v")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_7053f")
+PopupMenu/styles/separator = SubResource("StyleBoxFlat_low22")
