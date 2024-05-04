@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://jtk1yqeawnsk"]
+[gd_scene load_steps=8 format=3 uid="uid://jtk1yqeawnsk"]
 
 [ext_resource type="Script" path="res://Sources/Level.gd" id="1_aehdo"]
-[ext_resource type="PackedScene" uid="uid://djrq4nf2gldyn" path="res://GameObjects/Cat.tscn" id="3_pvegq"]
+[ext_resource type="Resource" uid="uid://b2dtfr7xwwiev" path="res://Interactables/Pickups/Mushrooms/Mushroom_15.tres" id="3_5eiot"]
+[ext_resource type="PackedScene" uid="uid://bqbalphyq8pg2" path="res://GameObjects/Cat.tscn" id="3_pvegq"]
 [ext_resource type="PackedScene" uid="uid://bkjqoodkmlp54" path="res://GameObjects/Interactable/Mushroom.tscn" id="3_uejod"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8qdxv"]
@@ -43,6 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
 
 [node name="Mushroom2" parent="." instance=ExtResource("3_uejod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+mushroomData = ExtResource("3_5eiot")
 
 [node name="Cat" parent="." instance=ExtResource("3_pvegq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)

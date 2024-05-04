@@ -16,9 +16,9 @@ func _ready():
 
 func on_interact(interactable: Interactable):
 	#for now pick everything up, later we will check for player input (or not)
-	interactable.pick_up()
+	interactable.pick_up(self)
 
-func on_interact_end(interactable: Interactable):
+func on_interact_end(_interactable: Interactable):
 	#to be used for gui in case we check for player input
 	pass
 

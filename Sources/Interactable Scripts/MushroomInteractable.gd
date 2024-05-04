@@ -7,19 +7,22 @@ extends Interactable
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if mushroomData.mushroomAnimations != null:
-		sprite.sprite_frames = mushroomData.mushroomAnimations
-		sprite.play("default")
-	else:
-		print("No animations found for mushroom : " + str(mushroomData.mushroomName))
+	setup_mushroom(mushroomData)
 	add_to_group(GroupNames.Mushrooms)
 
+func setup_mushroom(data : MushroomData):
+	pickUpName = data.mushroomName
+	if data.mushroomAnimations != null:
+		sprite.sprite_frames = data.mushroomAnimations
+		sprite.play("default")
+	else:
+		print("No animations found for mushroom : " + str(data.mushroomName))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
-func pick_up():
+func pick_up(_picker):
 	remove_from_group(GroupNames.Mushrooms)
 	print("picked up")
 	#play animation pick up

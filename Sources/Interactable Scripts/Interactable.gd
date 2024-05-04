@@ -3,6 +3,6 @@ extends StaticBody3D
 
 var pickUpName : String;
 
-func pick_up():
+func pick_up(_picker):
 	#
 	pass
