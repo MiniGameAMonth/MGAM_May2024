@@ -9,6 +9,7 @@
 size = Vector3(2, 1, 2)
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 3
 script = ExtResource("1_l3ge4")
 mouse_sensitivity = 0.2
 

@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds0jrkar6htxc"]
+[gd_scene load_steps=7 format=3 uid="uid://c2ul40d4fk526"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_klhdc"]
-[ext_resource type="Script" path="res://Sources/RangedWeapon.gd" id="3_12k46"]
-[ext_resource type="Script" path="res://Sources/Enemy.gd" id="4_38ctb"]
+[ext_resource type="Script" path="res://Sources/Weapon.gd" id="2_e0arb"]
+[ext_resource type="Script" path="res://Sources/CharacterStats.gd" id="3_vhqvl"]
+[ext_resource type="Script" path="res://GameObjects/EnemyManager.gd" id="4_kyd1d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx0fy"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_w6y64"]
+
 [node name="CharacterBody3D" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_mask = 2
 script = ExtResource("1_klhdc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -17,13 +21,29 @@ shape = SubResource("CapsuleShape3D_sx0fy")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="RangedWeapon" type="Node" parent="."]
-script = ExtResource("3_12k46")
+[node name="Weapon" type="Node" parent="."]
+script = ExtResource("2_e0arb")
 attackDistance = 5.0
+weaponDamage = 10.0
+cooldownTime = 2.0
 
-[node name="RangedTimer" type="Timer" parent="RangedWeapon"]
+[node name="Cooldown" type="Timer" parent="Weapon"]
 
 [node name="EnemyStats" type="Node3D" parent="."]
-script = ExtResource("4_38ctb")
+script = ExtResource("3_vhqvl")
+health = 100.0
 
-[connection signal="timeout" from="RangedWeapon/RangedTimer" to="RangedWeapon" method="_on_ranged_timer_timeout"]
+[node name="EnemyManager" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "characterStats")]
+script = ExtResource("4_kyd1d")
+follower = NodePath("..")
+weapon = NodePath("../Weapon")
+characterStats = NodePath("../EnemyStats")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+
+[node name="DetectionAreaColl" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("SphereShape3D_w6y64")
+
+[connection signal="timeout" from="Weapon/Cooldown" to="Weapon" method="_on_cooldown_timeout"]
+[connection signal="body_entered" from="DetectionArea" to="EnemyManager" method="_on_detection_area_body_entered"]
