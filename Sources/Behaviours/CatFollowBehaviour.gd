@@ -18,16 +18,20 @@ func _ready():
 func _process(_delta):
 	if state == State.IDLE:
 		var mushrooms = get_tree().get_nodes_in_group(GroupNames.Mushrooms)
+
 		if mushrooms.size() > 0:
-			set_target_mushroom(mushrooms[0]) # TODO: Find closest mushroom
+			var closestMushroom = find_closest(mushrooms)
+			set_target_mushroom(closestMushroom)
 			state = State.WALK_TO_MUSHROOM
 		else:
 			state = State.WALK_TO_EXIT
+
 	elif state == State.WALK_TO_MUSHROOM:
 		if cat.is_at_target():
 			state = State.NEAR_MUSHROOM
 		if get_target_mushroom() == null:
 			state = State.IDLE
+
 	elif state == State.NEAR_MUSHROOM:
 		# Make sounds
 		if get_target_mushroom() == null: # Mushroom was picked up
@@ -45,3 +49,17 @@ func get_target_mushroom():
 	if targetRef:
 		return targetRef.get_ref()
 	return null
+
+func find_closest(mushrooms : Array[Node]):
+	if mushrooms.size() == 0:
+		return null
+	var closest = mushrooms[0].global_position.distance_squared_to(cat.global_position)
+	var closestMushroom = mushrooms[0]
+
+	for mushroom in mushrooms:
+		var distance = mushroom.global_position.distance_squared_to(cat.global_position)
+		if distance < closest:
+			closest = distance
+			closestMushroom = mushroom
+
+	return closestMushroom

@@ -1,8 +1,9 @@
 class_name Interactable
 extends StaticBody3D
 
-var pickUpName : String;
+@export var interactableName : String;
+@export var interactionPrompt : String;
 
-func pick_up(_picker):
+func interact(_who):
 	#
 	pass

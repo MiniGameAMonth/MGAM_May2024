@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Sources/Level.gd" id="1_aehdo"]
 [ext_resource type="Resource" uid="uid://b2dtfr7xwwiev" path="res://Interactables/Pickups/Mushrooms/Mushroom_15.tres" id="3_5eiot"]
-[ext_resource type="PackedScene" uid="uid://bqbalphyq8pg2" path="res://GameObjects/Cat.tscn" id="3_pvegq"]
+[ext_resource type="PackedScene" uid="uid://b0csgprky8v0p" path="res://GameObjects/Cat.tscn" id="3_pvegq"]
 [ext_resource type="PackedScene" uid="uid://bkjqoodkmlp54" path="res://GameObjects/Interactable/Mushroom.tscn" id="3_uejod"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8qdxv"]
@@ -32,6 +32,7 @@ shape = SubResource("BoxShape3D_tfdhs")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.917185, 0.398461, 0, -0.398461, 0.917185, 0, 4.77551, 6.52856)
+current = true
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59656, 1.49573, 1.56009)
