@@ -17,11 +17,8 @@ var hud_node = null
 ################################### Functions ###################################
 
 func _ready():
-	menu_node = get_tree().root.get_node("MainRoot/UICanvas/Menu")
-	hud_node = get_tree().root.get_node("MainRoot/UICanvas/HUD")
-
 	scale_window() # Remove this before exporting the game for the web
-	subscribe_to_menu_events()
+	
 
 
 func _process(delta):
@@ -38,8 +35,9 @@ func _physics_process(delta):
 	local_delta = delta
 
 
-func subscribe_to_menu_events():	
-	menu_node.connect("start_game",Callable(self,"start_game"))
+func subscribe_to_menu_events():
+	if menu_node != null:
+		menu_node.connect("start_game",Callable(self,"start_game"))
 
 
 func is_in_game():
@@ -59,7 +57,10 @@ func scale_window():
 
 
 func start_game():
-	load_level("res://Levels/TestLevel.tscn")
+	#load_level("res://Levels/TestLevel.tscn")
+	menu_node = get_tree().root.get_node("MainRoot/UICanvas/Menu")
+	hud_node = get_tree().root.get_node("MainRoot/UICanvas/HUD")
+	subscribe_to_menu_events()
 	game_mode = GameMode.IN_GAME
 	update_menu()
 
@@ -78,12 +79,16 @@ func change_level(path):
 
 func update_menu():
 	if game_mode == GameMode.MENU:
-		menu_node.visible = true
-		hud_node.visible = false
+		if menu_node != null:
+			menu_node.visible = true
+		if hud_node != null:
+			hud_node.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
-		menu_node.visible = false
-		hud_node.visible = true
+		if menu_node != null:
+			menu_node.visible = false
+		if hud_node != null:
+			hud_node.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
