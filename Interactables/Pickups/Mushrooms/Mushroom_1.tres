@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://cjj8m2uu47oev"]
+
+[ext_resource type="Script" path="res://Sources/Interactable Scripts/MushroomData.gd" id="1_vdidl"]
+[ext_resource type="SpriteFrames" uid="uid://w41m6buww8r1" path="res://Interactables/Pickups/Mushrooms/Mushroom_1_frames.tres" id="1_wekc6"]
+
+[resource]
+script = ExtResource("1_vdidl")
+mushroomName = "Mushroom"
+mushroomAnimations = ExtResource("1_wekc6")
+mushroomType = 2

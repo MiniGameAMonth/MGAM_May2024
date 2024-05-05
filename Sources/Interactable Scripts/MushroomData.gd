@@ -1,4 +1,4 @@
-class_name PickupItem
+class_name MushroomData
 extends Resource
 
 enum MushroomType {
@@ -9,5 +9,5 @@ enum MushroomType {
 }
 
 @export var mushroomName : String;
-@export var mushroomImage : Texture2D;
+@export var mushroomAnimations : SpriteFrames;
 @export var mushroomType : MushroomType;

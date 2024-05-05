@@ -7,10 +7,20 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var root_node
 var local_delta = 0
 
+@onready var interactions : InteractionArea = $InteractionArea
 
 func _ready():
 	root_node = get_tree().root.get_child(0)
+	interactions.connect("on_interaction", on_interact)
+	interactions.connect("on_interaction_end", on_interact_end)
 
+func on_interact(interactable: Interactable):
+	#for now pick everything up, later we will check for player input (or not)
+	interactable.interact(self)
+
+func on_interact_end(_interactable: Interactable):
+	#to be used for gui in case we check for player input
+	pass
 
 func _physics_process(delta):
 	local_delta = delta
