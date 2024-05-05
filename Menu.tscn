@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://du7l74rq77kfn"]
+[gd_scene load_steps=11 format=3 uid="uid://du7l74rq77kfn"]
 
 [ext_resource type="Script" path="res://Sources/Menu.gd" id="1_wgstm"]
 [ext_resource type="Texture2D" uid="uid://up2fq5y7ko3e" path="res://Assets/Images/Menu/MenuBG.png" id="2_77vwl"]
 [ext_resource type="Texture2D" uid="uid://bnvun2ufarn1y" path="res://Assets/Images/LogoPixelated.png" id="3_4f48k"]
 [ext_resource type="Theme" uid="uid://b52ts8rtppg4j" path="res://Themes/MenuTheme.tres" id="3_cx58u"]
 [ext_resource type="PackedScene" uid="uid://dqev3j3woaqm3" path="res://GameObjects/Menu/SubMenu.tscn" id="3_kfsru"]
+[ext_resource type="Texture2D" uid="uid://bdnthnrnp5pg0" path="res://Assets/Images/Menu/DifficultyFullMoon.png" id="6_gyvb2"]
 [ext_resource type="FontFile" uid="uid://cdlklu6q1dr1m" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="6_vjpoo"]
+[ext_resource type="Texture2D" uid="uid://b1pwspwman020" path="res://Assets/Images/Menu/DifficultyHalfMoon.png" id="7_pifkp"]
+[ext_resource type="Texture2D" uid="uid://qvj6y1m4xjqb" path="res://Assets/Images/Menu/DifficultyNewMoon.png" id="8_ajrhn"]
+[ext_resource type="PackedScene" uid="uid://cmnkh3v51ka3v" path="res://GameObjects/Menu/ActionKey.tscn" id="10_4dejw"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -34,6 +38,7 @@ scale = Vector2(0.687379, 0.687379)
 texture = ExtResource("3_4f48k")
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -73,30 +78,33 @@ text = "Quit
 
 [node name="OptionsMenu" parent="." instance=ExtResource("3_kfsru")]
 visible = false
+layout_mode = 1
 
 [node name="Label" type="Label" parent="OptionsMenu"]
-layout_mode = 2
-offset_left = -239.0
-offset_top = 71.0
-offset_right = 240.0
-offset_bottom = 79.0
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -66.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3_cx58u")
 text = "Options"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -236.0
-offset_top = 102.0
-offset_right = 12.0
-offset_bottom = 225.0
+offset_left = 4.0
+offset_top = 80.0
+offset_right = -226.0
+offset_bottom = -9.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="OptionsMenu/VBoxContainer"]
 layout_mode = 2
@@ -115,10 +123,13 @@ theme = ExtResource("3_cx58u")
 item_count = 3
 selected = 0
 popup/item_0/text = "Full Moon"
+popup/item_0/icon = ExtResource("6_gyvb2")
 popup/item_0/id = 0
 popup/item_1/text = "Half moon"
+popup/item_1/icon = ExtResource("7_pifkp")
 popup/item_1/id = 1
 popup/item_2/text = "New moon"
+popup/item_2/icon = ExtResource("8_ajrhn")
 popup/item_2/id = 2
 
 [node name="ColorBlindModeLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
@@ -183,11 +194,25 @@ layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "45°"
 
+[node name="ControlsSchemeLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Controls Scheme"
+horizontal_alignment = 2
+
+[node name="ColorBlindSelect2" type="OptionButton" parent="OptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+item_count = 1
+selected = 0
+popup/item_0/text = "WASD + Mouse"
+popup/item_0/id = 0
+
 [node name="CustomizeControlsButton" type="Button" parent="OptionsMenu/VBoxContainer" groups=["MenuNavButton"]]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-text = "Customize Controls"
+text = "Customize Controls Schemes"
 
 [node name="SoundOptionsButton" type="Button" parent="OptionsMenu/VBoxContainer" groups=["MenuNavButton"]]
 texture_filter = 1
@@ -197,29 +222,30 @@ text = "Sound options"
 
 [node name="PreviewContainer" type="ColorRect" parent="OptionsMenu"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 105.0
-offset_right = 238.0
-offset_bottom = 226.0
+offset_left = 261.0
+offset_top = 100.0
+offset_right = 476.0
+offset_bottom = 219.0
 color = Color(0, 0.72549, 0.745098, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="OptionsMenu/PreviewContainer"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
-offset_right = 217.0
-offset_bottom = 120.0
+offset_right = 214.0
+offset_bottom = 118.0
 
 [node name="ColorRect2" type="ColorRect" parent="OptionsMenu"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 84.0
-offset_right = 17.0
-offset_bottom = 264.0
+offset_left = 257.0
+offset_top = 80.0
+offset_right = 258.0
+offset_bottom = 235.0
 color = Color(0, 0.72549, 0.745098, 1)
 
 [node name="CreditsMenu" parent="." instance=ExtResource("3_kfsru")]
 visible = false
+layout_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CreditsMenu"]
 layout_mode = 0
@@ -241,31 +267,134 @@ theme = ExtResource("3_cx58u")
 text = "Credits"
 
 [node name="CustomizeControlsMenu" parent="." node_paths=PackedStringArray("parent_menu") instance=ExtResource("3_kfsru")]
-visible = false
+layout_mode = 1
 parent_menu = NodePath("../OptionsMenu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CustomizeControlsMenu"]
-layout_mode = 0
-offset_left = -240.0
-offset_right = -123.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="CustomizeControlsMenu/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_cx58u")
-text = "CUSTOMIZE CONTROLS MENU"
-
 [node name="Label" type="Label" parent="CustomizeControlsMenu"]
-layout_mode = 0
-offset_left = -138.5
-offset_top = 78.0
-offset_right = 16.5
-offset_bottom = 86.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 71.0
+offset_right = 72.0
+offset_bottom = 79.0
+grow_horizontal = 2
 theme = ExtResource("3_cx58u")
 text = "Customize Controls"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CustomizeControlsMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -175.0
+offset_right = 139.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Control scheme: "
+
+[node name="OptionButton" type="OptionButton" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+item_count = 1
+selected = 0
+popup/item_0/text = "WASD + Mouse"
+popup/item_0/id = 0
+
+[node name="Button" type="Button" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Copy & Modify"
+
+[node name="ColorRect3" type="ColorRect" parent="CustomizeControlsMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.0823529, 0.470588, 0.54902, 1)
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Scheme Name:"
+
+[node name="TextEdit" type="LineEdit" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_cx58u")
+text = "WASD + Mouse"
+placeholder_text = "Enter scheme name"
+
+[node name="GridContainer" type="GridContainer" parent="CustomizeControlsMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 3
+
+[node name="ColorRect" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="ColorRect2" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="ColorRect3" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="ColorRect4" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="ColorRect5" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="ColorRect6" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="ColorRect7" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="ColorRect8" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="ColorRect9" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="ColorRect10" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="ColorRect11" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="ColorRect12" parent="CustomizeControlsMenu/VBoxContainer/GridContainer" instance=ExtResource("10_4dejw")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Button2" type="Button" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Save changes"
+
+[node name="Button3" type="Button" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Save And Use"
 
 [node name="SoundOptionsMenu" parent="." node_paths=PackedStringArray("parent_menu") instance=ExtResource("3_kfsru")]
 visible = false
+layout_mode = 1
 parent_menu = NodePath("../OptionsMenu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SoundOptionsMenu"]
@@ -364,18 +493,17 @@ text = "Sound options"
 horizontal_alignment = 1
 
 [node name="GoBackButton" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -34.0
-offset_right = 152.0
-offset_bottom = -16.0
+offset_left = 4.0
+offset_top = -22.0
+offset_right = 164.0
+offset_bottom = -4.0
 grow_vertical = 0
 theme = ExtResource("3_cx58u")
-text = "Go Back"
+text = "Go Back [Backspace]"
 
 [connection signal="pressed" from="MainMenu/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
