@@ -21,7 +21,6 @@ sky = SubResource("Sky_ceull")
 [node name="UICanvas" type="CanvasLayer" parent="."]
 
 [node name="Menu" parent="UICanvas" instance=ExtResource("1_xfmy7")]
-visible = false
 
 [node name="HUD" parent="UICanvas" instance=ExtResource("3_odx7y")]
 visible = false

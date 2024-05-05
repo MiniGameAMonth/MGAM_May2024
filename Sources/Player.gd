@@ -26,12 +26,12 @@ func _physics_process(delta):
 	local_delta = delta
 	
 
-	if Main.is_in_game():
+	if root_node.is_in_game():
 		# Movement
 		if not is_on_floor():
 			velocity.y -= gravity * delta
 
-		var input_dir = Main.get_movement_input()
+		var input_dir = root_node.get_movement_input()
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 		if direction:
@@ -45,6 +45,7 @@ func _physics_process(delta):
 
 	
 func _input(event):
-	if event is InputEventMouseMotion:
-		if !Input.is_action_pressed("Mouse Only - Strafe Mode"):
-			rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta
+	if root_node.is_in_game():
+		if event is InputEventMouseMotion:
+			if !Input.is_action_pressed("Mouse Only - Strafe Mode"):
+				rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta
