@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=26 format=3 uid="uid://b52ts8rtppg4j"]
+[gd_resource type="Theme" load_steps=28 format=3 uid="uid://b52ts8rtppg4j"]
 
 [ext_resource type="FontFile" uid="uid://cdlklu6q1dr1m" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_pol6h"]
 [ext_resource type="Texture2D" uid="uid://bnnrcovdnn05w" path="res://Assets/Images/Menu/MenuButtonFocus.png" id="2_5258k"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://wq7pcvn5egff" path="res://Assets/Images/Menu/RadioOn.png" id="7_ruhee"]
 [ext_resource type="Texture2D" uid="uid://dvy7i36ykayht" path="res://Assets/Images/Menu/SliderTrack.png" id="8_6x8bb"]
 [ext_resource type="Texture2D" uid="uid://bc4tmhooo6xq2" path="res://Assets/Images/Menu/RadioOff.png" id="8_xiq0v"]
+[ext_resource type="Texture2D" uid="uid://d0bsbcuc5du8b" path="res://Assets/Images/Menu/TextInput.png" id="9_hqher"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rk7h2"]
 content_margin_left = 5.0
@@ -71,6 +72,13 @@ texture_margin_bottom = 2.0
 expand_margin_top = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3usgk"]
+texture = ExtResource("9_hqher")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42ngs"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7053f"]
@@ -81,9 +89,9 @@ texture_margin_right = 3.0
 texture_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_low22"]
-bg_color = Color(0, 0.72549, 0.745098, 1)
+bg_color = Color(17, 88, 102, 1)
 border_width_top = 1
-border_color = Color(0, 0.72549, 0.745098, 1)
+border_color = Color(17, 88, 102, 1)
 border_blend = true
 
 [resource]
@@ -111,6 +119,7 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_id2rx")
 HSlider/styles/slider = SubResource("StyleBoxTexture_v2du0")
 Label/font_sizes/font_size = 8
 Label/fonts/font = ExtResource("1_pol6h")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_3usgk")
 OptionButton/font_sizes/font_size = 8
 OptionButton/icons/arrow = ExtResource("6_8o3m4")
 OptionButton/styles/focus = SubResource("StyleBoxEmpty_42ngs")
