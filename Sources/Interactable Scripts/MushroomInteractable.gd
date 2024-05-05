@@ -2,7 +2,7 @@ class_name MushroomInteractable
 extends Interactable
 
 @export var mushroomData : MushroomData;
-@export var pickupSound : AudioStreamPlayer3D;
+@onready var pickupSound : AudioStreamPlayer3D = $AudioStreamPlayer3D;
 
 @onready var sprite : AnimatedSprite3D = $AnimatedSprite3D
 
