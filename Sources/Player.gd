@@ -7,7 +7,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var root_node
 var local_delta = 0
 
+
 @onready var interactions : InteractionArea = $InteractionArea
+@onready var weapon : Weapon = $Weapon
 
 func _ready():
 	root_node = get_tree().root.get_child(0)
@@ -46,5 +48,9 @@ func _physics_process(delta):
 	
 func _input(event):
 	if event is InputEventMouseMotion:
+		
 		if !Input.is_action_pressed("Mouse Only - Strafe Mode"):
 			rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta
+
+	if Input.is_action_just_pressed("Fire"):		
+		weapon.shoot()
