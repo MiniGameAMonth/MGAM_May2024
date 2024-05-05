@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://b52ts8rtppg4j"]
+[gd_resource type="Theme" load_steps=26 format=3 uid="uid://b52ts8rtppg4j"]
 
 [ext_resource type="FontFile" uid="uid://cdlklu6q1dr1m" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_pol6h"]
 [ext_resource type="Texture2D" uid="uid://bnnrcovdnn05w" path="res://Assets/Images/Menu/MenuButtonFocus.png" id="2_5258k"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://barxaxei2w87j" path="res://Assets/Images/Menu/CheckboxOn.png" id="4_0bqky"]
 [ext_resource type="Texture2D" uid="uid://vmd7s420xrsi" path="res://Assets/Images/Menu/CheckboxOff.png" id="5_fn3vh"]
 [ext_resource type="Texture2D" uid="uid://dilgp7nsynqt" path="res://Assets/Images/Menu/ArrowDown.png" id="6_8o3m4"]
+[ext_resource type="Texture2D" uid="uid://mli6c4pnyjmj" path="res://Assets/Images/Menu/SliderHandle.png" id="6_kr2cx"]
+[ext_resource type="Texture2D" uid="uid://8b614wi43iyx" path="res://Assets/Images/Menu/SliderTrackFilled.png" id="7_e7u2a"]
 [ext_resource type="Texture2D" uid="uid://wq7pcvn5egff" path="res://Assets/Images/Menu/RadioOn.png" id="7_ruhee"]
+[ext_resource type="Texture2D" uid="uid://dvy7i36ykayht" path="res://Assets/Images/Menu/SliderTrack.png" id="8_6x8bb"]
 [ext_resource type="Texture2D" uid="uid://bc4tmhooo6xq2" path="res://Assets/Images/Menu/RadioOff.png" id="8_xiq0v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rk7h2"]
@@ -28,12 +31,12 @@ texture_margin_bottom = 4.0
 axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pik5i"]
-content_margin_left = 6.0
+content_margin_left = 5.0
 content_margin_top = 7.0
 content_margin_right = 5.0
 texture = ExtResource("2_5258k")
-texture_margin_left = 4.0
-texture_margin_top = 5.0
+texture_margin_left = 3.0
+texture_margin_top = 4.0
 texture_margin_right = 3.0
 texture_margin_bottom = 5.0
 axis_stretch_vertical = 1
@@ -49,6 +52,26 @@ axis_stretch_vertical = 1
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xi6nn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hb0gl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_id2rx"]
+texture = ExtResource("7_e7u2a")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v2du0"]
+texture = ExtResource("8_6x8bb")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42ngs"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7053f"]
 texture = ExtResource("3_qa67b")
@@ -81,10 +104,16 @@ CheckBox/styles/hover = SubResource("StyleBoxEmpty_ugteo")
 CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_mm7wq")
 CheckBox/styles/normal = SubResource("StyleBoxEmpty_xi6nn")
 CheckBox/styles/pressed = SubResource("StyleBoxEmpty_hb0gl")
+HSlider/icons/grabber = ExtResource("6_kr2cx")
+HSlider/icons/grabber_highlight = ExtResource("6_kr2cx")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_id2rx")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_id2rx")
+HSlider/styles/slider = SubResource("StyleBoxTexture_v2du0")
 Label/font_sizes/font_size = 8
 Label/fonts/font = ExtResource("1_pol6h")
 OptionButton/font_sizes/font_size = 8
 OptionButton/icons/arrow = ExtResource("6_8o3m4")
+OptionButton/styles/focus = SubResource("StyleBoxEmpty_42ngs")
 PopupMenu/constants/v_separation = 0
 PopupMenu/icons/radio_checked = ExtResource("7_ruhee")
 PopupMenu/icons/radio_unchecked = ExtResource("8_xiq0v")
