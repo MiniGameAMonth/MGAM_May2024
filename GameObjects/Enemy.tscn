@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2ul40d4fk526"]
+[gd_scene load_steps=11 format=3 uid="uid://c2ul40d4fk526"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_klhdc"]
 [ext_resource type="SpriteFrames" uid="uid://cl8445hnkfcok" path="res://Interactables/Pickups/Mushrooms/Mushroom_15_frames.tres" id="2_81ohi"]
-[ext_resource type="Script" path="res://Sources/Weapon.gd" id="2_e0arb"]
-[ext_resource type="Script" path="res://Sources/CharacterStats.gd" id="3_vhqvl"]
-[ext_resource type="PackedScene" uid="uid://bikfvydukf41g" path="res://GameObjects/Bullet.tscn" id="4_jlk76"]
-[ext_resource type="Script" path="res://Sources/EnemyBehavior.gd" id="5_pt6k1"]
+[ext_resource type="Script" path="res://Sources/Weapons/Weapon.gd" id="3_8u8hh"]
+[ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="4_8k3t3"]
+[ext_resource type="Script" path="res://Sources/Behaviours/EnemyBehavior.gd" id="5_lv5l2"]
 [ext_resource type="PackedScene" uid="uid://bwftaqfadvwp0" path="res://GameObjects/Utiliies/ProjectedNode.tscn" id="6_m22q1"]
-[ext_resource type="Script" path="res://Sources/EntityHitbox.gd" id="7_po7i0"]
+[ext_resource type="Script" path="res://Sources/Entities/EntityHitbox.gd" id="7_byxpo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx0fy"]
 
@@ -18,7 +17,6 @@ radius = 8.0
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_mask = 2
 script = ExtResource("1_klhdc")
 speed = 10.0
 stopAtDistance = 5.0
@@ -27,6 +25,7 @@ stopAtDistance = 5.0
 shape = SubResource("CapsuleShape3D_sx0fy")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.0315
 texture_filter = 0
 sprite_frames = ExtResource("2_81ohi")
 frame = 1
@@ -34,41 +33,41 @@ frame_progress = 0.151397
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("2_e0arb")
+[node name="Weapon" type="Node3D" parent="."]
+script = ExtResource("3_8u8hh")
 weaponDamage = 10.0
 cooldownTime = 2.0
-bullet = ExtResource("4_jlk76")
-player = NodePath("..")
 
 [node name="Cooldown" type="Timer" parent="Weapon"]
 
 [node name="EnemyStats" type="Node3D" parent="."]
-script = ExtResource("3_vhqvl")
+script = ExtResource("4_8k3t3")
 health = 100.0
 
-[node name="EnemyManager" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "characterStats")]
-script = ExtResource("5_pt6k1")
+[node name="Enemy Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "characterStats")]
+script = ExtResource("5_lv5l2")
 follower = NodePath("..")
 weapon = NodePath("../Weapon")
 characterStats = NodePath("../EnemyStats")
 
 [node name="DetectionArea" type="Area3D" parent="."]
 unique_name_in_owner = true
+collision_layer = 0
 collision_mask = 2
+monitorable = false
 
 [node name="DetectionAreaColl" type="CollisionShape3D" parent="DetectionArea"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("SphereShape3D_w6y64")
 
-[node name="Node3D" parent="." instance=ExtResource("6_m22q1")]
+[node name="ProjectedNode2D" parent="." instance=ExtResource("6_m22q1")]
 
-[node name="EntityHitbox" type="StaticBody2D" parent="Node3D" node_paths=PackedStringArray("character")]
-script = ExtResource("7_po7i0")
-character = NodePath("../../EnemyManager")
+[node name="EntityHitbox" type="StaticBody2D" parent="ProjectedNode2D" node_paths=PackedStringArray("character")]
+script = ExtResource("7_byxpo")
+character = NodePath("../../Enemy Behaviour")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node3D/EntityHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectedNode2D/EntityHitbox"]
 shape = SubResource("CircleShape2D_en381")
 
 [connection signal="timeout" from="Weapon/Cooldown" to="Weapon" method="_on_cooldown_timeout"]
-[connection signal="body_entered" from="DetectionArea" to="EnemyManager" method="_on_detection_area_body_entered"]
+[connection signal="body_entered" from="DetectionArea" to="Enemy Behaviour" method="_on_detection_area_body_entered"]

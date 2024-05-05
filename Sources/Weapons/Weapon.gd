@@ -4,26 +4,22 @@ extends Node3D
 @export var attackDistance : float = 0 
 @export var weaponDamage : float = 0
 @export var cooldownTime : float = 0 
-@export var bullet : PackedScene
-@export var player : Node3D
 
 @onready var cooldown : Timer = $Cooldown
 
 var isTimerOver : bool = true
+var bullet;
 
 func _ready():
+	bullet = preload("res://GameObjects/Bullet.tscn")
 	isTimerOver = true
 	if bullet == null:
-		print("Bullet is not set")
-		return
+		push_error("Projectile is not set.")
 
 func is_target_in_range(_target : Node3D):
 	var distance = global_position.distance_to(_target.global_position)
 
-	if distance <= attackDistance:
-		return true
-	else:
-		return false
+	return distance <= attackDistance
 
 func try_deal_damage(_target : Node3D):
 	if isTimerOver:
@@ -33,13 +29,11 @@ func try_deal_damage(_target : Node3D):
 
 func shoot(): 	
 	if isTimerOver:
-		var playerDirection : Vector3 = -player.global_transform.basis.z
-
-		var bulletInstance : Projectile = load("GameObjects/Bullet.tscn").instantiate()
+		var bulletInstance : Projectile = bullet.instantiate()
 		get_tree().root.add_child(bulletInstance)
 
 		bulletInstance.global_position = global_position
-		bulletInstance.set_direction(playerDirection)
+		bulletInstance.set_direction(global_transform.basis.z)
 		bulletInstance.damage = weaponDamage     
 	
 func _on_cooldown_timeout():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bikfvydukf41g"]
 
-[ext_resource type="Script" path="res://Sources/Projectile.gd" id="1_jof4h"]
+[ext_resource type="Script" path="res://Sources/Weapons/Projectile.gd" id="1_jof4h"]
 [ext_resource type="SpriteFrames" uid="uid://w41m6buww8r1" path="res://Interactables/Pickups/Mushrooms/Mushroom_1_frames.tres" id="2_6ybdm"]
 [ext_resource type="PackedScene" uid="uid://bwftaqfadvwp0" path="res://GameObjects/Utiliies/ProjectedNode.tscn" id="2_8llr7"]
 

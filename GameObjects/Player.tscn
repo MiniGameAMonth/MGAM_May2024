@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhktw4y7gkww3"]
+[gd_scene load_steps=8 format=3 uid="uid://dhktw4y7gkww3"]
 
 [ext_resource type="Script" path="res://Sources/Player.gd" id="1_l3ge4"]
 [ext_resource type="PackedScene" uid="uid://c18ga08e55buv" path="res://GameObjects/Interactable/InteractionArea.tscn" id="2_ppcc5"]
-[ext_resource type="Script" path="res://Sources/Weapon.gd" id="3_26ey6"]
-[ext_resource type="PackedScene" uid="uid://bikfvydukf41g" path="res://GameObjects/Bullet.tscn" id="4_pl5jy"]
-[ext_resource type="Script" path="res://Sources/Character.gd" id="5_aokh4"]
-[ext_resource type="Script" path="res://Sources/CharacterStats.gd" id="6_213k8"]
+[ext_resource type="Script" path="res://Sources/Weapons/Weapon.gd" id="3_26ey6"]
+[ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="5_aokh4"]
+[ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="6_213k8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5s06"]
 
@@ -33,12 +32,11 @@ shape = SubResource("CapsuleShape3D_f5s06")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0334473, 0.480469, 0.0345764)
 shape = SubResource("BoxShape3D_o0bt6")
 
-[node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+[node name="Weapon" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
 script = ExtResource("3_26ey6")
 weaponDamage = 80.0
 cooldownTime = 1.0
-bullet = ExtResource("4_pl5jy")
-player = NodePath("..")
 
 [node name="Cooldown" type="Timer" parent="Weapon"]
 
