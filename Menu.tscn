@@ -76,12 +76,13 @@ visible = false
 
 [node name="Label" type="Label" parent="OptionsMenu"]
 layout_mode = 2
-offset_left = -138.5
-offset_top = 78.0
-offset_right = 16.5
-offset_bottom = 86.0
+offset_left = -239.0
+offset_top = 71.0
+offset_right = 240.0
+offset_bottom = 79.0
 theme = ExtResource("3_cx58u")
 text = "Options"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu"]
 layout_mode = 1
@@ -90,26 +91,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -104.0
+offset_left = -236.0
 offset_top = 102.0
-offset_right = 106.0
+offset_right = 12.0
 offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="GridContainer" type="GridContainer" parent="OptionsMenu/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 columns = 2
-
-[node name="TTSLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
-layout_mode = 2
-theme = ExtResource("3_cx58u")
-text = "Text To Speech"
-horizontal_alignment = 2
-
-[node name="TTSCheckBox" type="CheckBox" parent="OptionsMenu/VBoxContainer/GridContainer"]
-layout_mode = 2
-theme = ExtResource("3_cx58u")
 
 [node name="GameModeLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -117,7 +109,7 @@ theme = ExtResource("3_cx58u")
 text = "Game Mode"
 horizontal_alignment = 2
 
-[node name="OptionButton" type="OptionButton" parent="OptionsMenu/VBoxContainer/GridContainer"]
+[node name="GameModeSelect" type="OptionButton" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 item_count = 3
@@ -128,6 +120,68 @@ popup/item_1/text = "Half moon"
 popup/item_1/id = 1
 popup/item_2/text = "New moon"
 popup/item_2/id = 2
+
+[node name="ColorBlindModeLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Color correction"
+horizontal_alignment = 2
+
+[node name="ColorBlindSelect" type="OptionButton" parent="OptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+item_count = 4
+selected = 0
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Protanopia"
+popup/item_1/id = 1
+popup/item_2/text = "Deutranopia"
+popup/item_2/id = 2
+popup/item_3/text = "Tritanopia"
+popup/item_3/id = 3
+
+[node name="TTSLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Text To Speech"
+horizontal_alignment = 2
+
+[node name="TTSCheckBox" type="CheckBox" parent="OptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+button_pressed = true
+
+[node name="UseAutoAimLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Use Auto-Aim"
+horizontal_alignment = 2
+
+[node name="UseAutoAimBox" type="CheckBox" parent="OptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+
+[node name="AutoAimDegLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Auto-Aim Zone"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="AutoAimZoneSlider" type="HSlider" parent="OptionsMenu/VBoxContainer/GridContainer/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+max_value = 90.0
+value = 45.0
+
+[node name="AutoAimZoneValueLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "45°"
 
 [node name="CustomizeControlsButton" type="Button" parent="OptionsMenu/VBoxContainer" groups=["MenuNavButton"]]
 texture_filter = 1
@@ -140,6 +194,29 @@ texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Sound options"
+
+[node name="PreviewContainer" type="ColorRect" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 105.0
+offset_right = 238.0
+offset_bottom = 226.0
+color = Color(0, 0.72549, 0.745098, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="OptionsMenu/PreviewContainer"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 217.0
+offset_bottom = 120.0
+
+[node name="ColorRect2" type="ColorRect" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 84.0
+offset_right = 17.0
+offset_bottom = 264.0
+color = Color(0, 0.72549, 0.745098, 1)
 
 [node name="CreditsMenu" parent="." instance=ExtResource("3_kfsru")]
 visible = false
@@ -155,6 +232,7 @@ theme_override_font_sizes/normal_font_size = 8
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Luctus accumsan tortor posuere ac ut consequat semper viverra nam. Cras semper auctor neque vitae tempus quam pellentesque. Nibh venenatis cras sed felis eget velit aliquet sagittis id. Sem viverra aliquet eget sit amet. Mattis vulputate enim nulla aliquet porttitor lacus. Nibh praesent tristique magna sit amet purus gravida quis. "
 
 [node name="Label" type="Label" parent="CreditsMenu"]
+layout_mode = 0
 offset_left = -138.5
 offset_top = 78.0
 offset_right = 16.5
@@ -178,6 +256,7 @@ theme = ExtResource("3_cx58u")
 text = "CUSTOMIZE CONTROLS MENU"
 
 [node name="Label" type="Label" parent="CustomizeControlsMenu"]
+layout_mode = 0
 offset_left = -138.5
 offset_top = 78.0
 offset_right = 16.5
@@ -190,11 +269,17 @@ visible = false
 parent_menu = NodePath("../OptionsMenu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SoundOptionsMenu"]
-layout_mode = 0
-offset_left = -75.0
-offset_top = 101.0
-offset_right = 69.0
-offset_bottom = 141.0
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = 91.0
+offset_right = 141.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="GridContainer" type="GridContainer" parent="SoundOptionsMenu/VBoxContainer"]
 layout_mode = 2
@@ -204,39 +289,79 @@ columns = 2
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Master Volume"
+horizontal_alignment = 2
 
 [node name="MasterVolumeSlider" type="HSlider" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme = ExtResource("3_cx58u")
+value = 100.0
 
 [node name="MusicVolumeLabel" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Music Volume"
+horizontal_alignment = 2
 
 [node name="MusicVolumeSlider" type="HSlider" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme = ExtResource("3_cx58u")
+value = 100.0
 
 [node name="SoundsVolumeLabel" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Sounds Volume"
+horizontal_alignment = 2
 
 [node name="SoundsVolumeSlider" type="HSlider" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme = ExtResource("3_cx58u")
+value = 100.0
+
+[node name="NarrationLabel" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Use Narration"
+horizontal_alignment = 2
+
+[node name="CheckBox" type="CheckBox" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+
+[node name="NarrationVolume" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Narration Volume"
+horizontal_alignment = 2
+
+[node name="SoundsVolumeSlider2" type="HSlider" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+value = 100.0
 
 [node name="Label" type="Label" parent="SoundOptionsMenu"]
-offset_left = -138.5
-offset_top = 78.0
-offset_right = 16.5
-offset_bottom = 86.0
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = 71.0
+offset_right = 52.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3_cx58u")
 text = "Sound options"
+horizontal_alignment = 1
 
 [node name="GoBackButton" type="Button" parent="."]
 visible = false
@@ -246,7 +371,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 60.0
 offset_top = -34.0
-offset_right = 151.0
+offset_right = 152.0
 offset_bottom = -16.0
 grow_vertical = 0
 theme = ExtResource("3_cx58u")
