@@ -11,7 +11,7 @@ var isTimerOver : bool = true
 var bullet;
 
 func _ready():
-	bullet = preload("res://GameObjects/Bullet.tscn")
+	bullet = preload("res://GameObjects/Projectile.tscn")
 	isTimerOver = true
 	if bullet == null:
 		push_error("Projectile is not set.")

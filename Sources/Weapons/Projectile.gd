@@ -45,10 +45,16 @@ func check_for_target():
 	var space_state = area.get_world_2d().direct_space_state
 	var starting_point = Vector2(global_position.x, global_position.z) * Projected2DNode.PIXEL_PER_METER    
 	var bullet_direction = Vector2(direction.x, direction.z) * 25 * Projected2DNode.PIXEL_PER_METER
+	var offset = bullet_direction.rotated(-PI/2).normalized() * 5
 
-	var query = PhysicsRayQueryParameters2D.create(starting_point, starting_point + bullet_direction)
+	var query = PhysicsRayQueryParameters2D.create(starting_point + offset, starting_point + bullet_direction + offset)
+	var query2 = PhysicsRayQueryParameters2D.create(starting_point - offset, starting_point + bullet_direction - offset)
 	var result = space_state.intersect_ray(query)
+	var result2 = space_state.intersect_ray(query2)
 	
 	if result:
 		if result.collider is EntityHitbox:
 			set_target(result.collider.character)
+	if result2:
+		if result2.collider is EntityHitbox:
+			set_target(result2.collider.character)
