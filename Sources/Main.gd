@@ -20,7 +20,8 @@ func _ready():
 	menu_node = get_tree().root.get_node("MainRoot/UICanvas/Menu")
 	hud_node = get_tree().root.get_node("MainRoot/UICanvas/HUD")
 
-	scale_window() # Remove this before exporting the game for the web
+	DisplayServer.window_set_position(DisplayServer.window_get_position() - (DisplayServer.window_get_size() / 2))
+	DisplayServer.window_set_size(DisplayServer.window_get_size() * 2)
 	subscribe_to_menu_events()
 
 
@@ -45,18 +46,6 @@ func subscribe_to_menu_events():
 
 func is_in_game():
 	return game_mode == GameMode.IN_GAME
-
-
-func scale_window():
-	var screen_size = DisplayServer.screen_get_size()
-	var window_size = DisplayServer.window_get_size()
-
-	while window_size.x * 2 < screen_size.x and window_size.y * 2 < screen_size.y:
-		window_size.x *= 2
-		window_size.y *= 2
-	
-	DisplayServer.window_set_size(window_size)
-	center_window()
 
 
 func start_game():
@@ -92,27 +81,12 @@ func update_menu():
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-func center_window():
-	var screen_size = DisplayServer.screen_get_size()
-	var window_size = DisplayServer.window_get_size()
-	DisplayServer.window_set_position((screen_size / 2) - (window_size / 2))
-
-
 func _input(event):
-	pass
-	# if event is InputEventMouseMotion:
-	# 	if level:
-	# 		if controls_mode == ControlsMode.MOUSE_ONLY:
-	# 			if Input.is_action_pressed("Mouse Only - Strafe Mode"):
-	# 				level.player.global_position += event.get_relative().x * local_delta * level.player.transform.basis.x
-
-	# 			level.player.global_position += event.get_relative().y * local_delta * level.player.transform.basis.z
-
-	# if event is InputEventMouseButton:
-	# 	if level and game_mode == GameMode.IN_GAME:
-	# 		if event.button_index == MOUSE_BUTTON_LEFT:
-	# 			if !Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-	# 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if Input.is_action_just_pressed("Toggle Fullscreen"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 
 func get_movement_input():

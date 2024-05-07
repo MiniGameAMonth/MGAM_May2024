@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://du7l74rq77kfn"]
+[gd_scene load_steps=30 format=3 uid="uid://du7l74rq77kfn"]
 
 [ext_resource type="Script" path="res://Sources/Menu.gd" id="1_wgstm"]
-[ext_resource type="Texture2D" uid="uid://up2fq5y7ko3e" path="res://Assets/Images/Menu/MenuBG.png" id="2_77vwl"]
-[ext_resource type="Texture2D" uid="uid://bnvun2ufarn1y" path="res://Assets/Images/LogoPixelated.png" id="3_4f48k"]
+[ext_resource type="Texture2D" uid="uid://vrqcoj4ow1hn" path="res://GameObjects/Menu/main.menu0.png" id="2_qoswh"]
 [ext_resource type="Theme" uid="uid://b52ts8rtppg4j" path="res://Themes/MenuTheme.tres" id="3_cx58u"]
 [ext_resource type="PackedScene" uid="uid://dqev3j3woaqm3" path="res://GameObjects/Menu/SubMenu.tscn" id="3_kfsru"]
 [ext_resource type="Texture2D" uid="uid://bdnthnrnp5pg0" path="res://Assets/Images/Menu/DifficultyFullMoon.png" id="6_gyvb2"]
@@ -10,6 +9,190 @@
 [ext_resource type="Texture2D" uid="uid://b1pwspwman020" path="res://Assets/Images/Menu/DifficultyHalfMoon.png" id="7_pifkp"]
 [ext_resource type="Texture2D" uid="uid://qvj6y1m4xjqb" path="res://Assets/Images/Menu/DifficultyNewMoon.png" id="8_ajrhn"]
 [ext_resource type="PackedScene" uid="uid://cmnkh3v51ka3v" path="res://GameObjects/Menu/ActionKey.tscn" id="10_4dejw"]
+[ext_resource type="Texture2D" uid="uid://tpmrptadrqfs" path="res://Assets/Images/Menu/MenuBG/main.menu14.png" id="11_mvqia"]
+[ext_resource type="Texture2D" uid="uid://d8wncnbp78o6" path="res://Assets/Images/Menu/MenuBG/main.menu13.png" id="12_baxom"]
+[ext_resource type="Texture2D" uid="uid://co8q0qe4gwcn0" path="res://Assets/Images/Menu/MenuBG/main.menu12.png" id="13_k31qi"]
+[ext_resource type="Texture2D" uid="uid://bhg6fs0wkl8ll" path="res://Assets/Images/Menu/MenuBG/main.menu11.png" id="14_gang2"]
+[ext_resource type="Texture2D" uid="uid://docmiidbq6o00" path="res://Assets/Images/Menu/MenuBG/main.menu10.png" id="15_jooj0"]
+[ext_resource type="Texture2D" uid="uid://dossdjb0c5qcv" path="res://Assets/Images/Menu/MenuBG/main.menu9.png" id="16_vcr0b"]
+[ext_resource type="Texture2D" uid="uid://cd1cwr16rd7g5" path="res://Assets/Images/Menu/MenuBG/main.menu8.png" id="17_lpyj3"]
+[ext_resource type="Texture2D" uid="uid://bxa5bbf45u0mh" path="res://Assets/Images/Menu/MenuBG/main.menu7.png" id="18_q8v44"]
+[ext_resource type="Texture2D" uid="uid://bsvo28st1ttie" path="res://Assets/Images/Menu/MenuBG/main.menu6.png" id="19_b3uw2"]
+[ext_resource type="Texture2D" uid="uid://cmnolfa5jrvvw" path="res://Assets/Images/Menu/MenuBG/main.menu5.png" id="20_qhchv"]
+[ext_resource type="Texture2D" uid="uid://cs6yx86g2mq8y" path="res://Assets/Images/Menu/MenuBG/main.menu4.png" id="21_gqxii"]
+[ext_resource type="Texture2D" uid="uid://vptt342va0ko" path="res://Assets/Images/Menu/MenuBG/main.menu3.png" id="22_7ehhc"]
+[ext_resource type="Texture2D" uid="uid://d4kmtrp6n6bdi" path="res://Assets/Images/Menu/MenuBG/main.menu2.png" id="23_2sa4x"]
+[ext_resource type="Texture2D" uid="uid://cw8rovedk0nwu" path="res://Assets/Images/Menu/MenuBG/main.menu1.png" id="24_fuvsc"]
+[ext_resource type="Texture2D" uid="uid://62f1j0sxnhtx" path="res://Assets/Images/Menu/MenuBG/main.menu0.png" id="25_rgnl2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4p2e2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_mvqia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_baxom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k31qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gang2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jooj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vcr0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_lpyj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_q8v44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_b3uw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_qhchv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_gqxii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_7ehhc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_2sa4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_fuvsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rgnl2")
+}],
+"loop": false,
+"name": &"LogoHide",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_rgnl2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_fuvsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_2sa4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_7ehhc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_gqxii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_qhchv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_b3uw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_q8v44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_lpyj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vcr0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jooj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gang2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k31qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_baxom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mvqia")
+}],
+"loop": false,
+"name": &"LogoReveal",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_4kh8s"]
+resource_name = "HideAnimatedBackground"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuBgAnimated:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s6gal"]
+resource_name = "ShowAnimatedBackground"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuBgAnimated:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(210, 360), Vector2(210, 280)]
+}
+
+[sub_resource type="Animation" id="Animation_d54te"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(210, 280)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i12do"]
+_data = {
+"HideAnimatedBackground": SubResource("Animation_4kh8s"),
+"RESET": SubResource("Animation_d54te"),
+"ShowAnimatedBackground": SubResource("Animation_s6gal")
+}
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -22,32 +205,28 @@ script = ExtResource("1_wgstm")
 
 [node name="MenuBg" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(240, 135)
-texture = ExtResource("2_77vwl")
+position = Vector2(320, 180)
+texture = ExtResource("2_qoswh")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
+[node name="MenuBgAnimated" type="AnimatedSprite2D" parent="."]
+position = Vector2(80, 45)
+sprite_frames = SubResource("SpriteFrames_4p2e2")
+animation = &"LogoReveal"
+frame = 14
+frame_progress = 1.0
+offset = Vector2(240, 135)
 
-[node name="Logo" type="Sprite2D" parent="HBoxContainer"]
-position = Vector2(0, 40.165)
-scale = Vector2(0.687379, 0.687379)
-texture = ExtResource("3_4f48k")
-
-[node name="MainMenu" type="VBoxContainer" parent="."]
-visible = false
+[node name="MainMenu" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -46.0
-offset_top = -156.0
-offset_right = 48.0
+offset_left = -110.0
+offset_top = -80.0
+offset_right = 110.0
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -86,8 +265,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -66.0
-offset_bottom = -58.0
+offset_top = -138.0
+offset_bottom = -130.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_cx58u")
@@ -99,10 +278,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 80.0
-offset_right = -226.0
-offset_bottom = -9.0
+offset_left = 26.0
+offset_top = 110.0
+offset_right = -364.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -222,25 +401,31 @@ text = "Sound options"
 
 [node name="PreviewContainer" type="ColorRect" parent="OptionsMenu"]
 layout_mode = 0
-offset_left = 261.0
-offset_top = 100.0
-offset_right = 476.0
-offset_bottom = 219.0
+offset_left = 315.0
+offset_top = 105.0
+offset_right = 621.0
+offset_bottom = 274.0
 color = Color(0, 0.72549, 0.745098, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="OptionsMenu/PreviewContainer"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
-offset_right = 214.0
-offset_bottom = 118.0
+offset_right = 305.0
+offset_bottom = 168.0
 
 [node name="ColorRect2" type="ColorRect" parent="OptionsMenu"]
-layout_mode = 0
-offset_left = 257.0
-offset_top = 80.0
-offset_right = 258.0
-offset_bottom = 235.0
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = 64.0
+offset_right = -24.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0.72549, 0.745098, 1)
 
 [node name="CreditsMenu" parent="." instance=ExtResource("3_kfsru")]
@@ -248,25 +433,35 @@ visible = false
 layout_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CreditsMenu"]
-layout_mode = 0
-offset_left = -140.0
-offset_top = 94.0
-offset_right = 143.0
-offset_bottom = 234.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 93.0
+offset_top = 96.0
+offset_right = -93.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("6_vjpoo")
 theme_override_font_sizes/normal_font_size = 8
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Luctus accumsan tortor posuere ac ut consequat semper viverra nam. Cras semper auctor neque vitae tempus quam pellentesque. Nibh venenatis cras sed felis eget velit aliquet sagittis id. Sem viverra aliquet eget sit amet. Mattis vulputate enim nulla aliquet porttitor lacus. Nibh praesent tristique magna sit amet purus gravida quis. "
 
 [node name="Label" type="Label" parent="CreditsMenu"]
-layout_mode = 0
-offset_left = -138.5
-offset_top = 78.0
-offset_right = 16.5
-offset_bottom = 86.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 77.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3_cx58u")
 text = "Credits"
+horizontal_alignment = 1
 
 [node name="CustomizeControlsMenu" parent="." node_paths=PackedStringArray("parent_menu") instance=ExtResource("3_kfsru")]
+visible = false
 layout_mode = 1
 parent_menu = NodePath("../OptionsMenu")
 
@@ -399,16 +594,15 @@ parent_menu = NodePath("../OptionsMenu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SoundOptionsMenu"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -141.0
-offset_top = 91.0
-offset_right = 141.0
-offset_bottom = 183.0
+offset_left = 87.0
+offset_top = 108.0
+offset_right = -87.0
+offset_bottom = -37.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="SoundOptionsMenu/VBoxContainer"]
 layout_mode = 2
@@ -483,9 +677,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -52.0
-offset_top = 71.0
+offset_top = -57.0
 offset_right = 52.0
-offset_bottom = 79.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_cx58u")
@@ -493,6 +687,7 @@ text = "Sound options"
 horizontal_alignment = 1
 
 [node name="GoBackButton" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -504,6 +699,11 @@ offset_bottom = -4.0
 grow_vertical = 0
 theme = ExtResource("3_cx58u")
 text = "Go Back [Backspace]"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i12do")
+}
 
 [connection signal="pressed" from="MainMenu/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
