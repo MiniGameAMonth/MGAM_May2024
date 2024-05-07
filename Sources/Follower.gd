@@ -53,6 +53,9 @@ func look_at_position(pos : Vector3, delta):
 func follow(target : Node3D):
 	agent.target_position = target.global_transform.origin
 
+func follow_position(target : Vector3):
+	agent.target_position = target
+
 func is_at_target():
 	return agent.distance_to_target() < stopAtDistance
 

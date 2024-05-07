@@ -88,12 +88,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9917, 0.796875, 20.575)
 stopAtDistance = 2.0
 
 [node name="Enemy3" parent="." instance=ExtResource("5_2kdr4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1921, -3.51177, 32.436)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1837, -2.0895, 32.436)
 collision_mask = 3
 speed = 1.0
 
 [node name="Enemy2" parent="." instance=ExtResource("5_2kdr4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.298, -3.09541, 32.969)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4285, -3.09541, 32.969)
 collision_mask = 3
 speed = 1.0
 

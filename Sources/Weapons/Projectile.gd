@@ -44,7 +44,7 @@ func _on_timeout():
 	queue_free()
 
 func _on_area_2d_body_entered(body:Node2D):    
-	if body is EntityHitbox:
+	if body is EntityHitbox2D:
 		body.character.take_damage(damage)
 		queue_free()
 
@@ -61,5 +61,5 @@ func check_for_target():
 func check_query(query):
 	var result = space_state.intersect_ray(query)
 	if result:
-		if result.collider is EntityHitbox:
+		if result.collider is EntityHitbox2D:
 			set_target(result.collider.character)

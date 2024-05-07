@@ -13,7 +13,7 @@ func _ready():
 
 func take_damage(damage : float):
     characterStats.health -= damage
-    print("Health: ", characterStats.health)
+    emit_signal("health_changed", characterStats.health)
 
     if characterStats.health <= 0:
         die()
@@ -23,5 +23,3 @@ func use_mana(mana : float):
 
 func die():
     emit_signal("on_death")
-    var parent : Node = get_parent()
-    parent.queue_free()

@@ -24,8 +24,13 @@ func is_target_in_range(_target : Node3D):
 func try_deal_damage(_target : Node3D):
 	if isTimerOver:
 		var target : Character = _target.get_node("Character")
-		target.take_damage(weaponDamage)
-		cooldown.start(cooldownTime)
+		if target != null:
+			if is_target_in_range(target):
+				deal_damage(target)
+				cooldown.start(cooldownTime)
+
+func deal_damage(target : Character):
+	target.take_damage(weaponDamage)
 
 func shoot(): 	
 	if isTimerOver:
