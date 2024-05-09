@@ -38,8 +38,10 @@ func _process(_delta):
 		if global_position.distance_to(attackTarget.global_position) > max_distance:
 			state = EnemyStates.IDLE
 	elif state == EnemyStates.ATTACK:
+		
 		if attackTarget != null:
 			if weapon.is_target_in_range(attackTarget):
+				follower.follow(null)
 				weapon.try_deal_damage(attackTarget)
 			else:
 				state = EnemyStates.FOLLOW
