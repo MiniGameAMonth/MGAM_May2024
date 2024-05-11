@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://cy85fgdxbttbr"]
 
-[ext_resource type="SpriteFrames" uid="uid://bnrukcwu6tddv" path="res://Interactables/Pickups/Mushrooms/Mushroom_0_frames.tres" id="1_ngmrp"]
+[ext_resource type="SpriteFrames" uid="uid://bnrukcwu6tddv" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_0_frames.tres" id="1_ngmrp"]
 [ext_resource type="Script" path="res://Sources/Interactable Scripts/MushroomData.gd" id="1_xh4j6"]
 
 [resource]
