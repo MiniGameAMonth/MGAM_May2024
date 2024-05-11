@@ -3,9 +3,12 @@ extends Panel
 enum ActionType { KEYBOARD, MOUSE, GAMEPAD_BUTTON, GAMEPAD_AXIS }
 enum State { NORMAL, WAITING_KEY, WAITING_KEY_ALT }
 
+signal input_change_requested
+
 @export var action_name : String
 @export var action_key : String
 @export var action_key_alt : String
+@export var editable = true
 @export_flags("Keyboard", "Mouse", "Gamepad Button", "Gamepad Axis") var allowed_action_types 
 
 
@@ -15,6 +18,10 @@ func setup():
 		return
 
 	$Label.text = action_name
+
+	if !editable:
+		$Button.disabled = true
+		$AlternateButton.disabled = true
 
 
 func set_input(key, type, button):
