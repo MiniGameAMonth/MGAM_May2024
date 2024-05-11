@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b0csgprky8v0p"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_elfre"]
-[ext_resource type="Texture2D" uid="uid://bhpfw5vnfged" path="res://Images/grumpy cat.jpg" id="2_5sgpx"]
+[ext_resource type="Texture2D" uid="uid://bhpfw5vnfged" path="res://Assets/Images/grumpy cat.jpg" id="2_5sgpx"]
 [ext_resource type="Script" path="res://Sources/Behaviours/CatFollowBehaviour.gd" id="3_a8mr8"]
 [ext_resource type="Script" path="res://Sources/Interactable Scripts/CatInteractable.gd" id="4_dyxf8"]
 

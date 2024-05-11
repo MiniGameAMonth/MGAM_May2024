@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://c2ul40d4fk526"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_klhdc"]
-[ext_resource type="SpriteFrames" uid="uid://cl8445hnkfcok" path="res://Interactables/Pickups/Mushrooms/Mushroom_15_frames.tres" id="2_81ohi"]
+[ext_resource type="SpriteFrames" uid="uid://cl8445hnkfcok" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_15_frames.tres" id="2_81ohi"]
 [ext_resource type="Script" path="res://Sources/Weapons/Weapon.gd" id="3_8u8hh"]
 [ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="3_fy1hx"]
 [ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="4_8k3t3"]
