@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://jtk1yqeawnsk"]
+[gd_scene load_steps=8 format=3 uid="uid://jtk1yqeawnsk"]
 
-[ext_resource type="PackedScene" uid="uid://ceeche661uee3" path="res://GameObjects/Follower.tscn" id="1_lrq6f"]
+[ext_resource type="Script" path="res://Sources/Level.gd" id="1_aehdo"]
+[ext_resource type="Resource" uid="uid://b2dtfr7xwwiev" path="res://Interactables/Pickups/Mushrooms/Mushroom_15.tres" id="3_5eiot"]
+[ext_resource type="PackedScene" uid="uid://b0csgprky8v0p" path="res://GameObjects/Cat.tscn" id="3_pvegq"]
+[ext_resource type="PackedScene" uid="uid://bkjqoodkmlp54" path="res://GameObjects/Interactable/Mushroom.tscn" id="3_uejod"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8qdxv"]
 vertices = PackedVector3Array(-4.5, 0.5, -4.5, -4.5, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.5)
@@ -13,12 +16,7 @@ size = Vector2(10, 10)
 size = Vector3(9.98425, 0.525513, 9.99365)
 
 [node name="NavigationTesting" type="Node3D"]
-
-[node name="Follower" parent="." node_paths=PackedStringArray("followTarget") instance=ExtResource("1_lrq6f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50115, 0, -2.60738)
-followTarget = NodePath("../Node3D")
-stopAtDistance = 1.0
-lookAtTarget = false
+script = ExtResource("1_aehdo")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_8qdxv")
@@ -34,6 +32,21 @@ shape = SubResource("BoxShape3D_tfdhs")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.917185, 0.398461, 0, -0.398461, 0.917185, 0, 4.77551, 6.52856)
+current = true
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59656, 1.49573, 1.56009)
+
+[node name="PlayerSpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+
+[node name="Mushroom" parent="." instance=ExtResource("3_uejod")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+
+[node name="Mushroom2" parent="." instance=ExtResource("3_uejod")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+mushroomData = ExtResource("3_5eiot")
+
+[node name="Cat" parent="." instance=ExtResource("3_pvegq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+stopAtDistance = 1.1

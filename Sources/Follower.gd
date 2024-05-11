@@ -27,8 +27,7 @@ func _process(delta):
 			look_at_position(nextPosition, delta)
 
 func move_to_position(pos : Vector3):
-
-	if agent.is_target_reached():
+	if is_at_target():
 		velocity = Vector3.ZERO
 	else:
 		velocity = global_position.direction_to(pos) * speed
@@ -43,3 +42,9 @@ func look_at_position(pos : Vector3, delta):
 
 func follow(target : Node3D):
 	agent.target_position = target.global_transform.origin
+
+func is_at_target():
+	return agent.distance_to_target() < stopAtDistance
+
+func dist_to_target():
+	return agent.distance_to_target()
