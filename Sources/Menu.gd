@@ -108,7 +108,22 @@ func read_controls_scheme(path):
 
 
 func init_inputs_grid_with_scheme(input_config : InputConfig):
+	var is_locked = input_config.config.get_value("INFO", "Locked", false)
+
+	# Show error messages 
+	if input_config.config.get_value("INFO", "Locked", false):
+		$CustomizeControlsMenu/VBoxContainer/ErrorLabel.text = "[!] This scheme is locked. Make a copy of it to customize."
+
+	$CustomizeControlsMenu/VBoxContainer/ErrorLabel.visible = $CustomizeControlsMenu/VBoxContainer/ErrorLabel.text.length() > 0
+
+	# Init fields
+	$CustomizeControlsMenu/VBoxContainer/GridContainer/MoveWithMouseCheckbox.button_pressed = input_config.config.get_value("INFO", "Move with mouse", false)
+	$CustomizeControlsMenu/VBoxContainer/HBoxContainer3/TextEdit.text = input_config.name
 	
+	$CustomizeControlsMenu/VBoxContainer/GridContainer/MoveWithMouseCheckbox.disabled = is_locked
+	$CustomizeControlsMenu/VBoxContainer/HBoxContainer3/TextEdit.editable = !is_locked
+
+
 	# Masks for input actions to ignore
 	var input_ignore_masks = ["ui_.*"]
 	
@@ -162,4 +177,5 @@ func init_inputs_grid_with_scheme(input_config : InputConfig):
 
 		# Final setup
 		custom_controls_grid.add_child(action)	
+		action.editable = !input_config.config.get_value("INFO", "Locked", false)
 		action.setup()

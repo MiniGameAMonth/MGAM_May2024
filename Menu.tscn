@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://du7l74rq77kfn"]
+[gd_scene load_steps=32 format=3 uid="uid://du7l74rq77kfn"]
 
 [ext_resource type="Script" path="res://Sources/Menu.gd" id="1_wgstm"]
 [ext_resource type="Texture2D" uid="uid://62f1j0sxnhtx" path="res://Assets/Images/Menu/MenuBG/main.menu0.png" id="2_qoswh"]
@@ -152,6 +152,13 @@ texture_margin_top = 10.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cthbl"]
+content_margin_left = 5.0
+content_margin_top = 10.0
+content_margin_right = 5.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 0, 0, 0.286275)
+
 [sub_resource type="Animation" id="Animation_4kh8s"]
 resource_name = "HideAnimatedBackground"
 length = 0.3
@@ -236,7 +243,7 @@ texture = ExtResource("2_qoswh")
 offset_left = -267.0
 offset_top = -118.0
 offset_right = 273.0
-offset_bottom = 142.0
+offset_bottom = 161.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6jf5c")
 
 [node name="MenuBgAnimated" type="AnimatedSprite2D" parent="."]
@@ -249,6 +256,7 @@ frame_progress = 1.0
 offset = Vector2(240, 135)
 
 [node name="MainMenu" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -492,9 +500,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 72.0
-offset_top = 94.0
+offset_top = 92.0
 offset_right = -72.0
-offset_bottom = -62.0
+offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -515,6 +523,16 @@ layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Copy & Modify"
 
+[node name="GridContainer" type="GridContainer" parent="CustomizeControlsMenu/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="MoveWithMouseCheckbox" type="CheckBox" parent="CustomizeControlsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+disabled = true
+text = "Move with mouse"
+
 [node name="ColorRect3" type="ColorRect" parent="CustomizeControlsMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
@@ -534,6 +552,12 @@ size_flags_horizontal = 3
 theme = ExtResource("3_cx58u")
 text = "WASD + Mouse"
 placeholder_text = "Enter scheme name"
+
+[node name="ErrorLabel" type="Label" parent="CustomizeControlsMenu/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cthbl")
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer"]
 layout_mode = 2
