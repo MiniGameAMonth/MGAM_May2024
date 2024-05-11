@@ -17,6 +17,8 @@ var hud_node = null
 ################################### Functions ###################################
 
 func _ready():
+	generate_default_input_schemes()
+
 	menu_node = get_tree().root.get_node("MainRoot/UICanvas/Menu")
 	hud_node = get_tree().root.get_node("MainRoot/UICanvas/HUD")
 
@@ -93,6 +95,41 @@ func get_movement_input():
 	var result = Vector2(0, 0)
 
 	if controls_mode == ControlsMode.WASD_MOUSE:
-		result = Input.get_vector("WASD+Mouse - Move Left", "WASD+Mouse - Move Right", "WASD+Mouse - Move Forward", "WASD+Mouse - Move Backward")
+		result = Input.get_vector("Move Left", "Move Right", "Move Forward", "Move Backward")
 
 	return result
+
+
+func generate_default_input_schemes():
+	# WASD + Mouse
+	var wasdMouseConfig = ConfigFile.new()
+	wasdMouseConfig.set_value("INFO", "Scheme name", "WASD + Mouse");
+	wasdMouseConfig.set_value("INFO", "Locked", true);
+	wasdMouseConfig.set_value("INFO", "Move with mouse", false);
+	wasdMouseConfig.set_value("Keyboard", 		"Move Left", 		KEY_A);
+	wasdMouseConfig.set_value("KeyboardAlt",	"Move Left", 		KEY_LEFT);
+	wasdMouseConfig.set_value("Keyboard", 		"Move Right", 		KEY_D);
+	wasdMouseConfig.set_value("KeyboardAlt", 	"Move Right", 		KEY_RIGHT);
+	wasdMouseConfig.set_value("Keyboard", 		"Move Forward", 	KEY_W);
+	wasdMouseConfig.set_value("KeyboardAlt", 	"Move Forward", 	KEY_UP);
+	wasdMouseConfig.set_value("Keyboard", 		"Move Backward", 	KEY_S);
+	wasdMouseConfig.set_value("KeyboardAlt",	"Move Backward", 	KEY_DOWN);
+	wasdMouseConfig.set_value("Mouse",	 		"Fire", 			MOUSE_BUTTON_LEFT);
+	wasdMouseConfig.set_value("KeyboardAlt",	"Fire", 			KEY_CTRL);
+	wasdMouseConfig.set_value("Keyboard", 		"Use", 				KEY_E);
+	wasdMouseConfig.set_value("KeyboardAlt",	"Use", 				KEY_SPACE);
+	wasdMouseConfig.set_value("Keyboard", 		"Mouse Only - Strafe Mode", 	"");
+	wasdMouseConfig.set_value("KeyboardAlt", 	"Mouse Only - Strafe Mode", 	"");
+	wasdMouseConfig.set_value("Keyboard", 	"Toggle Fullscreen", KEY_F11);
+	wasdMouseConfig.save("user://control_scheme_wasd_mouse.cfg")
+
+	# Doom style mouse only
+	var mouseOnlyConfig = ConfigFile.new()
+	mouseOnlyConfig.set_value("INFO", "Scheme name", "Mouse only");
+	mouseOnlyConfig.set_value("INFO", "Locked", true);
+	mouseOnlyConfig.set_value("INFO", "Move with mouse", true);
+	mouseOnlyConfig.set_value("Mouse",	"Fire",			MOUSE_BUTTON_LEFT);
+	mouseOnlyConfig.set_value("Mouse",	"Use",			MOUSE_BUTTON_MIDDLE);
+	mouseOnlyConfig.set_value("Mouse", 	"Strafe Mode", 	MOUSE_BUTTON_RIGHT);
+	mouseOnlyConfig.set_value("Keyboard", 	"Toggle Fullscreen", KEY_F11);
+	mouseOnlyConfig.save("user://control_scheme_mouse_only.cfg")
