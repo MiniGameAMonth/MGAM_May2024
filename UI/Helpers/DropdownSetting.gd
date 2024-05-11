@@ -4,9 +4,8 @@ extends ConfigSetting
 
 @onready var menu = $".";
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	print(menu)
 	menu = get_node(".") as MenuButton;
 	
 	if menu.get_popup().item_count == 0:
@@ -18,8 +17,7 @@ func _ready():
 	else:
 		menu.text = menu.get_popup().get_item_text(0); 
 		update_setting(menu.text)
-		
-	
+			
 	menu.get_popup().connect("index_pressed", on_change)
 
 
