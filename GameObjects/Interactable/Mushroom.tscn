@@ -7,12 +7,11 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4qh64"]
 
-[node name="Mushroom" type="StaticBody3D" node_paths=PackedStringArray("pickupSound")]
+[node name="Mushroom" type="StaticBody3D"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_duxxf")
 mushroomData = ExtResource("2_umgh6")
-pickupSound = NodePath("AudioStreamPlayer3D")
 interactionPrompt = "Pick up"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

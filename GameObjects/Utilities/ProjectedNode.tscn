@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwftaqfadvwp0"]
+
+[ext_resource type="Script" path="res://Sources/Utilities/Projected2DNode.gd" id="1_f1xc6"]
+
+[node name="ProjectedNode" type="Node2D"]
+script = ExtResource("1_f1xc6")
