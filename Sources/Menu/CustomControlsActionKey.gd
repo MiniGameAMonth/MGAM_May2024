@@ -3,7 +3,7 @@ extends Panel
 enum ActionType { KEYBOARD, MOUSE, GAMEPAD_BUTTON, GAMEPAD_AXIS }
 enum State { NORMAL, WAITING_KEY, WAITING_KEY_ALT }
 
-signal input_change_requested
+signal input_change_requested(is_alt, action_key)
 
 @export var action_name : String
 @export var action_key : String
@@ -69,3 +69,7 @@ func set_primary_input(key, type):
 
 func set_secondary_input(key, type):
 	set_input(key, type, $AlternateButton)
+
+
+func change_input(is_alt):
+	emit_signal("input_change_requested", is_alt, self)
