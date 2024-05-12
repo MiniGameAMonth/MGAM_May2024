@@ -15,6 +15,8 @@ var interaction : Interactable
 @onready var weapon : Weapon = $Weapon
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 
+var petting : bool = false
+
 func _ready():
 	root_node = get_tree().root.get_child(0)
 	interactions.connect("on_interaction", on_interact)
@@ -24,6 +26,7 @@ func on_interact(interactable: Interactable):
 	interaction = interactable
 
 func on_interact_end(_interactable: Interactable):
+	_interactable.stop_interact(self)
 	interaction = null
 	pass
 
@@ -37,6 +40,9 @@ func _physics_process(delta):
 			velocity.y -= gravity * delta
 
 		var input_dir = Main.get_movement_input()
+		if not enable_input:
+			input_dir = Vector2.ZERO
+
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 		if direction:
@@ -61,8 +67,5 @@ func _input(event):
 	if interaction:
 		if Input.is_action_just_pressed("WASD+Mouse - Use"):
 			interaction.interact(self)
-			if interaction is CatInteractable:
-				animationPlayer.play("pet_animation")
 		if Input.is_action_just_released("WASD+Mouse - Use"):
-			if interaction is CatInteractable:
-				animationPlayer.play("stop_pet_animation")
+			interaction.stop_interact(self)

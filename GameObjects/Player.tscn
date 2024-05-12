@@ -152,11 +152,15 @@ characterStats = NodePath("CharacterStats")
 
 [node name="CharacterStats" type="Node3D" parent="Character"]
 script = ExtResource("6_213k8")
-health = 100.0
+health = 5
+max_health = 5
+mana = 5
+max_mana = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayerHud" parent="CanvasLayer" instance=ExtResource("6_fsf8v")]
+[node name="PlayerHud" parent="CanvasLayer" node_paths=PackedStringArray("character") instance=ExtResource("6_fsf8v")]
+character = NodePath("../../Character")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -164,4 +168,6 @@ libraries = {
 }
 
 [connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction"]
+[connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="set_interactable"]
 [connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction_end"]
+[connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="clear_interactable"]
