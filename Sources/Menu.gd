@@ -204,15 +204,21 @@ func copy():
 		selected_scheme = input_configs[selected_scheme]
 
 		# Make a copy of config file
-		var scheme_clone = selected_scheme.config.duplicate()
 		var config_name = "user://control_scheme_custom_" + str(Time.get_unix_time_from_system()) + ".cfg"
+		selected_scheme.config.save(config_name)
+		var scheme_clone = ConfigFile.new()
+		scheme_clone.load(config_name)
+		
+		var newName = scheme_clone.get_value("INFO", "Scheme name", "") + " (copy)"
 		scheme_clone.set_value("INFO", "Locked", false)
-		scheme_clone.set_value("INFO", "Name", scheme_clone.get_value("INFO", "Name", "") + " (copy)")
+		scheme_clone.set_value("INFO", "Scheme name", newName)
 		scheme_clone.save(config_name)
 
 		# Add it to the lists
 		input_configs.append(InputConfig.new(config_name))
-		controls_scheme_select_to_customize.add_item(config_name)
+		controls_scheme_select_to_customize.add_item(newName)
 		controls_scheme_select_to_customize.select(input_configs.size() - 1)
-		controls_scheme_select.add_item(config_name)
+		controls_scheme_select.add_item(newName)
 		controls_scheme_select.select(input_configs.size() - 1)
+		_on_scheme_select_item_selected(input_configs.size() - 1)
+
