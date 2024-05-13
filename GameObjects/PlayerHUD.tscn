@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b80qtulhkax1j"]
 
-[ext_resource type="Script" path="res://GameObjects/PlayerHUD.gd" id="1_lsokv"]
-[ext_resource type="SpriteFrames" uid="uid://ckvoa8lmhd6at" path="res://Images/Sprite Sheets/Pet Cat HUD/Pet_Cat_HUD.tres" id="1_mi8lc"]
+[ext_resource type="Script" path="res://Sources/HUD/PlayerHUD.gd" id="1_lsokv"]
+[ext_resource type="SpriteFrames" uid="uid://ckvoa8lmhd6at" path="res://Assets/Images/Sprite Sheets/Pet Cat HUD/Pet_Cat_HUD.tres" id="1_mi8lc"]
 [ext_resource type="PackedScene" uid="uid://bpectes0vvvut" path="res://GameObjects/UI/Health/HealthBar.tscn" id="3_pkra2"]
 
 [sub_resource type="Animation" id="Animation_ftpu5"]

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Sources/Weapons/Weapon.gd" id="3_26ey6"]
 [ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="5_aokh4"]
 [ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="6_213k8"]
-[ext_resource type="PackedScene" path="res://GameObjects/PlayerHUD.tscn" id="6_fsf8v"]
+[ext_resource type="PackedScene" uid="uid://b80qtulhkax1j" path="res://GameObjects/PlayerHUD.tscn" id="6_fsf8v"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5s06"]
 
@@ -166,7 +166,7 @@ libraries = {
 "": SubResource("AnimationLibrary_o724y")
 }
 
-[connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction"]
 [connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="set_interactable"]
-[connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction_end"]
+[connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction"]
 [connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="clear_interactable"]
+[connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction_end"]
