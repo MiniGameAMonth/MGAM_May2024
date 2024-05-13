@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Sources/Weapons/Weapon.gd" id="3_26ey6"]
 [ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="5_aokh4"]
 [ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="6_213k8"]
-[ext_resource type="PackedScene" uid="uid://b80qtulhkax1j" path="res://GameObjects/PlayerHUD.tscn" id="6_fsf8v"]
+[ext_resource type="PackedScene" path="res://GameObjects/PlayerHUD.tscn" id="6_fsf8v"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5s06"]
 
@@ -141,10 +141,11 @@ shape = SubResource("BoxShape3D_o0bt6")
 [node name="Weapon" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
 script = ExtResource("3_26ey6")
-weaponDamage = 10.0
 cooldownTime = 1.0
 
 [node name="Cooldown" type="Timer" parent="Weapon"]
+one_shot = true
+autostart = true
 
 [node name="Character" type="Node3D" parent="." node_paths=PackedStringArray("characterStats")]
 script = ExtResource("5_aokh4")
@@ -166,7 +167,7 @@ libraries = {
 "": SubResource("AnimationLibrary_o724y")
 }
 
-[connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="set_interactable"]
 [connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction"]
-[connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="clear_interactable"]
+[connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="set_interactable"]
 [connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction_end"]
+[connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="clear_interactable"]

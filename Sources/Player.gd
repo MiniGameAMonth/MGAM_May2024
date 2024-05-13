@@ -15,8 +15,6 @@ var interaction : Interactable
 @onready var weapon : Weapon = $Weapon
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 
-var petting : bool = false
-
 func _ready():
 	root_node = get_tree().root.get_child(0)
 	interactions.connect("on_interaction", on_interact)
@@ -57,7 +55,6 @@ func _physics_process(delta):
 	
 func _input(event):
 	if event is InputEventMouseMotion and enable_input:
-		
 		if !Input.is_action_pressed("Mouse Only - Strafe Mode"):
 			rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta
 
