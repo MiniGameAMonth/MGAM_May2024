@@ -25,11 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://cw8rovedk0nwu" path="res://Assets/Images/Menu/MenuBG/main.menu1.png" id="24_fuvsc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jf5c"]
-bg_color = Color(0.847059, 0.364706, 0.545098, 0.788235)
+bg_color = Color(0.847059, 0.364706, 0.545098, 0.6)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
-border_width_bottom = 2
+border_width_bottom = 1
 border_color = Color(0.407843, 0.243137, 0.384314, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
@@ -157,7 +157,7 @@ content_margin_left = 5.0
 content_margin_top = 10.0
 content_margin_right = 5.0
 content_margin_bottom = 10.0
-bg_color = Color(0.901961, 0.0901961, 0.286275, 1)
+bg_color = Color(1, 0, 0, 0.286275)
 
 [sub_resource type="Animation" id="Animation_4kh8s"]
 resource_name = "HideAnimatedBackground"
@@ -240,14 +240,14 @@ position = Vector2(320, 180)
 texture = ExtResource("2_qoswh")
 
 [node name="MenuBgRect" type="Panel" parent="MenuBg"]
-visible = false
-offset_left = -288.0
-offset_top = -149.0
-offset_right = 294.0
+offset_left = -267.0
+offset_top = -118.0
+offset_right = 273.0
 offset_bottom = 161.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6jf5c")
 
 [node name="MenuBgAnimated" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(80, 45)
 sprite_frames = SubResource("SpriteFrames_4p2e2")
 animation = &"LogoReveal"
@@ -256,6 +256,7 @@ frame_progress = 1.0
 offset = Vector2(240, 135)
 
 [node name="MainMenu" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -318,15 +319,17 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 131.0
-offset_top = 121.0
-offset_right = -131.0
-offset_bottom = -25.0
+offset_left = -155.0
+offset_top = -253.0
+offset_right = 155.0
+offset_bottom = -46.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="GridContainer" type="GridContainer" parent="OptionsMenu/VBoxContainer"]
 layout_mode = 2
@@ -422,7 +425,7 @@ theme = ExtResource("3_cx58u")
 text = "Controls Scheme"
 horizontal_alignment = 2
 
-[node name="ControlsSelect" type="OptionButton" parent="OptionsMenu/VBoxContainer/GridContainer"]
+[node name="ColorBlindSelect2" type="OptionButton" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 item_count = 1
@@ -434,8 +437,7 @@ popup/item_0/id = 0
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-text = "Controls
-"
+text = "Customize Controls Schemes"
 
 [node name="SoundOptionsButton" type="Button" parent="OptionsMenu/VBoxContainer" groups=["MenuNavButton"]]
 texture_filter = 1
@@ -476,7 +478,6 @@ text = "Credits"
 horizontal_alignment = 1
 
 [node name="CustomizeControlsMenu" parent="." node_paths=PackedStringArray("parent_menu") instance=ExtResource("3_kfsru")]
-visible = false
 layout_mode = 1
 parent_menu = NodePath("../OptionsMenu")
 
@@ -485,12 +486,12 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = -72.0
-offset_top = 39.0
+offset_top = 71.0
 offset_right = 72.0
-offset_bottom = 47.0
+offset_bottom = 79.0
 grow_horizontal = 2
 theme = ExtResource("3_cx58u")
-text = "Controls"
+text = "Customize Controls"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CustomizeControlsMenu"]
@@ -498,10 +499,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 49.0
-offset_top = 54.0
-offset_right = -43.0
-offset_bottom = -26.0
+offset_left = 72.0
+offset_top = 92.0
+offset_right = -72.0
+offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -522,20 +523,23 @@ layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Copy & Modify"
 
+[node name="GridContainer" type="GridContainer" parent="CustomizeControlsMenu/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="MoveWithMouseCheckbox" type="CheckBox" parent="CustomizeControlsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+disabled = true
+text = "Move with mouse"
+
 [node name="ColorRect3" type="ColorRect" parent="CustomizeControlsMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0.0823529, 0.470588, 0.54902, 1)
 
-[node name="ErrorLabel" type="Label" parent="CustomizeControlsMenu/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme = ExtResource("3_cx58u")
-theme_override_styles/normal = SubResource("StyleBoxFlat_cthbl")
-
 [node name="HBoxContainer3" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
@@ -549,87 +553,28 @@ theme = ExtResource("3_cx58u")
 text = "WASD + Mouse"
 placeholder_text = "Enter scheme name"
 
-[node name="GridContainer" type="GridContainer" parent="CustomizeControlsMenu/VBoxContainer"]
-layout_mode = 2
-columns = 2
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer5"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("3_cx58u")
-text = "Move with mouse"
-horizontal_alignment = 2
-
-[node name="MoveWithMouseCheckbox" type="CheckBox" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer5"]
+[node name="ErrorLabel" type="Label" parent="CustomizeControlsMenu/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-disabled = true
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer6"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("3_cx58u")
-text = "Same button for \"Use\" & \"Fire\""
-horizontal_alignment = 2
-
-[node name="UseAndFireCheckbox" type="CheckBox" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer6"]
-layout_mode = 2
-theme = ExtResource("3_cx58u")
-disabled = true
-
-[node name="HBoxContainer7" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer7"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("3_cx58u")
-text = "Double-click strafe for \"use\""
-horizontal_alignment = 2
-
-[node name="DoubleClickForUse" type="CheckBox" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer7"]
-layout_mode = 2
-theme = ExtResource("3_cx58u")
-disabled = true
-
-[node name="ColorRect4" type="ColorRect" parent="CustomizeControlsMenu/VBoxContainer"]
-custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
-color = Color(0.0823529, 0.470588, 0.54902, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_cthbl")
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-text = "    Action             Input Alt "
+text = " Action             Input Alt  "
 
 [node name="Label2" type="Label" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-text = " Action             Input Alt        "
+text = "Action             Input Alt"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CustomizeControlsMenu/VBoxContainer"]
-custom_minimum_size = Vector2(510, 0)
+[node name="InputsGrid" type="GridContainer" parent="CustomizeControlsMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
-theme = ExtResource("3_cx58u")
-
-[node name="InputsGrid" type="GridContainer" parent="CustomizeControlsMenu/VBoxContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
 columns = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer"]
@@ -765,10 +710,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -44.0
-offset_right = 200.0
-offset_bottom = -26.0
+offset_left = 4.0
+offset_top = -22.0
+offset_right = 164.0
+offset_bottom = -4.0
 grow_vertical = 0
 theme = ExtResource("3_cx58u")
 text = "Go Back [Backspace]"
@@ -781,6 +726,4 @@ libraries = {
 [connection signal="pressed" from="MainMenu/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="item_selected" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer/SchemeSelect" to="." method="_on_scheme_select_item_selected"]
-[connection signal="pressed" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer/Button" to="." method="copy"]
-[connection signal="pressed" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer2/Button3" to="." method="save_and_apply_input_configuration"]
 [connection signal="pressed" from="GoBackButton" to="." method="_on_go_back_button_pressed"]

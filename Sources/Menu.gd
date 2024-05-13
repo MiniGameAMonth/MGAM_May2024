@@ -14,6 +14,11 @@ var custom_controls_grid : GridContainer
 var current_menu = null
 var input_configs : Array[InputConfig]
 
+var is_waiting_new_input_for_action : bool
+var waiting_new_input_for_action
+var is_waiting_new_input_for_action_alt : bool
+var is_waiting_new_input_for_action_changed = false
+
 ################################################################################
 #################################  SIGNALS  ####################################
 
@@ -68,6 +73,36 @@ func _ready():
 
 	init_input_configs_select()
 	init_inputs_grid_with_scheme(input_configs[0])
+	apply_input_scheme(input_configs[0])
+
+
+func _process(delta):
+	if is_waiting_new_input_for_action_changed:
+		is_waiting_new_input_for_action = false
+		is_waiting_new_input_for_action_alt = false
+		is_waiting_new_input_for_action_changed = false
+		waiting_new_input_for_action = null
+		$CustomizeControlsMenu/WaitingInputPopup.hide()
+
+func _input(event):
+	if is_waiting_new_input_for_action:
+		if event is InputEventKey:
+			is_waiting_new_input_for_action_changed = true
+			if event.pressed:
+				if is_waiting_new_input_for_action_alt:
+					waiting_new_input_for_action.set_secondary_input(event.keycode, 0)
+				else:
+					waiting_new_input_for_action.set_primary_input(event.keycode, 0)
+
+		if event is InputEventMouseButton:
+			is_waiting_new_input_for_action_changed = true
+			if event.pressed:
+				if is_waiting_new_input_for_action_alt:
+					waiting_new_input_for_action.set_secondary_input(event.button_index, 1)
+				else:
+					waiting_new_input_for_action.set_primary_input(event.button_index, 1)
+
+	
 
 
 func init_input_configs_select():
@@ -115,8 +150,10 @@ func init_inputs_grid_with_scheme(input_config : InputConfig):
 	var is_locked = input_config.config.get_value("INFO", "Locked", false)
 	var is_use_and_fire_same_button = input_config.config.get_value("INFO", "Same button for \"Use\" & \"Fire\"", false)
 	var is_doubleclick_for_use = input_config.config.get_value("INFO", "Double-click strafe for \"use\"", false)
-
+	
 	# Show error messages 
+	$CustomizeControlsMenu/VBoxContainer/ErrorLabel.text = ""
+
 	if input_config.config.get_value("INFO", "Locked", false):
 		$CustomizeControlsMenu/VBoxContainer/ErrorLabel.text = "[!] This scheme is locked. Make a copy of it to customize."
 		
@@ -193,7 +230,11 @@ func init_inputs_grid_with_scheme(input_config : InputConfig):
 
 
 func _on_input_change_request(is_alt, action):
-	$CustomizeControlsMenu/WaitingInputPopup.show()
+	if !is_waiting_new_input_for_action:
+		is_waiting_new_input_for_action = true
+		waiting_new_input_for_action = action
+		is_waiting_new_input_for_action_alt = is_alt
+		$CustomizeControlsMenu/WaitingInputPopup.show()
 
 
 func copy():
@@ -208,6 +249,7 @@ func copy():
 		selected_scheme.config.save(config_name)
 		var scheme_clone = ConfigFile.new()
 		scheme_clone.load(config_name)
+		scheme_clone.load(config_name)
 		
 		var newName = scheme_clone.get_value("INFO", "Scheme name", "") + " (copy)"
 		scheme_clone.set_value("INFO", "Locked", false)
@@ -215,10 +257,76 @@ func copy():
 		scheme_clone.save(config_name)
 
 		# Add it to the lists
-		input_configs.append(InputConfig.new(config_name))
+		var new_config = InputConfig.new(config_name)
+		new_config.config_path = config_name
+		input_configs.append(new_config)
 		controls_scheme_select_to_customize.add_item(newName)
 		controls_scheme_select_to_customize.select(input_configs.size() - 1)
 		controls_scheme_select.add_item(newName)
 		controls_scheme_select.select(input_configs.size() - 1)
 		_on_scheme_select_item_selected(input_configs.size() - 1)
 
+
+func save_and_apply_input_configuration():
+	# Save config
+	var selected_scheme = input_configs[controls_scheme_select_to_customize.selected]
+	controls_scheme_select.select(controls_scheme_select_to_customize.selected)
+	selected_scheme.config.save(selected_scheme.config_path)
+
+	# Apply config
+	apply_input_scheme(selected_scheme)
+
+	# Go back to options menu
+	_on_go_back_button_pressed()
+
+
+func apply_input_scheme(scheme):
+	var input_ignore_masks = ["ui_.*"]
+	
+	# Going through all of the input actions and adding them to the grid with proper controls, if they were set
+	for action_name in InputMap.get_actions():
+		action_name = String(action_name)
+		var ignore = false
+		var regex = RegEx.new()
+		
+		for mask in input_ignore_masks:
+			regex.compile(mask)
+			if regex.search(action_name):
+				ignore = true
+				break
+
+		if ignore:
+			continue
+
+		# Clear binds for action
+		InputMap.action_erase_events(action_name)
+
+		# Bind primary input
+		var primary_input_keyboard = scheme.config.get_value("Keyboard", action_name, "")
+		var primary_input_mouse = scheme.config.get_value("Mouse", action_name, "")
+		var primary_input_event = null
+
+		if primary_input_keyboard:
+			primary_input_event = InputEventKey.new()
+			primary_input_event.keycode = primary_input_keyboard
+			InputMap.action_add_event(action_name, primary_input_event)
+
+		if primary_input_mouse:
+			primary_input_event = InputEventMouseButton.new()
+			primary_input_event.button_index = primary_input_mouse
+			InputMap.action_add_event(action_name, primary_input_event)	
+
+		# Bind secondary input
+		var alt_input_keyboard = scheme.config.get_value("KeyboardAlt", action_name, "")
+		var alt_input_mouse = scheme.config.get_value("MouseAlt", action_name, "")
+		var alt_input_event = null
+
+		if alt_input_keyboard:
+			alt_input_event = InputEventKey.new()
+			alt_input_event.keycode = alt_input_keyboard
+			InputMap.action_add_event(action_name, alt_input_event)
+
+		if alt_input_mouse:
+			alt_input_event = InputEventMouseButton.new()
+			alt_input_event.button_index = alt_input_mouse
+			InputMap.action_add_event(action_name, alt_input_event)	

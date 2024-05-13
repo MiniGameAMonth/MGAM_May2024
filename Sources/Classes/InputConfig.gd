@@ -1,11 +1,11 @@
 class_name InputConfig
 
 var name : String
-var configPath : String
+var config_path : String
 var config : ConfigFile = ConfigFile.new()
 
 
-func _init(configPath : String):
-    self.configPath = configPath
-    config.load(configPath)
+func _init(config_path : String):
+    self.config_path = config_path
+    config.load(config_path)
     name = config.get_value("INFO", "Scheme name", "OH MY GOD IT'S NOT SET YET")
