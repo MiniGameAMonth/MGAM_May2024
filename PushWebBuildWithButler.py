@@ -37,7 +37,7 @@ def find_latest_version():
 ###################################  MAIN CODE  ##################################
 
 version = find_latest_version()
-itch_project = "rafazcruz/guidecat:html5"
+itch_project = "rafazcruz/guidingstar:html5"
 command = "butler push --userversion " + version + " ./Exports/" + version + " " + itch_project
 
 print("Pushing Web Build " + version + " to " + itch_project)
