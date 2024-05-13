@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bikfvydukf41g"]
+[gd_scene load_steps=5 format=3 uid="uid://3dpopowc74hx"]
 
 [ext_resource type="Script" path="res://Sources/Weapons/Projectile.gd" id="1_jof4h"]
 [ext_resource type="PackedScene" uid="uid://bwftaqfadvwp0" path="res://GameObjects/Utilities/ProjectedNode.tscn" id="2_8llr7"]
