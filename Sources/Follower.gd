@@ -25,7 +25,7 @@ func _process(delta):
 		velocity.y = 0
 		
 	if followTarget != null:
-		follow(followTarget)
+		follow_position(followTarget.global_position)
 
 	var nextPosition = agent.get_next_path_position()
 	if nextPosition != null:
@@ -51,7 +51,7 @@ func look_at_position(pos : Vector3, delta):
 	global_rotation.y = y_rot
 
 func follow(target : Node3D):
-	agent.target_position = target.global_transform.origin
+	followTarget = target
 
 func follow_position(target : Vector3):
 	agent.target_position = target

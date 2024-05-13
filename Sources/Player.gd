@@ -2,14 +2,20 @@ extends CharacterBody3D
 
 const SPEED = 10.0
 
+
 @export var mouse_sensitivity = 0.1
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var root_node
 var local_delta = 0
+@export var enable_input = true
 
 
 @onready var interactions : InteractionArea = $InteractionArea
+var interaction : Interactable
 @onready var weapon : Weapon = $Weapon
+@onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+
+var petting : bool = false
 
 func _ready():
 	root_node = get_tree().root.get_child(0)
@@ -17,11 +23,11 @@ func _ready():
 	interactions.connect("on_interaction_end", on_interact_end)
 
 func on_interact(interactable: Interactable):
-	#for now pick everything up, later we will check for player input (or not)
-	interactable.interact(self)
+	interaction = interactable
 
 func on_interact_end(_interactable: Interactable):
-	#to be used for gui in case we check for player input
+	_interactable.stop_interact(self)
+	interaction = null
 	pass
 
 func _physics_process(delta):
@@ -34,6 +40,9 @@ func _physics_process(delta):
 			velocity.y -= gravity * delta
 
 		var input_dir = Main.get_movement_input()
+		if not enable_input:
+			input_dir = Vector2.ZERO
+
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 		if direction:
@@ -47,10 +56,16 @@ func _physics_process(delta):
 
 	
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and enable_input:
 		
 		if !Input.is_action_pressed("Mouse Only - Strafe Mode"):
 			rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta
 
-	if Input.is_action_just_pressed("Fire"):		
+	if Input.is_action_just_pressed("Fire") and enable_input:		
 		weapon.shoot()
+
+	if interaction:
+		if Input.is_action_just_pressed("WASD+Mouse - Use"):
+			interaction.interact(self)
+		if Input.is_action_just_released("WASD+Mouse - Use"):
+			interaction.stop_interact(self)

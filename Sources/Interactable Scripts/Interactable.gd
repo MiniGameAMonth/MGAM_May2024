@@ -7,3 +7,7 @@ extends StaticBody3D
 func interact(_who):
 	#
 	pass
+
+func stop_interact(_who):
+	#
+	pass

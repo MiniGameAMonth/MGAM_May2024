@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://jtk1yqeawnsk"]
 
 [ext_resource type="Script" path="res://Sources/Level.gd" id="1_aehdo"]
-[ext_resource type="PackedScene" uid="uid://b0csgprky8v0p" path="res://GameObjects/Cat.tscn" id="3_pvegq"]
+[ext_resource type="PackedScene" uid="uid://chekwycyhaxsj" path="res://GameObjects/Cat.tscn" id="3_pvegq"]
 [ext_resource type="PackedScene" uid="uid://bkjqoodkmlp54" path="res://GameObjects/Interactable/Mushroom.tscn" id="3_uejod"]
 [ext_resource type="PackedScene" uid="uid://c2ul40d4fk526" path="res://GameObjects/Enemy.tscn" id="5_2kdr4"]
 
@@ -104,3 +104,5 @@ speed = 1.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.571215, 0.8208, 0, -0.8208, 0.571215, 0, 7.38067, 11.4443)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
