@@ -268,6 +268,7 @@ offset_right = 114.0
 offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 
 [node name="PlayButton" type="Button" parent="MainMenu"]
 texture_filter = 1
@@ -291,6 +292,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="MainMenu"]
+visible = false
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
