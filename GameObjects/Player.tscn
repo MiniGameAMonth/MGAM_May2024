@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhktw4y7gkww3"]
+[gd_scene load_steps=8 format=3 uid="uid://dhktw4y7gkww3"]
 
 [ext_resource type="Script" path="res://Sources/Player.gd" id="1_l3ge4"]
+[ext_resource type="PackedScene" uid="uid://c18ga08e55buv" path="res://GameObjects/Interactable/InteractionArea.tscn" id="2_ppcc5"]
+[ext_resource type="Script" path="res://Sources/Weapons/Weapon.gd" id="3_26ey6"]
+[ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="5_aokh4"]
+[ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="6_213k8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5s06"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_o0bt6"]
+size = Vector3(2, 1, 2)
+
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 3
 script = ExtResource("1_l3ge4")
 mouse_sensitivity = 0.2
 
@@ -17,3 +25,25 @@ size = 7.538
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_f5s06")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_ppcc5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0334473, 0.480469, 0.0345764)
+shape = SubResource("BoxShape3D_o0bt6")
+
+[node name="Weapon" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
+script = ExtResource("3_26ey6")
+weaponDamage = 10.0
+cooldownTime = 1.0
+
+[node name="Cooldown" type="Timer" parent="Weapon"]
+
+[node name="Character" type="Node3D" parent="." node_paths=PackedStringArray("characterStats")]
+script = ExtResource("5_aokh4")
+characterStats = NodePath("CharacterStats")
+
+[node name="CharacterStats" type="Node3D" parent="Character"]
+script = ExtResource("6_213k8")
+health = 100.0

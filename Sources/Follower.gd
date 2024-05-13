@@ -7,6 +7,8 @@ extends CharacterBody3D
 
 @export var lookAtTarget : bool = true;
 @export var lookAtSpeed : float = 1;
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@export var enableGravity : bool = true;
 
 @onready var agent = $NavigationAgent3D;
 
@@ -17,6 +19,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if enableGravity and not is_on_floor():
+		velocity.y -= gravity * delta
+	else:
+		velocity.y = 0
+		
 	if followTarget != null:
 		follow(followTarget)
 
@@ -27,11 +34,13 @@ func _process(delta):
 			look_at_position(nextPosition, delta)
 
 func move_to_position(pos : Vector3):
-
-	if agent.is_target_reached():
-		velocity = Vector3.ZERO
+	if not is_at_target():
+		var newVelocity = global_position.direction_to(pos) * speed
+		newVelocity.y = velocity.y
+		velocity = newVelocity
 	else:
-		velocity = global_position.direction_to(pos) * speed
+		velocity.x = 0
+		velocity.z = 0
 
 	move_and_slide()
 
@@ -43,3 +52,12 @@ func look_at_position(pos : Vector3, delta):
 
 func follow(target : Node3D):
 	agent.target_position = target.global_transform.origin
+
+func follow_position(target : Vector3):
+	agent.target_position = target
+
+func is_at_target():
+	return agent.distance_to_target() < stopAtDistance
+
+func dist_to_target():
+	return agent.distance_to_target()
