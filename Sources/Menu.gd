@@ -18,6 +18,7 @@ var is_waiting_new_input_for_action : bool
 var waiting_new_input_for_action
 var is_waiting_new_input_for_action_alt : bool
 var is_waiting_new_input_for_action_changed = false
+var input_ignore_masks = ["ui_.*"]
 
 ################################################################################
 #################################  SIGNALS  ####################################
@@ -161,17 +162,14 @@ func init_inputs_grid_with_scheme(input_config : InputConfig):
 
 	# Init fields
 	$CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer5/MoveWithMouseCheckbox.button_pressed = input_config.config.get_value("INFO", "Move with mouse", false)
-	$CustomizeControlsMenu/VBoxContainer/HBoxContainer3/TextEdit.text = input_config.name
+	$CustomizeControlsMenu/VBoxContainer/HBoxContainer3/SchemeName.text = input_config.name
 	$CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer6/UseAndFireCheckbox.button_pressed = is_use_and_fire_same_button
 	$CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer7/DoubleClickForUse.button_pressed = is_doubleclick_for_use
 	
 	$CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer5/MoveWithMouseCheckbox.disabled = is_locked
-	$CustomizeControlsMenu/VBoxContainer/HBoxContainer3/TextEdit.editable = !is_locked
+	$CustomizeControlsMenu/VBoxContainer/HBoxContainer3/SchemeName.editable = !is_locked
 	$CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer6/UseAndFireCheckbox.disabled = is_locked
 	$CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer7/DoubleClickForUse.disabled = is_locked
-
-	# Masks for input actions to ignore
-	var input_ignore_masks = ["ui_.*"]
 	
 	# Clear gird
 	for child in custom_controls_grid.get_children():
@@ -271,18 +269,42 @@ func save_and_apply_input_configuration():
 	# Save config
 	var selected_scheme = input_configs[controls_scheme_select_to_customize.selected]
 	controls_scheme_select.select(controls_scheme_select_to_customize.selected)
+
+	selected_scheme.config.set_value("INFO", "Scheme name", $CustomizeControlsMenu/VBoxContainer/HBoxContainer3/SchemeName.text)
+	selected_scheme.config.set_value("INFO", "Move with mouse", $CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer5/MoveWithMouseCheckbox.button_pressed)
+	selected_scheme.config.set_value("INFO", "Same button for \"Use\" & \"Fire\"", $CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer6/UseAndFireCheckbox.button_pressed)
+	selected_scheme.config.set_value("INFO", "Double-click strafe for \"use\"", $CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer7/DoubleClickForUse.button_pressed)
+
+	for action_key in custom_controls_grid.get_children():
+		# Save primary input 
+		if action_key.action_key_type == 0 && action_key.action_key != -1:
+			selected_scheme.config.set_value("Keyboard", action_key.action_name, action_key.action_key)
+
+		if action_key.action_key_type == 1 && action_key.action_key != -1:
+			selected_scheme.config.set_value("Mouse", action_key.action_name, action_key.action_key)
+
+		# Save secondary input 
+		if action_key.action_key_alt_type == 0 && action_key.action_key_alt != -1:
+			selected_scheme.config.set_value("KeyboardAlt", action_key.action_name, action_key.action_key_alt)
+
+		if action_key.action_key_alt_type == 1 && action_key.action_key_alt != -1:
+			selected_scheme.config.set_value("MouseAlt", action_key.action_name, action_key.action_key_alt)
+
+
 	selected_scheme.config.save(selected_scheme.config_path)
 
 	# Apply config
 	apply_input_scheme(selected_scheme)
 
+	# Rename in dropdowns
+	controls_scheme_select_to_customize.set_item_text(controls_scheme_select_to_customize.selected, $CustomizeControlsMenu/VBoxContainer/HBoxContainer3/SchemeName.text)
+	controls_scheme_select.set_item_text(controls_scheme_select_to_customize.selected, $CustomizeControlsMenu/VBoxContainer/HBoxContainer3/SchemeName.text)
+
 	# Go back to options menu
 	_on_go_back_button_pressed()
 
 
-func apply_input_scheme(scheme):
-	var input_ignore_masks = ["ui_.*"]
-	
+func apply_input_scheme(scheme):	
 	# Going through all of the input actions and adding them to the grid with proper controls, if they were set
 	for action_name in InputMap.get_actions():
 		action_name = String(action_name)
