@@ -24,8 +24,11 @@ func _process(_delta):
 	pass
 
 func interact(_who):
+	if is_queued_for_deletion():
+		return
+		
 	remove_from_group(GroupNames.Mushrooms)
-	print("picked up")
+	GlobalEvents.interacted_with.emit(_who, self)
 	#play animation pick up
 	#play sound
 	GameSfx.play_sound(pickupSound)
