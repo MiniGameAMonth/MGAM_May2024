@@ -263,6 +263,7 @@ position = Vector2(320, 180)
 texture = ExtResource("2_qoswh")
 
 [node name="MenuBgRect" type="Panel" parent="MenuBg"]
+visible = false
 offset_left = -288.0
 offset_top = -149.0
 offset_right = 294.0
@@ -270,7 +271,6 @@ offset_bottom = 161.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6jf5c")
 
 [node name="MenuBgAnimated" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(80, 45)
 sprite_frames = SubResource("SpriteFrames_4p2e2")
 animation = &"LogoReveal"

@@ -9,6 +9,7 @@ enum GameMode { MENU, IN_GAME }
 @export var controls_mode = ControlsMode.WASD_MOUSE
 var game_mode = GameMode.MENU
 var level = null
+var level_container = null
 var local_delta = 0
 var menu_node = null
 
@@ -18,6 +19,7 @@ var menu_node = null
 func _ready():
 	generate_default_input_schemes()
 	menu_node = get_tree().root.get_node("MainRoot/UICanvas/Menu")
+	level_container = get_tree().root.get_node("MainRoot/Level")
 
 	DisplayServer.window_set_position(DisplayServer.window_get_position() - (DisplayServer.window_get_size() / 2))
 	DisplayServer.window_set_size(DisplayServer.window_get_size() * 2)
@@ -59,7 +61,11 @@ func quit_game():
 
 func load_level(path):
 	level = load(path).instantiate()
-	add_child(level)
+
+	for child in level_container.get_children():
+		child.queue_free()
+
+	level_container.add_child(level)
 
 
 func change_level(path):
