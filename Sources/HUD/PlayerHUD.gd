@@ -2,10 +2,12 @@ extends Control
 
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 @onready var healthBar : HealthBar = $HealthBar
+@onready var mushroomBar : IconBar = $MushroomBar
 @onready var interactionText : Label = $InteractionLabel
 @export var character : Character
 
 var interactable : Interactable
+var pickedMushrooms : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if character:
@@ -14,6 +16,11 @@ func _ready():
 	else:
 		push_error("PlayerHUD requires a character to be set.")
 
+	#testing mushroom bar
+	mushroomBar.set_max_icons(5) #to determine based on level
+	mushroomBar.set_filled_icons(pickedMushrooms) 
+
+	GlobalEvents.interacted_with.connect(_on_interacted_with)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -33,4 +40,16 @@ func set_interactable(_interactable : Interactable):
 func clear_interactable(_interactable : Interactable):
 	interactable = null
 	interactionText.text = ""
+
+func update_health_bar():
+	healthBar.set_health(character.characterStats.health)
+
+func update_mushroom_bar():
+	mushroomBar.set_filled_icons(pickedMushrooms)
+
+func _on_interacted_with(_who, _interactable):
+	if _interactable is MushroomInteractable:
+		print(_interactable)
+		pickedMushrooms += 1
+		update_mushroom_bar()
 
