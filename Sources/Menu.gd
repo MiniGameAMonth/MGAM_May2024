@@ -330,3 +330,8 @@ func apply_input_scheme(scheme):
 			alt_input_event = InputEventMouseButton.new()
 			alt_input_event.button_index = alt_input_mouse
 			InputMap.action_add_event(action_name, alt_input_event)	
+
+
+func _on_controls_select_item_selected(index):
+	if index != -1:
+		apply_input_scheme(input_configs[index])
