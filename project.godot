@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Main="*res://Sources/Main.gd"
 GC="*res://Sources/GameSettings.gd"
 GameSfx="*res://Sources/Utilities/GameSFX.gd"
+GlobalEvents="*res://Sources/Utilities/GlobalEvents.gd"
 
 [display]
 
