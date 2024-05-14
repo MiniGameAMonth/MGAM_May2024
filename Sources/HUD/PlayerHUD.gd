@@ -1,7 +1,7 @@
 extends Control
 
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
-@onready var healthBar : HealthBar = $HealthBar
+@onready var healthBar = $HealthBar
 @onready var interactionText : Label = $InteractionLabel
 @export var character : Character
 

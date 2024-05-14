@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b80qtulhkax1j"]
+[gd_scene load_steps=7 format=3 uid="uid://bovxkgb86ymai"]
 
 [ext_resource type="Script" path="res://Sources/HUD/PlayerHUD.gd" id="1_lsokv"]
 [ext_resource type="SpriteFrames" uid="uid://ckvoa8lmhd6at" path="res://Assets/Images/Sprite Sheets/Pet Cat HUD/Pet_Cat_HUD.tres" id="1_mi8lc"]

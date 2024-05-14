@@ -11,16 +11,13 @@ var game_mode = GameMode.MENU
 var level = null
 var local_delta = 0
 var menu_node = null
-var hud_node = null
 
 #################################################################################
 ################################### Functions ###################################
 
 func _ready():
 	generate_default_input_schemes()
-
 	menu_node = get_tree().root.get_node("MainRoot/UICanvas/Menu")
-	hud_node = get_tree().root.get_node("MainRoot/UICanvas/HUD")
 
 	DisplayServer.window_set_position(DisplayServer.window_get_position() - (DisplayServer.window_get_size() / 2))
 	DisplayServer.window_set_size(DisplayServer.window_get_size() * 2)
@@ -51,7 +48,7 @@ func is_in_game():
 
 
 func start_game():
-	load_level("res://Levels/TestLevel.tscn")
+	load_level("res://Levels/NavigationTesting.tscn")
 	game_mode = GameMode.IN_GAME
 	update_menu()
 
@@ -75,11 +72,9 @@ func change_level(path):
 func update_menu():
 	if game_mode == GameMode.MENU:
 		menu_node.visible = true
-		hud_node.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		menu_node.visible = false
-		hud_node.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
