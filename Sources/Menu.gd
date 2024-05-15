@@ -95,12 +95,11 @@ func _input(event):
 			waiting_new_input_for_action = null
 			$CustomizeControlsMenu/WaitingInputPopup.hide()
 		else:
-			_on_go_back_button_pressed()
-		
+			_on_go_back_button_pressed()		
 
 	# Process new input for action
 	if is_waiting_new_input_for_action:
-		if event is InputEventKey:
+		if event is InputEventKey && event.pressed && !event.echo:
 			is_waiting_new_input_for_action_changed = true
 			if event.pressed:
 				if is_waiting_new_input_for_action_alt:
@@ -108,7 +107,7 @@ func _input(event):
 				else:
 					waiting_new_input_for_action.set_primary_input(event.keycode, 0)
 
-		if event is InputEventMouseButton:
+		if event is InputEventMouseButton && event.pressed  && !event.echo:
 			is_waiting_new_input_for_action_changed = true
 			if event.pressed:
 				if is_waiting_new_input_for_action_alt:

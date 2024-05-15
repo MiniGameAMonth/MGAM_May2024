@@ -57,5 +57,5 @@ theme = ExtResource("3_njoam")
 icon = ExtResource("3_xvjjo")
 icon_alignment = 1
 
-[connection signal="button_up" from="Button" to="." method="change_input" binds= [false]]
-[connection signal="button_up" from="AlternateButton" to="." method="change_input" binds= [true]]
+[connection signal="button_down" from="Button" to="." method="change_input" binds= [false]]
+[connection signal="button_down" from="AlternateButton" to="." method="change_input" binds= [true]]
