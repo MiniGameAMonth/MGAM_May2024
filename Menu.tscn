@@ -203,7 +203,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu:position")
+tracks/0/path = NodePath("MainMenu/MainMenu:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -231,7 +231,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenu:position")
+tracks/1/path = NodePath("MainMenu/MainMenu:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -278,22 +278,25 @@ frame = 14
 frame_progress = 1.0
 offset = Vector2(240, 135)
 
-[node name="MainMenu" type="HBoxContainer" parent="."]
+[node name="MainMenu" parent="." instance=ExtResource("3_kfsru")]
+layout_mode = 1
+
+[node name="MainMenu" type="HBoxContainer" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 210.0
-offset_top = 280.0
-offset_right = 434.0
-offset_bottom = 303.0
+offset_left = -110.0
+offset_top = -80.0
+offset_right = 114.0
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="MainMenu"]
+[node name="PlayButton" type="Button" parent="MainMenu/MainMenu"]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -303,7 +306,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
 theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 text = "Play"
 
-[node name="OptionsButton" type="Button" parent="MainMenu" groups=["MenuNavButton"]]
+[node name="OptionsButton" type="Button" parent="MainMenu/MainMenu" groups=["MenuNavButton"]]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -313,7 +316,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
 theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 text = "Options"
 
-[node name="CreditsButton" type="Button" parent="MainMenu" groups=["MenuNavButton"]]
+[node name="CreditsButton" type="Button" parent="MainMenu/MainMenu" groups=["MenuNavButton"]]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -323,7 +326,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
 theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 text = "Credits"
 
-[node name="QuitButton" type="Button" parent="MainMenu"]
+[node name="QuitButton" type="Button" parent="MainMenu/MainMenu"]
 visible = false
 texture_filter = 1
 layout_mode = 2
@@ -808,8 +811,8 @@ libraries = {
 "": SubResource("AnimationLibrary_i12do")
 }
 
-[connection signal="pressed" from="MainMenu/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenu/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="item_selected" from="OptionsMenu/VBoxContainer/GridContainer/ControlsSelect" to="." method="_on_controls_select_item_selected"]
 [connection signal="item_selected" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer/SchemeSelect" to="." method="_on_scheme_select_item_selected"]
 [connection signal="pressed" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer/Button" to="." method="copy"]

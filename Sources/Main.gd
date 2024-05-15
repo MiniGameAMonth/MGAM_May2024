@@ -12,6 +12,7 @@ var level = null
 var level_container = null
 var local_delta = 0
 var menu_node = null
+var is_game_was_started = false
 
 #################################################################################
 ################################### Functions ###################################
@@ -28,7 +29,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		if game_mode == GameMode.MENU:
+		if game_mode == GameMode.MENU && is_game_was_started:
 			game_mode = GameMode.IN_GAME
 		else:
 			game_mode = GameMode.MENU
@@ -50,7 +51,11 @@ func is_in_game():
 
 
 func start_game():
-	load_level("res://Levels/NavigationTesting.tscn")
+	if !is_game_was_started:
+		is_game_was_started = true
+		menu_node.get_node("MainMenu/MainMenu/PlayButton").text = "Continue"
+		load_level("res://Levels/NavigationTesting.tscn")
+
 	game_mode = GameMode.IN_GAME
 	update_menu()
 

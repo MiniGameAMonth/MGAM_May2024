@@ -44,7 +44,7 @@ func _on_nav_button_pressed(button):
 func _on_go_back_button_pressed():
 	if current_menu && current_menu.parent_menu:
 		open_menu(current_menu.parent_menu.name)
-	else:
+	elif current_menu.name != "MainMenu":
 		open_menu("MainMenu")
 
 
