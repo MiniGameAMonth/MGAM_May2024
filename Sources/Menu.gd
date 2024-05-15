@@ -86,6 +86,19 @@ func _process(delta):
 		$CustomizeControlsMenu/WaitingInputPopup.hide()
 
 func _input(event):
+	# Process actions
+	if Input.is_action_just_pressed("ui_goback_or_cancel_new_input"):
+		if is_waiting_new_input_for_action:
+			is_waiting_new_input_for_action = false
+			is_waiting_new_input_for_action_alt = false
+			is_waiting_new_input_for_action_changed = false
+			waiting_new_input_for_action = null
+			$CustomizeControlsMenu/WaitingInputPopup.hide()
+		else:
+			_on_go_back_button_pressed()
+		
+
+	# Process new input for action
 	if is_waiting_new_input_for_action:
 		if event is InputEventKey:
 			is_waiting_new_input_for_action_changed = true
