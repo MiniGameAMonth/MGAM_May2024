@@ -17,6 +17,9 @@ var interaction : Interactable
 
 func _ready():
 	root_node = get_tree().root.get_child(0)
+
+	add_to_group("Player")
+
 	interactions.connect("on_interaction", on_interact)
 	interactions.connect("on_interaction_end", on_interact_end)
 
@@ -61,8 +64,8 @@ func _input(event):
 	if Input.is_action_just_pressed("Fire") and enable_input:		
 		weapon.shoot()
 
-	if interaction:
-		if Input.is_action_just_pressed("WASD+Mouse - Use"):
+	if interaction and event is InputEventMouseButton:
+		if Input.is_action_just_pressed("Use"):
 			interaction.interact(self)
-		if Input.is_action_just_released("WASD+Mouse - Use"):
+		if Input.is_action_just_released("Use"):
 			interaction.stop_interact(self)

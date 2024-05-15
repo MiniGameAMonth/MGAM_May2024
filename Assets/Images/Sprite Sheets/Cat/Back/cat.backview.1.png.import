@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3qdmpp13632r"
-path.s3tc="res://.godot/imported/Heart Frame 1.png-aa26b65c44f5df01d73ada5ac6546545.s3tc.ctex"
+uid="uid://cc2kc75djycrj"
+path.s3tc="res://.godot/imported/cat.backview.1.png-679b0530670997abc20e68a29629f301.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Images/HUD/Hearts/Heart Frame 1.png"
-dest_files=["res://.godot/imported/Heart Frame 1.png-aa26b65c44f5df01d73ada5ac6546545.s3tc.ctex"]
+source_file="res://Assets/Images/Sprite Sheets/Cat/Back/cat.backview.1.png"
+dest_files=["res://.godot/imported/cat.backview.1.png-679b0530670997abc20e68a29629f301.s3tc.ctex"]
 
 [params]
 

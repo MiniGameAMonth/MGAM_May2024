@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3qdmpp13632r"
-path.s3tc="res://.godot/imported/Heart Frame 1.png-aa26b65c44f5df01d73ada5ac6546545.s3tc.ctex"
+uid="uid://m3c7s5unc373"
+path.s3tc="res://.godot/imported/cat.sidewalk.1.png-770b2f7fb89354490433605a5f916627.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Images/HUD/Hearts/Heart Frame 1.png"
-dest_files=["res://.godot/imported/Heart Frame 1.png-aa26b65c44f5df01d73ada5ac6546545.s3tc.ctex"]
+source_file="res://Assets/Images/Sprite Sheets/Cat/Side/cat.sidewalk.1.png"
+dest_files=["res://.godot/imported/cat.sidewalk.1.png-770b2f7fb89354490433605a5f916627.s3tc.ctex"]
 
 [params]
 

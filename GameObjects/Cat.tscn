@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://chekwycyhaxsj"]
+[gd_scene load_steps=10 format=3 uid="uid://chekwycyhaxsj"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_elfre"]
-[ext_resource type="Texture2D" uid="uid://bhpfw5vnfged" path="res://Assets/Images/grumpy cat.jpg" id="2_5sgpx"]
 [ext_resource type="Script" path="res://Sources/Behaviours/CatFollowBehaviour.gd" id="3_a8mr8"]
+[ext_resource type="Script" path="res://Sources/Utilities/DirectionalAnimatedSprite3D.gd" id="3_ngyww"]
+[ext_resource type="SpriteFrames" uid="uid://dfdv88ekpx7s8" path="res://Assets/Images/Sprite Sheets/Cat/Back/cat_backview.tres" id="4_0yt5h"]
 [ext_resource type="Script" path="res://Sources/Interactable Scripts/CatInteractable.gd" id="4_dyxf8"]
+[ext_resource type="SpriteFrames" uid="uid://bwu5kpwjckvsf" path="res://Assets/Images/Sprite Sheets/Cat/Front/cat_frontview.tres" id="5_qp00h"]
+[ext_resource type="SpriteFrames" uid="uid://dwfyj37kv47tc" path="res://Assets/Images/Sprite Sheets/Cat/Side/cat_sideview.tres" id="5_rk0n0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01iqy"]
 
@@ -22,9 +25,19 @@ debug_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00965, 0)
 shape = SubResource("CapsuleShape3D_01iqy")
 
-[node name="Graphics" type="Sprite3D" parent="."]
+[node name="Graphics" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28395, 0)
-texture = ExtResource("2_5sgpx")
+offset = Vector2(5, -10)
+pixel_size = 0.0315
+texture_filter = 0
+sprite_frames = ExtResource("4_0yt5h")
+script = ExtResource("3_ngyww")
+back_sprite_frames = ExtResource("4_0yt5h")
+back_sprite_offset = Vector2(5, -10)
+front_sprite_frames = ExtResource("5_qp00h")
+front_sprite_offset = Vector2(0, -6)
+side_sprite_frames = ExtResource("5_rk0n0")
+side_sprite_offset = Vector2(0, -30)
 
 [node name="Cat Behaviour" type="Node" parent="." node_paths=PackedStringArray("cat")]
 script = ExtResource("3_a8mr8")
