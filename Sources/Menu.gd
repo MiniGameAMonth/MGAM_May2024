@@ -369,3 +369,7 @@ func apply_input_scheme(scheme):
 func _on_controls_select_item_selected(index):
 	if index != -1:
 		apply_input_scheme(input_configs[index])
+
+
+func get_active_controls_scheme() -> InputConfig:
+	return input_configs[controls_scheme_select.selected]

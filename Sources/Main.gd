@@ -1,18 +1,17 @@
 extends Node
 
-enum ControlsMode { WASD_MOUSE, MOUSE_ONLY }
 enum GameMode { MENU, IN_GAME }
 
 #################################################################################
 ################################### Variables ###################################
 
-@export var controls_mode = ControlsMode.WASD_MOUSE
 var game_mode = GameMode.MENU
 var level = null
 var level_container = null
 var local_delta = 0
 var menu_node = null
 var is_game_was_started = false
+var mouse_delta : Vector2
 
 #################################################################################
 ################################### Functions ###################################
@@ -28,7 +27,7 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_pause"):
 		if game_mode == GameMode.MENU && is_game_was_started:
 			game_mode = GameMode.IN_GAME
 		else:
@@ -96,13 +95,27 @@ func _input(event):
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
+	if Input.is_action_just_pressed("Fire") && menu_node.get_active_controls_scheme().config.get_value("INFO", "Same button for \"Use\" & \"Fire\"", false):
+		print("use")
+		Input.action_press("Use")
+
+	if event is InputEventMouseMotion:
+		mouse_delta = event.relative
+
+
 
 func get_movement_input():
-	var result = Vector2(0, 0)
+	var result
 
-	if controls_mode == ControlsMode.WASD_MOUSE:
+	if menu_node.get_active_controls_scheme().config.get_value("INFO", "Move with mouse", false):
+		result = mouse_delta / 20
+
+		if !Input.is_action_pressed("Strafe Mode"):
+			result.x = 0
+	else:
 		result = Input.get_vector("Move Left", "Move Right", "Move Forward", "Move Backward")
 
+	mouse_delta = Vector2.ZERO
 	return result
 
 
