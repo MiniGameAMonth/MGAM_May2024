@@ -1,10 +1,13 @@
 extends Control
 
-@onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+@onready var pettingAnimationPlayer : AnimationPlayer = $PettingAnimation/AnimationPlayer
 @onready var healthBar : HealthBar = $HealthBar
 @onready var mushroomBar : IconBar = $MushroomBar
 @onready var interactionText : Label = $InteractionLabel
+@onready var radar : Radar = $Radar
+
 @export var character : Character
+
 
 var interactable : Interactable
 var pickedMushrooms : int = 0
@@ -20,6 +23,8 @@ func _ready():
 	mushroomBar.set_max_icons(5) #to determine based on level
 	mushroomBar.set_filled_icons(pickedMushrooms) 
 
+	radar.center = character
+
 	GlobalEvents.interacted_with.connect(_on_interacted_with)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,11 +32,11 @@ func _process(_delta):
 	pass
 
 func start_pet():
-	animationPlayer.play("cat_start_pet")
+	pettingAnimationPlayer.play("cat_start_pet")
 	
 
 func stop_pet():
-	animationPlayer.play("cat_end_pet")
+	pettingAnimationPlayer.play("cat_end_pet")
 
 func set_interactable(_interactable : Interactable):
 	interactable = _interactable
@@ -49,7 +54,6 @@ func update_mushroom_bar():
 
 func _on_interacted_with(_who, _interactable):
 	if _interactable is MushroomInteractable:
-		print(_interactable)
 		pickedMushrooms += 1
 		update_mushroom_bar()
 

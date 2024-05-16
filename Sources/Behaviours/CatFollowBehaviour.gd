@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 enum State { IDLE, WALK_TO_MUSHROOM, WALK_TO_EXIT, NEAR_MUSHROOM, NEAR_EXIT }
 
@@ -11,7 +11,7 @@ var targetRef : WeakRef;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	add_to_group(GroupNames.Cat)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

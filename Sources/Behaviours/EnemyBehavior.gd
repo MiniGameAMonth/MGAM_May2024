@@ -12,6 +12,8 @@ var state : EnemyStates = EnemyStates.IDLE
 var attackTarget : Node3D = null
 
 func _ready():
+	add_to_group(GroupNames.Enemies)
+
 	if (follower == null):
 		push_warning("Enemy : Follower not set.")
 	if (weapon == null):
@@ -57,3 +59,5 @@ func attack_target(target:Node3D):
 	attackTarget = target
 	state = EnemyStates.FOLLOW
 
+func die():
+	remove_from_group(GroupNames.Enemies)

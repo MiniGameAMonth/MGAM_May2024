@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://b80qtulhkax1j"]
+[gd_scene load_steps=10 format=3 uid="uid://b80qtulhkax1j"]
 
 [ext_resource type="Script" path="res://Sources/HUD/PlayerHUD.gd" id="1_lsokv"]
 [ext_resource type="SpriteFrames" uid="uid://ckvoa8lmhd6at" path="res://Assets/Images/Sprite Sheets/Pet Cat HUD/Pet_Cat_HUD.tres" id="1_mi8lc"]
+[ext_resource type="SpriteFrames" uid="uid://d2soxi4a64l03" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand_wand.tres" id="3_24g4w"]
 [ext_resource type="PackedScene" uid="uid://bpectes0vvvut" path="res://GameObjects/UI/Health/HealthBar.tscn" id="3_pkra2"]
 [ext_resource type="PackedScene" uid="uid://blnlxitf5o0vh" path="res://GameObjects/UI/Health/MushroomBar.tscn" id="4_3ejbb"]
+[ext_resource type="PackedScene" uid="uid://q16ycfbnj2a5" path="res://GameObjects/UI/Radar.tscn" id="6_xdbgq"]
 
 [sub_resource type="Animation" id="Animation_ftpu5"]
 resource_name = "cat_end_pet"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/path = NodePath("PettingAnimation:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -22,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/path = NodePath("PettingAnimation:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -34,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D")
+tracks/2/path = NodePath("PettingAnimation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -63,7 +65,7 @@ resource_name = "cat_start_pet"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/path = NodePath("PettingAnimation:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -75,7 +77,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/path = NodePath("PettingAnimation:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -87,7 +89,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D")
+tracks/2/path = NodePath("PettingAnimation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -129,12 +131,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lsokv")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PettingAnimation" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(320, 385)
+position = Vector2(320, 165)
 scale = Vector2(1.0013, 1.0013)
 sprite_frames = ExtResource("1_mi8lc")
 animation = &"start_pet"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PettingAnimation"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_6wnnr")
+}
+
+[node name="Hand" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 180)
+sprite_frames = ExtResource("3_24g4w")
+animation = &"use_wand"
+frame = 4
+frame_progress = 1.0
+offset = Vector2(0, -12)
 
 [node name="InteractionLabel" type="Label" parent="."]
 layout_mode = 1
@@ -149,11 +165,6 @@ offset_right = 50.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_6wnnr")
-}
 
 [node name="HealthBar" parent="." instance=ExtResource("3_pkra2")]
 layout_mode = 1
@@ -171,3 +182,10 @@ offset_left = 48.0
 offset_top = 247.0
 offset_right = 48.0
 offset_bottom = 247.0
+
+[node name="Radar" parent="." instance=ExtResource("6_xdbgq")]
+offset_left = 517.0
+offset_top = 234.0
+offset_right = 517.0
+offset_bottom = 234.0
+iconFloatDistance = 20

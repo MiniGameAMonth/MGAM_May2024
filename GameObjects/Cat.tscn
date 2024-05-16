@@ -11,6 +11,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01iqy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_73gjj"]
+radius = 1.0
 
 [node name="Cat" type="CharacterBody3D"]
 script = ExtResource("1_elfre")
@@ -39,14 +40,15 @@ front_sprite_offset = Vector2(0, -6)
 side_sprite_frames = ExtResource("5_rk0n0")
 side_sprite_offset = Vector2(0, -30)
 
-[node name="Cat Behaviour" type="Node" parent="." node_paths=PackedStringArray("cat")]
+[node name="Cat Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("cat")]
 script = ExtResource("3_a8mr8")
 cat = NodePath("..")
 
-[node name="Cat Interaction" type="StaticBody3D" parent="."]
+[node name="Cat Interaction" type="StaticBody3D" parent="." node_paths=PackedStringArray("graphics")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("4_dyxf8")
+graphics = NodePath("../Graphics")
 interactableName = "Star"
 interactionPrompt = "Pet"
 

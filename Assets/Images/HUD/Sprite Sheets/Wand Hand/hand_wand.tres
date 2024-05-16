@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://d2soxi4a64l03"]
+
+[ext_resource type="Texture2D" uid="uid://3oonkr6c2vxn" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand1.png" id="1_f4i7u"]
+[ext_resource type="Texture2D" uid="uid://c0fggqwwnoyis" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand2.png" id="2_m4x8k"]
+[ext_resource type="Texture2D" uid="uid://3go1d4gf0ux4" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand3.png" id="3_t7a42"]
+[ext_resource type="Texture2D" uid="uid://21t42bd5nkfx" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand4.png" id="4_rw311"]
+[ext_resource type="Texture2D" uid="uid://b5q7knetexoo6" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand5.png" id="5_s5l2e"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_f4i7u")
+}],
+"loop": true,
+"name": &"idle_wand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_f4i7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m4x8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t7a42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rw311")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s5l2e")
+}],
+"loop": false,
+"name": &"use_wand",
+"speed": 10.0
+}]
