@@ -1,0 +1,257 @@
+[gd_scene load_steps=16 format=3 uid="uid://b80qtulhkax1j"]
+
+[ext_resource type="Script" path="res://Sources/HUD/PlayerHUD.gd" id="1_lsokv"]
+[ext_resource type="SpriteFrames" uid="uid://ckvoa8lmhd6at" path="res://Assets/Images/Sprite Sheets/Pet Cat HUD/Pet_Cat_HUD.tres" id="1_mi8lc"]
+[ext_resource type="Texture2D" uid="uid://21t42bd5nkfx" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand4.png" id="3_0xg25"]
+[ext_resource type="PackedScene" uid="uid://bpectes0vvvut" path="res://GameObjects/UI/Health/HealthBar.tscn" id="3_pkra2"]
+[ext_resource type="Texture2D" uid="uid://3oonkr6c2vxn" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand1.png" id="4_2f7ju"]
+[ext_resource type="PackedScene" uid="uid://blnlxitf5o0vh" path="res://GameObjects/UI/Health/MushroomBar.tscn" id="4_3ejbb"]
+[ext_resource type="Texture2D" uid="uid://c0fggqwwnoyis" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand2.png" id="5_wp14q"]
+[ext_resource type="Texture2D" uid="uid://3go1d4gf0ux4" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand3.png" id="6_2vptw"]
+[ext_resource type="PackedScene" uid="uid://q16ycfbnj2a5" path="res://GameObjects/UI/Radar.tscn" id="6_xdbgq"]
+[ext_resource type="Texture2D" uid="uid://b5q7knetexoo6" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand5.png" id="7_tk28n"]
+
+[sub_resource type="Animation" id="Animation_ftpu5"]
+resource_name = "cat_end_pet"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PettingAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 0.42),
+"update": 0,
+"values": [Vector2(320, 165), Vector2(320, 385)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PettingAnimation:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PettingAnimation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"end_pet", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("InteractionLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hand:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_025d8"]
+resource_name = "cat_start_pet"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PettingAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.420448),
+"update": 0,
+"values": [Vector2(320, 385), Vector2(320, 165)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PettingAnimation:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PettingAnimation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"start_pet", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"petting", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("InteractionLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hand:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wnnr"]
+_data = {
+"cat_end_pet": SubResource("Animation_ftpu5"),
+"cat_start_pet": SubResource("Animation_025d8")
+}
+
+[sub_resource type="Animation" id="Animation_uw6e0"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_2f7ju"), ExtResource("5_wp14q"), ExtResource("6_2vptw"), ExtResource("3_0xg25"), ExtResource("7_tk28n"), ExtResource("6_2vptw"), ExtResource("4_2f7ju")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_wand_shoot"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhiho"]
+_data = {
+"shoot": SubResource("Animation_uw6e0")
+}
+
+[node name="PlayerHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lsokv")
+
+[node name="PettingAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(320, 165)
+scale = Vector2(1.0013, 1.0013)
+sprite_frames = ExtResource("1_mi8lc")
+animation = &"start_pet"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PettingAnimation"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_6wnnr")
+}
+
+[node name="Hand" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("3_0xg25")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand"]
+libraries = {
+"": SubResource("AnimationLibrary_yhiho")
+}
+
+[node name="InteractionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -11.5
+offset_right = 50.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" parent="." instance=ExtResource("3_pkra2")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -79.0
+offset_right = 85.0
+offset_bottom = -15.0
+grow_vertical = 0
+
+[node name="MushroomBar" parent="." instance=ExtResource("4_3ejbb")]
+offset_left = 48.0
+offset_top = 247.0
+offset_right = 48.0
+offset_bottom = 247.0
+
+[node name="Radar" parent="." instance=ExtResource("6_xdbgq")]
+offset_left = 517.0
+offset_top = 234.0
+offset_right = 517.0
+offset_bottom = 234.0
+iconFloatDistance = 20

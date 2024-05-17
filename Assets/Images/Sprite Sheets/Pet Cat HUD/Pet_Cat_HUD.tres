@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://ckvoa8lmhd6at"]
+
+[ext_resource type="Texture2D" uid="uid://cy5nfe7pheyuo" path="res://Images/Sprite Sheets/Pet Cat HUD/cat.pet1.png" id="1_rpww3"]
+[ext_resource type="Texture2D" uid="uid://bh4jxpy84y6uf" path="res://Images/Sprite Sheets/Pet Cat HUD/cat.pet2.png" id="2_r17s4"]
+[ext_resource type="Texture2D" uid="uid://bm7ty2f07rjpo" path="res://Images/Sprite Sheets/Pet Cat HUD/cat.pet3.png" id="3_h0qcp"]
+[ext_resource type="Texture2D" uid="uid://e2ae2sy3rrk" path="res://Images/Sprite Sheets/Pet Cat HUD/cat.pet4.png" id="4_hmx7c"]
+[ext_resource type="Texture2D" uid="uid://cxvwanbcwfsnc" path="res://Images/Sprite Sheets/Pet Cat HUD/cat.pet5.png" id="5_i1ifx"]
+[ext_resource type="Texture2D" uid="uid://cqp5jjodtyved" path="res://Images/Sprite Sheets/Pet Cat HUD/cat.pet6.png" id="6_rct0q"]
+[ext_resource type="Texture2D" uid="uid://b8wxmrxbak00e" path="res://Images/Sprite Sheets/Pet Cat HUD/cat.pet7.png" id="7_j1cbn"]
+[ext_resource type="Texture2D" uid="uid://c6p7h0rq6edhf" path="res://Images/Sprite Sheets/Pet Cat HUD/cat.pet8.png" id="8_jvbtg"]
+[ext_resource type="Texture2D" uid="uid://51v82sp3umii" path="res://Images/Sprite Sheets/Pet Cat HUD/cat.pet9.png" id="9_lq4dh"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_jvbtg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lq4dh")
+}],
+"loop": false,
+"name": &"end_pet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hmx7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i1ifx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rct0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j1cbn")
+}],
+"loop": true,
+"name": &"petting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rpww3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r17s4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h0qcp")
+}],
+"loop": false,
+"name": &"start_pet",
+"speed": 10.0
+}]

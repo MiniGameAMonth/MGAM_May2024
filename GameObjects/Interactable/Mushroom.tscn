@@ -1,18 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://bkjqoodkmlp54"]
 
 [ext_resource type="Script" path="res://Sources/Interactable Scripts/MushroomInteractable.gd" id="1_duxxf"]
-[ext_resource type="Resource" uid="uid://cy85fgdxbttbr" path="res://Interactables/Pickups/Mushrooms/Mushroom_0.tres" id="2_umgh6"]
-[ext_resource type="SpriteFrames" uid="uid://bnrukcwu6tddv" path="res://Interactables/Pickups/Mushrooms/Mushroom_0_frames.tres" id="3_4fclg"]
-[ext_resource type="AudioStream" uid="uid://brb42cfhxdj3o" path="res://Sounds/Mushroom_Pickup.wav" id="4_8uaba"]
+[ext_resource type="Resource" uid="uid://cy85fgdxbttbr" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_0.tres" id="2_umgh6"]
+[ext_resource type="SpriteFrames" uid="uid://bnrukcwu6tddv" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_0_frames.tres" id="3_4fclg"]
+[ext_resource type="AudioStream" uid="uid://brb42cfhxdj3o" path="res://Assets/Sounds/Mushroom_Pickup.wav" id="4_8uaba"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4qh64"]
 
-[node name="Mushroom" type="StaticBody3D" node_paths=PackedStringArray("pickupSound")]
+[node name="Mushroom" type="StaticBody3D"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_duxxf")
 mushroomData = ExtResource("2_umgh6")
-pickupSound = NodePath("AudioStreamPlayer3D")
 interactionPrompt = "Pick up"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -28,3 +27,4 @@ sprite_frames = ExtResource("3_4fclg")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_8uaba")
+bus = &"Sounds"

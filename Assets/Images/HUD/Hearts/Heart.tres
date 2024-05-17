@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bkgj885upwgwk"]
+
+[ext_resource type="Texture2D" uid="uid://b3qdmpp13632r" path="res://Assets/Images/HUD/Hearts/Heart Frame 1.png" id="1_0vwa0"]
+[ext_resource type="Texture2D" uid="uid://dnp7ntq6t2dlo" path="res://Assets/Images/HUD/Hearts/Heart Frame 2.png" id="2_ektut"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0vwa0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ektut")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

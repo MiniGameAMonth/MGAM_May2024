@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgdegdu7welkj"]
+
+[ext_resource type="Script" path="res://Sources/Level.gd" id="1_bt1hw"]
+[ext_resource type="PackedScene" uid="uid://c2ul40d4fk526" path="res://GameObjects/Enemy.tscn" id="2_4u8kn"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_y8q05"]
+vertices = PackedVector3Array(-4.15796, 0.852021, -4.5, -4.15796, 0.852021, 4.5, 4.84204, 0.852021, 4.5, 4.84204, 0.852021, -4.5, -4.15796, -2.89798, 6, -4.15796, -2.89798, 15.25, 4.84204, -2.89798, 15.25, 4.84204, -2.89798, 6)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxhgu"]
+size = Vector3(10.019, 1, 10.1386)
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+script = ExtResource("1_bt1hw")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_y8q05")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.342041, 0, 0)
+size = Vector3(10, 1, 10)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/CSGBox3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/CSGBox3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00863647, 0, -0.0528259)
+shape = SubResource("BoxShape3D_nxhgu")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.342041, -3.89798, 10.7426)
+size = Vector3(10, 1, 10)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/CSGBox3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/CSGBox3D2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00863647, 0, -0.0528259)
+shape = SubResource("BoxShape3D_nxhgu")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_4u8kn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.98382, 2)
+
+[node name="CharacterBody3D2" parent="." instance=ExtResource("2_4u8kn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3736, -1.63606, 13.0448)
+
+[node name="PlayerSpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6351, -3.15702)

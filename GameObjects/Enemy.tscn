@@ -1,49 +1,90 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2ul40d4fk526"]
+[gd_scene load_steps=14 format=3 uid="uid://c2ul40d4fk526"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_klhdc"]
-[ext_resource type="Script" path="res://Sources/Weapon.gd" id="2_e0arb"]
-[ext_resource type="Script" path="res://Sources/CharacterStats.gd" id="3_vhqvl"]
-[ext_resource type="Script" path="res://GameObjects/EnemyManager.gd" id="4_kyd1d"]
+[ext_resource type="SpriteFrames" uid="uid://cl8445hnkfcok" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_15_frames.tres" id="2_81ohi"]
+[ext_resource type="Script" path="res://Sources/Weapons/Weapon.gd" id="3_8u8hh"]
+[ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="3_fy1hx"]
+[ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="4_8k3t3"]
+[ext_resource type="Script" path="res://Sources/Behaviours/EnemyBehavior.gd" id="5_lv5l2"]
+[ext_resource type="Script" path="res://Sources/Behaviours/Sight.gd" id="6_gxjen"]
+[ext_resource type="PackedScene" uid="uid://bwftaqfadvwp0" path="res://GameObjects/Utilities/ProjectedNode.tscn" id="6_m22q1"]
+[ext_resource type="Script" path="res://Sources/Entities/EntityHitbox2D.gd" id="7_xdqwb"]
+[ext_resource type="Script" path="res://Sources/Utilities/FreeNode.gd" id="10_x7csr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx0fy"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_w6y64"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_dsfvp"]
+radius = 20.0
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_en381"]
+radius = 8.0
+
+[node name="Enemy" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_mask = 2
 script = ExtResource("1_klhdc")
+speed = 10.0
+stopAtDistance = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sx0fy")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.0315
+texture_filter = 0
+sprite_frames = ExtResource("2_81ohi")
+frame = 1
+frame_progress = 0.151397
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="Weapon" type="Node" parent="."]
-script = ExtResource("2_e0arb")
-attackDistance = 5.0
-weaponDamage = 10.0
+[node name="Character" type="Node3D" parent="." node_paths=PackedStringArray("characterStats")]
+script = ExtResource("3_fy1hx")
+characterStats = NodePath("EnemyStats")
+
+[node name="EnemyStats" type="Node3D" parent="Character"]
+script = ExtResource("4_8k3t3")
+health = 2
+max_health = 2
+mana = 2
+max_mana = 2
+
+[node name="Weapon" type="Node3D" parent="."]
+script = ExtResource("3_8u8hh")
+attackDistance = 2.0
+weaponDamage = 1
 cooldownTime = 2.0
 
 [node name="Cooldown" type="Timer" parent="Weapon"]
+one_shot = true
+autostart = true
 
-[node name="EnemyStats" type="Node3D" parent="."]
-script = ExtResource("3_vhqvl")
-health = 100.0
-
-[node name="EnemyManager" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "characterStats")]
-script = ExtResource("4_kyd1d")
+[node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "sight")]
+script = ExtResource("5_lv5l2")
 follower = NodePath("..")
 weapon = NodePath("../Weapon")
-characterStats = NodePath("../EnemyStats")
+sight = NodePath("Sight")
 
-[node name="DetectionArea" type="Area3D" parent="."]
+[node name="Sight" type="Area3D" parent="Behaviour"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_gxjen")
 
-[node name="DetectionAreaColl" type="CollisionShape3D" parent="DetectionArea"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-shape = SubResource("SphereShape3D_w6y64")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Behaviour/Sight"]
+shape = SubResource("SphereShape3D_dsfvp")
 
+[node name="ProjectedNode2D" parent="." instance=ExtResource("6_m22q1")]
+
+[node name="EntityHitbox" type="StaticBody2D" parent="ProjectedNode2D" node_paths=PackedStringArray("character")]
+script = ExtResource("7_xdqwb")
+character = NodePath("../../Character")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectedNode2D/EntityHitbox"]
+shape = SubResource("CircleShape2D_en381")
+
+[node name="FreeNode" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("10_x7csr")
+node = NodePath("..")
+
+[connection signal="on_death" from="Character" to="Behaviour" method="die"]
+[connection signal="on_death" from="Character" to="FreeNode" method="free_node"]
 [connection signal="timeout" from="Weapon/Cooldown" to="Weapon" method="_on_cooldown_timeout"]
-[connection signal="body_entered" from="DetectionArea" to="EnemyManager" method="_on_detection_area_body_entered"]

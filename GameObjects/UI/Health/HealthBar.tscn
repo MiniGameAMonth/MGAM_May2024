@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpectes0vvvut"]
+
+[ext_resource type="Script" path="res://GameObjects/UI/Health/HealthBar.gd" id="1_jhuho"]
+[ext_resource type="PackedScene" uid="uid://cpsnmnn8bvqbi" path="res://GameObjects/UI/Health/HealthHeart.tscn" id="2_iy40q"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_jhuho")
+icon = ExtResource("2_iy40q")
+
+[node name="Container" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_right = 132.0
+offset_bottom = 64.0
+
+[node name="HealthHeart" parent="Container" instance=ExtResource("2_iy40q")]
+layout_mode = 2
