@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l4xfjukffqyh"
-path="res://.godot/imported/cat.sidewalk.2.png-a3cfd769f9ead5318a68453b6942ff19.ctex"
+uid="uid://ciled70be2uxp"
+path="res://.godot/imported/cat.sidewalk.6.png-b37a8161ad6edaa1a425f9541735005f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Sprite Sheets/Cat/Side/cat.sidewalk.2.png"
-dest_files=["res://.godot/imported/cat.sidewalk.2.png-a3cfd769f9ead5318a68453b6942ff19.ctex"]
+source_file="res://Assets/Images/Sprite Sheets/Cat/Side/walk/cat.sidewalk.6.png"
+dest_files=["res://.godot/imported/cat.sidewalk.6.png-b37a8161ad6edaa1a425f9541735005f.ctex"]
 
 [params]
 

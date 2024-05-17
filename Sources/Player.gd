@@ -14,6 +14,7 @@ var local_delta = 0
 var interaction : Interactable
 @onready var weapon : Weapon = $Weapon
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+@onready var hud : PlayerHUD = $CanvasLayer/PlayerHud
 
 func _ready():
 	root_node = get_tree().root.get_child(0)
@@ -62,7 +63,8 @@ func _input(event):
 			rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta
 
 	if Input.is_action_just_pressed("Fire") and enable_input:		
-		weapon.shoot()
+		if weapon.can_shoot():
+			hud.play_wand_animation("shoot", Callable(weapon, "shoot"))
 
 	if interaction and event is InputEventMouseButton:
 		if Input.is_action_just_pressed("Use"):

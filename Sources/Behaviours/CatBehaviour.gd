@@ -7,6 +7,8 @@ var targetMushroom : Node3D;
 
 @export var cat : Follower;
 
+@export var graphics : AnimatedSprite3D
+
 var targetRef : WeakRef;
 
 # Called when the node enters the scene tree for the first time.
@@ -16,29 +18,33 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if state == State.IDLE:
-		var mushrooms = get_tree().get_nodes_in_group(GroupNames.Mushrooms)
+	match state:
+		State.IDLE:
+			var mushrooms = get_tree().get_nodes_in_group(GroupNames.Mushrooms)
 
-		if mushrooms.size() > 0:
-			var closestMushroom = find_closest(mushrooms)
-			set_target_mushroom(closestMushroom)
-			state = State.WALK_TO_MUSHROOM
-		else:
-			state = State.WALK_TO_EXIT
+			if mushrooms.size() > 0:
+				var closestMushroom = find_closest(mushrooms)
+				set_target_mushroom(closestMushroom)
+				state = State.WALK_TO_MUSHROOM
+			else:
+				state = State.WALK_TO_EXIT
 
-	elif state == State.WALK_TO_MUSHROOM:
-		if cat.is_at_target():
-			state = State.NEAR_MUSHROOM
-		if get_target_mushroom() == null:
-			state = State.IDLE
+		State.WALK_TO_MUSHROOM:
+			graphics.play("walk")
+			if cat.is_at_target():
+				state = State.NEAR_MUSHROOM
+			if get_target_mushroom() == null:
+				state = State.IDLE
 
-	elif state == State.NEAR_MUSHROOM:
-		# Make sounds
-		if get_target_mushroom() == null: # Mushroom was picked up
-			state = State.IDLE
-	elif state == State.NEAR_EXIT:
-		# Make sounds?
-		pass
+		State.NEAR_MUSHROOM:
+			# Make sounds
+			graphics.play("sniff")
+		
+			if get_target_mushroom() == null: # Mushroom was picked up
+				state = State.IDLE
+		State.NEAR_EXIT:
+			# Make sounds
+			pass
 
 func set_target_mushroom(mushroom):
 	targetMushroom = mushroom

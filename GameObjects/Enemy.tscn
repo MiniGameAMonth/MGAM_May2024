@@ -58,18 +58,18 @@ cooldownTime = 2.0
 one_shot = true
 autostart = true
 
-[node name="Enemy Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "sight")]
+[node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "sight")]
 script = ExtResource("5_lv5l2")
 follower = NodePath("..")
 weapon = NodePath("../Weapon")
 sight = NodePath("Sight")
 
-[node name="Sight" type="Area3D" parent="Enemy Behaviour"]
+[node name="Sight" type="Area3D" parent="Behaviour"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("6_gxjen")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy Behaviour/Sight"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Behaviour/Sight"]
 shape = SubResource("SphereShape3D_dsfvp")
 
 [node name="ProjectedNode2D" parent="." instance=ExtResource("6_m22q1")]
@@ -85,6 +85,6 @@ shape = SubResource("CircleShape2D_en381")
 script = ExtResource("10_x7csr")
 node = NodePath("..")
 
-[connection signal="on_death" from="Character" to="Enemy Behaviour" method="die"]
+[connection signal="on_death" from="Character" to="Behaviour" method="die"]
 [connection signal="on_death" from="Character" to="FreeNode" method="free_node"]
 [connection signal="timeout" from="Weapon/Cooldown" to="Weapon" method="_on_cooldown_timeout"]

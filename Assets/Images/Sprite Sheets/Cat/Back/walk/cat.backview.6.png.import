@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2on2ewgeb58e"
-path="res://.godot/imported/cat.backview.8.png-f9948881277deef59917c1d971b3cfa4.ctex"
+uid="uid://sflbp7mw2xar"
+path="res://.godot/imported/cat.backview.6.png-b698889b9b175ec5bccbc48ce61c8ce6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Sprite Sheets/Cat/Back/cat.backview.8.png"
-dest_files=["res://.godot/imported/cat.backview.8.png-f9948881277deef59917c1d971b3cfa4.ctex"]
+source_file="res://Assets/Images/Sprite Sheets/Cat/Back/walk/cat.backview.6.png"
+dest_files=["res://.godot/imported/cat.backview.6.png-b698889b9b175ec5bccbc48ce61c8ce6.ctex"]
 
 [params]
 

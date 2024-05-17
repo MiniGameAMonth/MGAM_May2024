@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb6v5j60lwwl2"
-path="res://.godot/imported/catwalk.front6.png-6c8f25ef899bea729d1f9ee76e47b4cc.ctex"
+uid="uid://d2on2ewgeb58e"
+path="res://.godot/imported/cat.backview.8.png-d6fca9a2e1b60014ec8d1a68c9948ed1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Sprite Sheets/Cat/Front/catwalk.front6.png"
-dest_files=["res://.godot/imported/catwalk.front6.png-6c8f25ef899bea729d1f9ee76e47b4cc.ctex"]
+source_file="res://Assets/Images/Sprite Sheets/Cat/Back/walk/cat.backview.8.png"
+dest_files=["res://.godot/imported/cat.backview.8.png-d6fca9a2e1b60014ec8d1a68c9948ed1.ctex"]
 
 [params]
 

@@ -1,3 +1,4 @@
+class_name PlayerHUD
 extends Control
 
 @onready var pettingAnimationPlayer : AnimationPlayer = $PettingAnimation/AnimationPlayer
@@ -5,12 +6,14 @@ extends Control
 @onready var mushroomBar : IconBar = $MushroomBar
 @onready var interactionText : Label = $InteractionLabel
 @onready var radar : Radar = $Radar
+@onready var handAnimationPlayer : AnimationPlayer = $Hand/AnimationPlayer
 
 @export var character : Character
 
 
 var interactable : Interactable
 var pickedMushrooms : int = 0
+var wandCallable : Callable
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if character:
@@ -56,4 +59,11 @@ func _on_interacted_with(_who, _interactable):
 	if _interactable is MushroomInteractable:
 		pickedMushrooms += 1
 		update_mushroom_bar()
+
+func play_wand_animation(animation : String, callback : Callable):
+	handAnimationPlayer.play(animation)
+	wandCallable = callback
+
+func on_wand_shoot():
+	wandCallable.call()
 

@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://b80qtulhkax1j"]
+[gd_scene load_steps=16 format=3 uid="uid://b80qtulhkax1j"]
 
 [ext_resource type="Script" path="res://Sources/HUD/PlayerHUD.gd" id="1_lsokv"]
 [ext_resource type="SpriteFrames" uid="uid://ckvoa8lmhd6at" path="res://Assets/Images/Sprite Sheets/Pet Cat HUD/Pet_Cat_HUD.tres" id="1_mi8lc"]
-[ext_resource type="SpriteFrames" uid="uid://d2soxi4a64l03" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand_wand.tres" id="3_24g4w"]
+[ext_resource type="Texture2D" uid="uid://21t42bd5nkfx" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand4.png" id="3_0xg25"]
 [ext_resource type="PackedScene" uid="uid://bpectes0vvvut" path="res://GameObjects/UI/Health/HealthBar.tscn" id="3_pkra2"]
+[ext_resource type="Texture2D" uid="uid://3oonkr6c2vxn" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand1.png" id="4_2f7ju"]
 [ext_resource type="PackedScene" uid="uid://blnlxitf5o0vh" path="res://GameObjects/UI/Health/MushroomBar.tscn" id="4_3ejbb"]
+[ext_resource type="Texture2D" uid="uid://c0fggqwwnoyis" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand2.png" id="5_wp14q"]
+[ext_resource type="Texture2D" uid="uid://3go1d4gf0ux4" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand3.png" id="6_2vptw"]
 [ext_resource type="PackedScene" uid="uid://q16ycfbnj2a5" path="res://GameObjects/UI/Radar.tscn" id="6_xdbgq"]
+[ext_resource type="Texture2D" uid="uid://b5q7knetexoo6" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand5.png" id="7_tk28n"]
 
 [sub_resource type="Animation" id="Animation_ftpu5"]
 resource_name = "cat_end_pet"
@@ -54,6 +58,18 @@ tracks/3/path = NodePath("InteractionLabel:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hand:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -115,11 +131,57 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hand:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6wnnr"]
 _data = {
 "cat_end_pet": SubResource("Animation_ftpu5"),
 "cat_start_pet": SubResource("Animation_025d8")
+}
+
+[sub_resource type="Animation" id="Animation_uw6e0"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_2f7ju"), ExtResource("5_wp14q"), ExtResource("6_2vptw"), ExtResource("3_0xg25"), ExtResource("7_tk28n"), ExtResource("6_2vptw"), ExtResource("4_2f7ju")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_wand_shoot"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhiho"]
+_data = {
+"shoot": SubResource("Animation_uw6e0")
 }
 
 [node name="PlayerHud" type="Control"]
@@ -144,13 +206,17 @@ libraries = {
 "": SubResource("AnimationLibrary_6wnnr")
 }
 
-[node name="Hand" type="AnimatedSprite2D" parent="."]
-position = Vector2(320, 180)
-sprite_frames = ExtResource("3_24g4w")
-animation = &"use_wand"
-frame = 4
-frame_progress = 1.0
-offset = Vector2(0, -12)
+[node name="Hand" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("3_0xg25")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand"]
+libraries = {
+"": SubResource("AnimationLibrary_yhiho")
+}
 
 [node name="InteractionLabel" type="Label" parent="."]
 layout_mode = 1

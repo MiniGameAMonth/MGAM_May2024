@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ge4e0afpgj7t"
-path="res://.godot/imported/cat.backview.2.png-d16b610927a0ba085bbacf934e35db76.ctex"
+uid="uid://dpagdhs6vi6ql"
+path="res://.godot/imported/cat-sniff-back.png-5c0b7a5ad0c5416542a7ae0cacafeef4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Sprite Sheets/Cat/Back/cat.backview.2.png"
-dest_files=["res://.godot/imported/cat.backview.2.png-d16b610927a0ba085bbacf934e35db76.ctex"]
+source_file="res://Assets/Images/Sprite Sheets/Cat/Back/sniff/cat-sniff-back.png"
+dest_files=["res://.godot/imported/cat-sniff-back.png-5c0b7a5ad0c5416542a7ae0cacafeef4.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

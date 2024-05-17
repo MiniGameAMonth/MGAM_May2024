@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddeq1n082nkov"
-path="res://.godot/imported/catwalk.front1.png-462a8996bca4977935053137aee6d3ce.ctex"
+uid="uid://ded4hsfkh83yp"
+path="res://.godot/imported/cat.sidewalk.3.png-7d00b007d796165143e7d62eb8cf4610.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Sprite Sheets/Cat/Front/catwalk.front1.png"
-dest_files=["res://.godot/imported/catwalk.front1.png-462a8996bca4977935053137aee6d3ce.ctex"]
+source_file="res://Assets/Images/Sprite Sheets/Cat/Side/walk/cat.sidewalk.3.png"
+dest_files=["res://.godot/imported/cat.sidewalk.3.png-7d00b007d796165143e7d62eb8cf4610.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

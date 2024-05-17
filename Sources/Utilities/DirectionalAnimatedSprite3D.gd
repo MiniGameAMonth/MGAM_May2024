@@ -30,7 +30,6 @@ func _process(_delta):
 	var sprite_direction = Vector2(parent_direction.x, parent_direction.z).normalized()
 
 	var angle = observer_direction_2d.angle_to(sprite_direction)
-	print(angle)
 	flip_h = false
 
 	if angle > -3*PI/4 and angle < -PI/4:
@@ -50,4 +49,4 @@ func _process(_delta):
 		basis = Basis().rotated(Vector3(0, 1, 0), -PI/2)
 		offset = side_sprite_offset
 
-	play("default")
+	play(animation)
