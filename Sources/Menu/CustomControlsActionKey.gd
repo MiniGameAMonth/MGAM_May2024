@@ -6,8 +6,10 @@ enum State { NORMAL, WAITING_KEY, WAITING_KEY_ALT }
 signal input_change_requested(is_alt, action_key)
 
 @export var action_name : String
-@export var action_key : String
-@export var action_key_alt : String
+@export var action_key : int = -1
+@export var action_key_alt : int = -1
+@export var action_key_type : ActionType
+@export var action_key_alt_type : ActionType
 @export var editable = true
 @export_flags("Keyboard", "Mouse", "Gamepad Button", "Gamepad Axis") var allowed_action_types 
 
@@ -64,11 +66,15 @@ func set_input(key, type, button):
 			
 
 func set_primary_input(key, type):
-	set_input(key, type, $Button)	
+	set_input(key, type, $Button)
+	action_key = key	
+	action_key_type = type
 
 
 func set_secondary_input(key, type):
 	set_input(key, type, $AlternateButton)
+	action_key_alt = key
+	action_key_alt_type = type
 
 
 func change_input(is_alt):

@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bxa5bbf45u0mh" path="res://Assets/Images/Menu/MenuBG/main.menu7.png" id="18_q8v44"]
 [ext_resource type="Texture2D" uid="uid://bsvo28st1ttie" path="res://Assets/Images/Menu/MenuBG/main.menu6.png" id="19_b3uw2"]
 [ext_resource type="Texture2D" uid="uid://cqnxufset1irk" path="res://Assets/Images/Menu/RootMenuButton.png" id="19_c0hgw"]
+[ext_resource type="Texture2D" uid="uid://2hkk26lslfol" path="res://Assets/Images/Menu/RootMenuButtonFocus.png" id="19_gjhfw"]
 [ext_resource type="Texture2D" uid="uid://cmnolfa5jrvvw" path="res://Assets/Images/Menu/MenuBG/main.menu5.png" id="20_qhchv"]
 [ext_resource type="Texture2D" uid="uid://cs6yx86g2mq8y" path="res://Assets/Images/Menu/MenuBG/main.menu4.png" id="21_gqxii"]
 [ext_resource type="Texture2D" uid="uid://vptt342va0ko" path="res://Assets/Images/Menu/MenuBG/main.menu3.png" id="22_7ehhc"]
@@ -153,6 +154,28 @@ texture_margin_top = 10.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5nk3w"]
+content_margin_left = 5.0
+content_margin_top = 11.0
+texture = ExtResource("19_gjhfw")
+texture_margin_left = 20.0
+texture_margin_top = 10.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1rwve"]
+load_path = "res://.godot/imported/RootMenuButtonFocus.png-bdc58db77c34071f899f760b55ef29a3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sxg2"]
+content_margin_left = 5.0
+content_margin_top = 11.0
+content_margin_bottom = 2.0
+texture = SubResource("CompressedTexture2D_1rwve")
+texture_margin_left = 20.0
+texture_margin_top = 10.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cthbl"]
 content_margin_left = 5.0
 content_margin_top = 10.0
@@ -181,7 +204,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu:position")
+tracks/0/path = NodePath("MainMenu/MainMenu:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -209,7 +232,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenu:position")
+tracks/1/path = NodePath("MainMenu/MainMenu:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -256,43 +279,55 @@ frame = 14
 frame_progress = 1.0
 offset = Vector2(240, 135)
 
-[node name="MainMenu" type="HBoxContainer" parent="."]
+[node name="MainMenu" parent="." instance=ExtResource("3_kfsru")]
+layout_mode = 1
+
+[node name="MainMenu" type="HBoxContainer" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -110.0
-offset_top = -80.0
-offset_right = 114.0
-offset_bottom = -57.0
+offset_left = 210.0
+offset_top = 280.0
+offset_right = 434.0
+offset_bottom = 303.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="MainMenu"]
+[node name="PlayButton" type="Button" parent="MainMenu/MainMenu"]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 text = "Play"
 
-[node name="OptionsButton" type="Button" parent="MainMenu" groups=["MenuNavButton"]]
+[node name="OptionsButton" type="Button" parent="MainMenu/MainMenu" groups=["MenuNavButton"]]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 text = "Options"
 
-[node name="CreditsButton" type="Button" parent="MainMenu" groups=["MenuNavButton"]]
+[node name="CreditsButton" type="Button" parent="MainMenu/MainMenu" groups=["MenuNavButton"]]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 text = "Credits"
 
-[node name="QuitButton" type="Button" parent="MainMenu"]
+[node name="QuitButton" type="Button" parent="MainMenu/MainMenu"]
 visible = false
 texture_filter = 1
 layout_mode = 2
@@ -428,10 +463,6 @@ horizontal_alignment = 2
 [node name="ControlsSelect" type="OptionButton" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-item_count = 1
-selected = 0
-popup/item_0/text = "WASD + Mouse"
-popup/item_0/id = 0
 
 [node name="CustomizeControlsButton" type="Button" parent="OptionsMenu/VBoxContainer" groups=["MenuNavButton"]]
 texture_filter = 1
@@ -545,7 +576,7 @@ layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Scheme Name:"
 
-[node name="TextEdit" type="LineEdit" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer3"]
+[node name="SchemeName" type="LineEdit" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_cx58u")

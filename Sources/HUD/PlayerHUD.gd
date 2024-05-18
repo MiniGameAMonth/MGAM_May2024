@@ -34,6 +34,7 @@ func _ready():
 func _process(_delta):
 	pass
 
+
 func start_pet():
 	pettingAnimationPlayer.play("cat_start_pet")
 	
