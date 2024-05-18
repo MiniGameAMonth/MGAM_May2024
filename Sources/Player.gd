@@ -20,7 +20,7 @@ var menu_node = null
 
 
 func _ready():
-	root_node = get_tree().root.get_child(0)
+	#root_node = get_tree().root.get_child(0)
 
 	add_to_group("Player")
 
