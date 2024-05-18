@@ -783,7 +783,7 @@ libraries = {
 
 [node name="TTS" type="Node" parent="."]
 script = ExtResource("24_akit4")
-voice_volume = 80
+voice_volume = 50
 
 [connection signal="pressed" from="MainMenu/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
