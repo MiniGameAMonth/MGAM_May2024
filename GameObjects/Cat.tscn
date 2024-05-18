@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://chekwycyhaxsj"]
+[gd_scene load_steps=11 format=3 uid="uid://chekwycyhaxsj"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_elfre"]
 [ext_resource type="Script" path="res://Sources/Utilities/DirectionalAnimatedSprite3D.gd" id="3_ngyww"]
@@ -7,17 +7,14 @@
 [ext_resource type="SpriteFrames" uid="uid://bwu5kpwjckvsf" path="res://Assets/Images/Sprite Sheets/Cat/Front/cat_frontview.tres" id="5_qp00h"]
 [ext_resource type="SpriteFrames" uid="uid://dwfyj37kv47tc" path="res://Assets/Images/Sprite Sheets/Cat/Side/cat_sideview.tres" id="5_rk0n0"]
 [ext_resource type="Script" path="res://Sources/Behaviours/CatBehaviour.gd" id="6_kqk0s"]
+[ext_resource type="Script" path="res://Sources/Utilities/LineOfSight3D.gd" id="8_50nea"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01iqy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_73gjj"]
 radius = 1.0
 
-[node name="Cat" type="CharacterBody3D"]
-script = ExtResource("1_elfre")
-speed = 1.0
-stopAtDistance = 1.0
-lookAtSpeed = 5.0
+[node name="Cat" type="CharacterBody3D" groups=["Cat"]]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
@@ -28,25 +25,33 @@ shape = SubResource("CapsuleShape3D_01iqy")
 
 [node name="Graphics" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28395, 0)
-offset = Vector2(5, -10)
+offset = Vector2(0, -10)
 pixel_size = 0.0315
 texture_filter = 0
 sprite_frames = ExtResource("4_0yt5h")
 animation = &"sniff"
 script = ExtResource("3_ngyww")
 back_sprite_frames = ExtResource("4_0yt5h")
-back_sprite_offset = Vector2(5, -10)
 front_sprite_frames = ExtResource("5_qp00h")
-front_sprite_offset = Vector2(0, -6)
 side_sprite_frames = ExtResource("5_rk0n0")
-side_sprite_offset = Vector2(0, -30)
 
-[node name="Cat Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("cat", "graphics")]
+[node name="Follower" type="Node" parent="." node_paths=PackedStringArray("agent", "characterBody")]
+script = ExtResource("1_elfre")
+speed = 2.0
+stopAtDistance = 2.0
+lookAtSpeed = 5.0
+agent = NodePath("../NavigationAgent3D")
+characterBody = NodePath("..")
+
+[node name="Cat Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("cat", "graphics", "interactionArea", "lineOfSight", "behaviour_owner")]
 script = ExtResource("6_kqk0s")
 cat = NodePath("..")
 graphics = NodePath("../Graphics")
+interactionArea = NodePath("../Interactable")
+lineOfSight = NodePath("../LineOfSight3D")
+behaviour_owner = NodePath("..")
 
-[node name="Cat Interaction" type="StaticBody3D" parent="." node_paths=PackedStringArray("graphics")]
+[node name="Interactable" type="StaticBody3D" parent="." node_paths=PackedStringArray("graphics")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("4_dyxf8")
@@ -54,6 +59,10 @@ graphics = NodePath("../Graphics")
 interactableName = "Star"
 interactionPrompt = "Pet"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cat Interaction"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540481, 0)
 shape = SubResource("SphereShape3D_73gjj")
+
+[node name="LineOfSight3D" type="RayCast3D" parent="."]
+debug_shape_custom_color = Color(1, 1, 0, 1)
+script = ExtResource("8_50nea")

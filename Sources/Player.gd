@@ -10,7 +10,7 @@ var local_delta = 0
 @export var enable_input = true
 
 
-@onready var interactions : InteractionArea = $InteractionArea
+@onready var interactions : InteractionArea3D = $InteractionArea
 var interaction : Interactable
 @onready var weapon : Weapon = $Weapon
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
@@ -59,7 +59,7 @@ func _physics_process(delta):
 	
 func _input(event):
 	if event is InputEventMouseMotion and enable_input:
-		if !Input.is_action_pressed("Mouse Only - Strafe Mode"):
+		if !Input.is_action_pressed("Strafe Mode"):
 			rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta
 
 	if Input.is_action_just_pressed("Fire") and enable_input:		
