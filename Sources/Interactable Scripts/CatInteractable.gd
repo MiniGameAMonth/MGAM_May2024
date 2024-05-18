@@ -9,6 +9,7 @@ var pet_timer : Timer
 
 var isPetting : bool = false
 var to_heal : Character
+var animationEnd : Callable
 
 func _ready():
 	pet_timer = Timer.new()
@@ -38,10 +39,14 @@ func interact(_who):
 func stop_interact(_who):
 	if isPetting:
 		var animationPlayer = _who.get_node("AnimationPlayer")
+		animationEnd = Callable(
+			func(_x):
+				graphics.visible = true
+				animationPlayer.disconnect("animation_finished", animationEnd)
+		)
 		animationPlayer.play("stop_pet_animation")
+		animationPlayer.connect("animation_finished", animationEnd)
 	isPetting = false
-
-	graphics.visible = true
 	
 	pet_timer.stop()
 	#start cat

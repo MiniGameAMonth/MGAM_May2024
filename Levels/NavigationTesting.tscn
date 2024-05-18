@@ -102,17 +102,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9917, 0.796875, 20.575)
 [node name="Enemy3" parent="." instance=ExtResource("5_2kdr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1837, -2.0895, 32.436)
 collision_mask = 3
-speed = 1.0
 
 [node name="Enemy2" parent="." instance=ExtResource("5_2kdr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4285, -3.09541, 32.969)
 collision_mask = 3
-speed = 1.0
 
 [node name="Enemy" parent="." instance=ExtResource("5_2kdr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2513, 1.86668, 7.50705)
 collision_mask = 3
-speed = 1.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.571215, 0.8208, 0, -0.8208, 0.571215, 0, 7.38067, 11.4443)

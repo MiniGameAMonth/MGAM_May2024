@@ -57,7 +57,7 @@ autostart = true
 
 [node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "sight", "behaviour_owner")]
 script = ExtResource("5_lv5l2")
-follower = NodePath("..")
+follower = NodePath("../Follower")
 weapon = NodePath("../Weapon")
 sight = NodePath("Sight")
 behaviour_owner = NodePath("..")
@@ -85,6 +85,8 @@ node = NodePath("..")
 
 [node name="Follower" type="Node" parent="." node_paths=PackedStringArray("agent", "characterBody")]
 script = ExtResource("1_klhdc")
+speed = 2.0
+stopAtDistance = 2.0
 agent = NodePath("../NavigationAgent3D")
 characterBody = NodePath("..")
 
