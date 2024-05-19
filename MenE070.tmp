@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://du7l74rq77kfn"]
+[gd_scene load_steps=41 format=3 uid="uid://du7l74rq77kfn"]
 
 [ext_resource type="Script" path="res://Sources/Menu.gd" id="1_wgstm"]
 [ext_resource type="Texture2D" uid="uid://62f1j0sxnhtx" path="res://Assets/Images/Menu/MenuBG/main.menu0.png" id="2_qoswh"]
@@ -27,7 +27,8 @@
 [ext_resource type="Script" path="res://Sources/TTS scripts/TTS.gd" id="24_akit4"]
 [ext_resource type="Texture2D" uid="uid://cw8rovedk0nwu" path="res://Assets/Images/Menu/MenuBG/main.menu1.png" id="24_fuvsc"]
 [ext_resource type="Script" path="res://Sources/TTS scripts/TTS_option_button_attachment.gd" id="25_j4b2e"]
-[ext_resource type="Script" path="res://Sources/TTS scripts/tts_slider_attachment.gd" id="28_v8brc"]
+[ext_resource type="Script" path="res://Sources/TTS scripts/TTS_slider_attachment.gd" id="26_0smmu"]
+[ext_resource type="Script" path="res://Sources/TTS scripts/tts_slider_attachment.gd" id="26_866u5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jf5c"]
 bg_color = Color(0.847059, 0.364706, 0.545098, 0.788235)
@@ -495,7 +496,7 @@ max_value = 90.0
 value = 45.0
 
 [node name="TTS_slider_attachment" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/HBoxContainer/AutoAimZoneSlider" node_paths=PackedStringArray("slider", "TTS_node")]
-script = ExtResource("28_v8brc")
+script = ExtResource("26_0smmu")
 slider = NodePath("..")
 option_name = "Auto-aim zone"
 TTS_node = NodePath("../../../../../../TTS")
@@ -563,7 +564,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("6_vjpoo")
 theme_override_font_sizes/normal_font_size = 8
-text = "Game made by:"
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Luctus accumsan tortor posuere ac ut consequat semper viverra nam. Cras semper auctor neque vitae tempus quam pellentesque. Nibh venenatis cras sed felis eget velit aliquet sagittis id. Sem viverra aliquet eget sit amet. Mattis vulputate enim nulla aliquet porttitor lacus. Nibh praesent tristique magna sit amet purus gravida quis. "
 
 [node name="Label" type="Label" parent="CreditsMenu"]
 layout_mode = 1
@@ -798,7 +799,7 @@ theme = ExtResource("3_cx58u")
 value = 100.0
 
 [node name="TTS_slider_attachment" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/MasterVolumeSlider" node_paths=PackedStringArray("slider", "TTS_node")]
-script = ExtResource("28_v8brc")
+script = ExtResource("26_866u5")
 slider = NodePath("..")
 option_name = "Master volume"
 TTS_node = NodePath("../../../../../TTS")
@@ -818,7 +819,7 @@ theme = ExtResource("3_cx58u")
 value = 100.0
 
 [node name="TTS_slider_attachment" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/MusicVolumeSlider" node_paths=PackedStringArray("slider", "TTS_node")]
-script = ExtResource("28_v8brc")
+script = ExtResource("26_866u5")
 slider = NodePath("..")
 option_name = "Music volume"
 TTS_node = NodePath("../../../../../TTS")
@@ -838,7 +839,7 @@ theme = ExtResource("3_cx58u")
 value = 100.0
 
 [node name="TTS_slider_attachment" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/SoundsVolumeSlider" node_paths=PackedStringArray("slider", "TTS_node")]
-script = ExtResource("28_v8brc")
+script = ExtResource("26_866u5")
 slider = NodePath("..")
 option_name = "Sound volume"
 TTS_node = NodePath("../../../../../TTS")
@@ -874,7 +875,7 @@ theme = ExtResource("3_cx58u")
 value = 100.0
 
 [node name="TTS_slider_attachment" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/NarrationVolumeSlider" node_paths=PackedStringArray("slider", "TTS_node")]
-script = ExtResource("28_v8brc")
+script = ExtResource("26_866u5")
 slider = NodePath("..")
 option_name = "Narration volume"
 TTS_node = NodePath("../../../../../TTS")

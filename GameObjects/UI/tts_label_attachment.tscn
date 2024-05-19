@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpyy57yyj0plk"]
+
+[ext_resource type="Script" path="res://Sources/TTS scripts/TTS_label_attachment.gd" id="1_p1ak6"]
+
+[node name="TTS_label_attachment" type="Node"]
+script = ExtResource("1_p1ak6")

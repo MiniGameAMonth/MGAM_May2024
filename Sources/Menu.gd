@@ -77,7 +77,7 @@ func _ready():
 	apply_input_scheme(input_configs[0])
 
 
-func _process(delta):
+func _process(_delta):
 	if is_waiting_new_input_for_action_changed:
 		is_waiting_new_input_for_action = false
 		is_waiting_new_input_for_action_alt = false
