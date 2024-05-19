@@ -1,0 +1,36 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dkg303nebv6ga"]
+
+[ext_resource type="Texture2D" uid="uid://k3mjb7636jva" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Idle/Back/RootEnemy_Backview_Idle_0.tres" id="1_hyyr4"]
+[ext_resource type="Texture2D" uid="uid://dfyeoa2ri1oqk" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Idle/Back/RootEnemy_Backview_Idle_1.tres" id="2_3lgch"]
+[ext_resource type="Texture2D" uid="uid://po221bq7rsps" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Idle/Back/RootEnemy_Backview_Idle_2.tres" id="3_ligh0"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hyyr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3lgch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ligh0")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hyyr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3lgch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ligh0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

@@ -1,8 +1,11 @@
 class_name EnemyIdleState
 extends BehaviourState
 
+var enemy_behaviour: EnemyBehaviour
+
 func enter():
-    # Set the animation to idle
+    enemy_behaviour = behaviour as EnemyBehaviour
+    enemy_behaviour.graphics.play("idle")
     pass
 
 func update(_delta):
