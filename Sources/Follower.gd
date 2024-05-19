@@ -19,7 +19,6 @@ func _ready():
 	if agent == null:
 		push_error("Follower of ", get_parent().name, " has no NavigationAgent3D.")
 	agent.target_desired_distance = stopAtDistance
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -36,7 +35,7 @@ func _physics_process(delta):
 	var nextPosition = agent.get_next_path_position()
 	if nextPosition != null:
 		move_to_position(nextPosition)
-		if lookAtTarget:
+		if lookAtTarget and agent.target_position != characterBody.global_position:
 			look_at_position(nextPosition, delta)
 
 func path_direction():

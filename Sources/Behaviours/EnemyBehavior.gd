@@ -3,8 +3,10 @@ extends Behaviour
 
 @export var follower : Follower
 @export var weapon : Weapon
+@export var animationPlayer : AnimationPlayer
+@export var graphics : AnimatedSprite3D
 @export var sight : Sight
-@export var max_distance : float = 20
+@export var max_distance : float = 50
 
 var attackTarget : Node3D = null
 
@@ -32,6 +34,9 @@ func attack_target(target:Node3D):
 		return
 	attackTarget = target
 	change_state(EnemyFollowState.new(self, target))
+
+func play_attack():
+	weapon.try_deal_damage(attackTarget)
 
 func die():
 	remove_from_group(GroupNames.Enemies)

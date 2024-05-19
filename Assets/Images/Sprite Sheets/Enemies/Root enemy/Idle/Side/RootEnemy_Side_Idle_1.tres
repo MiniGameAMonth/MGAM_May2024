@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://re7src023lsj"]
+
+[ext_resource type="Texture2D" uid="uid://b8bnw2xt408cj" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Idle/Side/sideview.mush.2.png" id="1_3f8h2"]
+
+[resource]
+atlas = ExtResource("1_3f8h2")
+region = Rect2(100, 50, 96, 96)

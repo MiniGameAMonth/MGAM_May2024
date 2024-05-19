@@ -11,6 +11,7 @@ func _init(_behaviour : Behaviour, _attackTarget : Node3D) -> void:
 
 func enter():
 	enemy_behaviour.follower.follow(attackTarget)
+	enemy_behaviour.graphics.play("idle")
 
 func update(_delta : float):
 	if enemy_behaviour.weapon.is_target_in_range(attackTarget):
