@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(1, 0.42),
 "update": 0,
-"values": [Vector2(320, 165), Vector2(320, 385)]
+"values": [Vector2(320, 168), Vector2(320, 385)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -88,7 +88,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 0.420448),
 "update": 0,
-"values": [Vector2(320, 385), Vector2(320, 165)]
+"values": [Vector2(320, 385), Vector2(320, 168)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -237,17 +237,17 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 21.0
-offset_top = -79.0
-offset_right = 85.0
-offset_bottom = -15.0
+offset_left = 10.0
+offset_top = -29.0
+offset_right = 74.0
+offset_bottom = 35.0
 grow_vertical = 0
 
 [node name="MushroomBar" parent="." instance=ExtResource("4_3ejbb")]
-offset_left = 48.0
-offset_top = 247.0
-offset_right = 48.0
-offset_bottom = 247.0
+offset_left = 9.0
+offset_top = 297.0
+offset_right = 9.0
+offset_bottom = 297.0
 
 [node name="Radar" parent="." instance=ExtResource("6_xdbgq")]
 offset_left = 517.0

@@ -10,7 +10,9 @@ var mouse_click_last_button = 0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var local_delta = 0
 @export var enable_input = true
-@onready var interactions : InteractionArea = $InteractionArea
+
+
+@onready var interactions : InteractionArea3D = $InteractionArea
 var interaction : Interactable
 @onready var weapon : Weapon = $Weapon
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
@@ -20,11 +22,11 @@ var menu_node = null
 
 
 func _ready():
+	menu_node = get_node("/root/MainRoot/UICanvas/Menu")
 	#root_node = get_tree().root.get_child(0)
 
 	add_to_group("Player")
 
-	menu_node = get_node("/root/MainRoot/UICanvas/Menu")
 	interactions.connect("on_interaction", on_interact)
 	interactions.connect("on_interaction_end", on_interact_end)
 

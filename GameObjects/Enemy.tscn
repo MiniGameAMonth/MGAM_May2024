@@ -21,9 +21,6 @@ radius = 8.0
 
 [node name="Enemy" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("1_klhdc")
-speed = 10.0
-stopAtDistance = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sx0fy")
@@ -58,11 +55,12 @@ cooldownTime = 2.0
 one_shot = true
 autostart = true
 
-[node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "sight")]
+[node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "sight", "behaviour_owner")]
 script = ExtResource("5_lv5l2")
-follower = NodePath("..")
+follower = NodePath("../Follower")
 weapon = NodePath("../Weapon")
 sight = NodePath("Sight")
+behaviour_owner = NodePath("..")
 
 [node name="Sight" type="Area3D" parent="Behaviour"]
 collision_layer = 0
@@ -84,6 +82,13 @@ shape = SubResource("CircleShape2D_en381")
 [node name="FreeNode" type="Node" parent="." node_paths=PackedStringArray("node")]
 script = ExtResource("10_x7csr")
 node = NodePath("..")
+
+[node name="Follower" type="Node" parent="." node_paths=PackedStringArray("agent", "characterBody")]
+script = ExtResource("1_klhdc")
+speed = 2.0
+stopAtDistance = 2.0
+agent = NodePath("../NavigationAgent3D")
+characterBody = NodePath("..")
 
 [connection signal="on_death" from="Character" to="Behaviour" method="die"]
 [connection signal="on_death" from="Character" to="FreeNode" method="free_node"]
