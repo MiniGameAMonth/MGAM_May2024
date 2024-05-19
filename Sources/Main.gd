@@ -17,6 +17,7 @@ var mouse_delta : Vector2
 ################################### Functions ###################################
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	generate_default_input_schemes()
 	menu_node = get_tree().root.get_node("MainRoot/UICanvas/Menu")
 	level_container = get_tree().root.get_node("MainRoot/Level")
@@ -29,8 +30,10 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_pause"):
 		if game_mode == GameMode.MENU && is_game_was_started:
+			get_tree().paused = false
 			game_mode = GameMode.IN_GAME
 		else:
+			get_tree().paused = true
 			game_mode = GameMode.MENU
 
 		update_menu()
