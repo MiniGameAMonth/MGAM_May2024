@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2lwy8npj1n1n"]
+
+[ext_resource type="Script" path="res://Sources/HUD/FillableIcon.gd" id="1_fi7bm"]
+[ext_resource type="Texture2D" uid="uid://cv61ytdoevoch" path="res://Assets/Images/HUD/Mushroom/Mushroom icon 1.png" id="4_4bxt3"]
+
+[node name="Mushroom" type="Control"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 24.0
+script = ExtResource("1_fi7bm")
+
+[node name="Silhouette" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 2
+
+[node name="Empty" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 2
+
+[node name="Full" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 8.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_4bxt3")
+stretch_mode = 2

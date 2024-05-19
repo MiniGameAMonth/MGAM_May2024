@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://blnlxitf5o0vh"]
+
+[ext_resource type="Script" path="res://GameObjects/UI/Health/IconBar.gd" id="1_o0xmp"]
+[ext_resource type="PackedScene" uid="uid://c2lwy8npj1n1n" path="res://GameObjects/UI/Health/Mushroom Icon.tscn" id="2_wf3b3"]
+
+[node name="MushroomBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_o0xmp")
+icon = ExtResource("2_wf3b3")
+
+[node name="Container" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Mushroom" parent="Container" instance=ExtResource("2_wf3b3")]
+layout_mode = 2
+
+[node name="Mushroom2" parent="Container" instance=ExtResource("2_wf3b3")]
+layout_mode = 2

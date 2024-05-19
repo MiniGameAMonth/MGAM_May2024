@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Main="*res://Sources/Main.gd"
 GC="*res://Sources/GameSettings.gd"
 GameSfx="*res://Sources/Utilities/GameSFX.gd"
+GlobalEvents="*res://Sources/Utilities/GlobalEvents.gd"
 
 [display]
 
@@ -27,6 +28,12 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=3
+
+[importer_defaults]
+
+texture={
+"detect_3d/compress_to": 0
+}
 
 [input]
 

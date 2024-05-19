@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnp7ntq6t2dlo"
-path="res://.godot/imported/Heart Frame 2.png-d119ccf06b248660b1fd28fd68253ff5.ctex"
+uid="uid://ddeq1n082nkov"
+path="res://.godot/imported/catwalk.front1.png-e2380f109e58b16793c07218687dcd9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Sprite Sheets/Hearts/Heart Frame 2.png"
-dest_files=["res://.godot/imported/Heart Frame 2.png-d119ccf06b248660b1fd28fd68253ff5.ctex"]
+source_file="res://Assets/Images/Sprite Sheets/Cat/Front/walk/catwalk.front1.png"
+dest_files=["res://.godot/imported/catwalk.front1.png-e2380f109e58b16793c07218687dcd9c.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

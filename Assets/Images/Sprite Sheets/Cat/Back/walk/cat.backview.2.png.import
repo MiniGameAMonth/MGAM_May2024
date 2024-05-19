@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3qdmpp13632r"
-path="res://.godot/imported/Heart Frame 1.png-e434e15bc77bd5f269ab90c326662b06.ctex"
+uid="uid://ge4e0afpgj7t"
+path="res://.godot/imported/cat.backview.2.png-2904ec3405b9fb8aaeab6620582e16ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Sprite Sheets/Hearts/Heart Frame 1.png"
-dest_files=["res://.godot/imported/Heart Frame 1.png-e434e15bc77bd5f269ab90c326662b06.ctex"]
+source_file="res://Assets/Images/Sprite Sheets/Cat/Back/walk/cat.backview.2.png"
+dest_files=["res://.godot/imported/cat.backview.2.png-2904ec3405b9fb8aaeab6620582e16ea.ctex"]
 
 [params]
 

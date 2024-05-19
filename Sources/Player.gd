@@ -10,16 +10,23 @@ var mouse_click_last_button = 0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var local_delta = 0
 @export var enable_input = true
-@onready var interactions : InteractionArea = $InteractionArea
+
+
+@onready var interactions : InteractionArea3D = $InteractionArea
 var interaction : Interactable
 @onready var weapon : Weapon = $Weapon
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+@onready var hud : PlayerHUD = $CanvasLayer/PlayerHud
 
 var menu_node = null
 
 
 func _ready():
 	menu_node = get_node("/root/MainRoot/UICanvas/Menu")
+	#root_node = get_tree().root.get_child(0)
+
+	add_to_group("Player")
+
 	interactions.connect("on_interaction", on_interact)
 	interactions.connect("on_interaction_end", on_interact_end)
 
@@ -64,12 +71,13 @@ func _input(event):
 			rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta
 
 	if Input.is_action_just_pressed("Fire") and enable_input:		
-		weapon.shoot()
+		if weapon.can_shoot():
+			hud.play_wand_animation("shoot", Callable(weapon, "shoot"))
 
-	if interaction:
-		if Input.is_action_just_pressed("WASD+Mouse - Use"):
+	if interaction and event is InputEventMouseButton:
+		if Input.is_action_just_pressed("Use"):
 			interaction.interact(self)
-		if Input.is_action_just_released("WASD+Mouse - Use"):
+		if Input.is_action_just_released("Use"):
 			interaction.stop_interact(self)
 
 	# Detect mouse double click

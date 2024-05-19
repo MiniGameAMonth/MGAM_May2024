@@ -27,3 +27,4 @@ sprite_frames = ExtResource("3_4fclg")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_8uaba")
+bus = &"Sounds"
