@@ -1,17 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://204i3o81yrff"]
+[gd_scene load_steps=2 format=3 uid="uid://204i3o81yrff"]
 
 [ext_resource type="PackedScene" uid="uid://du7l74rq77kfn" path="res://Menu.tscn" id="1_xfmy7"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2r3ab"]
-
-[sub_resource type="Sky" id="Sky_ceull"]
-sky_material = SubResource("ProceduralSkyMaterial_2r3ab")
-
-[sub_resource type="Environment" id="Environment_jpnql"]
-background_mode = 2
-sky = SubResource("Sky_ceull")
-
-[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_kl4rv"]
 
 [node name="MainRoot" type="Node3D"]
 
@@ -20,10 +9,6 @@ sky = SubResource("Sky_ceull")
 [node name="UICanvas" type="CanvasLayer" parent="."]
 
 [node name="Menu" parent="UICanvas" instance=ExtResource("1_xfmy7")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_jpnql")
-camera_attributes = SubResource("CameraAttributesPhysical_kl4rv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.553101, 0.833114, 0, -0.833114, 0.553101, 0, 3.96135, 0)

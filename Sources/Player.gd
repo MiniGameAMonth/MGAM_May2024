@@ -85,7 +85,6 @@ func _input(event):
 		if (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT) and event.pressed:
 			if Time.get_ticks_msec() - mouse_click_last_time < mouse_double_click_speed:
 				if menu_node.get_active_controls_scheme().config.get_value("INFO", "Double-click strafe for \"use\"", false):
-					print("use")
 					Input.action_press("Use")
 
 			mouse_click_last_time = Time.get_ticks_msec()

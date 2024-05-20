@@ -53,7 +53,7 @@ func start_game():
 	if !is_game_was_started:
 		is_game_was_started = true
 		menu_node.get_node("MainMenu/MainMenu/PlayButton").text = "Continue"
-		load_level("res://Levels/NavigationTesting.tscn")
+		load_level("res://Levels/Level1.tscn")
 
 	game_mode = GameMode.IN_GAME
 	update_menu()

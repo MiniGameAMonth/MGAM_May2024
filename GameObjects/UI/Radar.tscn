@@ -1,18 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://q16ycfbnj2a5"]
+[gd_scene load_steps=6 format=3 uid="uid://q16ycfbnj2a5"]
 
 [ext_resource type="Script" path="res://Sources/HUD/Radar.gd" id="1_pchjl"]
 [ext_resource type="PackedScene" uid="uid://ckdle3qb28k88" path="res://Assets/Images/HUD/Radar/EnemyIcon.tscn" id="2_xyu5h"]
 [ext_resource type="PackedScene" uid="uid://d1sc602sf1cod" path="res://Assets/Images/HUD/Radar/CatIcon.tscn" id="3_exa3n"]
 [ext_resource type="Texture2D" uid="uid://dji750mfn0t3d" path="res://Assets/Images/HUD/Mushroom/Silhouette.png" id="4_ca03q"]
 
-[sub_resource type="Gradient" id="Gradient_aklj5"]
-offsets = PackedFloat32Array(0, 0.652778, 0.686111)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_c3dg3"]
-gradient = SubResource("Gradient_aklj5")
-fill = 1
-fill_from = Vector2(0.495726, 0.511111)
+[sub_resource type="SphereMesh" id="SphereMesh_3hyx8"]
+radius = 62.0
+height = 125.0
+radial_segments = 37
 
 [node name="Radar" type="Control"]
 layout_mode = 3
@@ -21,13 +17,8 @@ script = ExtResource("1_pchjl")
 enemyIcon = ExtResource("2_xyu5h")
 catIcon = ExtResource("3_exa3n")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
-texture = SubResource("GradientTexture2D_c3dg3")
+[node name="Background" type="MeshInstance2D" parent="."]
+mesh = SubResource("SphereMesh_3hyx8")
 
 [node name="View Cone" type="TextureRect" parent="."]
 layout_mode = 0

@@ -211,7 +211,7 @@ layout_mode = 0
 offset_top = -24.0
 offset_right = 640.0
 offset_bottom = 360.0
-texture = ExtResource("3_0xg25")
+texture = ExtResource("4_2f7ju")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hand"]
 libraries = {
@@ -250,8 +250,8 @@ offset_right = 9.0
 offset_bottom = 297.0
 
 [node name="Radar" parent="." instance=ExtResource("6_xdbgq")]
-offset_left = 517.0
-offset_top = 234.0
-offset_right = 517.0
-offset_bottom = 234.0
+offset_left = 570.0
+offset_top = 289.0
+offset_right = 570.0
+offset_bottom = 289.0
 iconFloatDistance = 20

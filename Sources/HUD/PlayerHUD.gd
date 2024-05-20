@@ -14,6 +14,7 @@ extends Control
 var interactable : Interactable
 var pickedMushrooms : int = 0
 var wandCallable : Callable
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if character:
@@ -23,8 +24,7 @@ func _ready():
 		push_error("PlayerHUD requires a character to be set.")
 
 	#testing mushroom bar
-	mushroomBar.set_max_icons(5) #to determine based on level
-	mushroomBar.set_filled_icons(pickedMushrooms) 
+	set_mushrooms_amount(5)
 
 	radar.center = character
 
@@ -33,6 +33,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+
+
+func set_mushrooms_amount(amount):
+	mushroomBar.set_max_icons(amount)
+	mushroomBar.set_filled_icons(pickedMushrooms) 
 
 
 func start_pet():

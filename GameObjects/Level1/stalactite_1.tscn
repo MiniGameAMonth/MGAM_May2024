@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dii0w68l8tnsj"]
+
+[ext_resource type="Texture2D" uid="uid://y3ri03hgdeif" path="res://Assets/LevelsTextures/Stalactite1.png" id="1_sxp51"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7vi30"]
+height = 26.7289
+radius = 4.15939
+
+[node name="Stalactite1" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-9.17939e-07, 0, 21, 0, 21, 0, -21, 0, -9.17939e-07, 0, 0, 0)
+modulate = Color(0.595884, 0.595022, 0.728296, 1)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_sxp51")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_7vi30")
