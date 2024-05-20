@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cqadijutl163k"]
+
+[ext_resource type="Texture2D" uid="uid://bg8l4t2wekutp" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Idle/Front/RootEnemy_Front_Idle_0.tres" id="1_8gbkn"]
+[ext_resource type="Texture2D" uid="uid://da0hqpwa7c7xf" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Attack/Front/RootEnemy_Front_Attack_0.tres" id="1_bynln"]
+[ext_resource type="Texture2D" uid="uid://c8y4as4ktwc3t" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Attack/Front/RootEnemy_Front_Attack_1.tres" id="2_c4mn1"]
+[ext_resource type="Texture2D" uid="uid://djaomo1l77qjv" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Idle/Front/RootEnemy_Front_Idle_1.tres" id="2_fiafq"]
+[ext_resource type="Texture2D" uid="uid://c85tal0clpdgd" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Idle/Front/RootEnemy_Front_Idle_2.tres" id="3_eg54v"]
+[ext_resource type="Texture2D" uid="uid://drcsxoy4ebm3g" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Attack/Front/RootEnemy_Front_Attack_2.tres" id="3_hkylf"]
+[ext_resource type="Texture2D" uid="uid://bw4d253v0qstm" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Attack/Front/RootEnemy_Front_Attack_3.tres" id="4_lx6jd"]
+[ext_resource type="Texture2D" uid="uid://cr3a18xkh1rn4" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/Attack/Front/RootEnemy_Front_Attack_4.tres" id="5_ddqfk"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bynln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c4mn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hkylf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lx6jd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ddqfk")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8gbkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fiafq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eg54v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

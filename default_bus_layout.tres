@@ -1,7 +1,26 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://cohtqaava1wja"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://cohtqaava1wja"]
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_qh3id"]
 resource_name = "Limiter"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_60o84"]
+resource_name = "Reverb"
+room_size = 0.2
+spread = 0.5
+wet = 0.0
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_rv02e"]
+resource_name = "Reverb"
+room_size = 0.4
+spread = 0.5
+wet = 0.03
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_m2aba"]
+resource_name = "Reverb"
+room_size = 0.75
+spread = 0.5
+hipass = 0.1
+wet = 0.1
 
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectLimiter_qh3id")
@@ -24,3 +43,39 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = &"Master"
+bus/4/name = &"Small Space"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Sounds"
+bus/4/effect/0/effect = SubResource("AudioEffectReverb_60o84")
+bus/4/effect/0/enabled = true
+bus/5/name = &"Medium Space"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = &"Sounds"
+bus/5/effect/0/effect = SubResource("AudioEffectReverb_rv02e")
+bus/5/effect/0/enabled = true
+bus/6/name = &"Big Space"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"Sounds"
+bus/6/effect/0/effect = SubResource("AudioEffectReverb_m2aba")
+bus/6/effect/0/enabled = true
+bus/7/name = &"Muffled"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = 0.0
+bus/7/send = &"Sounds"
+bus/8/name = &"Speech"
+bus/8/solo = false
+bus/8/mute = false
+bus/8/bypass_fx = false
+bus/8/volume_db = 0.0
+bus/8/send = &"Master"

@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2ul40d4fk526"]
+[gd_scene load_steps=19 format=3 uid="uid://c2ul40d4fk526"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_klhdc"]
-[ext_resource type="SpriteFrames" uid="uid://cl8445hnkfcok" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_15_frames.tres" id="2_81ohi"]
+[ext_resource type="Script" path="res://Sources/Utilities/DirectionalAnimatedSprite3D.gd" id="2_xe2w5"]
 [ext_resource type="Script" path="res://Sources/Weapons/Weapon.gd" id="3_8u8hh"]
 [ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="3_fy1hx"]
+[ext_resource type="SpriteFrames" uid="uid://dkg303nebv6ga" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/RootEnemy_Back.tres" id="3_v65vu"]
 [ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="4_8k3t3"]
+[ext_resource type="SpriteFrames" uid="uid://cqadijutl163k" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/RootEnemy_Front.tres" id="4_x73ht"]
+[ext_resource type="SpriteFrames" uid="uid://rmrfr4n144lt" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/RootEnemy_Side.tres" id="5_bgo4g"]
 [ext_resource type="Script" path="res://Sources/Behaviours/EnemyBehavior.gd" id="5_lv5l2"]
 [ext_resource type="Script" path="res://Sources/Behaviours/Sight.gd" id="6_gxjen"]
 [ext_resource type="PackedScene" uid="uid://bwftaqfadvwp0" path="res://GameObjects/Utilities/ProjectedNode.tscn" id="6_m22q1"]
@@ -12,6 +15,42 @@
 [ext_resource type="Script" path="res://Sources/Utilities/FreeNode.gd" id="10_x7csr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx0fy"]
+
+[sub_resource type="Animation" id="Animation_5bm7i"]
+resource_name = "attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Behaviour")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_attack"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x308v"]
+_data = {
+"attack": SubResource("Animation_5bm7i")
+}
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dsfvp"]
 radius = 20.0
@@ -26,11 +65,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_sx0fy")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+offset = Vector2(0, 13)
 pixel_size = 0.0315
 texture_filter = 0
-sprite_frames = ExtResource("2_81ohi")
-frame = 1
-frame_progress = 0.151397
+sprite_frames = ExtResource("4_x73ht")
+animation = &"idle"
+script = ExtResource("2_xe2w5")
+back_sprite_frames = ExtResource("3_v65vu")
+front_sprite_frames = ExtResource("4_x73ht")
+side_sprite_frames = ExtResource("5_bgo4g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite3D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_x308v")
+}
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -47,7 +96,7 @@ max_mana = 2
 
 [node name="Weapon" type="Node3D" parent="."]
 script = ExtResource("3_8u8hh")
-attackDistance = 2.0
+attackDistance = 3.0
 weaponDamage = 1
 cooldownTime = 2.0
 
@@ -55,10 +104,12 @@ cooldownTime = 2.0
 one_shot = true
 autostart = true
 
-[node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "sight", "behaviour_owner")]
+[node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "animationPlayer", "graphics", "sight", "behaviour_owner")]
 script = ExtResource("5_lv5l2")
 follower = NodePath("../Follower")
 weapon = NodePath("../Weapon")
+animationPlayer = NodePath("../AnimatedSprite3D/AnimationPlayer")
+graphics = NodePath("../AnimatedSprite3D")
 sight = NodePath("Sight")
 behaviour_owner = NodePath("..")
 
@@ -86,7 +137,8 @@ node = NodePath("..")
 [node name="Follower" type="Node" parent="." node_paths=PackedStringArray("agent", "characterBody")]
 script = ExtResource("1_klhdc")
 speed = 2.0
-stopAtDistance = 2.0
+stopAtDistance = 3.0
+lookAtSpeed = 5.0
 agent = NodePath("../NavigationAgent3D")
 characterBody = NodePath("..")
 
