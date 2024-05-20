@@ -532,7 +532,7 @@ text = "Controls
 [node name="TTS_Button_Attachment" type="Node" parent="OptionsMenu/VBoxContainer/CustomizeControlsButton" node_paths=PackedStringArray("button", "TTS_node")]
 script = ExtResource("21_gjncb")
 button = NodePath("..")
-alternate_text = "not recommended, Text to speech is not implemented in this tab"
+alternate_text = "don't use this button with you are relying on Text to Speech"
 TTS_node = NodePath("../../../../TTS")
 
 [node name="SoundOptionsButton" type="Button" parent="OptionsMenu/VBoxContainer" groups=["MenuNavButton"]]

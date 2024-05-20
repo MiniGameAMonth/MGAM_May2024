@@ -15,5 +15,3 @@ func _ready():
 	if TTS_node == null:
 		printerr("TTS node not set")
 		return
-
-		
