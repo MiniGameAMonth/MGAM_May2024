@@ -18,6 +18,8 @@ func _ready():
 		printerr("TTS node not set")
 		return
 
+	option_name = option_name + "..."
+
 	option_button.mouse_entered.connect(_on_mouse_entered)	
 	option_button.item_focused.connect(_on_item_focused)
 	option_button.item_selected.connect(_on_item_changed)
@@ -32,11 +34,6 @@ func _on_keyboard_input(event: InputEvent):
 		if option_button.has_focus():
 
 			match event.as_text():
-				"Enter":
-					#TTS_text = option_button.get_item_text(option_button.selected)
-					#TTS_node.say_phrase("You selected " + option_name + TTS_text)
-					pass
-
 				"Left":
 					TTS_text = option_button.get_item_text(option_button.selected)
 					TTS_node.say_phrase(option_name + TTS_text)
@@ -51,9 +48,7 @@ func _on_keyboard_input(event: InputEvent):
 				
 				"Down":						
 					TTS_text = option_button.get_item_text(option_button.selected)
-					TTS_node.say_phrase(option_name + TTS_text)
-				
-	return
+					TTS_node.say_phrase(option_name + TTS_text)	
 
 func _on_item_focused(index: int):
 	TTS_text = option_button.get_item_text(index)
@@ -61,4 +56,4 @@ func _on_item_focused(index: int):
 
 func _on_item_changed(index: int):
 	TTS_text = option_button.get_item_text(index)
-	TTS_node.say_phrase("You selected " + option_name + TTS_text)
+	TTS_node.say_phrase("You selected " + TTS_text)

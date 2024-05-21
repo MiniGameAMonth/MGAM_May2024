@@ -267,6 +267,7 @@ position = Vector2(320, 180)
 texture = ExtResource("2_qoswh")
 
 [node name="MenuBgRect" type="Panel" parent="MenuBg"]
+visible = false
 offset_left = -288.0
 offset_top = -149.0
 offset_right = 294.0
@@ -274,11 +275,10 @@ offset_bottom = 161.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6jf5c")
 
 [node name="MenuBgAnimated" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(80, 45)
 sprite_frames = SubResource("SpriteFrames_4p2e2")
-animation = &"LogoReveal"
-frame = 14
-frame_progress = 1.0
+animation = &"LogoHide"
 offset = Vector2(240, 135)
 
 [node name="MainMenu" parent="." instance=ExtResource("3_kfsru")]
@@ -532,7 +532,6 @@ text = "Controls
 [node name="TTS_Button_Attachment" type="Node" parent="OptionsMenu/VBoxContainer/CustomizeControlsButton" node_paths=PackedStringArray("button", "TTS_node")]
 script = ExtResource("21_gjncb")
 button = NodePath("..")
-alternate_text = "don't use this button with you are relying on Text to Speech"
 TTS_node = NodePath("../../../../TTS")
 
 [node name="SoundOptionsButton" type="Button" parent="OptionsMenu/VBoxContainer" groups=["MenuNavButton"]]
@@ -620,10 +619,21 @@ text = "Control scheme: "
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 
+[node name="TTS_option_button_attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer/SchemeSelect" node_paths=PackedStringArray("option_button", "TTS_node")]
+script = ExtResource("25_j4b2e")
+option_button = NodePath("..")
+option_name = "Control scheme selector"
+TTS_node = NodePath("../../../../../TTS")
+
 [node name="copy_and_modify_button" type="Button" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Copy & Modify"
+
+[node name="TTS_Button_Attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer/copy_and_modify_button" node_paths=PackedStringArray("button", "TTS_node")]
+script = ExtResource("21_gjncb")
+button = NodePath("..")
+TTS_node = NodePath("../../../../../TTS")
 
 [node name="ColorRect3" type="ColorRect" parent="CustomizeControlsMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 1)
@@ -672,6 +682,12 @@ layout_mode = 2
 theme = ExtResource("3_cx58u")
 disabled = true
 
+[node name="TTS_Button_Attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer5/MoveWithMouseCheckbox" node_paths=PackedStringArray("button", "TTS_node")]
+script = ExtResource("21_gjncb")
+button = NodePath("..")
+alternate_text = "Move with mouse"
+TTS_node = NodePath("../../../../../../TTS")
+
 [node name="HBoxContainer6" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -688,6 +704,12 @@ layout_mode = 2
 theme = ExtResource("3_cx58u")
 disabled = true
 
+[node name="TTS_Button_Attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer6/UseAndFireCheckbox" node_paths=PackedStringArray("button", "TTS_node")]
+script = ExtResource("21_gjncb")
+button = NodePath("..")
+alternate_text = "Use the same button for \"Use\"and \"Fire\""
+TTS_node = NodePath("../../../../../../TTS")
+
 [node name="HBoxContainer7" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -703,6 +725,12 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 disabled = true
+
+[node name="TTS_Button_Attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer7/DoubleClickForUse" node_paths=PackedStringArray("button", "TTS_node")]
+script = ExtResource("21_gjncb")
+button = NodePath("..")
+alternate_text = "Double-click strafe for \"use\""
+TTS_node = NodePath("../../../../../../TTS")
 
 [node name="ColorRect4" type="ColorRect" parent="CustomizeControlsMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 1)
@@ -743,6 +771,11 @@ alignment = 2
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Save And Use"
+
+[node name="TTS_Button_Attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer2/save_and_use_button" node_paths=PackedStringArray("button", "TTS_node")]
+script = ExtResource("21_gjncb")
+button = NodePath("..")
+TTS_node = NodePath("../../../../../TTS")
 
 [node name="WaitingInputPopup" type="ColorRect" parent="CustomizeControlsMenu"]
 visible = false

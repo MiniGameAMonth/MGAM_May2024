@@ -1,6 +1,6 @@
 extends Node
 class_name TTS_Button_Attachment
-##UI attachment. Use to add TTS to checkboxes and normal buttons
+##UI attachment. Use to add TTS to checkboxes and normal buttons. For the buttons of the keybind customization menu use TTS_customize_control_button instead
 
 ##Button that needs to be read out by the TTS
 @export var button: Button
@@ -80,9 +80,9 @@ func _on_keyboard_input(event: InputEvent):
 
 func say_phrase_for_toggles():
 	if toggle_state:
-		TTS_node.say_phrase(TTS_text + alternate_text + " on")
+		TTS_node.say_phrase(TTS_text + alternate_text + "...on")
 	else:
-		TTS_node.say_phrase(TTS_text + alternate_text + " off")
+		TTS_node.say_phrase(TTS_text + alternate_text + "...off")
 
 func _on_button_up():
 	if !is_Toggle:

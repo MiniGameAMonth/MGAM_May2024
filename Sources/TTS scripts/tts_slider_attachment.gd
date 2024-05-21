@@ -22,6 +22,8 @@ func _ready():
 		printerr("TTS node not set")
 		return
 
+	option_name = option_name + "..."
+
 	slider.mouse_entered.connect(_on_mouse_entered)
 	slider.gui_input.connect(_on_keyboard_input)
 	slider.value_changed.connect(_on_value_change)

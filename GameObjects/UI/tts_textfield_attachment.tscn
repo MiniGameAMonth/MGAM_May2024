@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7cplrc6s514m"]
+
+[ext_resource type="Script" path="res://Sources/TTS scripts/TTS_textfield_attachment.gd" id="1_wxgvh"]
+
+[node name="TTS_textfield_attachment" type="Node"]
+script = ExtResource("1_wxgvh")
