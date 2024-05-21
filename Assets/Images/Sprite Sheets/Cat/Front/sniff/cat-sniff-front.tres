@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ck0rxa34h6k2j"]
+
+[ext_resource type="Texture2D" uid="uid://dcp4ty6hofu24" path="res://Assets/Images/Sprite Sheets/Cat/cat smelling.png" id="1_iwpph"]
+
+[resource]
+atlas = ExtResource("1_iwpph")
+region = Rect2(128, 35, 128, 128)
