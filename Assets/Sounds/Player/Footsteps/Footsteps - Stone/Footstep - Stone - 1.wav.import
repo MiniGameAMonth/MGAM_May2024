@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d005hjhhva6cr"
+path="res://.godot/imported/Footstep - Stone - 1.wav-555d5c40979f09f0658cc8abadb77371.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Player/Footsteps/Footsteps - Stone/Footstep - Stone - 1.wav"
+dest_files=["res://.godot/imported/Footstep - Stone - 1.wav-555d5c40979f09f0658cc8abadb77371.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

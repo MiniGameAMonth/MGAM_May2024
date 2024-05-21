@@ -4,6 +4,7 @@ extends Node3D
 @export var characterStats : CharacterStats
 
 signal health_changed(health : int)
+signal damaged(damage : int)
 signal mana_changed(mana : int)
 signal on_death()
 
@@ -12,6 +13,7 @@ func _ready():
         print("CharacterStats not set in Inspector")
 
 func take_damage(damage : int):
+    damaged.emit(damage)
     characterStats.health -= damage
     emit_signal("health_changed", characterStats.health)
 

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://uyerfplvymgp"
+path="res://.godot/imported/cat-in-pain.wav-6822a91f98f7b709c7ad8a04ebaf515c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Cat/Scared cat/cat-in-pain.wav"
+dest_files=["res://.godot/imported/cat-in-pain.wav-6822a91f98f7b709c7ad8a04ebaf515c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

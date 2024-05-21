@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2ul40d4fk526"]
+[gd_scene load_steps=20 format=3 uid="uid://c2ul40d4fk526"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_klhdc"]
 [ext_resource type="Script" path="res://Sources/Utilities/DirectionalAnimatedSprite3D.gd" id="2_xe2w5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Sources/Behaviours/EnemyBehavior.gd" id="5_lv5l2"]
 [ext_resource type="Script" path="res://Sources/Behaviours/Sight.gd" id="6_gxjen"]
 [ext_resource type="PackedScene" uid="uid://bwftaqfadvwp0" path="res://GameObjects/Utilities/ProjectedNode.tscn" id="6_m22q1"]
+[ext_resource type="AudioStream" uid="uid://de4uuqooypfw0" path="res://Assets/Sounds/Enemies/enemy_hurt.tres" id="7_ryv15"]
 [ext_resource type="Script" path="res://Sources/Entities/EntityHitbox2D.gd" id="7_xdqwb"]
 [ext_resource type="Script" path="res://Sources/Utilities/FreeNode.gd" id="10_x7csr"]
 
@@ -94,6 +95,10 @@ max_health = 2
 mana = 2
 max_mana = 2
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Character"]
+stream = ExtResource("7_ryv15")
+bus = &"Sounds"
+
 [node name="Weapon" type="Node3D" parent="."]
 script = ExtResource("3_8u8hh")
 attackDistance = 3.0
@@ -103,6 +108,8 @@ cooldownTime = 2.0
 [node name="Cooldown" type="Timer" parent="Weapon"]
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Weapon"]
 
 [node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "animationPlayer", "graphics", "sight", "behaviour_owner")]
 script = ExtResource("5_lv5l2")
@@ -142,6 +149,7 @@ lookAtSpeed = 5.0
 agent = NodePath("../NavigationAgent3D")
 characterBody = NodePath("..")
 
+[connection signal="damaged" from="Character" to="Character/AudioStreamPlayer3D" method="play" binds= [0.0]]
 [connection signal="on_death" from="Character" to="Behaviour" method="die"]
 [connection signal="on_death" from="Character" to="FreeNode" method="free_node"]
 [connection signal="timeout" from="Weapon/Cooldown" to="Weapon" method="_on_cooldown_timeout"]

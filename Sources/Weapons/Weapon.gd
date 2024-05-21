@@ -1,11 +1,15 @@
 class_name Weapon
 extends Node3D
 
+
 @export var attackDistance : float = 0 
 @export var weaponDamage : int = 0
 @export var cooldownTime : float = 0 
 
+@export var playSoundOnDamage : bool = true
+
 @onready var cooldown : Timer = $Cooldown
+@onready var weaponSound : AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 var bullet;
 
@@ -29,18 +33,24 @@ func try_deal_damage(_target : Node3D):
 func can_shoot():
 	return cooldown.time_left <= 0
 
+func play_weapon_sound():
+	weaponSound.play()
+
 func deal_damage(target : Character):
 	target.take_damage(weaponDamage)
+	if playSoundOnDamage:
+		play_weapon_sound()
 
 func shoot():
 	if can_shoot():
 		var bulletInstance : Projectile = bullet.instantiate()
 		get_tree().root.add_child(bulletInstance)
-
 		bulletInstance.global_position = global_position
 		bulletInstance.set_direction(global_transform.basis.z)
 		bulletInstance.damage = weaponDamage
 
+		if playSoundOnDamage:
+			play_weapon_sound()
 		cooldown.start(cooldownTime)
 	
 func _on_cooldown_timeout():

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d083flut3jywt"
+path="res://.godot/imported/Growl - 6 - (7).wav-9f756aa96edf875d64620458718e0efe.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Enemies/Growl/Growl - 6 - (7).wav"
+dest_files=["res://.godot/imported/Growl - 6 - (7).wav-9f756aa96edf875d64620458718e0efe.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
