@@ -1,18 +1,51 @@
-[gd_scene load_steps=7 format=3 uid="uid://q16ycfbnj2a5"]
+[gd_scene load_steps=12 format=3 uid="uid://q16ycfbnj2a5"]
 
 [ext_resource type="Script" path="res://Sources/HUD/Radar.gd" id="1_pchjl"]
 [ext_resource type="PackedScene" uid="uid://ckdle3qb28k88" path="res://Assets/Images/HUD/Radar/EnemyIcon.tscn" id="2_xyu5h"]
 [ext_resource type="PackedScene" uid="uid://d1sc602sf1cod" path="res://Assets/Images/HUD/Radar/CatIcon.tscn" id="3_exa3n"]
-[ext_resource type="Texture2D" uid="uid://dji750mfn0t3d" path="res://Assets/Images/HUD/Mushroom/Silhouette.png" id="4_ca03q"]
+[ext_resource type="Texture2D" uid="uid://f7scnsxnkau" path="res://Assets/Images/HUD/Radar/radar_background.tres" id="4_revdw"]
+[ext_resource type="Texture2D" uid="uid://e1w0bw802wk2" path="res://Assets/Images/HUD/Radar/radar_inner_background.tres" id="5_uu4xe"]
+[ext_resource type="Texture2D" uid="uid://bgocv7bhuhq7b" path="res://Assets/Images/HUD/Radar/radar_lines.tres" id="6_tt2pa"]
+[ext_resource type="Texture2D" uid="uid://bp7ufufqs55fb" path="res://Assets/Images/HUD/Radar/radar_wizard_icon_outline.tres" id="7_a76fg"]
+[ext_resource type="Texture2D" uid="uid://bm7pevts28ix8" path="res://Assets/Images/HUD/Radar/radar_wizard_icon.tres" id="8_k408s"]
 
-[sub_resource type="Gradient" id="Gradient_aklj5"]
-offsets = PackedFloat32Array(0, 0.652778, 0.686111)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="Animation" id="Animation_fdio3"]
+resource_name = "damage_blink"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.26, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_c3dg3"]
-gradient = SubResource("Gradient_aklj5")
-fill = 1
-fill_from = Vector2(0.495726, 0.511111)
+[sub_resource type="Animation" id="Animation_4o2hf"]
+resource_name = "idle"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3iep"]
+_data = {
+"damage_blink": SubResource("Animation_fdio3"),
+"idle": SubResource("Animation_4o2hf")
+}
 
 [node name="Radar" type="Control"]
 layout_mode = 3
@@ -20,28 +53,59 @@ anchors_preset = 0
 script = ExtResource("1_pchjl")
 enemyIcon = ExtResource("2_xyu5h")
 catIcon = ExtResource("3_exa3n")
+radiusInPixels = 65.0
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
-texture = SubResource("GradientTexture2D_c3dg3")
+offset_left = -70.0
+offset_top = -91.0
+offset_right = 71.0
+offset_bottom = 71.0
+texture = ExtResource("4_revdw")
+stretch_mode = 2
 
-[node name="View Cone" type="TextureRect" parent="."]
+[node name="Inner Background" type="TextureRect" parent="."]
+self_modulate = Color(0.301961, 0.305882, 0.313726, 1)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -61.0
+offset_top = -61.0
+offset_right = 80.0
+offset_bottom = 101.0
+texture = ExtResource("5_uu4xe")
+stretch_mode = 2
+
+[node name="Lines" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -61.0
+offset_top = -61.0
+offset_right = 62.0
+offset_bottom = 62.0
+texture = ExtResource("6_tt2pa")
+stretch_mode = 2
 
 [node name="Icons" type="Control" parent="."]
 anchors_preset = 0
 
-[node name="TextureRect" type="TextureRect" parent="Icons"]
+[node name="WizardIconOutline" type="TextureRect" parent="Icons"]
+self_modulate = Color(1, 0, 0, 0)
 layout_mode = 0
-offset_left = -9.0
-offset_top = -10.0
-offset_right = 31.0
-offset_bottom = 30.0
-scale = Vector2(0.502239, 0.517981)
-texture = ExtResource("4_ca03q")
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 9.0
+offset_bottom = 7.0
+texture = ExtResource("7_a76fg")
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Icons/WizardIconOutline"]
+libraries = {
+"": SubResource("AnimationLibrary_y3iep")
+}
+
+[node name="WizardIcon" type="TextureRect" parent="Icons"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 8.0
+offset_bottom = 6.0
+texture = ExtResource("8_k408s")
+stretch_mode = 2

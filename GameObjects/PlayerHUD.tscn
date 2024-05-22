@@ -290,8 +290,8 @@ offset_right = 9.0
 offset_bottom = 297.0
 
 [node name="Radar" parent="." instance=ExtResource("6_xdbgq")]
-offset_left = 517.0
-offset_top = 234.0
-offset_right = 517.0
-offset_bottom = 234.0
-iconFloatDistance = 20
+offset_left = 554.0
+offset_top = 277.0
+offset_right = 554.0
+offset_bottom = 277.0
+iconFloatDistance = 15

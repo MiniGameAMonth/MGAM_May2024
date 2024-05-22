@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bgocv7bhuhq7b"]
+
+[ext_resource type="Texture2D" uid="uid://yjro2728amme" path="res://Assets/Images/HUD/Radar/radar.png" id="1_i0idj"]
+
+[resource]
+atlas = ExtResource("1_i0idj")
+region = Rect2(171, 30, 123, 123)

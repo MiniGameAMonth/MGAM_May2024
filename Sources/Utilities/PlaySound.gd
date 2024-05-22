@@ -9,6 +9,7 @@ extends Node3D
 
 var tempPlayer: AudioStreamPlayer3D
 
+
 func play():
 	if player:
 		if separateFromNode:
@@ -20,7 +21,8 @@ func play():
 		if sound:
 			tempPlayer = GameSfx.play_sound_at(sound, global_position)
 
-	tempPlayer.autoplay = loop
+	if loop:
+		tempPlayer.finished.connect(loop_sound)
 
 func loop_sound():
 	tempPlayer.play()
@@ -29,3 +31,4 @@ func stop():
 	if tempPlayer:
 		tempPlayer.stop()
 		tempPlayer.autoplay = false
+		tempPlayer.finished.disconnect(loop_sound)
