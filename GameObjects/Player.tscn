@@ -176,7 +176,14 @@ libraries = {
 "": SubResource("AnimationLibrary_o724y")
 }
 
-[connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction"]
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18048, 0)
+light_color = Color(1, 0.809429, 0.777691, 1)
+light_energy = 5.425
+shadow_enabled = true
+omni_range = 10.743
+
 [connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="set_interactable"]
+[connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction"]
 [connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction_end"]
 [connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="clear_interactable"]

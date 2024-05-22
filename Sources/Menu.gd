@@ -62,7 +62,7 @@ func _ready():
 	custom_controls_grid = $CustomizeControlsMenu/VBoxContainer/ScrollContainer/InputsGrid
 
 	init_navbuttons_to_open_submenus()
-	
+
 	$AnimationPlayer.play("ShowAnimatedBackground")
 	$MenuBgAnimated.play("LogoReveal")
 
@@ -95,7 +95,7 @@ func _input(event):
 			waiting_new_input_for_action = null
 			$CustomizeControlsMenu/WaitingInputPopup.hide()
 		else:
-			_on_go_back_button_pressed()		
+			_on_go_back_button_pressed()
 
 	# Process new input for action
 	if is_waiting_new_input_for_action:
@@ -115,7 +115,7 @@ func _input(event):
 				else:
 					waiting_new_input_for_action.set_primary_input(event.button_index, 1)
 
-	
+
 
 
 func init_input_configs_select():
@@ -153,7 +153,7 @@ func open_menu(menu_name : String):
 		$MenuBgAnimated.play("LogoHide")
 		$MenuBg/MenuBgRect.visible = true
 
-	
+
 func read_controls_scheme(path):
 	var config = ConfigFile.new()
 	config.load(path)
@@ -163,13 +163,13 @@ func init_inputs_grid_with_scheme(input_config : InputConfig):
 	var is_locked = input_config.config.get_value("INFO", "Locked", false)
 	var is_use_and_fire_same_button = input_config.config.get_value("INFO", "Same button for \"Use\" & \"Fire\"", false)
 	var is_doubleclick_for_use = input_config.config.get_value("INFO", "Double-click strafe for \"use\"", false)
-	
-	# Show error messages 
+
+	# Show error messages
 	$CustomizeControlsMenu/VBoxContainer/ErrorLabel.text = ""
 
 	if input_config.config.get_value("INFO", "Locked", false):
 		$CustomizeControlsMenu/VBoxContainer/ErrorLabel.text = "[!] This scheme is locked. Make a copy of it to customize."
-		
+
 	$CustomizeControlsMenu/VBoxContainer/ErrorLabel.visible = $CustomizeControlsMenu/VBoxContainer/ErrorLabel.text.length() > 0
 
 	# Init fields
@@ -177,12 +177,12 @@ func init_inputs_grid_with_scheme(input_config : InputConfig):
 	$CustomizeControlsMenu/VBoxContainer/HBoxContainer3/SchemeName.text = input_config.name
 	$CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer6/UseAndFireCheckbox.button_pressed = is_use_and_fire_same_button
 	$CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer7/DoubleClickForUse.button_pressed = is_doubleclick_for_use
-	
+
 	$CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer5/MoveWithMouseCheckbox.disabled = is_locked
 	$CustomizeControlsMenu/VBoxContainer/HBoxContainer3/SchemeName.editable = !is_locked
 	$CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer6/UseAndFireCheckbox.disabled = is_locked
 	$CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer7/DoubleClickForUse.disabled = is_locked
-	
+
 	# Clear gird
 	for child in custom_controls_grid.get_children():
 		child.queue_free()
@@ -192,7 +192,7 @@ func init_inputs_grid_with_scheme(input_config : InputConfig):
 		action_name = String(action_name)
 		var ignore = false
 		var regex = RegEx.new()
-		
+
 		for mask in input_ignore_masks:
 			regex.compile(mask)
 			if regex.search(action_name):
@@ -231,7 +231,7 @@ func init_inputs_grid_with_scheme(input_config : InputConfig):
 			action.set_secondary_input(secondary_input, input_type)
 
 		# Final setup
-		custom_controls_grid.add_child(action)	
+		custom_controls_grid.add_child(action)
 		action.editable = !input_config.config.get_value("INFO", "Locked", false)
 		action.setup()
 
@@ -260,7 +260,7 @@ func copy():
 		var scheme_clone = ConfigFile.new()
 		scheme_clone.load(config_name)
 		scheme_clone.load(config_name)
-		
+
 		var newName = scheme_clone.get_value("INFO", "Scheme name", "") + " (copy)"
 		scheme_clone.set_value("INFO", "Locked", false)
 		scheme_clone.set_value("INFO", "Scheme name", newName)
@@ -288,14 +288,14 @@ func save_and_apply_input_configuration():
 	selected_scheme.config.set_value("INFO", "Double-click strafe for \"use\"", $CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer7/DoubleClickForUse.button_pressed)
 
 	for action_key in custom_controls_grid.get_children():
-		# Save primary input 
+		# Save primary input
 		if action_key.action_key_type == 0 && action_key.action_key != -1:
 			selected_scheme.config.set_value("Keyboard", action_key.action_name, action_key.action_key)
 
 		if action_key.action_key_type == 1 && action_key.action_key != -1:
 			selected_scheme.config.set_value("Mouse", action_key.action_name, action_key.action_key)
 
-		# Save secondary input 
+		# Save secondary input
 		if action_key.action_key_alt_type == 0 && action_key.action_key_alt != -1:
 			selected_scheme.config.set_value("KeyboardAlt", action_key.action_name, action_key.action_key_alt)
 
@@ -316,13 +316,13 @@ func save_and_apply_input_configuration():
 	_on_go_back_button_pressed()
 
 
-func apply_input_scheme(scheme):	
+func apply_input_scheme(scheme):
 	# Going through all of the input actions and adding them to the grid with proper controls, if they were set
 	for action_name in InputMap.get_actions():
 		action_name = String(action_name)
 		var ignore = false
 		var regex = RegEx.new()
-		
+
 		for mask in input_ignore_masks:
 			regex.compile(mask)
 			if regex.search(action_name):
@@ -348,7 +348,7 @@ func apply_input_scheme(scheme):
 		if primary_input_mouse:
 			primary_input_event = InputEventMouseButton.new()
 			primary_input_event.button_index = primary_input_mouse
-			InputMap.action_add_event(action_name, primary_input_event)	
+			InputMap.action_add_event(action_name, primary_input_event)
 
 		# Bind secondary input
 		var alt_input_keyboard = scheme.config.get_value("KeyboardAlt", action_name, "")
@@ -363,7 +363,7 @@ func apply_input_scheme(scheme):
 		if alt_input_mouse:
 			alt_input_event = InputEventMouseButton.new()
 			alt_input_event.button_index = alt_input_mouse
-			InputMap.action_add_event(action_name, alt_input_event)	
+			InputMap.action_add_event(action_name, alt_input_event)
 
 
 func _on_controls_select_item_selected(index):

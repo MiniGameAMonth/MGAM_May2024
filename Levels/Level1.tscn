@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dd5cwpg722q5e"]
+[gd_scene load_steps=36 format=3 uid="uid://dd5cwpg722q5e"]
 
 [ext_resource type="Script" path="res://Sources/Level.gd" id="1_jripc"]
 [ext_resource type="Texture2D" uid="uid://b58aipleqyjj1" path="res://Levels/Level1_ground.png" id="1_y0g4b"]
@@ -10,6 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://bkjqoodkmlp54" path="res://GameObjects/Interactable/Mushroom.tscn" id="7_0mp2k"]
 [ext_resource type="PackedScene" uid="uid://c7mvwkhkk61mv" path="res://GameObjects/Level1/rock3.tscn" id="8_afugc"]
 [ext_resource type="PackedScene" uid="uid://dd3g76sotgobe" path="res://GameObjects/Level1/rock2.tscn" id="8_eepxh"]
+[ext_resource type="PackedScene" uid="uid://bq8y6pjw68i32" path="res://GameObjects/tutorial.tscn" id="11_gq3wb"]
+[ext_resource type="AudioStream" uid="uid://dmgaocbhkxmuj" path="res://Assets/Sounds/tutorial-lines/hello-and-welcome.wav" id="12_ef1lt"]
+[ext_resource type="AudioStream" uid="uid://d0au88bdgyfib" path="res://Assets/Sounds/tutorial-lines/press-send-star.wav" id="13_7pcxu"]
+[ext_resource type="AudioStream" uid="uid://b1x1skwuconxu" path="res://Assets/Sounds/tutorial-lines/follow-the-sound.wav" id="14_ub6np"]
+[ext_resource type="AudioStream" uid="uid://b7a3gurkp4lbr" path="res://Assets/Sounds/tutorial-lines/while-following-the-sound.wav" id="15_i0j5j"]
+[ext_resource type="AudioStream" uid="uid://cy4d26j2r4wm6" path="res://Assets/Sounds/tutorial-lines/find-3-more.wav" id="16_x7whq"]
+[ext_resource type="AudioStream" uid="uid://bj86ytbwacdyc" path="res://Assets/Sounds/tutorial-lines/heal.wav" id="17_6pnrg"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3040m"]
 size = Vector2(100, 100)
@@ -126,7 +133,7 @@ texture_filter = 4
 diffuse_mode = 2
 specular_mode = 1
 albedo_texture = ExtResource("2_flohy")
-texture_filter = 5
+texture_filter = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8vy6"]
 diffuse_mode = 2
@@ -160,7 +167,13 @@ sky = SubResource("Sky_5nu3e")
 ambient_light_source = 3
 tonemap_mode = 3
 
-[node name="Level1" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_gre7m"]
+size = Vector3(5, 3.912, 12.715)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1oiu2"]
+size = Vector3(3, 3.912, 24.3145)
+
+[node name="Level" type="Node3D"]
 script = ExtResource("1_jripc")
 
 [node name="PlayerSpawnPoint" type="Node3D" parent="."]
@@ -210,13 +223,13 @@ shape = SubResource("BoxShape3D_0hf0d")
 [node name="Lighting" type="Node" parent="."]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
-transform = Transform3D(0.0288986, 0, -0.999582, 0, 1, 0, 0.999582, 0, 0.0288986, -6.16896, 4.30503, 1.13374)
+transform = Transform3D(0.0288986, 0, -0.999582, 0, 1, 0, 0.999582, 0, 0.0288986, -26.6202, 4.30503, 1.13374)
 light_color = Color(0.501961, 0.807843, 1, 1)
 light_energy = 11.577
 light_size = 1.0
 shadow_enabled = true
-spot_range = 95.67
-spot_attenuation = 0.392293
+spot_range = 421.073
+spot_attenuation = 0.37893
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(0.0288986, 0, -0.999582, 0, 1, 0, 0.999582, 0, 0.0288986, 65.6802, 9.10117, 1.13374)
@@ -256,14 +269,14 @@ spot_attenuation = 0.500001
 spot_angle = 72.07
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lighting"]
-transform = Transform3D(-0.999959, 0, -0.00900568, 0, 1, 0, 0.00900568, 0, -0.999959, 334.366, 2.73232, -68.1832)
+transform = Transform3D(-0.999959, 0, -0.00900568, 0, 1, 0, 0.00900568, 0, -0.999959, 330.694, 2.73232, -68.1832)
 light_color = Color(0.501961, 0.807843, 1, 1)
 light_energy = 12.293
 light_size = 1.0
 shadow_enabled = true
-spot_range = 158.87
+spot_range = 1353.19
 spot_attenuation = 0.392293
-spot_angle = 56.71
+spot_angle = 59.81
 spot_angle_attenuation = 1.03526
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
@@ -311,7 +324,7 @@ environment = SubResource("Environment_se1id")
 [node name="Mushrooms" type="Node" parent="."]
 
 [node name="Mushroom" parent="Mushrooms" instance=ExtResource("7_0mp2k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2758, 0.404408, -7.54453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2758, -0.0906142, -7.09084)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Mushrooms/Mushroom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881673, 0)
@@ -328,6 +341,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881673, 0)
 light_color = Color(0, 0.381333, 0.52, 1)
 light_energy = 9.473
 omni_range = 9.0
+omni_attenuation = 0.535887
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Mushrooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 175.032, 8.02821, 13.7636)
+light_color = Color(0.279689, 0.713538, 1, 1)
+light_energy = 16.0
+omni_range = 26.051
+omni_attenuation = 0.535887
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Mushrooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 175.032, 11.0912, -9.69523)
+light_color = Color(0.279689, 0.713538, 1, 1)
+light_energy = 16.0
+omni_range = 26.5795
 omni_attenuation = 0.535887
 
 [node name="Mushroom3" parent="Mushrooms" instance=ExtResource("7_0mp2k")]
@@ -359,3 +386,59 @@ light_color = Color(0, 0.381333, 0.52, 1)
 light_energy = 9.473
 omni_range = 9.0
 omni_attenuation = 0.535887
+
+[node name="Tutorials" type="Node" parent="."]
+
+[node name="HelloAndWelcome" parent="Tutorials" instance=ExtResource("11_gq3wb")]
+transform = Transform3D(1, 0.000949996, 8.98409e-05, -0.000949832, 0.999998, -0.00180541, -9.15568e-05, 0.00180532, 0.999998, 4.12852, 1.74997, 1.90735e-06)
+voice_line = ExtResource("12_ef1lt")
+subtitle = "Hello and welcome to the \"Guiding Star\""
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorials/HelloAndWelcome"]
+transform = Transform3D(1, -7.77766e-09, 9.74978e-10, 2.00231e-11, 1, 0, 0, 0, 1, -2.2, -0.00208998, -0.000197652)
+shape = SubResource("BoxShape3D_gre7m")
+
+[node name="Tutorial" parent="Tutorials" instance=ExtResource("11_gq3wb")]
+transform = Transform3D(1, 0.000949996, 8.98409e-05, -0.000949832, 0.999998, -0.00180541, -9.15568e-05, 0.00180532, 0.999998, 16.1414, 0, 0)
+block_user_actions = true
+voice_line = ExtResource("13_7pcxu")
+subtitle = "Press the \"Send Star\" button to find the mushrooms or the exit if all the mushrooms have been collected"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorials/Tutorial"]
+transform = Transform3D(1, -8.01049e-09, 1.00408e-09, 2.00231e-11, 1, 0, 0, 0, 1, -6.29624, 1.42053, -0.00314099)
+shape = SubResource("BoxShape3D_1oiu2")
+
+[node name="Tutorial2" parent="Tutorials" node_paths=PackedStringArray("object_to_look_at") instance=ExtResource("11_gq3wb")]
+transform = Transform3D(1, 0.000949996, 8.98409e-05, -0.000949832, 0.999998, -0.00180541, -9.15568e-05, 0.00180532, 0.999998, 18.1411, 1.78298, 0)
+tutorial_type = 3
+block_user_actions = true
+object_to_look_at = NodePath("../../Mushrooms/Mushroom")
+voice_line = ExtResource("14_ub6np")
+subtitle = "Rotate the camera until you hear sniffing in front of you. When you hear the sniffing in front of you, follow the sound"
+voice_line_after_completion = ExtResource("15_i0j5j")
+subtitle_after_completion = "While following the sound, keep the cat sniff centereDd in front of you"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorials/Tutorial2"]
+transform = Transform3D(1, -8.18511e-09, 1.02591e-09, 2.00231e-11, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_1oiu2")
+
+[node name="Tutorial3" parent="Tutorials" node_paths=PackedStringArray("object_to_look_at") instance=ExtResource("11_gq3wb")]
+transform = Transform3D(1, 0.000949996, 8.98409e-05, -0.000949832, 0.999998, -0.00180541, -9.15568e-05, 0.00180532, 0.999998, 83.1397, 2.22271, 2.30487)
+block_user_actions = true
+object_to_look_at = NodePath("../../Mushrooms/Mushroom")
+voice_line = ExtResource("16_x7whq")
+subtitle = "Find 3 more mushrooms to advance to the next level. But beware, there's enemy ahead. Adjust the controls in the \"options\" menu if you need to"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorials/Tutorial3"]
+transform = Transform3D(1, -1.3191e-08, 1.65164e-09, 2.00231e-11, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_1oiu2")
+
+[node name="Tutorial4" parent="Tutorials" node_paths=PackedStringArray("object_to_look_at") instance=ExtResource("11_gq3wb")]
+transform = Transform3D(1, 0.000949996, 8.98409e-05, -0.000949832, 0.999998, -0.00180541, -9.15568e-05, 0.00180532, 0.999998, 251.567, -6.1482, -3.05445)
+object_to_look_at = NodePath("../../Mushrooms/Mushroom")
+voice_line = ExtResource("17_6pnrg")
+subtitle = "If you were hit during the battle you can heal yourself by petting Star. Aim the camera at Star and use interaction key to pet her, and wait until you fully healed"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorials/Tutorial4"]
+transform = Transform3D(1, -1.3191e-08, 1.65164e-09, 2.00231e-11, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_1oiu2")

@@ -10,6 +10,7 @@ var mouse_click_last_button = 0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var local_delta = 0
 @export var enable_input = true
+@export var block_movement = false
 
 
 @onready var interactions : InteractionArea3D = $InteractionArea
@@ -42,7 +43,7 @@ func on_interact_end(_interactable: Interactable):
 
 
 func _physics_process(delta):
-	local_delta = delta	
+	local_delta = delta
 
 	if Main.is_in_game():
 		# Movement
@@ -50,7 +51,7 @@ func _physics_process(delta):
 			velocity.y -= gravity * delta
 
 		var input_dir = Main.get_movement_input()
-		if not enable_input:
+		if not enable_input or block_movement:
 			input_dir = Vector2.ZERO
 
 		var direction = transform.basis * Vector3(input_dir.x, 0, input_dir.y)
@@ -64,13 +65,13 @@ func _physics_process(delta):
 
 		move_and_slide()
 
-	
+
 func _input(event):
 	if event is InputEventMouseMotion and enable_input:
 		if !Input.is_action_pressed("Strafe Mode"):
 			rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta
 
-	if Input.is_action_just_pressed("Fire") and enable_input:		
+	if Input.is_action_just_pressed("Fire") and enable_input:
 		if weapon.can_shoot():
 			hud.play_wand_animation("shoot", Callable(weapon, "shoot"))
 
@@ -88,3 +89,9 @@ func _input(event):
 					Input.action_press("Use")
 
 			mouse_click_last_time = Time.get_ticks_msec()
+
+
+func is_looking_at(object: Node3D) -> bool:
+	var direction_to_object = global_position.direction_to(object.global_position)
+	var threshold = 0.95
+	return -direction_to_object.dot(global_transform.basis.z) > threshold

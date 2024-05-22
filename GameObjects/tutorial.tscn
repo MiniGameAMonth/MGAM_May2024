@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8y6pjw68i32"]
+
+[ext_resource type="Script" path="res://Sources/Tutorial.gd" id="1_0rfty"]
+
+[node name="Tutorial" type="Area3D"]
+transform = Transform3D(1, 0.000949996, 8.98409e-05, -0.000949832, 0.999998, -0.00180541, -9.15568e-05, 0.00180532, 0.999998, 0, 0, 0)
+script = ExtResource("1_0rfty")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="IntroTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioPlayer" to="." method="_on_audio_player_finished"]
+[connection signal="timeout" from="IntroTimer" to="." method="_on_intro_timer_timeout"]

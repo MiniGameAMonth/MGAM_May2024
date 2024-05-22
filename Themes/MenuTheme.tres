@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=32 format=3 uid="uid://b52ts8rtppg4j"]
+[gd_resource type="Theme" load_steps=33 format=3 uid="uid://b52ts8rtppg4j"]
 
 [ext_resource type="FontFile" uid="uid://cdlklu6q1dr1m" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_pol6h"]
 [ext_resource type="Texture2D" uid="uid://bnnrcovdnn05w" path="res://Assets/Images/Menu/MenuButtonFocus.png" id="2_5258k"]
@@ -91,6 +91,20 @@ texture_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42ngs"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8m2q0"]
+bg_color = Color(0.192515, 0, 0.023596, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.0649379, 1.6733e-08, 0.00414928, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7053f"]
 texture = ExtResource("3_qa67b")
 texture_margin_left = 4.0
@@ -163,6 +177,7 @@ LineEdit/styles/normal = SubResource("StyleBoxTexture_3usgk")
 OptionButton/font_sizes/font_size = 8
 OptionButton/icons/arrow = ExtResource("6_8o3m4")
 OptionButton/styles/focus = SubResource("StyleBoxEmpty_42ngs")
+Panel/styles/panel = SubResource("StyleBoxFlat_8m2q0")
 PopupMenu/constants/v_separation = 0
 PopupMenu/icons/radio_checked = ExtResource("7_ruhee")
 PopupMenu/icons/radio_unchecked = ExtResource("8_xiq0v")

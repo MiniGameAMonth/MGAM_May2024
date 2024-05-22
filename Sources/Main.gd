@@ -43,7 +43,7 @@ func _physics_process(delta):
 	local_delta = delta
 
 
-func subscribe_to_menu_events():	
+func subscribe_to_menu_events():
 	menu_node.connect("start_game", Callable(self, "start_game"))
 	menu_node.connect("quit_game", Callable(self, "quit_game"))
 
@@ -64,7 +64,7 @@ func start_game():
 
 func quit_game():
 	get_tree().quit()
-	
+
 
 func load_level(path):
 	level = load(path).instantiate()
@@ -176,7 +176,7 @@ func generate_default_input_schemes():
 	mouseOnlyConfig.set_value("INFO", "Locked", true)
 	mouseOnlyConfig.set_value("INFO", "Move with mouse", true)
 	mouseOnlyConfig.set_value("INFO", "Same button for \"Use\" & \"Fire\"", true)
-	
+
 	mouseOnlyConfig.set_value("Mouse",	"Fire",					MOUSE_BUTTON_LEFT)
 	mouseOnlyConfig.set_value("Mouse",	"Use",					"")
 	mouseOnlyConfig.set_value("Mouse", 	"Strafe Mode", 			MOUSE_BUTTON_RIGHT)
