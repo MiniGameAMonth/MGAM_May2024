@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxhse77sqikp8"
+path="res://.godot/imported/Creature Transform - 1.wav-11b9ded199d335387feb6cee381cf43b.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Enemies/Creature Transform/Creature Transform - 1.wav"
+dest_files=["res://.godot/imported/Creature Transform - 1.wav-11b9ded199d335387feb6cee381cf43b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c4i4vrwrta2ky"
+path="res://.godot/imported/angry-cat.wav-c274a870a8e3a1ef5c558624b9f9c84c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Cat/Scared cat/angry-cat.wav"
+dest_files=["res://.godot/imported/angry-cat.wav-c274a870a8e3a1ef5c558624b9f9c84c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -7,6 +7,7 @@ extends Behaviour
 @export var graphics : AnimatedSprite3D
 @export var sight : Sight
 @export var max_distance : float = 50
+@export var sightedSound : PlaySound3D
 
 var attackTarget : Node3D = null
 
@@ -33,7 +34,7 @@ func attack_target(target:Node3D):
 	if target.name != "Player":
 		return
 	attackTarget = target
-	change_state(EnemyFollowState.new(self, target))
+	#change_state(EnemyFollowState.new(self, target))
 
 func play_attack():
 	weapon.try_deal_damage(attackTarget)

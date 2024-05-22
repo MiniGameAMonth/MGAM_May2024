@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Sources/Interactable Scripts/MushroomInteractable.gd" id="1_duxxf"]
 [ext_resource type="Resource" uid="uid://cy85fgdxbttbr" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_0.tres" id="2_umgh6"]
 [ext_resource type="SpriteFrames" uid="uid://bnrukcwu6tddv" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_0_frames.tres" id="3_4fclg"]
-[ext_resource type="AudioStream" uid="uid://brb42cfhxdj3o" path="res://Assets/Sounds/Mushroom_Pickup.wav" id="4_8uaba"]
+[ext_resource type="AudioStream" uid="uid://brb42cfhxdj3o" path="res://Assets/Sounds/Mushrooms/Mushroom_Pickup.wav" id="4_8uaba"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4qh64"]
 

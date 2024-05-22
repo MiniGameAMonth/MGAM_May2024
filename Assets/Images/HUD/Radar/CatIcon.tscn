@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1sc602sf1cod"]
 
-[ext_resource type="Texture2D" uid="uid://km24tmjhgw6d" path="res://Assets/Images/HUD/Radar/CatIcon.png" id="1_o1uf1"]
+[ext_resource type="Texture2D" uid="uid://brgy1m284y866" path="res://Assets/Images/HUD/Radar/radar_cat_icon.tres" id="1_dfdc5"]
 
 [node name="CatIcon" type="Control"]
 layout_mode = 3
@@ -8,8 +8,9 @@ anchors_preset = 0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -8.0
-offset_top = -9.0
+offset_left = -7.0
+offset_top = -10.0
 offset_right = 8.0
-offset_bottom = 7.0
-texture = ExtResource("1_o1uf1")
+offset_bottom = 8.0
+texture = ExtResource("1_dfdc5")
+stretch_mode = 2

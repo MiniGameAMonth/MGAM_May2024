@@ -110,6 +110,11 @@ ui_pause={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_8="SOUND_OVERRIDE_AREAS"
+3d_physics/layer_8="SOUND_OVERRIDE_AREAS"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

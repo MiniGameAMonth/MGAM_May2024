@@ -9,6 +9,7 @@ extends Control
 @onready var handAnimationPlayer : AnimationPlayer = $Hand/AnimationPlayer
 
 @export var character : Character
+@export var blinks_on_damage : int = 3
 
 
 var interactable : Interactable
@@ -19,6 +20,7 @@ var wandCallable : Callable
 func _ready():
 	if character:
 		character.health_changed.connect(healthBar.set_health)
+		character.damaged.connect(blink_radar)
 		healthBar.set_max_health(character.characterStats.max_health)
 	else:
 		push_error("PlayerHUD requires a character to be set.")
@@ -72,4 +74,7 @@ func play_wand_animation(animation : String, callback : Callable):
 
 func on_wand_shoot():
 	wandCallable.call()
+
+func blink_radar(_damage):
+	radar.start_blink_wizard_outline(blinks_on_damage)
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckdle3qb28k88"]
 
-[ext_resource type="Texture2D" uid="uid://b05ercrw5obvx" path="res://Assets/Images/HUD/Radar/EnemyIcon.png" id="1_vn6ow"]
+[ext_resource type="Texture2D" uid="uid://o6incx5krcrn" path="res://Assets/Images/HUD/Radar/radar_enemy_icon.tres" id="1_impfu"]
 
 [node name="EnemyIcon" type="Control"]
 layout_mode = 3
@@ -10,6 +10,7 @@ anchors_preset = 0
 layout_mode = 0
 offset_left = -8.0
 offset_top = -7.0
-offset_right = 8.0
-offset_bottom = 9.0
-texture = ExtResource("1_vn6ow")
+offset_right = 7.0
+offset_bottom = 8.0
+texture = ExtResource("1_impfu")
+stretch_mode = 2
