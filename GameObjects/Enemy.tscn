@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c2ul40d4fk526"]
+[gd_scene load_steps=24 format=3 uid="uid://c2ul40d4fk526"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_klhdc"]
 [ext_resource type="Script" path="res://Sources/Utilities/DirectionalAnimatedSprite3D.gd" id="2_xe2w5"]
@@ -11,9 +11,13 @@
 [ext_resource type="Script" path="res://Sources/Behaviours/EnemyBehavior.gd" id="5_lv5l2"]
 [ext_resource type="Script" path="res://Sources/Behaviours/Sight.gd" id="6_gxjen"]
 [ext_resource type="PackedScene" uid="uid://bwftaqfadvwp0" path="res://GameObjects/Utilities/ProjectedNode.tscn" id="6_m22q1"]
+[ext_resource type="Script" path="res://Sources/Utilities/PlaySound.gd" id="7_5xdx2"]
 [ext_resource type="AudioStream" uid="uid://de4uuqooypfw0" path="res://Assets/Sounds/Enemies/enemy_hurt.tres" id="7_ryv15"]
 [ext_resource type="Script" path="res://Sources/Entities/EntityHitbox2D.gd" id="7_xdqwb"]
+[ext_resource type="AudioStream" uid="uid://biw2vjohjysli" path="res://Assets/Sounds/Enemies/enemy_dying.tres" id="9_w116p"]
 [ext_resource type="Script" path="res://Sources/Utilities/FreeNode.gd" id="10_x7csr"]
+[ext_resource type="AudioStream" uid="uid://byv5gn3vhs7dy" path="res://Assets/Sounds/Enemies/enemy_attack.tres" id="11_wjm8u"]
+[ext_resource type="AudioStream" uid="uid://cncy2sjyh0tjg" path="res://Assets/Sounds/Enemies/enemy_detected.tres" id="13_lv7xt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx0fy"]
 
@@ -95,9 +99,24 @@ max_health = 2
 mana = 2
 max_mana = 2
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Character"]
+[node name="EnemyHurtSound" type="Node3D" parent="Character" node_paths=PackedStringArray("player")]
+script = ExtResource("7_5xdx2")
+player = NodePath("AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Character/EnemyHurtSound"]
 stream = ExtResource("7_ryv15")
+volume_db = -16.0
 bus = &"Sounds"
+area_mask = 128
+
+[node name="EnemyDyingSound" type="Node3D" parent="Character" node_paths=PackedStringArray("player")]
+script = ExtResource("7_5xdx2")
+separateFromNode = true
+player = NodePath("AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Character/EnemyDyingSound"]
+stream = ExtResource("9_w116p")
+volume_db = -16.0
 
 [node name="Weapon" type="Node3D" parent="."]
 script = ExtResource("3_8u8hh")
@@ -110,14 +129,16 @@ one_shot = true
 autostart = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Weapon"]
+stream = ExtResource("11_wjm8u")
 
-[node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "animationPlayer", "graphics", "sight", "behaviour_owner")]
+[node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "animationPlayer", "graphics", "sight", "sightedSound", "behaviour_owner")]
 script = ExtResource("5_lv5l2")
 follower = NodePath("../Follower")
 weapon = NodePath("../Weapon")
 animationPlayer = NodePath("../AnimatedSprite3D/AnimationPlayer")
 graphics = NodePath("../AnimatedSprite3D")
 sight = NodePath("Sight")
+sightedSound = NodePath("PlaySound3D")
 behaviour_owner = NodePath("..")
 
 [node name="Sight" type="Area3D" parent="Behaviour"]
@@ -127,6 +148,14 @@ script = ExtResource("6_gxjen")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Behaviour/Sight"]
 shape = SubResource("SphereShape3D_dsfvp")
+
+[node name="PlaySound3D" type="Node3D" parent="Behaviour" node_paths=PackedStringArray("player")]
+script = ExtResource("7_5xdx2")
+player = NodePath("AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Behaviour/PlaySound3D"]
+stream = ExtResource("13_lv7xt")
+volume_db = -16.0
 
 [node name="ProjectedNode2D" parent="." instance=ExtResource("6_m22q1")]
 
@@ -149,7 +178,8 @@ lookAtSpeed = 5.0
 agent = NodePath("../NavigationAgent3D")
 characterBody = NodePath("..")
 
-[connection signal="damaged" from="Character" to="Character/AudioStreamPlayer3D" method="play" binds= [0.0]]
+[connection signal="damaged" from="Character" to="Character/EnemyHurtSound" method="play" unbinds=1]
+[connection signal="on_death" from="Character" to="Character/EnemyDyingSound" method="play"]
 [connection signal="on_death" from="Character" to="Behaviour" method="die"]
 [connection signal="on_death" from="Character" to="FreeNode" method="free_node"]
 [connection signal="timeout" from="Weapon/Cooldown" to="Weapon" method="_on_cooldown_timeout"]

@@ -1,3 +1,9 @@
-[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://de4uuqooypfw0"]
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://de4uuqooypfw0"]
+
+[ext_resource type="AudioStream" uid="uid://70vpo6y6jy0" path="res://Assets/Sounds/Enemies/Growl/Growl - 4.wav" id="1_ily8h"]
 
 [resource]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("1_ily8h")
+stream_0/weight = 1.0

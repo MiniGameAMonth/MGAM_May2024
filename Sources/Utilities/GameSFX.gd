@@ -8,8 +8,8 @@ var defaultPlayer : AudioStreamPlayer3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	defaultPlayer = add_player()
-	remove_child(defaultPlayer)
 	defaultPlayer.area_mask = 1 << 8
+	pool.remove_at(0)
 
 	for i in range(poolSize):
 		var new_player = add_player()
@@ -34,20 +34,21 @@ func play_sound(other_player : AudioStreamPlayer3D):
 		player = add_player()
 	
 	copy_player(player, other_player)
+	player.global_position = other_player.global_position
 
 	player.play()
+	return player
 
 func copy_player(to : AudioStreamPlayer3D, from : AudioStreamPlayer3D):
-	from.global_position = to.global_position
-	from.stream = to.stream
-	from.bus = to.bus
-	from.volume_db = to.volume_db
-	from.pitch_scale = to.pitch_scale
-	from.doppler_tracking = to.doppler_tracking
-	from.attenuation_model = to.attenuation_model
-	from.unit_size = to.unit_size
-	from.max_db = to.max_db
-	from.area_mask = to.area_mask
+	to.stream = from.stream
+	to.bus = from.bus
+	to.volume_db = from.volume_db
+	to.pitch_scale = from.pitch_scale
+	to.doppler_tracking = from.doppler_tracking
+	to.attenuation_model = from.attenuation_model
+	to.unit_size = from.unit_size
+	to.max_db = from.max_db
+	to.area_mask = from.area_mask
 
 func play_sound_at(sound : AudioStream, position : Vector3, bus : String = "Sounds"):
 	var player : AudioStreamPlayer3D = get_available_player()
@@ -58,8 +59,10 @@ func play_sound_at(sound : AudioStream, position : Vector3, bus : String = "Soun
 	copy_player(player, defaultPlayer)
 	player.global_position = position
 	player.stream = sound
+	player.bus = bus
 
 	player.play()
+	return player
 	
 
 		
