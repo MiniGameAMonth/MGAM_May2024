@@ -3,30 +3,30 @@ class_name TTS
 ##TTS main node. This reads all the texts sent by the UI attachments
 
 var voices = DisplayServer.tts_get_voices_for_language("en")
-var voice_id
-var disabled: bool = false
+static var voice_id
+static var disabled: bool = false
+static  var voice_volume: int = 80
 
-@export var voice_volume: int
-
-func _ready():
-	#Checks if Zira voice package is installed
-	#for v in voices:
-	#	if v["id"] == "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_ZIRA_11.0":
-	#		voice = v["id"]
-	#		break
-
+func _ready():	
 	voice_id = voices[0]
 	
 	if voice_id == null:
-		printerr("TexToScreen Voice not found")
+		printerr("No tex-to-screen voice found")
 
-func say_phrase(text: String):
+static func say_phrase(text: String):
 	if !disabled:		
 		DisplayServer.tts_stop()		
 		DisplayServer.tts_speak(text, voice_id, voice_volume)	
 
-func disable_TTS():
-	disabled = true
+static func toggle_TTS():
+	if disabled:
+		disabled = false
+		say_phrase("Text-to-speech: on")
+	else:
+		disabled = true
 
-func enable_TTS():
-	disabled = false
+static func set_voice_volume(volume: int):
+	voice_volume = volume
+
+static func get_voice_volume():
+	return voice_volume

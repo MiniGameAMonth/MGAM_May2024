@@ -8,18 +8,11 @@ class_name TTS_Button_Attachment
 ##Use this if the button has no text, can be used to add additional information. THIS IS GOING TO BE READ OUT AFTER THE BUTTON'S TEXT
 @export var alternate_text: String
 
-##The TTS node on this UI
-@export var TTS_node: TTS
-
 var TTS_text: String
 var is_Toggle: bool = false
 var toggle_state: bool = false
 
-func _ready():
-	if TTS_node == null:
-		printerr("TTS node not set")
-		return
-	
+func _ready():		
 	TTS_text = button.text
 
 	if button.toggle_mode != false:
@@ -35,7 +28,7 @@ func _on_mouse_entered():
 	if is_Toggle:
 		say_phrase_for_toggles()	
 	else:
-		TTS_node.say_phrase(TTS_text + alternate_text)
+		TTS.say_phrase(TTS_text + alternate_text)
 
 func toggled(state: bool):
 	toggle_state = state
@@ -50,40 +43,40 @@ func _on_keyboard_input(event: InputEvent):
 					if is_Toggle:
 						say_phrase_for_toggles()
 					else: 		
-						TTS_node.say_phrase("You selected " + TTS_text + alternate_text)	
+						TTS.say_phrase("You selected " + TTS_text + alternate_text)	
 
 				"Left":
 					if is_Toggle:
 						say_phrase_for_toggles()
 					else: 		
-						TTS_node.say_phrase(TTS_text + alternate_text)
+						TTS.say_phrase(TTS_text + alternate_text)
 
 				"Right":
 					if is_Toggle:
 						say_phrase_for_toggles()
 					else: 		
-						TTS_node.say_phrase(TTS_text + alternate_text)
+						TTS.say_phrase(TTS_text + alternate_text)
 				
 				"Up":
 					if is_Toggle:
 						say_phrase_for_toggles()
 					else: 		
-						TTS_node.say_phrase(TTS_text + alternate_text)
+						TTS.say_phrase(TTS_text + alternate_text)
 				
 				"Down":
 					if is_Toggle:
 						say_phrase_for_toggles()
 					else: 		
-						TTS_node.say_phrase(TTS_text + alternate_text)
+						TTS.say_phrase(TTS_text + alternate_text)
 				
 	return
 
 func say_phrase_for_toggles():
 	if toggle_state:
-		TTS_node.say_phrase(TTS_text + alternate_text + "...on")
+		TTS.say_phrase(TTS_text + alternate_text + "...on")
 	else:
-		TTS_node.say_phrase(TTS_text + alternate_text + "...off")
+		TTS.say_phrase(TTS_text + alternate_text + "...off")
 
 func _on_button_up():
 	if !is_Toggle:
-		TTS_node.say_phrase("You selected " + TTS_text + alternate_text)
+		TTS.say_phrase("You selected " + TTS_text + alternate_text)

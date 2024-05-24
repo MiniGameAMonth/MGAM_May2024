@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmnkh3v51ka3v"]
+[gd_scene load_steps=7 format=3 uid="uid://cmnkh3v51ka3v"]
 
 [ext_resource type="Theme" uid="uid://b52ts8rtppg4j" path="res://Themes/MenuTheme.tres" id="1_n6mkp"]
 [ext_resource type="Script" path="res://Sources/Menu/CustomControlsActionKey.gd" id="2_3dhaf"]
 [ext_resource type="Theme" uid="uid://b22kwk66swm4w" path="res://Themes/CustomControlsActionKeys.tres" id="3_njoam"]
 [ext_resource type="Texture2D" uid="uid://ciyju2x0ov5r8" path="res://Assets/Images/Menu/Inputs/UNSET.png" id="3_xvjjo"]
-[ext_resource type="Script" path="res://GameObjects/UI/TTS_customize_control_button.gd" id="6_2oa0p"]
-[ext_resource type="Script" path="res://Sources/TTS scripts/TTS.gd" id="6_v0883"]
+[ext_resource type="Script" path="res://Sources/TTS scripts/TTS_customize_control_button.gd" id="5_18hdm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1bkk"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -49,11 +48,10 @@ theme = ExtResource("3_njoam")
 icon = ExtResource("3_xvjjo")
 icon_alignment = 1
 
-[node name="TTS_customize_control_button_attachment" type="Node" parent="Primary_Keybind" node_paths=PackedStringArray("custom_control_action_key", "button", "TTS_node")]
-script = ExtResource("6_2oa0p")
+[node name="TTS_customize_control_button_attachment" type="Node" parent="Primary_Keybind" node_paths=PackedStringArray("custom_control_action_key", "button")]
+script = ExtResource("5_18hdm")
 custom_control_action_key = NodePath("../..")
 button = NodePath("..")
-TTS_node = NodePath("../../TTS")
 
 [node name="Secondary_Keybind" type="Button" parent="."]
 layout_mode = 2
@@ -65,16 +63,11 @@ theme = ExtResource("3_njoam")
 icon = ExtResource("3_xvjjo")
 icon_alignment = 1
 
-[node name="TTS_customize_control_button_attachment" type="Node" parent="Secondary_Keybind" node_paths=PackedStringArray("custom_control_action_key", "button", "TTS_node")]
-script = ExtResource("6_2oa0p")
+[node name="TTS_customize_control_button_attachment" type="Node" parent="Secondary_Keybind" node_paths=PackedStringArray("custom_control_action_key", "button")]
+script = ExtResource("5_18hdm")
 custom_control_action_key = NodePath("../..")
 secondary_keybind = true
 button = NodePath("..")
-TTS_node = NodePath("../../TTS")
-
-[node name="TTS" type="Node" parent="."]
-script = ExtResource("6_v0883")
-voice_volume = 80
 
 [connection signal="button_down" from="Primary_Keybind" to="." method="change_input" binds= [false]]
 [connection signal="button_down" from="Secondary_Keybind" to="." method="change_input" binds= [true]]

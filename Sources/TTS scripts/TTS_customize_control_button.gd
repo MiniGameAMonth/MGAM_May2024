@@ -12,10 +12,6 @@ var action_name : String
 var keybind_name : String
 
 func _ready():	
-	if TTS_node == null:
-		printerr("TTS node not set")
-		return
-
 	action_name = custom_control_action_key.action_name + "..."
 	keybind_name = get_keybind_name()
 
@@ -26,7 +22,6 @@ func _ready():
 
 func get_keybind_name() -> String:
 	if !secondary_keybind:
-		print("Not a secondary!")
 		if custom_control_action_key.action_key_type == 0: #keyboard input
 			return get_keycode_primary()
 		
@@ -48,14 +43,14 @@ func get_keybind_name() -> String:
 	return "This input is not from a keyborad or mouse and is not supported."	
 	
 func _on_button_up():
-	TTS_node.say_phrase("You are changing the keybind for, " + action_name)
+	TTS.say_phrase("You are changing the keybind for, " + action_name)
 
 #Called when a new keybind is set
 func update_keybind_name():
 	check_for_changes()
 	
 func warn_user_of_change():
-	TTS_node.say_phrase("You changed the keybind to, " + keybind_name)
+	TTS.say_phrase("You changed the keybind to, " + keybind_name)
 
 func check_for_changes():	
 	var new_keybind = get_keybind_name()
@@ -93,3 +88,6 @@ func get_keycode_secondary() -> String:
 		return "Secondary keybind not set"
 	else:			
 		return OS.get_keycode_string(custom_control_action_key.action_key_alt)
+
+func _on_mouse_entered():
+	TTS.say_phrase(action_name + "..." + keybind_name)
