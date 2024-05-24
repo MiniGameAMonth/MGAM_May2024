@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1upwti421hpy"]
+
+[ext_resource type="Script" path="res://Sources/TTS scripts/tts_slider_attachment.gd" id="1_cl0ar"]
+
+[node name="TTS_slider_attachment" type="Node"]
+script = ExtResource("1_cl0ar")

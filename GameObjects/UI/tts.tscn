@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cylbudf8akiyf"]
+
+[ext_resource type="Script" path="res://Sources/TTS scripts/TTS.gd" id="1_bu8kf"]
+
+[node name="TTS" type="Node"]
+script = ExtResource("1_bu8kf")
+voice_volume = 80

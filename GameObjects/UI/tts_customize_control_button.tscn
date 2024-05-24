@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3wcfam86a3kt"]
+
+[ext_resource type="Script" path="res://Sources/TTS scripts/TTS_customize_control_button.gd" id="1_s812x"]
+
+[node name="TTS_customize_control_button" type="Node"]
+script = ExtResource("1_s812x")

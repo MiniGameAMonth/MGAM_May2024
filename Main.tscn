@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://204i3o81yrff"]
-
 [ext_resource type="PackedScene" uid="uid://du7l74rq77kfn" path="res://Menu.tscn" id="1_xfmy7"]
 [ext_resource type="PackedScene" uid="uid://c3hybkk72t0kd" path="res://UI/tutorial.tscn" id="2_fy8tk"]
+[gd_scene load_steps=7 format=3 uid="uid://204i3o81yrff"]
+
+[ext_resource type="Script" path="res://Sources/TTS scripts/TTS.gd" id="2_12wlv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2r3ab"]
+
+[sub_resource type="Sky" id="Sky_ceull"]
+sky_material = SubResource("ProceduralSkyMaterial_2r3ab")
+
+[sub_resource type="Environment" id="Environment_jpnql"]
+background_mode = 2
+sky = SubResource("Sky_ceull")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_kl4rv"]
 
 [node name="MainRoot" type="Node3D"]
+
+[node name="TTS" type="Node" parent="."]
+script = ExtResource("2_12wlv")
 
 [node name="Level" type="Node" parent="."]
 

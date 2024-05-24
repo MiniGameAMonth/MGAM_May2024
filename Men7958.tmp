@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://du7l74rq77kfn"]
+[gd_scene load_steps=33 format=3 uid="uid://du7l74rq77kfn"]
 
 [ext_resource type="Script" path="res://Sources/Menu.gd" id="1_wgstm"]
 [ext_resource type="Texture2D" uid="uid://62f1j0sxnhtx" path="res://Assets/Images/Menu/MenuBG/main.menu0.png" id="2_qoswh"]
@@ -18,19 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://bxa5bbf45u0mh" path="res://Assets/Images/Menu/MenuBG/main.menu7.png" id="18_q8v44"]
 [ext_resource type="Texture2D" uid="uid://bsvo28st1ttie" path="res://Assets/Images/Menu/MenuBG/main.menu6.png" id="19_b3uw2"]
 [ext_resource type="Texture2D" uid="uid://cqnxufset1irk" path="res://Assets/Images/Menu/RootMenuButton.png" id="19_c0hgw"]
-[ext_resource type="Texture2D" uid="uid://2hkk26lslfol" path="res://Assets/Images/Menu/RootMenuButtonFocus.png" id="19_gjhfw"]
 [ext_resource type="Texture2D" uid="uid://cmnolfa5jrvvw" path="res://Assets/Images/Menu/MenuBG/main.menu5.png" id="20_qhchv"]
-[ext_resource type="Script" path="res://Sources/TTS scripts/TTS_Button_Attachment.gd" id="21_gjncb"]
 [ext_resource type="Texture2D" uid="uid://cs6yx86g2mq8y" path="res://Assets/Images/Menu/MenuBG/main.menu4.png" id="21_gqxii"]
 [ext_resource type="Texture2D" uid="uid://vptt342va0ko" path="res://Assets/Images/Menu/MenuBG/main.menu3.png" id="22_7ehhc"]
 [ext_resource type="Texture2D" uid="uid://d4kmtrp6n6bdi" path="res://Assets/Images/Menu/MenuBG/main.menu2.png" id="23_2sa4x"]
+[ext_resource type="Script" path="res://Sources/TTS.gd" id="24_akit4"]
 [ext_resource type="Texture2D" uid="uid://cw8rovedk0nwu" path="res://Assets/Images/Menu/MenuBG/main.menu1.png" id="24_fuvsc"]
-[ext_resource type="Script" path="res://Sources/TTS scripts/TTS_option_button_attachment.gd" id="25_j4b2e"]
-[ext_resource type="Script" path="res://Sources/Menu/TTSCheckBox.gd" id="26_duwu7"]
-[ext_resource type="Script" path="res://Sources/TTS scripts/Credits_reader.gd" id="28_746g4"]
-[ext_resource type="Script" path="res://Sources/TTS scripts/TTS_textfield_attachment.gd" id="28_cg8v8"]
-[ext_resource type="Script" path="res://Sources/TTS scripts/tts_slider_attachment.gd" id="28_v8brc"]
-[ext_resource type="Script" path="res://NarrationVolumeSlider.gd" id="31_7ov4g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jf5c"]
 bg_color = Color(0.847059, 0.364706, 0.545098, 0.788235)
@@ -160,28 +153,6 @@ texture_margin_top = 10.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5nk3w"]
-content_margin_left = 5.0
-content_margin_top = 11.0
-texture = ExtResource("19_gjhfw")
-texture_margin_left = 20.0
-texture_margin_top = 10.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1rwve"]
-load_path = "res://.godot/imported/RootMenuButtonFocus.png-bdc58db77c34071f899f760b55ef29a3.ctex"
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sxg2"]
-content_margin_left = 5.0
-content_margin_top = 11.0
-content_margin_bottom = 2.0
-texture = SubResource("CompressedTexture2D_1rwve")
-texture_margin_left = 20.0
-texture_margin_top = 10.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cthbl"]
 content_margin_left = 5.0
 content_margin_top = 10.0
@@ -210,7 +181,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu/MainMenu:position")
+tracks/0/path = NodePath("MainMenu:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -238,7 +209,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenu/MainMenu:position")
+tracks/1/path = NodePath("MainMenu:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -256,7 +227,6 @@ _data = {
 }
 
 [node name="Menu" type="Control"]
-process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -281,13 +251,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_6jf5c")
 [node name="MenuBgAnimated" type="AnimatedSprite2D" parent="."]
 position = Vector2(80, 45)
 sprite_frames = SubResource("SpriteFrames_4p2e2")
-animation = &"LogoHide"
+animation = &"LogoReveal"
+frame = 14
+frame_progress = 1.0
 offset = Vector2(240, 135)
 
-[node name="MainMenu" parent="." instance=ExtResource("3_kfsru")]
-layout_mode = 1
-
-[node name="MainMenu" type="HBoxContainer" parent="MainMenu"]
+[node name="MainMenu" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -302,49 +271,28 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="MainMenu/MainMenu"]
+[node name="PlayButton" type="Button" parent="MainMenu"]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
-theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
-theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 text = "Play"
 
-[node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/PlayButton" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
-
-[node name="OptionsButton" type="Button" parent="MainMenu/MainMenu" groups=["MenuNavButton"]]
+[node name="OptionsButton" type="Button" parent="MainMenu" groups=["MenuNavButton"]]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
-theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
-theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 text = "Options"
 
-[node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/OptionsButton" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
-
-[node name="CreditsButton" type="Button" parent="MainMenu/MainMenu" groups=["MenuNavButton"]]
+[node name="CreditsButton" type="Button" parent="MainMenu" groups=["MenuNavButton"]]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
-theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
-theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 text = "Credits"
 
-[node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/CreditsButton" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
-
-[node name="QuitButton" type="Button" parent="MainMenu/MainMenu"]
+[node name="QuitButton" type="Button" parent="MainMenu"]
 visible = false
 texture_filter = 1
 layout_mode = 2
@@ -352,10 +300,6 @@ theme = ExtResource("3_cx58u")
 theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
 text = "Quit
 "
-
-[node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/QuitButton" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
 
 [node name="OptionsMenu" parent="." instance=ExtResource("3_kfsru")]
 visible = false
@@ -413,11 +357,6 @@ popup/item_2/text = "New moon"
 popup/item_2/icon = ExtResource("8_ajrhn")
 popup/item_2/id = 2
 
-[node name="TTS_option_button_attachment" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/GameModeSelect" node_paths=PackedStringArray("option_button")]
-script = ExtResource("25_j4b2e")
-option_button = NodePath("..")
-option_name = "Game mode"
-
 [node name="ColorBlindModeLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -438,11 +377,6 @@ popup/item_2/id = 2
 popup/item_3/text = "Tritanopia"
 popup/item_3/id = 3
 
-[node name="TTS_option_button_attachment" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/ColorBlindSelect" node_paths=PackedStringArray("option_button")]
-script = ExtResource("25_j4b2e")
-option_button = NodePath("..")
-option_name = "Color correction"
-
 [node name="TTSLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -453,12 +387,6 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 button_pressed = true
-script = ExtResource("26_duwu7")
-
-[node name="TTS_Button_Attachment" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/TTSCheckBox" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
-alternate_text = "Text to Speech"
 
 [node name="UseAutoAimLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -469,11 +397,6 @@ horizontal_alignment = 2
 [node name="UseAutoAimBox" type="CheckBox" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-
-[node name="TTS_Button_Attachment" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/UseAutoAimBox" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
-alternate_text = "Use auto-aim"
 
 [node name="AutoAimDegLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -491,12 +414,6 @@ theme = ExtResource("3_cx58u")
 max_value = 90.0
 value = 45.0
 
-[node name="TTS_slider_attachment" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/HBoxContainer/AutoAimZoneSlider" node_paths=PackedStringArray("slider")]
-script = ExtResource("28_v8brc")
-slider = NodePath("..")
-option_name = "Auto-aim zone"
-unit_value = "degrees"
-
 [node name="AutoAimZoneValueLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -511,11 +428,10 @@ horizontal_alignment = 2
 [node name="ControlsSelect" type="OptionButton" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-
-[node name="TTS_option_button_attachment" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/ControlsSelect" node_paths=PackedStringArray("option_button")]
-script = ExtResource("25_j4b2e")
-option_button = NodePath("..")
-option_name = "Controls scheme"
+item_count = 1
+selected = 0
+popup/item_0/text = "WASD + Mouse"
+popup/item_0/id = 0
 
 [node name="CustomizeControlsButton" type="Button" parent="OptionsMenu/VBoxContainer" groups=["MenuNavButton"]]
 texture_filter = 1
@@ -524,19 +440,11 @@ theme = ExtResource("3_cx58u")
 text = "Controls
 "
 
-[node name="TTS_Button_Attachment" type="Node" parent="OptionsMenu/VBoxContainer/CustomizeControlsButton" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
-
 [node name="SoundOptionsButton" type="Button" parent="OptionsMenu/VBoxContainer" groups=["MenuNavButton"]]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Sound options"
-
-[node name="TTS_Button_Attachment" type="Node" parent="OptionsMenu/VBoxContainer/SoundOptionsButton" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
 
 [node name="CreditsMenu" parent="." instance=ExtResource("3_kfsru")]
 visible = false
@@ -555,7 +463,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("6_vjpoo")
 theme_override_font_sizes/normal_font_size = 8
-text = "Game made by:"
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Luctus accumsan tortor posuere ac ut consequat semper viverra nam. Cras semper auctor neque vitae tempus quam pellentesque. Nibh venenatis cras sed felis eget velit aliquet sagittis id. Sem viverra aliquet eget sit amet. Mattis vulputate enim nulla aliquet porttitor lacus. Nibh praesent tristique magna sit amet purus gravida quis. "
 
 [node name="Label" type="Label" parent="CreditsMenu"]
 layout_mode = 1
@@ -569,11 +477,6 @@ grow_vertical = 2
 theme = ExtResource("3_cx58u")
 text = "Credits"
 horizontal_alignment = 1
-
-[node name="Credits_reader" type="Node" parent="CreditsMenu" node_paths=PackedStringArray("credits_button", "label")]
-script = ExtResource("28_746g4")
-credits_button = NodePath("../../MainMenu/MainMenu/CreditsButton")
-label = NodePath("../RichTextLabel")
 
 [node name="CustomizeControlsMenu" parent="." node_paths=PackedStringArray("parent_menu") instance=ExtResource("3_kfsru")]
 visible = false
@@ -617,19 +520,10 @@ text = "Control scheme: "
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 
-[node name="TTS_option_button_attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer/SchemeSelect" node_paths=PackedStringArray("option_button")]
-script = ExtResource("25_j4b2e")
-option_button = NodePath("..")
-option_name = "Control scheme selector"
-
-[node name="copy_and_modify_button" type="Button" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Copy & Modify"
-
-[node name="TTS_Button_Attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer/copy_and_modify_button" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
 
 [node name="ColorRect3" type="ColorRect" parent="CustomizeControlsMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 1)
@@ -651,17 +545,12 @@ layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Scheme Name:"
 
-[node name="SchemeName" type="LineEdit" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer3"]
+[node name="TextEdit" type="LineEdit" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_cx58u")
 text = "WASD + Mouse"
 placeholder_text = "Enter scheme name"
-
-[node name="TTS_textfield_attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer3/SchemeName" node_paths=PackedStringArray("textfield")]
-script = ExtResource("28_cg8v8")
-textfield = NodePath("..")
-description_text = "Control scheme name"
 
 [node name="GridContainer" type="GridContainer" parent="CustomizeControlsMenu/VBoxContainer"]
 layout_mode = 2
@@ -683,11 +572,6 @@ layout_mode = 2
 theme = ExtResource("3_cx58u")
 disabled = true
 
-[node name="TTS_Button_Attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer5/MoveWithMouseCheckbox" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
-alternate_text = "Move with mouse"
-
 [node name="HBoxContainer6" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -704,11 +588,6 @@ layout_mode = 2
 theme = ExtResource("3_cx58u")
 disabled = true
 
-[node name="TTS_Button_Attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer6/UseAndFireCheckbox" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
-alternate_text = "Use the same button for \"Use\"and \"Fire\""
-
 [node name="HBoxContainer7" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -724,11 +603,6 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 disabled = true
-
-[node name="TTS_Button_Attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer7/DoubleClickForUse" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
-alternate_text = "Double-click strafe for \"use\""
 
 [node name="ColorRect4" type="ColorRect" parent="CustomizeControlsMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 1)
@@ -765,14 +639,10 @@ columns = 2
 layout_mode = 2
 alignment = 2
 
-[node name="save_and_use_button" type="Button" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer2"]
+[node name="Button3" type="Button" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "Save And Use"
-
-[node name="TTS_Button_Attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer2/save_and_use_button" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
 
 [node name="WaitingInputPopup" type="ColorRect" parent="CustomizeControlsMenu"]
 visible = false
@@ -827,12 +697,6 @@ layout_mode = 2
 theme = ExtResource("3_cx58u")
 value = 100.0
 
-[node name="TTS_slider_attachment" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/MasterVolumeSlider" node_paths=PackedStringArray("slider")]
-script = ExtResource("28_v8brc")
-slider = NodePath("..")
-option_name = "Master volume"
-unit_value = "%"
-
 [node name="MusicVolumeLabel" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -845,12 +709,6 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 value = 100.0
-
-[node name="TTS_slider_attachment" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/MusicVolumeSlider" node_paths=PackedStringArray("slider")]
-script = ExtResource("28_v8brc")
-slider = NodePath("..")
-option_name = "Music volume"
-unit_value = "%"
 
 [node name="SoundsVolumeLabel" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -865,11 +723,15 @@ layout_mode = 2
 theme = ExtResource("3_cx58u")
 value = 100.0
 
-[node name="TTS_slider_attachment" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/SoundsVolumeSlider" node_paths=PackedStringArray("slider")]
-script = ExtResource("28_v8brc")
-slider = NodePath("..")
-option_name = "Sound volume"
-unit_value = "%"
+[node name="NarrationLabel" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "Use Narration"
+horizontal_alignment = 2
+
+[node name="CheckBox" type="CheckBox" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
 
 [node name="NarrationVolume" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -877,19 +739,12 @@ theme = ExtResource("3_cx58u")
 text = "Narration Volume"
 horizontal_alignment = 2
 
-[node name="NarrationVolumeSlider" type="HSlider" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
+[node name="SoundsVolumeSlider2" type="HSlider" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-value = 80.0
-script = ExtResource("31_7ov4g")
-
-[node name="TTS_slider_attachment" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/NarrationVolumeSlider" node_paths=PackedStringArray("slider")]
-script = ExtResource("28_v8brc")
-slider = NodePath("..")
-option_name = "Narration volume"
-unit_value = "%"
+value = 100.0
 
 [node name="Label" type="Label" parent="SoundOptionsMenu"]
 layout_mode = 1
@@ -921,18 +776,18 @@ grow_vertical = 0
 theme = ExtResource("3_cx58u")
 text = "Go Back [Backspace]"
 
-[node name="TTS_Button_Attachment" type="Node" parent="GoBackButton" node_paths=PackedStringArray("button")]
-script = ExtResource("21_gjncb")
-button = NodePath("..")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_i12do")
 }
 
-[connection signal="pressed" from="MainMenu/MainMenu/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainMenu/MainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="TTS" type="Node" parent="."]
+script = ExtResource("24_akit4")
+voice_volume = 50
+
+[connection signal="pressed" from="MainMenu/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="item_selected" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer/SchemeSelect" to="." method="_on_scheme_select_item_selected"]
-[connection signal="pressed" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer/copy_and_modify_button" to="." method="copy"]
-[connection signal="pressed" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer2/save_and_use_button" to="." method="save_and_apply_input_configuration"]
+[connection signal="pressed" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer/Button" to="." method="copy"]
+[connection signal="pressed" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer2/Button3" to="." method="save_and_apply_input_configuration"]
 [connection signal="pressed" from="GoBackButton" to="." method="_on_go_back_button_pressed"]

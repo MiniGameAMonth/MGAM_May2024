@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6k0msvulivni"]
+
+[ext_resource type="Script" path="res://Sources/TTS scripts/TTS_option_button_attachment.gd" id="1_blp2j"]
+
+[node name="TTS_option_button_attachment" type="Node"]
+script = ExtResource("1_blp2j")

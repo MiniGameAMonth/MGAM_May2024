@@ -1,4 +1,5 @@
 extends Panel
+class_name CustomControlsActionKey
 
 enum ActionType { KEYBOARD, MOUSE, GAMEPAD_BUTTON, GAMEPAD_AXIS }
 enum State { NORMAL, WAITING_KEY, WAITING_KEY_ALT }
@@ -13,7 +14,6 @@ signal input_change_requested(is_alt, action_key)
 @export var editable = true
 @export_flags("Keyboard", "Mouse", "Gamepad Button", "Gamepad Axis") var allowed_action_types
 
-
 func setup():
 	if action_name == "":
 		printerr("Missing action name")
@@ -22,8 +22,8 @@ func setup():
 	$Label.text = action_name
 
 	if !editable:
-		$Button.disabled = true
-		$AlternateButton.disabled = true
+		$Primary_Keybind.disabled = true
+		$Secondary_Keybind.disabled = true
 
 
 func set_input(key, type, button):
@@ -66,13 +66,13 @@ func set_input(key, type, button):
 
 
 func set_primary_input(key, type):
-	set_input(key, type, $Button)
-	action_key = key
+	set_input(key, type, $Primary_Keybind)
+	action_key = key	
 	action_key_type = type
 
 
 func set_secondary_input(key, type):
-	set_input(key, type, $AlternateButton)
+	set_input(key, type, $Secondary_Keybind)
 	action_key_alt = key
 	action_key_alt_type = type
 
