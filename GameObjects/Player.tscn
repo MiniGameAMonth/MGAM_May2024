@@ -120,7 +120,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 3
+collision_layer = 5
 script = ExtResource("1_l3ge4")
 mouse_sensitivity = 0.2
 
@@ -135,6 +135,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_f5s06")
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_ppcc5")]
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0334473, 0.480469, 0.0345764)
@@ -199,5 +201,5 @@ omni_range = 10.743
 
 [connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="set_interactable"]
 [connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction"]
-[connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction_end"]
 [connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="clear_interactable"]
+[connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction_end"]

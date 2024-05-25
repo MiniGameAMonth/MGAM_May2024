@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chekwycyhaxsj"]
+[gd_scene load_steps=16 format=3 uid="uid://chekwycyhaxsj"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_elfre"]
 [ext_resource type="Script" path="res://Sources/Utilities/DirectionalAnimatedSprite3D.gd" id="3_ngyww"]
@@ -7,14 +7,22 @@
 [ext_resource type="SpriteFrames" uid="uid://bwu5kpwjckvsf" path="res://Assets/Images/Sprite Sheets/Cat/Front/cat_frontview.tres" id="5_qp00h"]
 [ext_resource type="SpriteFrames" uid="uid://dwfyj37kv47tc" path="res://Assets/Images/Sprite Sheets/Cat/Side/cat_sideview.tres" id="5_rk0n0"]
 [ext_resource type="Script" path="res://Sources/Behaviours/CatBehaviour.gd" id="6_kqk0s"]
+[ext_resource type="Script" path="res://Sources/Utilities/PlaySound.gd" id="7_052mf"]
+[ext_resource type="AudioStream" uid="uid://bcrkxxh213rdn" path="res://Assets/Sounds/Cat/cat_waiting.tres" id="8_7q606"]
 [ext_resource type="Script" path="res://Sources/Utilities/LineOfSight3D.gd" id="8_50nea"]
+[ext_resource type="AudioStream" uid="uid://bjavxvfindrfn" path="res://Assets/Sounds/Cat/cat_sniffing.tres" id="9_0m0uj"]
+[ext_resource type="Script" path="res://Sources/Behaviours/Sight.gd" id="10_b078p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01iqy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pob5h"]
+radius = 8.55089
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_73gjj"]
 radius = 1.0
 
 [node name="Cat" type="CharacterBody3D" groups=["Cat"]]
+collision_layer = 2
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
@@ -45,15 +53,47 @@ characterBody = NodePath("..")
 
 [node name="Cat Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("cat", "graphics", "interactionArea", "lineOfSight", "behaviour_owner")]
 script = ExtResource("6_kqk0s")
-cat = NodePath("..")
+cat = NodePath("../Follower")
 graphics = NodePath("../Graphics")
 interactionArea = NodePath("../Interactable")
 lineOfSight = NodePath("../LineOfSight3D")
 behaviour_owner = NodePath("..")
 
+[node name="WaitForPlayerSound" type="Node3D" parent="Cat Behaviour" node_paths=PackedStringArray("player")]
+script = ExtResource("7_052mf")
+loop = true
+loop_delay = 5.0
+player = NodePath("AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cat Behaviour/WaitForPlayerSound"]
+stream = ExtResource("8_7q606")
+volume_db = -12.0
+max_distance = 30.0
+bus = &"Sounds"
+area_mask = 128
+
+[node name="SniffingSound" type="Node3D" parent="Cat Behaviour"]
+script = ExtResource("7_052mf")
+loop = true
+loop_delay = 3.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cat Behaviour/SniffingSound"]
+stream = ExtResource("9_0m0uj")
+
+[node name="EnemySight" type="Area3D" parent="Cat Behaviour"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405973, 0)
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("10_b078p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cat Behaviour/EnemySight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.564511, 0)
+shape = SubResource("SphereShape3D_pob5h")
+
 [node name="Interactable" type="StaticBody3D" parent="." node_paths=PackedStringArray("graphics")]
-collision_layer = 2
-collision_mask = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523047, 0)
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("4_dyxf8")
 graphics = NodePath("../Graphics")
 interactableName = "Star"
@@ -64,5 +104,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540481, 0)
 shape = SubResource("SphereShape3D_73gjj")
 
 [node name="LineOfSight3D" type="RayCast3D" parent="."]
+collision_mask = 5
 debug_shape_custom_color = Color(1, 1, 0, 1)
 script = ExtResource("8_50nea")

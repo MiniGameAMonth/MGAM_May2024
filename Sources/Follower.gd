@@ -27,10 +27,8 @@ func _physics_process(delta):
 	else:
 		characterBody.velocity.y = 0
 		
-	if followTarget != null:
+	if is_instance_valid(followTarget):
 		follow_position(followTarget.global_position)
-	else:
-		agent.target_position = characterBody.global_position
 
 	var nextPosition = agent.get_next_path_position()
 	if nextPosition != null:
@@ -66,7 +64,10 @@ func look_at_position(pos : Vector3, delta):
 	characterBody.global_rotation.y = y_rot
 
 func follow(target : Node3D):
-	followTarget = target
+	if is_instance_valid(target):
+		followTarget = target
+	else:
+		agent.target_position = characterBody.global_position
 
 func follow_position(target : Vector3):
 	agent.target_position = target

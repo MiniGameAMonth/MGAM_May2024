@@ -123,31 +123,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59656, 1.49573, 1.56009)
 [node name="PlayerSpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82836, 1, 2.10039)
 
-[node name="Mushroom" parent="." instance=ExtResource("3_uejod")]
+[node name="Mushrooms" type="Node3D" parent="."]
+
+[node name="Mushroom" parent="Mushrooms" instance=ExtResource("3_uejod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.84375, 0.549846, 4.99637)
 
-[node name="Mushroom2" parent="." instance=ExtResource("3_uejod")]
+[node name="Mushroom2" parent="Mushrooms" instance=ExtResource("3_uejod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.84375, 0.549846, 11.7276)
 
-[node name="Mushroom3" parent="." instance=ExtResource("3_uejod")]
+[node name="Mushroom3" parent="Mushrooms" instance=ExtResource("3_uejod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4713, 0.549846, 15.876)
 
-[node name="Mushroom4" parent="." instance=ExtResource("3_uejod")]
+[node name="Mushroom4" parent="Mushrooms" instance=ExtResource("3_uejod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32195, 0.549846, 18.8707)
 
-[node name="Mushroom7" parent="." instance=ExtResource("3_uejod")]
+[node name="Mushroom7" parent="Mushrooms" instance=ExtResource("3_uejod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7219, -1.96239, 14.479)
 
-[node name="Mushroom6" parent="." instance=ExtResource("3_uejod")]
+[node name="Mushroom6" parent="Mushrooms" instance=ExtResource("3_uejod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5873, 1.2751, 14.5652)
 
-[node name="Mushroom8" parent="." instance=ExtResource("3_uejod")]
+[node name="Mushroom8" parent="Mushrooms" instance=ExtResource("3_uejod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7241, -3.54669, 27.8254)
 
-[node name="Mushroom9" parent="." instance=ExtResource("3_uejod")]
+[node name="Mushroom9" parent="Mushrooms" instance=ExtResource("3_uejod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9041, -3.70368, 25.8213)
 
-[node name="Mushroom5" parent="." instance=ExtResource("3_uejod")]
+[node name="Mushroom5" parent="Mushrooms" instance=ExtResource("3_uejod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6276, 0.549846, 4.17589)
 
 [node name="Cat" parent="." instance=ExtResource("3_pvegq")]

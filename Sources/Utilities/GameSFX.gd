@@ -3,6 +3,7 @@ extends Node
 
 var poolSize = 10
 var pool : Array[AudioStreamPlayer3D] = []
+var borrowed : Array[AudioStreamPlayer3D] = []
 var defaultPlayer : AudioStreamPlayer3D
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +27,22 @@ func get_available_player():
 		if not sfx.playing:
 			return sfx
 	return null
+
+func borrow_player():
+	var player = get_available_player()
+	if player == null:
+		push_warning("No available player to play sound, consider increasing pool size.")
+		player = add_player()
+
+	borrowed.append(player)
+	pool.remove_at(pool.find(player))
+
+	copy_player(player, defaultPlayer)
+	return player
+
+func return_player(player : AudioStreamPlayer3D):
+	borrowed.remove_at(borrowed.find(player))
+	pool.append(player)
 
 func play_sound(other_player : AudioStreamPlayer3D):
 	var player = get_available_player()
