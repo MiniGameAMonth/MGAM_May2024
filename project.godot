@@ -116,6 +116,10 @@ ui_pause={
 
 [layer_names]
 
+3d_physics/layer_1="SOLIDS"
+3d_physics/layer_2="GHOST_COLLISIONS"
+3d_physics/layer_3="ENTITIES"
+3d_physics/layer_4="INTERACTIONS"
 2d_physics/layer_8="SOUND_OVERRIDE_AREAS"
 3d_physics/layer_8="SOUND_OVERRIDE_AREAS"
 

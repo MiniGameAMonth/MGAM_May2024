@@ -5,14 +5,15 @@ extends Behaviour
 @export var weapon : Weapon
 @export var animationPlayer : AnimationPlayer
 @export var graphics : AnimatedSprite3D
-@export var sight : Sight
+@onready var sight : Sight = $Sight
 @export var max_distance : float = 50
 @export var sightedSound : PlaySound3D
+@onready var targetLineOfSight : LineOfSight3D = $LineOfSight3D
 
 var attackTarget : Node3D = null
 
 func _ready():
-	add_to_group(GroupNames.Enemies)
+	get_parent().add_to_group(GroupNames.Enemies)
 
 	if (follower == null):
 		push_warning("Enemy : Follower not set.")
@@ -24,6 +25,8 @@ func _ready():
 	else:
 		sight.sighted.connect(attack_target)
 
+	targetLineOfSight.set_target_offset(Vector3(0, 1, 0))
+
 	change_state(EnemyIdleState.new(self))
 	
 
@@ -34,7 +37,7 @@ func attack_target(target:Node3D):
 	if target.name != "Player":
 		return
 	attackTarget = target
-	#change_state(EnemyFollowState.new(self, target))
+	targetLineOfSight.target = target
 
 func play_attack():
 	weapon.try_deal_damage(attackTarget)

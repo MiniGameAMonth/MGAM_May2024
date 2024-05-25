@@ -12,6 +12,7 @@ var to_heal : Character
 var animationEnd : Callable
 
 func _ready():
+	super._ready()
 	pet_timer = Timer.new()
 	pet_timer.set_wait_time(pet_time_to_heal)
 	pet_timer.one_shot = false
