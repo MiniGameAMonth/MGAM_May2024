@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://204i3o81yrff"]
 
-[ext_resource type="PackedScene" uid="uid://du7l74rq77kfn" path="res://Main.tscn" id="1_xfmy7"]
+[ext_resource type="PackedScene" uid="uid://du7l74rq77kfn" path="res://Menu.tscn" id="1_xfmy7"]
 [ext_resource type="Script" path="res://Sources/TTS scripts/TTS.gd" id="2_12wlv"]
-[ext_resource type="PackedScene" path="res://UI/tutorial.tscn" id="2_fy8tk"]
+[ext_resource type="PackedScene" uid="uid://c3hybkk72t0kd" path="res://UI/tutorial.tscn" id="2_fy8tk"]
 
 [node name="MainRoot" type="Node3D"]
 

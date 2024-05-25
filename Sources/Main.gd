@@ -55,7 +55,8 @@ func is_in_game():
 func start_game():
 	if !is_game_was_started:
 		is_game_was_started = true
-		menu_node.get_node("MainMenu/MainMenu/PlayButton").text = "Continue"
+		menu_node.get_node("MainMenu/MainMenu/PlayButton").hide()
+		menu_node.get_node("MainMenu/MainMenu/ContinueButton").show()
 		load_level("res://Levels/Level1.tscn")
 
 	game_mode = GameMode.IN_GAME
