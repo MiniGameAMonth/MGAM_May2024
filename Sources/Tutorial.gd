@@ -13,7 +13,7 @@ enum TutorialType {
 }
 
 var tutorialHUD
-var disabled = false
+@export var disabled = false
 var tutorial_started = false
 var task_completed = false
 
