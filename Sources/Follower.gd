@@ -57,6 +57,9 @@ func move_to_position(pos : Vector3):
 
 	characterBody.move_and_slide()
 
+func get_velocity():
+	return characterBody.velocity
+
 func look_at_position(pos : Vector3, delta):
 	var y_rot = characterBody.global_rotation.y;
 	var direction = characterBody.global_position.direction_to(pos)

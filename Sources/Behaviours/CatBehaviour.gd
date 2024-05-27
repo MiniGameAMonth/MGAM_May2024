@@ -26,8 +26,6 @@ func _ready():
 
 	enemySight.sighted.connect(check_enemies_in_sight)
 
-	change_state(CatIdleState.new(self))
-
 
 func _process(_delta):
 	if player == null:
@@ -36,6 +34,7 @@ func _process(_delta):
 			return
 		else:
 			lineOfSight.set_target(player)
+			change_state(CatIdleState.new(self))
 
 	super._process(_delta)
 
@@ -45,3 +44,5 @@ func check_enemies_in_sight(body : Node3D):
 	
 	if body.is_in_group(GroupNames.Enemies):
 		change_state(CatGoInBackpackState.new(self))
+
+
