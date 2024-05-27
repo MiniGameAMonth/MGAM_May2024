@@ -1,3 +1,4 @@
+class_name CatBehaviour
 extends Behaviour
 
 enum State { IDLE, WALK_TO_MUSHROOM, WAIT_FOR_PLAYER, WALK_TO_EXIT, NEAR_MUSHROOM, NEAR_EXIT }
@@ -13,12 +14,17 @@ var targetMushroom : Node3D;
 
 @export var lineOfSight : LineOfSight3D
 
+@onready var waitForPlayerSound : PlaySound3D = $WaitForPlayerSound
+@onready var enemySight : Sight = $EnemySight
+
 var player : Node3D = null
 
 func _ready():
 	add_to_group(GroupNames.Cat)
-	lineOfSight.set_origin_offset(Vector3(0, 1, -1.5))
-	change_state(CatIdleState.new(self))
+	lineOfSight.set_origin_offset(Vector3(0, 2, -1.5))
+	lineOfSight.set_target_offset(Vector3(0, 1, 0))
+
+	enemySight.sighted.connect(check_enemies_in_sight)
 
 
 func _process(_delta):
@@ -28,5 +34,15 @@ func _process(_delta):
 			return
 		else:
 			lineOfSight.set_target(player)
+			change_state(CatIdleState.new(self))
 
 	super._process(_delta)
+
+func check_enemies_in_sight(body : Node3D):
+	if current_state is CatGoInBackpackState:
+		return
+	
+	if body.is_in_group(GroupNames.Enemies):
+		change_state(CatGoInBackpackState.new(self))
+
+

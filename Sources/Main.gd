@@ -17,6 +17,7 @@ var mouse_delta : Vector2
 ################################### Functions ###################################
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	generate_default_input_schemes()
 	menu_node = get_tree().root.get_node("MainRoot/UICanvas/Menu")
 	level_container = get_tree().root.get_node("MainRoot/Level")
@@ -29,8 +30,10 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_pause"):
 		if game_mode == GameMode.MENU && is_game_was_started:
+			get_tree().paused = false
 			game_mode = GameMode.IN_GAME
 		else:
+			get_tree().paused = true
 			game_mode = GameMode.MENU
 
 		update_menu()
@@ -40,7 +43,7 @@ func _physics_process(delta):
 	local_delta = delta
 
 
-func subscribe_to_menu_events():	
+func subscribe_to_menu_events():
 	menu_node.connect("start_game", Callable(self, "start_game"))
 	menu_node.connect("quit_game", Callable(self, "quit_game"))
 
@@ -52,8 +55,9 @@ func is_in_game():
 func start_game():
 	if !is_game_was_started:
 		is_game_was_started = true
-		menu_node.get_node("MainMenu/MainMenu/PlayButton").text = "Continue"
-		load_level("res://Levels/NavigationTesting.tscn")
+		menu_node.get_node("MainMenu/MainMenu/PlayButton").hide()
+		menu_node.get_node("MainMenu/MainMenu/ContinueButton").show()
+		load_level("res://Levels/Level1.tscn")
 
 	game_mode = GameMode.IN_GAME
 	update_menu()
@@ -61,7 +65,7 @@ func start_game():
 
 func quit_game():
 	get_tree().quit()
-	
+
 
 func load_level(path):
 	level = load(path).instantiate()
@@ -173,7 +177,7 @@ func generate_default_input_schemes():
 	mouseOnlyConfig.set_value("INFO", "Locked", true)
 	mouseOnlyConfig.set_value("INFO", "Move with mouse", true)
 	mouseOnlyConfig.set_value("INFO", "Same button for \"Use\" & \"Fire\"", true)
-	
+
 	mouseOnlyConfig.set_value("Mouse",	"Fire",					MOUSE_BUTTON_LEFT)
 	mouseOnlyConfig.set_value("Mouse",	"Use",					"")
 	mouseOnlyConfig.set_value("Mouse", 	"Strafe Mode", 			MOUSE_BUTTON_RIGHT)

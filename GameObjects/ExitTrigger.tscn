@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkimy18ql6y7v"]
+
+[ext_resource type="Script" path="res://Sources/ExitTrigger.gd" id="1_q47mw"]
+
+[node name="ExitTrigger" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 329.246, -7.00504, -22.3546)
+script = ExtResource("1_q47mw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -19,7 +19,6 @@ func _ready():
 	if agent == null:
 		push_error("Follower of ", get_parent().name, " has no NavigationAgent3D.")
 	agent.target_desired_distance = stopAtDistance
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -28,15 +27,13 @@ func _physics_process(delta):
 	else:
 		characterBody.velocity.y = 0
 		
-	if followTarget != null:
+	if is_instance_valid(followTarget):
 		follow_position(followTarget.global_position)
-	else:
-		agent.target_position = characterBody.global_position
 
 	var nextPosition = agent.get_next_path_position()
 	if nextPosition != null:
 		move_to_position(nextPosition)
-		if lookAtTarget:
+		if lookAtTarget and agent.target_position != characterBody.global_position:
 			look_at_position(nextPosition, delta)
 
 func path_direction():
@@ -60,6 +57,9 @@ func move_to_position(pos : Vector3):
 
 	characterBody.move_and_slide()
 
+func get_velocity():
+	return characterBody.velocity
+
 func look_at_position(pos : Vector3, delta):
 	var y_rot = characterBody.global_rotation.y;
 	var direction = characterBody.global_position.direction_to(pos)
@@ -67,7 +67,10 @@ func look_at_position(pos : Vector3, delta):
 	characterBody.global_rotation.y = y_rot
 
 func follow(target : Node3D):
-	followTarget = target
+	if is_instance_valid(target):
+		followTarget = target
+	else:
+		agent.target_position = characterBody.global_position
 
 func follow_position(target : Vector3):
 	agent.target_position = target

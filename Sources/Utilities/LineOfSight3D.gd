@@ -7,11 +7,12 @@ signal on_sight_exited(body : Node3D)
 @export var target : Node3D = null
 var in_sight : bool = false
 var origin_offset : Vector3 = Vector3(0, 0, 0)
+var target_offset : Vector3 = Vector3(0, 0, 0)
 
 
-func _physics_process(_delta):
+func _process(_delta):
 	if target != null:
-		target_position = to_local(target.global_position)
+		target_position = to_local(target.global_position) + target_offset
 		force_raycast_update()
 
 		if is_colliding():
@@ -36,4 +37,7 @@ func set_origin_offset(offset : Vector3) -> void:
 
 func set_target(_target : Node3D) -> void:
 	target = _target
+
+func set_target_offset(offset : Vector3) -> void:
+	target_offset = offset
 

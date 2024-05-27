@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cwq15tiyvklr0"
+path="res://.godot/imported/Creature Breath - 1.wav-15087908b696e0b092ed0772f4f09d17.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Enemies/Creature Breath/Creature Breath - 1.wav"
+dest_files=["res://.godot/imported/Creature Breath - 1.wav-15087908b696e0b092ed0772f4f09d17.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

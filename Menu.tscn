@@ -259,6 +259,7 @@ _data = {
 }
 
 [node name="Menu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -296,10 +297,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -110.0
-offset_top = -80.0
-offset_right = 114.0
-offset_bottom = -57.0
+offset_left = 210.0
+offset_top = 280.0
+offset_right = 466.0
+offset_bottom = 303.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
@@ -316,6 +317,21 @@ text = "Play"
 script = ExtResource("21_dsmr3")
 
 [node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/PlayButton" node_paths=PackedStringArray("button")]
+script = ExtResource("21_gjncb")
+button = NodePath("..")
+
+[node name="ContinueButton" type="Button" parent="MainMenu/MainMenu"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
+text = "Continue"
+
+[node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/ContinueButton" node_paths=PackedStringArray("button")]
 script = ExtResource("21_gjncb")
 button = NodePath("..")
 
@@ -940,6 +956,7 @@ libraries = {
 }
 
 [connection signal="pressed" from="MainMenu/MainMenu/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenu/ContinueButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/MainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="item_selected" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer/SchemeSelect" to="." method="_on_scheme_select_item_selected"]
 [connection signal="pressed" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer/copy_and_modify_button" to="." method="copy"]

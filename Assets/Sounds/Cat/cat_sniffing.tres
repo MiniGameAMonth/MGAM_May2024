@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://bjavxvfindrfn"]
+
+[ext_resource type="AudioStream" uid="uid://d2y07k51f7iwp" path="res://Assets/Sounds/Cat/Sniff/Sniff.wav" id="1_hxajg"]
+[ext_resource type="AudioStream" uid="uid://c7ceom5eetx1f" path="res://Assets/Sounds/Cat/Sniff/Sniff & Meow.wav" id="2_gdbsb"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_hxajg")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_gdbsb")
+stream_1/weight = 1.0

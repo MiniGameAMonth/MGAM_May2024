@@ -122,6 +122,15 @@ ui_pause={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="SOLIDS"
+3d_physics/layer_2="GHOST_COLLISIONS"
+3d_physics/layer_3="ENTITIES"
+3d_physics/layer_4="INTERACTIONS"
+2d_physics/layer_8="SOUND_OVERRIDE_AREAS"
+3d_physics/layer_8="SOUND_OVERRIDE_AREAS"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
@@ -131,3 +140,4 @@ textures/default_filters/use_nearest_mipmap_filter=true
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 textures/decals/filter=0
 textures/light_projectors/filter=0
+limits/opengl/max_lights_per_object=32

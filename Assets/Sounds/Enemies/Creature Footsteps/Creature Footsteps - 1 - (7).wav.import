@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://m87nhi405df7"
+path="res://.godot/imported/Creature Footsteps - 1 - (7).wav-1561b34601ac21d8a93d0d0fdea9113c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Enemies/Creature Footsteps/Creature Footsteps - 1 - (7).wav"
+dest_files=["res://.godot/imported/Creature Footsteps - 1 - (7).wav-1561b34601ac21d8a93d0d0fdea9113c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

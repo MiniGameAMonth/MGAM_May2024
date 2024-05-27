@@ -1,6 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=15 format=3 uid="uid://dfdv88ekpx7s8"]
 
 [ext_resource type="Texture2D" uid="uid://dpqfha1ctn7b0" path="res://Assets/Images/Sprite Sheets/Cat/Cat Animations.png" id="1_5s3ak"]
+[ext_resource type="Texture2D" uid="uid://gsdlkba8x8f5" path="res://Assets/Images/Sprite Sheets/Cat/Back/sniff/cat-sniff-back.tres" id="2_thqww"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyfs2"]
 atlas = ExtResource("1_5s3ak")
@@ -17,10 +18,6 @@ region = Rect2(192, 288, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jmxv2"]
 atlas = ExtResource("1_5s3ak")
 region = Rect2(288, 288, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7kfew"]
-atlas = ExtResource("1_5s3ak")
-region = Rect2(384, 384, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bgvvn"]
 atlas = ExtResource("1_5s3ak")
@@ -75,7 +72,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7kfew")
+"texture": ExtResource("2_thqww")
 }],
 "loop": true,
 "name": &"sniff",

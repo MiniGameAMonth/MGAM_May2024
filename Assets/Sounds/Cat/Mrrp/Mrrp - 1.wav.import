@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnydl7l864v0g"
+path="res://.godot/imported/Mrrp - 1.wav-e96cafd845c263e8c3318395bba38035.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Cat/Mrrp/Mrrp - 1.wav"
+dest_files=["res://.godot/imported/Mrrp - 1.wav-e96cafd845c263e8c3318395bba38035.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

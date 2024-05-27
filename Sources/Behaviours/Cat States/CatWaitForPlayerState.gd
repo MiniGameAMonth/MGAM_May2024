@@ -13,11 +13,15 @@ func enter():
 	follower.stop()
 
 	lineOfSight = behaviour.behaviour_owner.get_node("LineOfSight3D")
+	behaviour.waitForPlayerSound.play()
 
 func update(_delta):
 	if lineOfSight.in_sight:
 		follower.resume()
 		behaviour.change_state(behaviour.last_state)
+
+func exit():
+	behaviour.waitForPlayerSound.stop()
 
 
 

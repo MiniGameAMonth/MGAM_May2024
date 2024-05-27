@@ -12,7 +12,7 @@ signal input_change_requested(is_alt, action_key)
 @export var action_key_type : ActionType
 @export var action_key_alt_type : ActionType
 @export var editable = true
-@export_flags("Keyboard", "Mouse", "Gamepad Button", "Gamepad Axis") var allowed_action_types 
+@export_flags("Keyboard", "Mouse", "Gamepad Button", "Gamepad Axis") var allowed_action_types
 
 func setup():
 	if action_name == "":
@@ -40,7 +40,7 @@ func set_input(key, type, button):
 		else:
 			button.icon = null
 			button.text = input_name
-		
+
 		button.flat = false
 
 	if type == ActionType.MOUSE:
@@ -63,7 +63,7 @@ func set_input(key, type, button):
 			button.icon = load("res://Assets/Images/Menu/Inputs/ScrollDown.png")
 		else:
 			button.text = input_name
-			
+
 
 func set_primary_input(key, type):
 	set_input(key, type, $Primary_Keybind)

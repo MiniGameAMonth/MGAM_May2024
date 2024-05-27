@@ -100,3 +100,5 @@ shape = SubResource("ConcavePolygonShape3D_w2rab")
 
 [node name="PlayerSpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3601, 0, 44.678)
+
+[node name="Mushrooms" type="Node" parent="."]

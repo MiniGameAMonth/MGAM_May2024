@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dhktw4y7gkww3"]
+[gd_scene load_steps=15 format=3 uid="uid://dhktw4y7gkww3"]
 
 [ext_resource type="Script" path="res://Sources/Player.gd" id="1_l3ge4"]
 [ext_resource type="PackedScene" uid="uid://c18ga08e55buv" path="res://GameObjects/Interactable/InteractionArea.tscn" id="2_ppcc5"]
 [ext_resource type="Script" path="res://Sources/Weapons/Weapon.gd" id="3_26ey6"]
+[ext_resource type="AudioStream" uid="uid://tnnhwxcg2p8n" path="res://Assets/Sounds/Player/Spell/wand_sounds.tres" id="4_vnv0v"]
 [ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="5_aokh4"]
 [ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="6_213k8"]
 [ext_resource type="PackedScene" uid="uid://b80qtulhkax1j" path="res://GameObjects/PlayerHUD.tscn" id="6_fsf8v"]
+[ext_resource type="Theme" uid="uid://b52ts8rtppg4j" path="res://Themes/MenuTheme.tres" id="8_ws50j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5s06"]
 
@@ -118,7 +120,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 3
+collision_layer = 5
 script = ExtResource("1_l3ge4")
 mouse_sensitivity = 0.2
 
@@ -133,6 +135,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_f5s06")
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_ppcc5")]
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0334473, 0.480469, 0.0345764)
@@ -147,6 +151,12 @@ cooldownTime = 1.0
 [node name="Cooldown" type="Timer" parent="Weapon"]
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Weapon"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -1.5, 0)
+stream = ExtResource("4_vnv0v")
+volume_db = -16.0
+bus = &"Sounds"
 
 [node name="Character" type="Node3D" parent="." node_paths=PackedStringArray("characterStats")]
 script = ExtResource("5_aokh4")
@@ -164,10 +174,30 @@ layer = 0
 [node name="PlayerHud" parent="CanvasLayer" node_paths=PackedStringArray("character") instance=ExtResource("6_fsf8v")]
 character = NodePath("../../Character")
 
+[node name="GetMushroomsMessage" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_ws50j")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_o724y")
 }
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18048, 0)
+light_color = Color(1, 0.809429, 0.777691, 1)
+light_energy = 5.425
+shadow_enabled = true
+omni_range = 10.743
 
 [connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction"]
 [connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="set_interactable"]

@@ -28,16 +28,16 @@ func update(_delta : float):
 	if mushroom.get_ref() != null:
 		cat.follow(mushroom.get_ref())
 		graphics.play("walk")
-
-		if not lineOfSight.in_sight:
-			behaviour.change_state(CatWaitForPlayerState.new(behaviour))
 	else:
 		behaviour.change_state(CatIdleState.new(behaviour))
-
+	
 	#near mushroom
 	if cat.is_at_target():
 		graphics.play("sniff")
 		interactable.disable()
+	else:
+		if not lineOfSight.in_sight:
+			behaviour.change_state(CatWaitForPlayerState.new(behaviour))
 
 func exit():
 	graphics.play("idle")
