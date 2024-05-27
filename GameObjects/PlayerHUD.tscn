@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b80qtulhkax1j"]
+[gd_scene load_steps=17 format=3 uid="uid://b80qtulhkax1j"]
 
 [ext_resource type="Script" path="res://Sources/HUD/PlayerHUD.gd" id="1_lsokv"]
 [ext_resource type="SpriteFrames" uid="uid://ckvoa8lmhd6at" path="res://Assets/Images/Sprite Sheets/Pet Cat HUD/Pet_Cat_HUD.tres" id="1_mi8lc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://3go1d4gf0ux4" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand3.png" id="6_2vptw"]
 [ext_resource type="PackedScene" uid="uid://q16ycfbnj2a5" path="res://GameObjects/UI/Radar.tscn" id="6_xdbgq"]
 [ext_resource type="Texture2D" uid="uid://b5q7knetexoo6" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand5.png" id="7_tk28n"]
+[ext_resource type="Script" path="res://Sources/TTS scripts/TTS_label_attachment.gd" id="8_gnwyr"]
 
 [sub_resource type="Animation" id="Animation_ftpu5"]
 resource_name = "cat_end_pet"
@@ -231,6 +232,10 @@ offset_right = 50.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TTS_label_attachment" type="Node" parent="InteractionLabel" node_paths=PackedStringArray("label")]
+script = ExtResource("8_gnwyr")
+label = NodePath("..")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_pkra2")]
 layout_mode = 1

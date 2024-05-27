@@ -20,6 +20,28 @@ func _ready():
 	button.gui_input.connect(_on_keyboard_input)
 	button.draw.connect(update_keybind_name)
 
+func _on_keyboard_input(event: InputEvent):
+	if event is InputEventKey and !event.pressed:
+		if button.has_focus():
+
+			match event.as_text():
+				"Enter":
+					TTS.say_phrase("You are changing the keybind for, " + action_name)	
+
+				"Left":
+					TTS.say_phrase(action_name + "..." + keybind_name)
+
+				"Right":
+					TTS.say_phrase(action_name + "..." + keybind_name)
+				
+				"Up":
+					TTS.say_phrase(action_name + "..." + keybind_name)
+				
+				"Down":
+					TTS.say_phrase(action_name + "..." + keybind_name)
+				
+	return
+
 func get_keybind_name() -> String:
 	if !secondary_keybind:
 		if custom_control_action_key.action_key_type == 0: #keyboard input
@@ -44,6 +66,9 @@ func get_keybind_name() -> String:
 	
 func _on_button_up():
 	TTS.say_phrase("You are changing the keybind for, " + action_name)
+
+func _on_mouse_entered():
+	TTS.say_phrase(action_name + "..." + keybind_name)
 
 #Called when a new keybind is set
 func update_keybind_name():
@@ -88,6 +113,3 @@ func get_keycode_secondary() -> String:
 		return "Secondary keybind not set"
 	else:			
 		return OS.get_keycode_string(custom_control_action_key.action_key_alt)
-
-func _on_mouse_entered():
-	TTS.say_phrase(action_name + "..." + keybind_name)

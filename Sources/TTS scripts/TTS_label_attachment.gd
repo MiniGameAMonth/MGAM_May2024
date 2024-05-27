@@ -1,6 +1,6 @@
 extends Node
 class_name  TTS_label_attachment
-##UI attachment. Use to add TTS to a label or a rich text label UI element
+##UI attachment. Use to add TTS to a label or a rich text label UI element (Used only from gameplay tts)
 
 ##Label that needs to be read by TTS
 @export var label: Label
