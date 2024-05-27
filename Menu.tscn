@@ -590,10 +590,11 @@ theme = ExtResource("3_cx58u")
 text = "Credits"
 horizontal_alignment = 1
 
-[node name="Credits_reader" type="Node" parent="CreditsMenu" node_paths=PackedStringArray("credits_button", "label")]
+[node name="Credits_reader" type="Node" parent="CreditsMenu" node_paths=PackedStringArray("credits_button", "label", "back_button")]
 script = ExtResource("28_746g4")
 credits_button = NodePath("../../MainMenu/MainMenu/CreditsButton")
 label = NodePath("../RichTextLabel")
+back_button = NodePath("../../GoBackButton")
 
 [node name="CustomizeControlsMenu" parent="." node_paths=PackedStringArray("parent_menu") instance=ExtResource("3_kfsru")]
 visible = false

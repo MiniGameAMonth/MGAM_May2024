@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b80qtulhkax1j"]
+[gd_scene load_steps=19 format=3 uid="uid://b80qtulhkax1j"]
 
 [ext_resource type="Script" path="res://Sources/HUD/PlayerHUD.gd" id="1_lsokv"]
 [ext_resource type="SpriteFrames" uid="uid://ckvoa8lmhd6at" path="res://Assets/Images/Sprite Sheets/Pet Cat HUD/Pet_Cat_HUD.tres" id="1_mi8lc"]
@@ -273,9 +273,10 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TTS_label_attachment" type="Node" parent="InteractionLabel" node_paths=PackedStringArray("label")]
+[node name="TTS_label_attachment" type="Node" parent="InteractionLabel" node_paths=PackedStringArray("label", "hud")]
 script = ExtResource("8_gnwyr")
 label = NodePath("..")
+hud = NodePath("../..")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_pkra2")]
 layout_mode = 1
