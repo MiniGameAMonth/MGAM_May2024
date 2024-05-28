@@ -69,10 +69,12 @@ func look_at_position(pos : Vector3, delta):
 func follow(target : Node3D):
 	if is_instance_valid(target):
 		followTarget = target
+		agent.target_position = target.global_position
 	else:
 		agent.target_position = characterBody.global_position
 
 func follow_position(target : Vector3):
+	followTarget = null
 	agent.target_position = target
 
 func is_at_target():

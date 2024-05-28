@@ -17,13 +17,16 @@ func enter():
 	cat.resume()
 
 	player = behaviour.get_tree().get_first_node_in_group(GroupNames.Player)
+	var player_front = -player.global_transform.basis.z*5 + player.global_position
+	cat.follow_position(player_front)
 
 func update(_delta):
 	var player_front = -player.global_transform.basis.z*5 + player.global_position
-	if behaviour.global_position.distance_to(player_front) > 3:
+	if behaviour.global_position.distance_to(player_front) > 7:
 		cat.follow_position(player_front)
+
 	var cat_velocity = cat.get_velocity()
-	if cat_velocity.x + cat_velocity.z > 0.1:
+	if abs(cat_velocity.x) + abs(cat_velocity.z) > 0.01:
 		graphics.play("walk")
 	else:
 		graphics.play("idle")

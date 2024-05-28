@@ -32,6 +32,7 @@ func _process(_delta):
 	for body in sighted_bodies:
 		if not raycast_to(body):
 			sighted_bodies.erase(body)
+			nearby_bodies.append(body)
 			emit_signal("lost_sight", body)
 
 func on_sighted(body : Node3D) -> void:

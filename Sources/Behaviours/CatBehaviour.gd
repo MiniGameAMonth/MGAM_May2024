@@ -16,6 +16,7 @@ var targetMushroom : Node3D;
 
 @onready var waitForPlayerSound : PlaySound3D = $WaitForPlayerSound
 @onready var enemySight : Sight = $EnemySight
+@onready var enemyBackpackSight : Sight = $EnemyBackpackSight
 
 var player : Node3D = null
 
