@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://du7l74rq77kfn"]
+[gd_scene load_steps=46 format=3 uid="uid://du7l74rq77kfn"]
 
 [ext_resource type="Script" path="res://Sources/Menu.gd" id="1_wgstm"]
 [ext_resource type="Texture2D" uid="uid://62f1j0sxnhtx" path="res://Assets/Images/Menu/MenuBG/main.menu0.png" id="2_qoswh"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cqnxufset1irk" path="res://Assets/Images/Menu/RootMenuButton.png" id="19_c0hgw"]
 [ext_resource type="Texture2D" uid="uid://2hkk26lslfol" path="res://Assets/Images/Menu/RootMenuButtonFocus.png" id="19_gjhfw"]
 [ext_resource type="Texture2D" uid="uid://cmnolfa5jrvvw" path="res://Assets/Images/Menu/MenuBG/main.menu5.png" id="20_qhchv"]
+[ext_resource type="Script" path="res://PlayButton.gd" id="21_dsmr3"]
 [ext_resource type="Script" path="res://Sources/TTS scripts/TTS_Button_Attachment.gd" id="21_gjncb"]
 [ext_resource type="Texture2D" uid="uid://cs6yx86g2mq8y" path="res://Assets/Images/Menu/MenuBG/main.menu4.png" id="21_gqxii"]
 [ext_resource type="Texture2D" uid="uid://vptt342va0ko" path="res://Assets/Images/Menu/MenuBG/main.menu3.png" id="22_7ehhc"]
@@ -31,6 +32,8 @@
 [ext_resource type="Script" path="res://Sources/TTS scripts/TTS_textfield_attachment.gd" id="28_cg8v8"]
 [ext_resource type="Script" path="res://Sources/TTS scripts/tts_slider_attachment.gd" id="28_v8brc"]
 [ext_resource type="Script" path="res://NarrationVolumeSlider.gd" id="31_7ov4g"]
+[ext_resource type="Script" path="res://Sources/TakeFocusButton.gd" id="32_vbk7r"]
+[ext_resource type="Script" path="res://Sources/GoBackButton_TakeFocus.gd" id="34_jclbd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jf5c"]
 bg_color = Color(0.847059, 0.364706, 0.545098, 0.788235)
@@ -294,10 +297,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 210.0
-offset_top = 280.0
-offset_right = 466.0
-offset_bottom = 303.0
+offset_left = -110.0
+offset_top = -80.0
+offset_right = 146.0
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
@@ -311,6 +314,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
 theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 text = "Play"
+script = ExtResource("21_dsmr3")
 
 [node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/PlayButton" node_paths=PackedStringArray("button")]
 script = ExtResource("21_gjncb")
@@ -427,6 +431,7 @@ popup/item_1/id = 1
 popup/item_2/text = "New moon"
 popup/item_2/icon = ExtResource("8_ajrhn")
 popup/item_2/id = 2
+script = ExtResource("32_vbk7r")
 
 [node name="TTS_option_button_attachment" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/GameModeSelect" node_paths=PackedStringArray("option_button")]
 script = ExtResource("25_j4b2e")
@@ -585,10 +590,11 @@ theme = ExtResource("3_cx58u")
 text = "Credits"
 horizontal_alignment = 1
 
-[node name="Credits_reader" type="Node" parent="CreditsMenu" node_paths=PackedStringArray("credits_button", "label")]
+[node name="Credits_reader" type="Node" parent="CreditsMenu" node_paths=PackedStringArray("credits_button", "label", "back_button")]
 script = ExtResource("28_746g4")
 credits_button = NodePath("../../MainMenu/MainMenu/CreditsButton")
 label = NodePath("../RichTextLabel")
+back_button = NodePath("../../GoBackButton")
 
 [node name="CustomizeControlsMenu" parent="." node_paths=PackedStringArray("parent_menu") instance=ExtResource("3_kfsru")]
 visible = false
@@ -631,6 +637,7 @@ text = "Control scheme: "
 [node name="SchemeSelect" type="OptionButton" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
+script = ExtResource("32_vbk7r")
 
 [node name="TTS_option_button_attachment" type="Node" parent="CustomizeControlsMenu/VBoxContainer/HBoxContainer/SchemeSelect" node_paths=PackedStringArray("option_button")]
 script = ExtResource("25_j4b2e")
@@ -770,6 +777,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme = ExtResource("3_cx58u")
+follow_focus = true
 
 [node name="InputsGrid" type="GridContainer" parent="CustomizeControlsMenu/VBoxContainer/ScrollContainer"]
 layout_mode = 2
@@ -841,6 +849,7 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 value = 100.0
+script = ExtResource("32_vbk7r")
 
 [node name="TTS_slider_attachment" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/MasterVolumeSlider" node_paths=PackedStringArray("slider")]
 script = ExtResource("28_v8brc")
@@ -922,7 +931,7 @@ theme = ExtResource("3_cx58u")
 text = "Sound options"
 horizontal_alignment = 1
 
-[node name="GoBackButton" type="Button" parent="."]
+[node name="GoBackButton" type="Button" parent="." node_paths=PackedStringArray("credits_text")]
 visible = false
 layout_mode = 1
 anchors_preset = 2
@@ -935,6 +944,8 @@ offset_bottom = -26.0
 grow_vertical = 0
 theme = ExtResource("3_cx58u")
 text = "Go Back [Backspace]"
+script = ExtResource("34_jclbd")
+credits_text = NodePath("../CreditsMenu/RichTextLabel")
 
 [node name="TTS_Button_Attachment" type="Node" parent="GoBackButton" node_paths=PackedStringArray("button")]
 script = ExtResource("21_gjncb")
