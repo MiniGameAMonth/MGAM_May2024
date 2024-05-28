@@ -273,10 +273,9 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TTS_label_attachment" type="Node" parent="InteractionLabel" node_paths=PackedStringArray("label", "hud")]
+[node name="TTS_label_attachment" type="Node" parent="InteractionLabel" node_paths=PackedStringArray("label")]
 script = ExtResource("8_gnwyr")
 label = NodePath("..")
-hud = NodePath("../..")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_pkra2")]
 layout_mode = 1

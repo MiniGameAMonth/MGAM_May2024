@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://bu5dvp4dawcoj"]
+
+[ext_resource type="AudioStream" uid="uid://cw5d3tfwb8xqv" path="res://Assets/Sounds/UI/PLACEHOLDER_slider.wav" id="1_llemm"]
+
+[resource]
+streams_count = 1
+stream_0/stream = ExtResource("1_llemm")
+stream_0/weight = 1.0
