@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Sources/Player.gd" id="1_l3ge4"]
 [ext_resource type="PackedScene" uid="uid://c18ga08e55buv" path="res://GameObjects/Interactable/InteractionArea.tscn" id="2_ppcc5"]
-[ext_resource type="Script" path="res://Sources/Weapons/Weapon.gd" id="3_26ey6"]
+[ext_resource type="Script" path="res://Sources/Weapons/RangedWeapon.gd" id="3_htsy1"]
 [ext_resource type="AudioStream" uid="uid://tnnhwxcg2p8n" path="res://Assets/Sounds/Player/Spell/wand_sounds.tres" id="4_vnv0v"]
 [ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="5_aokh4"]
 [ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="6_213k8"]
@@ -144,7 +144,7 @@ shape = SubResource("BoxShape3D_o0bt6")
 
 [node name="Weapon" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
-script = ExtResource("3_26ey6")
+script = ExtResource("3_htsy1")
 weaponDamage = 1
 cooldownTime = 1.0
 
@@ -201,5 +201,5 @@ omni_range = 10.743
 
 [connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction"]
 [connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="set_interactable"]
-[connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction_end"]
 [connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="clear_interactable"]
+[connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction_end"]

@@ -1,5 +1,5 @@
 class_name Interactable
-extends StaticBody3D
+extends Area3D
 
 @export var interactableName : String;
 @export var interactionPrompt : String;
@@ -20,9 +20,9 @@ func stop_interact(_who):
 	pass
 
 func enable():
-	for shape in shapes:
-		shape.disabled = false
+	set_deferred("monitorable", true)
+	set_deferred("monitoring", true)
 
 func disable():
-	for shape in shapes:
-		shape.disabled = true
+	set_deferred("monitorable", false)
+	set_deferred("monitoring", false)

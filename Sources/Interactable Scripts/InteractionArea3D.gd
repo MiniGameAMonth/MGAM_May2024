@@ -7,14 +7,18 @@ signal on_interaction_end(object : Interactable)
 var interactables : Array[Interactable] = []
 var enabled : bool = true
 
-func _on_body_entered(body:Node3D):
+func _ready():
+	area_entered.connect(_on_area_entered)
+	area_exited.connect(_on_area_exited)
+
+func _on_area_entered(body:Area3D):
 	if body is Interactable and enabled:
 		interactables.append(body)
 		if enabled:
 			on_interaction.emit(body)
 
 
-func _on_body_exited(body:Node3D):
+func _on_area_exited(body:Area3D):
 	if body is Interactable:
 		interactables.erase(body)
 		if enabled:

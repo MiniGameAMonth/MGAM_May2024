@@ -72,8 +72,8 @@ func _input(event):
 			rotation.y -= event.get_relative().x * mouse_sensitivity * local_delta
 
 	if Input.is_action_just_pressed("Fire") and enable_input:
-		if weapon.can_shoot():
-			hud.play_wand_animation("shoot", Callable(weapon, "shoot"))
+		if weapon.can_attack():
+			hud.play_wand_animation("shoot", Callable(weapon, "try_attack"))
 
 	if interaction and event is InputEventMouseButton:
 		if Input.is_action_just_pressed("Use"):
