@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 10.0
+const SPEED = 15.0
 
 @export var mouse_sensitivity = 0.1
 @export var mouse_double_click_speed = 200
