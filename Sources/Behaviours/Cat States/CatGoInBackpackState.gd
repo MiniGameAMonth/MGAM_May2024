@@ -8,7 +8,7 @@ var player : Node3D
 
 func _init(_behaviour : Behaviour):
 	self.behaviour = _behaviour
-	self.state_name = "Idle"
+	self.state_name = "Backpack"
 
 func enter():
 	cat_behaviour = behaviour as CatBehaviour
@@ -37,12 +37,13 @@ func exit():
 	if in_backpack:
 		push_warning("Missing out of backpack sound trigger.")
 	
+	in_backpack = false
 	cat_behaviour.graphics.visible = true
 	cat_behaviour.interactionArea.enable()
 	cat_behaviour.graphics.play("idle")
 
 func check_enemies():
-	for body in cat_behaviour.enemySight.sighted_bodies:
+	for body in cat_behaviour.enemyBackpackSight.sighted_bodies:
 		if body.is_in_group(GroupNames.Enemies):
 			return true
 	return false

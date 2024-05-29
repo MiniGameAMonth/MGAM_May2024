@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bnnrcovdnn05w" path="res://Assets/Images/Menu/MenuButtonFocus.png" id="2_5258k"]
 [ext_resource type="Texture2D" uid="uid://3ujm15te5l8c" path="res://Assets/Images/Menu/MenuButtonDisabled.png" id="2_ebaax"]
 [ext_resource type="Texture2D" uid="uid://6rejn6uliab7" path="res://Assets/Images/Menu/MenuButton.png" id="3_qa67b"]
-[ext_resource type="Texture2D" uid="uid://barxaxei2w87j" path="res://Assets/Images/Menu/CheckboxOn.png" id="4_0bqky"]
-[ext_resource type="Texture2D" uid="uid://vmd7s420xrsi" path="res://Assets/Images/Menu/CheckboxOff.png" id="5_fn3vh"]
+[ext_resource type="Texture2D" uid="uid://bly0ub4ba4qij" path="res://Assets/Images/Menu/Switch on new.png" id="5_e4l0k"]
 [ext_resource type="Texture2D" uid="uid://dilgp7nsynqt" path="res://Assets/Images/Menu/ArrowDown.png" id="6_8o3m4"]
 [ext_resource type="Texture2D" uid="uid://mli6c4pnyjmj" path="res://Assets/Images/Menu/SliderHandle.png" id="6_kr2cx"]
+[ext_resource type="Texture2D" uid="uid://l0gqdqr50d11" path="res://Assets/Images/Menu/Switch off new.png" id="6_l8wgn"]
 [ext_resource type="Texture2D" uid="uid://8b614wi43iyx" path="res://Assets/Images/Menu/SliderTrackFilled.png" id="7_e7u2a"]
 [ext_resource type="Texture2D" uid="uid://wq7pcvn5egff" path="res://Assets/Images/Menu/RadioOn.png" id="7_ruhee"]
 [ext_resource type="Texture2D" uid="uid://dvy7i36ykayht" path="res://Assets/Images/Menu/SliderTrack.png" id="8_6x8bb"]
@@ -154,10 +154,10 @@ Button/styles/focus = SubResource("StyleBoxTexture_rk7h2")
 Button/styles/hover = SubResource("StyleBoxTexture_rk7h2")
 Button/styles/normal = SubResource("StyleBoxTexture_5accv")
 Button/styles/pressed = SubResource("StyleBoxTexture_pik5i")
-CheckBox/icons/checked = ExtResource("4_0bqky")
-CheckBox/icons/checked_disabled = ExtResource("4_0bqky")
-CheckBox/icons/unchecked = ExtResource("5_fn3vh")
-CheckBox/icons/unchecked_disabled = ExtResource("5_fn3vh")
+CheckBox/icons/checked = ExtResource("5_e4l0k")
+CheckBox/icons/checked_disabled = ExtResource("5_e4l0k")
+CheckBox/icons/unchecked = ExtResource("6_l8wgn")
+CheckBox/icons/unchecked_disabled = ExtResource("6_l8wgn")
 CheckBox/styles/disabled = SubResource("StyleBoxEmpty_25vgh")
 CheckBox/styles/focus = SubResource("StyleBoxEmpty_4ijpr")
 CheckBox/styles/hover = SubResource("StyleBoxEmpty_ugteo")

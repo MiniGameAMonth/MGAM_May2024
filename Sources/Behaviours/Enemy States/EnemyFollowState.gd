@@ -9,6 +9,7 @@ func _init(_behaviour : Behaviour, _attackTarget : Node3D) -> void:
 	super._init(_behaviour)
 	attackTarget = _attackTarget
 	enemy_behaviour = behaviour as EnemyBehaviour
+	state_name = "EnemyFollow"
 
 func enter():
 	lastTargetPosition = attackTarget.global_position
@@ -25,7 +26,7 @@ func update(_delta : float):
 
 	enemy_behaviour.follower.follow_position(lastTargetPosition)
 
-	if enemy_behaviour.weapon.is_target_in_range(attackTarget):
+	if enemy_behaviour.weapon.in_range(attackTarget):
 		behaviour.change_state(EnemyAttackState.new(behaviour, attackTarget))
 	else:
 		var max_distance = enemy_behaviour.max_distance

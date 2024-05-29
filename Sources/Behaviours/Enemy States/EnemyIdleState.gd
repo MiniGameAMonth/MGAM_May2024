@@ -7,6 +7,7 @@ func enter():
     enemy_behaviour = behaviour as EnemyBehaviour
     enemy_behaviour.graphics.play("idle")
     enemy_behaviour.sight.sighted.connect(sighted)
+    state_name = "Enemy Idle"
 
 func update(_delta):
     for body in enemy_behaviour.sight.sighted_bodies:

@@ -1,6 +1,8 @@
 class_name PlayerHUD
 extends Control
 
+signal on_label_changed(new_label : String)
+
 @onready var pettingAnimationPlayer : AnimationPlayer = $PettingAnimation/AnimationPlayer
 @onready var healthBar : HealthBar = $HealthBar
 @onready var mushroomBar : IconBar = $MushroomBar
@@ -52,10 +54,12 @@ func stop_pet():
 func set_interactable(_interactable : Interactable):
 	interactable = _interactable
 	interactionText.text = "Interact with (" + interactable.interactableName + ") to " + interactable.interactionPrompt 
+	on_label_changed.emit(interactionText.text)
 
 func clear_interactable(_interactable : Interactable):
 	interactable = null
 	interactionText.text = ""
+	on_label_changed.emit(interactionText.text)
 
 func update_health_bar():
 	healthBar.set_health(character.characterStats.health)

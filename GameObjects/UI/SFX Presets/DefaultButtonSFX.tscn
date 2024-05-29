@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh6hc623d6l0l"]
+
+[ext_resource type="Script" path="res://Sources/Menu/ButtonSFX.gd" id="1_an7ep"]
+[ext_resource type="AudioStream" uid="uid://bq6wbfjtkejlg" path="res://Assets/Sounds/UI/button_focused.tres" id="2_52p7y"]
+
+[node name="DefaultButtonSfx" type="Node" node_paths=PackedStringArray("focused_sfx", "pressed_sfx", "mouse_over_sfx")]
+script = ExtResource("1_an7ep")
+focused_sfx = NodePath("AudioStreamPlayer")
+pressed_sfx = NodePath("AudioStreamPlayer")
+mouse_over_sfx = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_52p7y")
+bus = &"Interface"

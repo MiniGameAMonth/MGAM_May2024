@@ -40,7 +40,7 @@ func attack_target(target:Node3D):
 	targetLineOfSight.target = target
 
 func play_attack():
-	weapon.try_deal_damage(attackTarget)
+	weapon.try_attack()
 
 func die():
 	remove_from_group(GroupNames.Enemies)

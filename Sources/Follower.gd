@@ -57,6 +57,9 @@ func move_to_position(pos : Vector3):
 
 	characterBody.move_and_slide()
 
+func get_velocity():
+	return characterBody.velocity
+
 func look_at_position(pos : Vector3, delta):
 	var y_rot = characterBody.global_rotation.y;
 	var direction = characterBody.global_position.direction_to(pos)
@@ -66,10 +69,12 @@ func look_at_position(pos : Vector3, delta):
 func follow(target : Node3D):
 	if is_instance_valid(target):
 		followTarget = target
+		agent.target_position = target.global_position
 	else:
 		agent.target_position = characterBody.global_position
 
 func follow_position(target : Vector3):
+	followTarget = null
 	agent.target_position = target
 
 func is_at_target():

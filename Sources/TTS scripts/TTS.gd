@@ -30,3 +30,6 @@ static func set_voice_volume(volume: int):
 
 static func get_voice_volume():
 	return voice_volume
+
+static func stop():
+	DisplayServer.tts_stop()

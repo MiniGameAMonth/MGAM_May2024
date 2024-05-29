@@ -8,6 +8,7 @@ func _init(_behaviour : EnemyBehaviour, _attackTarget : Node3D):
 	self.behaviour = _behaviour
 	self.enemy_behaviour = behaviour
 	self.attackTarget = _attackTarget
+	state_name = "EnemyAttackState"
 
 func enter():
 	enemy_behaviour = behaviour as EnemyBehaviour
@@ -21,8 +22,8 @@ func enter():
 		return
 
 func update(_delta):
-	if enemy_behaviour.weapon.is_target_in_range(attackTarget):
-		if enemy_behaviour.weapon.can_shoot():
+	if enemy_behaviour.weapon.in_range(attackTarget):
+		if enemy_behaviour.weapon.can_attack():
 			enemy_behaviour.animationPlayer.play("attack")
 	else:
 		behaviour.change_state(EnemyFollowState.new(behaviour, attackTarget))

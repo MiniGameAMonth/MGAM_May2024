@@ -73,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47496, -0.237244, 6.03735)
 shape = SubResource("BoxShape3D_qib5b")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.623, 2.95593, 18.8489)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.623, 2.95593, 5.38411)
 size = Vector3(1, 5.82422, 9.31314)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/CSGBox3D4"]
@@ -116,6 +116,7 @@ shape = SubResource("BoxShape3D_kx7wk")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.917185, 0.398461, 0, -0.398461, 0.917185, 0, 4.77551, 6.52856)
+current = true
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59656, 1.49573, 1.56009)

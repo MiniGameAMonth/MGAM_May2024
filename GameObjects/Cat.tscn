@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://chekwycyhaxsj"]
+[gd_scene load_steps=17 format=3 uid="uid://chekwycyhaxsj"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_elfre"]
 [ext_resource type="Script" path="res://Sources/Utilities/DirectionalAnimatedSprite3D.gd" id="3_ngyww"]
@@ -17,6 +17,9 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pob5h"]
 radius = 8.55089
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xkhy6"]
+radius = 15.3479
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_73gjj"]
 radius = 1.0
@@ -90,10 +93,21 @@ script = ExtResource("10_b078p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.564511, 0)
 shape = SubResource("SphereShape3D_pob5h")
 
-[node name="Interactable" type="StaticBody3D" parent="." node_paths=PackedStringArray("graphics")]
+[node name="EnemyBackpackSight" type="Area3D" parent="Cat Behaviour"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405973, 0)
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("10_b078p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cat Behaviour/EnemyBackpackSight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.564511, 0)
+shape = SubResource("SphereShape3D_xkhy6")
+
+[node name="Interactable" type="Area3D" parent="." node_paths=PackedStringArray("graphics")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523047, 0)
 collision_layer = 8
 collision_mask = 0
+monitoring = false
 script = ExtResource("4_dyxf8")
 graphics = NodePath("../Graphics")
 interactableName = "Star"
