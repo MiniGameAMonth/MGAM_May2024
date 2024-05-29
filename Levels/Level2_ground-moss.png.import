@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://lf2nh2tg2glg"
+path="res://.godot/imported/Level2_ground-moss.png-07b99e1e73549b7d3f6a6d0d2fada4a9.ctex"
+metadata={
+"vram_texture": false
+}
+generator_parameters={
+"md5": "35d34d40706e283521f6d3c4e18b68d2"
+}
+
+[deps]
+
+source_file="res://Levels/Level2_ground-moss.png"
+dest_files=["res://.godot/imported/Level2_ground-moss.png-07b99e1e73549b7d3f6a6d0d2fada4a9.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

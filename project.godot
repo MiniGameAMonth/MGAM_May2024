@@ -132,4 +132,4 @@ textures/default_filters/use_nearest_mipmap_filter=true
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 textures/decals/filter=0
 textures/light_projectors/filter=0
-limits/opengl/max_lights_per_object=32
+limits/opengl/max_lights_per_object=64

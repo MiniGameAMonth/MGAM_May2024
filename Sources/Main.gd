@@ -80,6 +80,7 @@ func change_level(path):
 	if level != null:
 		level.queue_free()
 
+	get_tree().root.get_node("MainRoot/UICanvas/TutorialHUD").fade_out()
 	load_level(path)
 
 

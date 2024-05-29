@@ -10,7 +10,7 @@ def find_latest_version(OS):
     latest_version_patch = 0
 
     for directory in all_directories:
-        match = re.match(r"./Exports/" + OS + "[\\/](\d+)\.(\d+)\.(\d+)", directory)
+        match = re.match(r"./Exports/" + OS + "[\\/\\\\](\d+)\.(\d+)\.(\d+)", directory)
 
         if match:
             major = int(match.group(1))
