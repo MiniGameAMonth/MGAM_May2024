@@ -9,7 +9,7 @@ var defaultPlayer : AudioStreamPlayer3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	defaultPlayer = add_player()
-	defaultPlayer.area_mask = 1 << 8
+	defaultPlayer.area_mask = 1 << 7
 	pool.remove_at(0)
 
 	for i in range(poolSize):
