@@ -8,9 +8,9 @@
 [ext_resource type="SpriteFrames" uid="uid://dwfyj37kv47tc" path="res://Assets/Images/Sprite Sheets/Cat/Side/cat_sideview.tres" id="5_rk0n0"]
 [ext_resource type="Script" path="res://Sources/Behaviours/CatBehaviour.gd" id="6_kqk0s"]
 [ext_resource type="Script" path="res://Sources/Utilities/PlaySound.gd" id="7_052mf"]
-[ext_resource type="AudioStream" uid="uid://bcrkxxh213rdn" path="res://Assets/Sounds/Cat/cat_waiting.tres" id="8_7q606"]
+[ext_resource type="AudioStream" uid="uid://bcrkxxh213rdn" path="res://Assets/Sounds/SFX/Cat SFX/Sound Resources/cat_waiting.tres" id="8_6pw8b"]
 [ext_resource type="Script" path="res://Sources/Utilities/LineOfSight3D.gd" id="8_50nea"]
-[ext_resource type="AudioStream" uid="uid://bjavxvfindrfn" path="res://Assets/Sounds/Cat/cat_sniffing.tres" id="9_0m0uj"]
+[ext_resource type="AudioStream" uid="uid://bjavxvfindrfn" path="res://Assets/Sounds/SFX/Cat SFX/Sound Resources/cat_sniffing.tres" id="9_j07us"]
 [ext_resource type="Script" path="res://Sources/Behaviours/Sight.gd" id="10_b078p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01iqy"]
@@ -47,7 +47,7 @@ side_sprite_frames = ExtResource("5_rk0n0")
 
 [node name="Follower" type="Node" parent="." node_paths=PackedStringArray("agent", "characterBody")]
 script = ExtResource("1_elfre")
-speed = 2.0
+speed = 6.0
 stopAtDistance = 2.0
 lookAtSpeed = 5.0
 agent = NodePath("../NavigationAgent3D")
@@ -68,7 +68,7 @@ loop_delay = 5.0
 player = NodePath("AudioStreamPlayer3D")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cat Behaviour/WaitForPlayerSound"]
-stream = ExtResource("8_7q606")
+stream = ExtResource("8_6pw8b")
 volume_db = -12.0
 max_distance = 30.0
 bus = &"Sounds"
@@ -80,7 +80,7 @@ loop = true
 loop_delay = 3.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cat Behaviour/SniffingSound"]
-stream = ExtResource("9_0m0uj")
+stream = ExtResource("9_j07us")
 
 [node name="EnemySight" type="Area3D" parent="Cat Behaviour"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405973, 0)

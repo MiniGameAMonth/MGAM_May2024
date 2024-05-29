@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cimwlidflnvap"
+path="res://.godot/imported/Scratch Attack - 1.ogg-d3466407edee7ef6eeec7878ff455c3e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Scratch Attack/Scratch Attack - 1.ogg"
+dest_files=["res://.godot/imported/Scratch Attack - 1.ogg-d3466407edee7ef6eeec7878ff455c3e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

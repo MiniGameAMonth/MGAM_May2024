@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://77v87pm614bs"
+path="res://.godot/imported/Cat - Footsteps - Stone - 1.ogg-fce11814a78ed3813eaf0896c2292bdd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Cat SFX/Cat - Footsteps/Cat - Footsteps - Stone/Cat - Footsteps - Stone - 1.ogg"
+dest_files=["res://.godot/imported/Cat - Footsteps - Stone - 1.ogg-fce11814a78ed3813eaf0896c2292bdd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -17,11 +17,11 @@ func enter():
 	cat.resume()
 
 	player = behaviour.get_tree().get_first_node_in_group(GroupNames.Player)
-	var player_front = -player.global_transform.basis.z*5 + player.global_position
+	var player_front = -player.global_transform.basis.z*7 + player.global_position
 	cat.follow_position(player_front)
 
 func update(_delta):
-	var player_front = -player.global_transform.basis.z*5 + player.global_position
+	var player_front = -player.global_transform.basis.z*7 + player.global_position
 	if behaviour.global_position.distance_to(player_front) > 7:
 		cat.follow_position(player_front)
 

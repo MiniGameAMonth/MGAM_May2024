@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://crt4id5hgx0wr"
+path="res://.godot/imported/Enemy - Take Damage - 4.ogg-1a3f592ddecd35e12a48c59aea409a27.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Take Damage/Enemy - Take Damage - 4.ogg"
+dest_files=["res://.godot/imported/Enemy - Take Damage - 4.ogg-1a3f592ddecd35e12a48c59aea409a27.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmap3txqx8ivn"
+path="res://.godot/imported/Player - Voice Acting - Exit - 1.ogg-8adfdfff1ee8fce9b9b87e92e8c74f17.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Exit/Player - Voice Acting - Exit - 1.ogg"
+dest_files=["res://.godot/imported/Player - Voice Acting - Exit - 1.ogg-8adfdfff1ee8fce9b9b87e92e8c74f17.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

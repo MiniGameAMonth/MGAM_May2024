@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bx31lrangibh1"
+path="res://.godot/imported/Environment - Mine Ambience - 1.ogg-326aedc499949ef6a0eeb80a89f90c14.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Environment SFX/Environment - Mine Ambience/Environment - Mine Ambience - 1.ogg"
+dest_files=["res://.godot/imported/Environment - Mine Ambience - 1.ogg-326aedc499949ef6a0eeb80a89f90c14.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

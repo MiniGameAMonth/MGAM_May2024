@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dkxcfhr7mafn6"
+path="res://.godot/imported/Enemy - Idle - 4.ogg-f9d2359a0463eec74f635401f7e44908.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Idle/Enemy - Idle - 4.ogg"
+dest_files=["res://.godot/imported/Enemy - Idle - 4.ogg-f9d2359a0463eec74f635401f7e44908.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

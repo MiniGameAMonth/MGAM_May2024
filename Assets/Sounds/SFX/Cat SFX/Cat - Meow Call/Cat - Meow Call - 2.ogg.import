@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d1nbt6ecfy5kr"
+path="res://.godot/imported/Cat - Meow Call - 2.ogg-f805a964c7a9da59399c4878d53db10f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Cat SFX/Cat - Meow Call/Cat - Meow Call - 2.ogg"
+dest_files=["res://.godot/imported/Cat - Meow Call - 2.ogg-f805a964c7a9da59399c4878d53db10f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

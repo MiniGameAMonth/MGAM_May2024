@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dr3r4u37ahmtr"
+path="res://.godot/imported/Cat - Hiss - 2.ogg-7c0b2f103cce09384a9db6eaa765112b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Cat SFX/Cat - Hiss/Cat - Hiss - 2.ogg"
+dest_files=["res://.godot/imported/Cat - Hiss - 2.ogg-7c0b2f103cce09384a9db6eaa765112b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://bjavxvfindrfn"]
+
+[ext_resource type="AudioStream" uid="uid://bj6hi6edtahjp" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Sniff/Cat - Sniff & Meow - 1.ogg" id="1_wwhyo"]
+[ext_resource type="AudioStream" uid="uid://credpyh3v3qh5" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Sniff/Cat - Sniff - 1.ogg" id="2_lwira"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_wwhyo")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_lwira")
+stream_1/weight = 1.0

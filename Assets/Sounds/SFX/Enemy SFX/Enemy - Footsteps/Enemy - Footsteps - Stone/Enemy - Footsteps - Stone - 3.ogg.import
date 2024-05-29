@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://2sischsvdaxd"
+path="res://.godot/imported/Enemy - Footsteps - Stone - 3.ogg-fb03c7aa6152e3a381737bf78a1747ee.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Footsteps/Enemy - Footsteps - Stone/Enemy - Footsteps - Stone - 3.ogg"
+dest_files=["res://.godot/imported/Enemy - Footsteps - Stone - 3.ogg-fb03c7aa6152e3a381737bf78a1747ee.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

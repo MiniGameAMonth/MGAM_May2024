@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://co2vv1jpt7djm"
+path="res://.godot/imported/Player - Footsteps - Grass - 2.ogg-5335dc43017951eeb37cbc2ed4d1286f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Footsteps/Player - Footsteps - Grass/Player - Footsteps - Grass - 2.ogg"
+dest_files=["res://.godot/imported/Player - Footsteps - Grass - 2.ogg-5335dc43017951eeb37cbc2ed4d1286f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

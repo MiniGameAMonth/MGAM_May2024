@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b00p22yayub4o"
+path="res://.godot/imported/Player - Grass Wall Hit - 3.ogg-000801f862e41e5644f025739169c84e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Wall Hit/Player - Grass Wall Hit/Player - Grass Wall Hit - 3.ogg"
+dest_files=["res://.godot/imported/Player - Grass Wall Hit - 3.ogg-000801f862e41e5644f025739169c84e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

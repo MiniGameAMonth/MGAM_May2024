@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://f7fvj5e0kg1"
+path="res://.godot/imported/Enemy - Bite Attack - 4.ogg-c45ed819a611d2ff0542e75616161f75.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Bite Attack/Enemy - Bite Attack - 4.ogg"
+dest_files=["res://.godot/imported/Enemy - Bite Attack - 4.ogg-c45ed819a611d2ff0542e75616161f75.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

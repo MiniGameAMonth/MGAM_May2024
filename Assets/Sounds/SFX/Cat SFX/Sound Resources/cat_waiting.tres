@@ -1,0 +1,17 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://bcrkxxh213rdn"]
+
+[ext_resource type="AudioStream" uid="uid://cks6q1pv1r12h" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Meow Call/Cat - Meow Call - 1.ogg" id="1_hm11e"]
+[ext_resource type="AudioStream" uid="uid://d1nbt6ecfy5kr" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Meow Call/Cat - Meow Call - 2.ogg" id="2_ql1sr"]
+[ext_resource type="AudioStream" uid="uid://tuorfdw1v260" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Meow Call/Cat - Meow Call - 3.ogg" id="3_hg7b6"]
+[ext_resource type="AudioStream" uid="uid://cp30s1fop5g6h" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Meow Call/Cat - Meow Call - 4.ogg" id="4_uv6sh"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_hm11e")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_ql1sr")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_hg7b6")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_uv6sh")
+stream_3/weight = 1.0

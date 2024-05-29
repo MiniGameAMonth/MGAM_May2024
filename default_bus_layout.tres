@@ -13,7 +13,7 @@ wet = 0.0
 resource_name = "Reverb"
 room_size = 0.4
 spread = 0.5
-wet = 0.03
+wet = 0.05
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_m2aba"]
 resource_name = "Reverb"
@@ -74,7 +74,7 @@ bus/7/name = &"Muffled"
 bus/7/solo = false
 bus/7/mute = false
 bus/7/bypass_fx = false
-bus/7/volume_db = 0.0
+bus/7/volume_db = -0.00162125
 bus/7/send = &"Sounds"
 bus/7/effect/0/effect = SubResource("AudioEffectLowPassFilter_hmewa")
 bus/7/effect/0/enabled = true
@@ -83,4 +83,4 @@ bus/8/solo = false
 bus/8/mute = false
 bus/8/bypass_fx = false
 bus/8/volume_db = 0.0
-bus/8/send = &"Master"
+bus/8/send = &"Sounds"

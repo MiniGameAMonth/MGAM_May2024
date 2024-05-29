@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://brx7pg48w31ms"
+path="res://.godot/imported/Player - Footsteps - Water - 2.ogg-1d7b7a35b81dca00b57bb7ccb1a389b1.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Footsteps/Player - Footsteps - Water/Player - Footsteps - Water - 2.ogg"
+dest_files=["res://.godot/imported/Player - Footsteps - Water - 2.ogg-1d7b7a35b81dca00b57bb7ccb1a389b1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

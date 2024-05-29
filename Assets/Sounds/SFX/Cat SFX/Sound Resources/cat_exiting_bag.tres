@@ -1,0 +1,17 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://c2h63kyisxtwa"]
+
+[ext_resource type="AudioStream" uid="uid://c1drtt8b6dlh3" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Enter Bag/Cat - Enter Bag - 1.ogg" id="1_r0eaw"]
+[ext_resource type="AudioStream" uid="uid://bxaw0qwabxjas" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Enter Bag/Cat - Enter Bag - 2.ogg" id="2_m5fuk"]
+[ext_resource type="AudioStream" uid="uid://5b0n8e1qfpo2" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Enter Bag/Cat - Enter Bag - 3.ogg" id="3_7an75"]
+[ext_resource type="AudioStream" uid="uid://dmuppjmohkvny" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Enter Bag/Cat - Enter Bag - 4.ogg" id="4_a0hx5"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_r0eaw")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_m5fuk")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_7an75")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_a0hx5")
+stream_3/weight = 1.0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxfhhgn2tuiql"
+path="res://.godot/imported/Player - Voice Acting - Hurt - 5.ogg-ea4dd796160f5e5a2e0c538d0e84502a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 5.ogg"
+dest_files=["res://.godot/imported/Player - Voice Acting - Hurt - 5.ogg-ea4dd796160f5e5a2e0c538d0e84502a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

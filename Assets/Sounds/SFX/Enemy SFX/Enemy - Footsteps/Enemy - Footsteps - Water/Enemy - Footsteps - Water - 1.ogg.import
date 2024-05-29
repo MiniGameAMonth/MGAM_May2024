@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d0fplkov4u3kv"
+path="res://.godot/imported/Enemy - Footsteps - Water - 1.ogg-94fb3a597403427b1f1c4bc38105f1ec.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Footsteps/Enemy - Footsteps - Water/Enemy - Footsteps - Water - 1.ogg"
+dest_files=["res://.godot/imported/Enemy - Footsteps - Water - 1.ogg-94fb3a597403427b1f1c4bc38105f1ec.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

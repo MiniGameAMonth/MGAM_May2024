@@ -1,0 +1,18 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://de4uuqooypfw0"]
+
+[ext_resource type="AudioStream" uid="uid://chhn3hy04g7hk" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Take Damage/Enemy - Take Damage - 1.ogg" id="1_gwuy7"]
+[ext_resource type="AudioStream" uid="uid://t25j0lggqnba" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Take Damage/Enemy - Take Damage - 2.ogg" id="2_s3t1y"]
+[ext_resource type="AudioStream" uid="uid://bru0dxjvl0ux0" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Take Damage/Enemy - Take Damage - 3.ogg" id="3_gevio"]
+[ext_resource type="AudioStream" uid="uid://crt4id5hgx0wr" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Take Damage/Enemy - Take Damage - 4.ogg" id="4_5noit"]
+
+[resource]
+playback_mode = 1
+streams_count = 4
+stream_0/stream = ExtResource("1_gwuy7")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_s3t1y")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_gevio")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_5noit")
+stream_3/weight = 1.0

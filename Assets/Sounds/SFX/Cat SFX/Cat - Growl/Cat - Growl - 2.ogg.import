@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ogaw7jwty613"
+path="res://.godot/imported/Cat - Growl - 2.ogg-0e313ca902a0f48c0dd7a5c81d29c66c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Cat SFX/Cat - Growl/Cat - Growl - 2.ogg"
+dest_files=["res://.godot/imported/Cat - Growl - 2.ogg-0e313ca902a0f48c0dd7a5c81d29c66c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

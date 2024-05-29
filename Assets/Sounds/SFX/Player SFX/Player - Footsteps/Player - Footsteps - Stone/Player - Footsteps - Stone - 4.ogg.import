@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cucl2qf8d633c"
+path="res://.godot/imported/Player - Footsteps - Stone - 4.ogg-9e750bac398e0f2a7145127dd08edc27.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Footsteps/Player - Footsteps - Stone/Player - Footsteps - Stone - 4.ogg"
+dest_files=["res://.godot/imported/Player - Footsteps - Stone - 4.ogg-9e750bac398e0f2a7145127dd08edc27.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

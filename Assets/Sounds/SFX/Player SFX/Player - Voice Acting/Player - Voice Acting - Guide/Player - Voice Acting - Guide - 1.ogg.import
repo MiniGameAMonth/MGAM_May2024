@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bhrsde60fn04x"
+path="res://.godot/imported/Player - Voice Acting - Guide - 1.ogg-8c07fd5e24c546d2f7c394b3ec136ca7.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Guide/Player - Voice Acting - Guide - 1.ogg"
+dest_files=["res://.godot/imported/Player - Voice Acting - Guide - 1.ogg-8c07fd5e24c546d2f7c394b3ec136ca7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bcm8lex2pjsiu"
+path="res://.godot/imported/Player - Voice Acting - Level 3 - Line 1.ogg-70105a8374af8b9ae1771b1047bbad45.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Level 3/Player - Voice Acting - Level 3 - Line 1.ogg"
+dest_files=["res://.godot/imported/Player - Voice Acting - Level 3 - Line 1.ogg-70105a8374af8b9ae1771b1047bbad45.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

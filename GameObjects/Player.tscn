@@ -1,9 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhktw4y7gkww3"]
+[gd_scene load_steps=18 format=3 uid="uid://dhktw4y7gkww3"]
 
 [ext_resource type="Script" path="res://Sources/Player.gd" id="1_l3ge4"]
+[ext_resource type="PackedScene" uid="uid://duwyhw72cnmpd" path="res://GameObjects/Utilities/footsteps.tscn" id="2_b6p3w"]
 [ext_resource type="PackedScene" uid="uid://c18ga08e55buv" path="res://GameObjects/Interactable/InteractionArea.tscn" id="2_ppcc5"]
 [ext_resource type="Script" path="res://Sources/Weapons/RangedWeapon.gd" id="3_htsy1"]
-[ext_resource type="AudioStream" uid="uid://tnnhwxcg2p8n" path="res://Assets/Sounds/Player/Spell/wand_sounds.tres" id="4_vnv0v"]
+[ext_resource type="AudioStream" uid="uid://fpb34t8og5vq" path="res://Assets/Sounds/SFX/Player SFX/player_footsteps_water.tres" id="3_msc4k"]
+[ext_resource type="AudioStream" uid="uid://c84ka5jgmwatl" path="res://Assets/Sounds/SFX/Player SFX/player_footsteps_grass.tres" id="4_1ttep"]
+[ext_resource type="AudioStream" uid="uid://tnnhwxcg2p8n" path="res://Assets/Sounds/SFX/Player SFX/wand_sounds.tres" id="4_vnv0v"]
 [ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="5_aokh4"]
 [ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="6_213k8"]
 [ext_resource type="PackedScene" uid="uid://b80qtulhkax1j" path="res://GameObjects/PlayerHUD.tscn" id="6_fsf8v"]
@@ -123,6 +126,25 @@ _data = {
 collision_layer = 5
 script = ExtResource("1_l3ge4")
 mouse_sensitivity = 0.2
+
+[node name="FootstepsPlayer3D(Stone)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_b6p3w")]
+character = NodePath("..")
+loop_delay = 0.15
+audio_bus = "Sounds"
+
+[node name="FootstepsPlayer3D(Water)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_b6p3w")]
+character = NodePath("..")
+footstep_type = 3
+loop_delay = 0.1
+sound = ExtResource("3_msc4k")
+audio_bus = "Sounds"
+
+[node name="FootstepsPlayer3D(Grass)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_b6p3w")]
+character = NodePath("..")
+footstep_type = 2
+loop_delay = 0.1
+sound = ExtResource("4_1ttep")
+audio_bus = "Sounds"
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

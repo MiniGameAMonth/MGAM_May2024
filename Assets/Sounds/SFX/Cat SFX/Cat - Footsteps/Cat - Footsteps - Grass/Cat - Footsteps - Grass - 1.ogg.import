@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmbbq6x41fcra"
+path="res://.godot/imported/Cat - Footsteps - Grass - 1.ogg-35af18c12c84e4c53488efe910677216.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Cat SFX/Cat - Footsteps/Cat - Footsteps - Grass/Cat - Footsteps - Grass - 1.ogg"
+dest_files=["res://.godot/imported/Cat - Footsteps - Grass - 1.ogg-35af18c12c84e4c53488efe910677216.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

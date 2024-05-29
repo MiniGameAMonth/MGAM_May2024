@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ccc5dgieu4nfp"
+path="res://.godot/imported/Player - Spell - 1.ogg-5ba74a88548fcca42fea74f48de1700d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Spell/Player - Spell - 1.ogg"
+dest_files=["res://.godot/imported/Player - Spell - 1.ogg-5ba74a88548fcca42fea74f48de1700d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ukhiewexvg4b"
+path="res://.godot/imported/Player - Voice Acting - Level 2 - Deadend 2.ogg-e266e1687c87ce79ffd3357fc216625f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Level 2/Player - Voice Acting - Level 2 - Deadend 2.ogg"
+dest_files=["res://.godot/imported/Player - Voice Acting - Level 2 - Deadend 2.ogg-e266e1687c87ce79ffd3357fc216625f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

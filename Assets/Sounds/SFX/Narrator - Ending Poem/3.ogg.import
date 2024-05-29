@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bkym6gjqwrb7x"
+path="res://.godot/imported/3.ogg-9ba2a83b785c2bf8e14ef0c6936663ba.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Narrator - Ending Poem/3.ogg"
+dest_files=["res://.godot/imported/3.ogg-9ba2a83b785c2bf8e14ef0c6936663ba.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

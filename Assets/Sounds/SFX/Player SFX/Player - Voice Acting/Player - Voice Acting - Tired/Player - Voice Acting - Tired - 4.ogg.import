@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dgu3uhrk023uj"
+path="res://.godot/imported/Player - Voice Acting - Tired - 4.ogg-4fe8dbd14bad4e520e984dadc496c59c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Tired/Player - Voice Acting - Tired - 4.ogg"
+dest_files=["res://.godot/imported/Player - Voice Acting - Tired - 4.ogg-4fe8dbd14bad4e520e984dadc496c59c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

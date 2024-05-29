@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://723jxqsngal2"
+path="res://.godot/imported/Player - Stone Wall Hit - 1.ogg-3c74f744703f8976cb2229a985479a7b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Wall Hit/Player - Stone Wall Hit/Player - Stone Wall Hit - 1.ogg"
+dest_files=["res://.godot/imported/Player - Stone Wall Hit - 1.ogg-3c74f744703f8976cb2229a985479a7b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

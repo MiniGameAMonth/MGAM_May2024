@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://hxu4ci5koow6"]
+
+[ext_resource type="AudioStream" uid="uid://8qudr2dp1g7l" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Purr/Cat - Purr - 1.ogg" id="1_wjrkc"]
+
+[resource]
+streams_count = 1
+stream_0/stream = ExtResource("1_wjrkc")
+stream_0/weight = 1.0

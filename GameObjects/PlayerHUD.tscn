@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bpectes0vvvut" path="res://GameObjects/UI/Health/HealthBar.tscn" id="3_pkra2"]
 [ext_resource type="Texture2D" uid="uid://3oonkr6c2vxn" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand1.png" id="4_2f7ju"]
 [ext_resource type="PackedScene" uid="uid://blnlxitf5o0vh" path="res://GameObjects/UI/Health/MushroomBar.tscn" id="4_3ejbb"]
-[ext_resource type="AudioStream" uid="uid://hxu4ci5koow6" path="res://Assets/Sounds/Cat/cat_purring.tres" id="4_8ewns"]
+[ext_resource type="AudioStream" uid="uid://hxu4ci5koow6" path="res://Assets/Sounds/SFX/Cat SFX/Sound Resources/cat_purring.tres" id="4_q5t0b"]
 [ext_resource type="Texture2D" uid="uid://c0fggqwwnoyis" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand2.png" id="5_wp14q"]
 [ext_resource type="Texture2D" uid="uid://3go1d4gf0ux4" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand3.png" id="6_2vptw"]
 [ext_resource type="PackedScene" uid="uid://q16ycfbnj2a5" path="res://GameObjects/UI/Radar.tscn" id="6_xdbgq"]
@@ -243,7 +243,7 @@ loop = true
 player = NodePath("AudioStreamPlayer3D")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PettingAnimation/PlaySound3D"]
-stream = ExtResource("4_8ewns")
+stream = ExtResource("4_q5t0b")
 bus = &"Sounds"
 area_mask = 128
 

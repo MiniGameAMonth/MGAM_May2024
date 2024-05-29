@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b3nf4l8n0vxv1"
+path="res://.godot/imported/2.ogg-ac718278283c5bbca6d68631d722f965.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Narrator - Intro Poem/2.ogg"
+dest_files=["res://.godot/imported/2.ogg-ac718278283c5bbca6d68631d722f965.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

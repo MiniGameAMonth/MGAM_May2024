@@ -1,0 +1,20 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://dm5ydlu31f7f5"]
+
+[ext_resource type="AudioStream" uid="uid://dhoi83og2tv0k" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Hiss/Cat - Hiss - 1.ogg" id="1_5osqu"]
+[ext_resource type="AudioStream" uid="uid://dr3r4u37ahmtr" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Hiss/Cat - Hiss - 2.ogg" id="2_0up47"]
+[ext_resource type="AudioStream" uid="uid://df4sar3wkiohd" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Hiss/Cat - Hiss - 3.ogg" id="3_7l0ir"]
+[ext_resource type="AudioStream" uid="uid://bm63r36rtqttt" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Hiss/Cat - Hiss - 4.ogg" id="4_urylu"]
+[ext_resource type="AudioStream" uid="uid://lnnsb51ahwwm" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Growl/Cat - Growl - 1.ogg" id="5_gxswj"]
+
+[resource]
+streams_count = 5
+stream_0/stream = ExtResource("1_5osqu")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_0up47")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_7l0ir")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_urylu")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_gxswj")
+stream_4/weight = 1.0

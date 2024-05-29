@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dwys4j4jqd0x4"
+path="res://.godot/imported/Enemy - Spotted - 1.ogg-093d8c9289a0a71cb2a5d5245e6fd9d7.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Spotted/Enemy - Spotted - 1.ogg"
+dest_files=["res://.godot/imported/Enemy - Spotted - 1.ogg-093d8c9289a0a71cb2a5d5245e6fd9d7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

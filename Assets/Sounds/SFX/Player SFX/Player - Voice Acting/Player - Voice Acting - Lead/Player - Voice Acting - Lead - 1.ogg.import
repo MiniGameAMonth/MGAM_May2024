@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://s2laf4h4dtcf"
+path="res://.godot/imported/Player - Voice Acting - Lead - 1.ogg-836db1b633a1c6d90b78a2db02e21a4b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Lead/Player - Voice Acting - Lead - 1.ogg"
+dest_files=["res://.godot/imported/Player - Voice Acting - Lead - 1.ogg-836db1b633a1c6d90b78a2db02e21a4b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,17 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://byv5gn3vhs7dy"]
+
+[ext_resource type="AudioStream" uid="uid://cvj8ul3tyg2b3" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Bite Attack/Enemy - Bite Attack - 1.ogg" id="1_3utjy"]
+[ext_resource type="AudioStream" uid="uid://bb0rwurrxodk5" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Bite Attack/Enemy - Bite Attack - 2.ogg" id="2_k3rl2"]
+[ext_resource type="AudioStream" uid="uid://c16itmxp6pmor" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Bite Attack/Enemy - Bite Attack - 3.ogg" id="3_saj3u"]
+[ext_resource type="AudioStream" uid="uid://f7fvj5e0kg1" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Bite Attack/Enemy - Bite Attack - 4.ogg" id="4_7rmt3"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_3utjy")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_k3rl2")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_saj3u")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_7rmt3")
+stream_3/weight = 1.0

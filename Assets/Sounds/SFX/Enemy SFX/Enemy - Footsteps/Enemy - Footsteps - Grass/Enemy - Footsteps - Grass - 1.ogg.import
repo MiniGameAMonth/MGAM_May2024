@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cp5n27ofyfqfa"
+path="res://.godot/imported/Enemy - Footsteps - Grass - 1.ogg-8d06ba1aaadd61df8785f991641dcf5a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Footsteps/Enemy - Footsteps - Grass/Enemy - Footsteps - Grass - 1.ogg"
+dest_files=["res://.godot/imported/Enemy - Footsteps - Grass - 1.ogg-8d06ba1aaadd61df8785f991641dcf5a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
