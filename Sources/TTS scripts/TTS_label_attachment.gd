@@ -11,5 +11,5 @@ class_name  TTS_label_attachment
 func _ready():
 	hud.on_label_changed.connect(read_label)
 
-func read_label(new_text: String):	
+func read_label(new_text: String):
 	TTS.say_phrase(new_text)
