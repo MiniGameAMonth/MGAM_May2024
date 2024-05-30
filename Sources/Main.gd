@@ -1,6 +1,6 @@
 extends Node
 
-enum GameMode { MENU, IN_GAME }
+enum GameMode { MENU, CUTSCENE, IN_GAME }
 
 #################################################################################
 ################################### Variables ###################################
@@ -25,7 +25,6 @@ func _ready():
 	DisplayServer.window_set_position(DisplayServer.window_get_position() - (DisplayServer.window_get_size() / 2))
 	DisplayServer.window_set_size(DisplayServer.window_get_size() * 2)
 	subscribe_to_menu_events()
-
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_pause"):
@@ -55,14 +54,14 @@ func is_in_game():
 	return game_mode == GameMode.IN_GAME
 
 
-func start_game():
+func start_game(gamemode: GameMode = GameMode.IN_GAME):
 	if !is_game_was_started:
 		is_game_was_started = true
 		menu_node.get_node("MainMenu/MainMenu/PlayButton").hide()
 		menu_node.get_node("MainMenu/MainMenu/ContinueButton").show()
 		load_level("res://Levels/Level1.tscn")
 
-	game_mode = GameMode.IN_GAME
+	game_mode = gamemode
 	update_menu()
 
 
@@ -70,13 +69,19 @@ func quit_game():
 	get_tree().quit()
 
 
-func load_level(path):
+func load_level(path, is_cutscene = false):
 	level = load(path).instantiate()
 
 	for child in level_container.get_children():
 		child.queue_free()
 
 	level_container.add_child(level)
+
+	if is_cutscene:
+		game_mode = GameMode.CUTSCENE
+	else:
+		game_mode = GameMode.IN_GAME
+	update_menu()
 
 
 func change_level(path):
@@ -91,9 +96,12 @@ func update_menu():
 	if game_mode == GameMode.MENU:
 		menu_node.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	else:
+	elif game_mode == GameMode.IN_GAME:
 		menu_node.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		menu_node.visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func _input(event):
