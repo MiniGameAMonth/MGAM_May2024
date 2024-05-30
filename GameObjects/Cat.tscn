@@ -1,6 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://chekwycyhaxsj"]
+[gd_scene load_steps=23 format=3 uid="uid://chekwycyhaxsj"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_elfre"]
+[ext_resource type="PackedScene" uid="uid://duwyhw72cnmpd" path="res://GameObjects/Utilities/footsteps.tscn" id="1_rgi8t"]
+[ext_resource type="AudioStream" uid="uid://bkh3clvj0cy07" path="res://Assets/Sounds/SFX/Cat SFX/Sound Resources/cat_footsteps_stone.tres" id="2_qvwl2"]
+[ext_resource type="AudioStream" uid="uid://b44pevtonbnc6" path="res://Assets/Sounds/SFX/Cat SFX/Sound Resources/cat_footsteps_grass.tres" id="3_2xjh2"]
 [ext_resource type="Script" path="res://Sources/Utilities/DirectionalAnimatedSprite3D.gd" id="3_ngyww"]
 [ext_resource type="SpriteFrames" uid="uid://dfdv88ekpx7s8" path="res://Assets/Images/Sprite Sheets/Cat/Back/cat_backview.tres" id="4_0yt5h"]
 [ext_resource type="Script" path="res://Sources/Interactable Scripts/CatInteractable.gd" id="4_dyxf8"]
@@ -12,6 +15,9 @@
 [ext_resource type="Script" path="res://Sources/Utilities/LineOfSight3D.gd" id="8_50nea"]
 [ext_resource type="AudioStream" uid="uid://bjavxvfindrfn" path="res://Assets/Sounds/SFX/Cat SFX/Sound Resources/cat_sniffing.tres" id="9_j07us"]
 [ext_resource type="Script" path="res://Sources/Behaviours/Sight.gd" id="10_b078p"]
+[ext_resource type="AudioStream" uid="uid://d0nee8mj4fia6" path="res://Assets/Sounds/SFX/Cat SFX/Sound Resources/cat_entering_bag.tres" id="13_3xsdf"]
+[ext_resource type="AudioStream" uid="uid://bro8b158263q3" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Magical Glow/Cat - Magical Glow - 1.ogg" id="14_dsp76"]
+[ext_resource type="AudioStream" uid="uid://dm5ydlu31f7f5" path="res://Assets/Sounds/SFX/Cat SFX/Sound Resources/cat_enemy_detected.tres" id="15_5fvn4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01iqy"]
 
@@ -26,6 +32,25 @@ radius = 1.0
 
 [node name="Cat" type="CharacterBody3D" groups=["Cat"]]
 collision_layer = 2
+
+[node name="FootstepsPlayer3D(Stone)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_rgi8t")]
+character = NodePath("..")
+loop_delay = 0.2
+volume_db = -16.0
+sound = ExtResource("2_qvwl2")
+audio_bus = "Sounds"
+
+[node name="FootstepsPlayer3D(Water)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_rgi8t")]
+character = NodePath("..")
+footstep_type = 3
+volume_db = -16.0
+audio_bus = "Sounds"
+
+[node name="FootstepsPlayer3D(Grass)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_rgi8t")]
+character = NodePath("..")
+footstep_type = 2
+sound = ExtResource("3_2xjh2")
+audio_bus = "Sounds"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -47,7 +72,7 @@ side_sprite_frames = ExtResource("5_rk0n0")
 
 [node name="Follower" type="Node" parent="." node_paths=PackedStringArray("agent", "characterBody")]
 script = ExtResource("1_elfre")
-speed = 6.0
+speed = 15.0
 stopAtDistance = 2.0
 lookAtSpeed = 5.0
 agent = NodePath("../NavigationAgent3D")
@@ -66,6 +91,7 @@ script = ExtResource("7_052mf")
 loop = true
 loop_delay = 5.0
 player = NodePath("AudioStreamPlayer3D")
+audio_bus = "Sounds"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cat Behaviour/WaitForPlayerSound"]
 stream = ExtResource("8_6pw8b")
@@ -74,13 +100,30 @@ max_distance = 30.0
 bus = &"Sounds"
 area_mask = 128
 
-[node name="SniffingSound" type="Node3D" parent="Cat Behaviour"]
+[node name="SniffingSound" type="Node3D" parent="Cat Behaviour" node_paths=PackedStringArray("player")]
 script = ExtResource("7_052mf")
 loop = true
 loop_delay = 3.0
+player = NodePath("AudioStreamPlayer3D")
+audio_bus = "Sounds"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cat Behaviour/SniffingSound"]
 stream = ExtResource("9_j07us")
+
+[node name="BackpackSound" type="Node3D" parent="Cat Behaviour"]
+script = ExtResource("7_052mf")
+sound = ExtResource("13_3xsdf")
+audio_bus = "Sounds"
+
+[node name="MagicalCatSound" type="Node3D" parent="Cat Behaviour"]
+script = ExtResource("7_052mf")
+sound = ExtResource("14_dsp76")
+audio_bus = "Sounds"
+
+[node name="ScaredCatSound" type="Node3D" parent="Cat Behaviour"]
+script = ExtResource("7_052mf")
+sound = ExtResource("15_5fvn4")
+audio_bus = "Sounds"
 
 [node name="EnemySight" type="Area3D" parent="Cat Behaviour"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405973, 0)

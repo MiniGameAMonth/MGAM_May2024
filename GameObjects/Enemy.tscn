@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c2ul40d4fk526"]
+[gd_scene load_steps=32 format=3 uid="uid://c2ul40d4fk526"]
 
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_klhdc"]
 [ext_resource type="Script" path="res://Sources/Utilities/DirectionalAnimatedSprite3D.gd" id="2_xe2w5"]
@@ -14,11 +14,13 @@
 [ext_resource type="Script" path="res://Sources/Entities/EntityHitbox2D.gd" id="7_xdqwb"]
 [ext_resource type="AudioStream" uid="uid://de4uuqooypfw0" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_hurt.tres" id="8_c2yl1"]
 [ext_resource type="AudioStream" uid="uid://biw2vjohjysli" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_dying.tres" id="9_cr6mh"]
+[ext_resource type="Script" path="res://GameObjects/PlayParticles.gd" id="10_7auoc"]
 [ext_resource type="Script" path="res://Sources/Weapons/MeleeWeapon.gd" id="10_53sus"]
 [ext_resource type="Script" path="res://Sources/Utilities/FreeNode.gd" id="10_x7csr"]
 [ext_resource type="AudioStream" uid="uid://byv5gn3vhs7dy" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_attack.tres" id="11_jjmfs"]
 [ext_resource type="AudioStream" uid="uid://cncy2sjyh0tjg" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_detected.tres" id="14_fe2h2"]
 [ext_resource type="Script" path="res://Sources/Utilities/LineOfSight3D.gd" id="15_smt6h"]
+[ext_resource type="Material" uid="uid://y6o4re0j2yeg" path="res://Assets/Images/particle_material.tres" id="20_0m223"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx0fy"]
 
@@ -67,6 +69,75 @@ radius = 8.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_frlsq"]
 size = Vector3(3, 2, 3)
 
+[sub_resource type="Animation" id="Animation_2o3l0"]
+resource_name = "death"
+length = 2.3
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.4, 1, 0, 0.809971, 0.962343, 0.8, 1, 0, -0.265275, 1.60147, 1, 1, 0, -2.35331, 1.60147)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.4, 1, 0.633547, -0.154523, 0.0120967, 0.758021, 0.8, 1, 0.965811, -0.164902, 0.135315, 0.147329)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.350913, 0.284113, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FreeNode")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"free_node"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeathParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ftmbm"]
+_data = {
+"death": SubResource("Animation_2o3l0")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ukusr"]
+material = ExtResource("20_0m223")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_ow7b6"]
+_data = [Vector2(0, 0.909915), 0.0, 0.491208, 0, 0, Vector2(0.993134, 0.00675189), -3.35585, 0.0, 0, 0]
+point_count = 2
+
 [node name="Enemy" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 4
@@ -75,6 +146,7 @@ collision_layer = 4
 shape = SubResource("CapsuleShape3D_sx0fy")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 offset = Vector2(0, 13)
 pixel_size = 0.0315
 texture_filter = 0
@@ -94,6 +166,7 @@ libraries = {
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="Character" type="Node3D" parent="." node_paths=PackedStringArray("characterStats")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0032053, 0.0115881, 0.00347805)
 script = ExtResource("3_fy1hx")
 characterStats = NodePath("EnemyStats")
 
@@ -124,6 +197,10 @@ audio_bus = "Sounds"
 stream = ExtResource("9_cr6mh")
 bus = &"Sounds"
 area_mask = 128
+
+[node name="Node" type="Node" parent="Character" node_paths=PackedStringArray("particles")]
+script = ExtResource("10_7auoc")
+particles = NodePath("../../Hurt Particles")
 
 [node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("attackShape")]
 script = ExtResource("10_53sus")
@@ -200,8 +277,62 @@ target_position = Vector3(0, 0, -2.1)
 collision_mask = 4
 debug_shape_custom_color = Color(0.845459, 0.00164376, 0.974288, 1)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ftmbm")
+}
+
+[node name="DeathParticles" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247163, 1.62648)
+emitting = false
+amount = 20
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.8
+draw_order = 1
+mesh = SubResource("PlaneMesh_ukusr")
+emission_shape = 2
+emission_sphere_radius = 0.1
+emission_colors = PackedColorArray(0.568627, 0.482353, 0.309804, 1)
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 4.0
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_curve = SubResource("Curve_ow7b6")
+color = Color(0.521948, 0.416927, 0.304568, 1)
+
+[node name="Hurt Particles" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.321665, -0.320307)
+emitting = false
+amount = 5
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.8
+draw_order = 1
+mesh = SubResource("PlaneMesh_ukusr")
+emission_shape = 2
+emission_sphere_radius = 0.1
+emission_colors = PackedColorArray(0.568627, 0.482353, 0.309804, 1)
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 4.0
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_curve = SubResource("Curve_ow7b6")
+color = Color(0.521948, 0.416927, 0.304568, 1)
+
 [connection signal="damaged" from="Character" to="Character/EnemyHurtSound" method="play" unbinds=1]
+[connection signal="damaged" from="Character" to="Character/Node" method="play_particles" unbinds=1]
 [connection signal="on_death" from="Character" to="Character/EnemyDyingSound" method="play"]
 [connection signal="on_death" from="Character" to="Behaviour" method="die"]
-[connection signal="on_death" from="Character" to="FreeNode" method="free_node"]
+[connection signal="on_death" from="Character" to="AnimationPlayer" method="play" binds= [&"death"]]
 [connection signal="timeout" from="Weapon/Cooldown" to="Weapon" method="_on_cooldown_timeout"]

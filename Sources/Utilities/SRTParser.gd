@@ -8,8 +8,8 @@ enum SRTParserState {
 	END
 }
 
-func parse_srt(text: String):
-	var lines = text.split("\n")
+func parse_srt(file_string: String):
+	var lines = file_string.split("\n")
 	var subs = []
 	var sub = {}
 	var parser_state = SRTParserState.NUMBER
@@ -17,8 +17,8 @@ func parse_srt(text: String):
 		match parser_state:
 			SRTParserState.BLANK:
 				if line.is_valid_int():
-					parser_state = SRTParserState.NUMBER
-					continue
+					sub["number"] = line.to_int()
+					parser_state = SRTParserState.TIMESTAMP
 				else:
 					parser_state = SRTParserState.END
 			SRTParserState.BLANK, SRTParserState.NUMBER:

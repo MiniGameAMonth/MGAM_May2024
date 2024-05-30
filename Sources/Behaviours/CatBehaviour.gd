@@ -7,6 +7,8 @@ var lastState : State = State.IDLE
 var state : State = State.IDLE
 var targetMushroom : Node3D;
 
+@export var maxDistanceFromPlayer : float = 20
+
 @export var cat : Follower;
 
 @export var graphics : AnimatedSprite3D
@@ -17,6 +19,10 @@ var targetMushroom : Node3D;
 @onready var waitForPlayerSound : PlaySound3D = $WaitForPlayerSound
 @onready var enemySight : Sight = $EnemySight
 @onready var enemyBackpackSight : Sight = $EnemyBackpackSight
+@onready var magicalCatSound : PlaySound3D = $MagicalCatSound
+@onready var sniffingSound : PlaySound3D = $SniffingSound
+@onready var backpackSound : PlaySound3D = $BackpackSound
+@onready var scaredCatSound : PlaySound3D = $ScaredCatSound
 
 var player : Node3D = null
 
@@ -38,6 +44,9 @@ func _process(_delta):
 			change_state(CatIdleState.new(self))
 
 	super._process(_delta)
+
+func player_distance():
+	return player.global_position.distance_to(self.global_position)
 
 func check_enemies_in_sight(body : Node3D):
 	if current_state is CatGoInBackpackState:

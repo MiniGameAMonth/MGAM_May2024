@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2lwy8npj1n1n"]
+[gd_scene load_steps=4 format=3 uid="uid://c2lwy8npj1n1n"]
 
 [ext_resource type="Script" path="res://Sources/HUD/FillableIcon.gd" id="1_fi7bm"]
+[ext_resource type="Texture2D" uid="uid://cfwf8twm0q50s" path="res://Assets/Images/HUD/Mushroom/unfilled_mushroom.tres" id="2_o77fa"]
 [ext_resource type="Texture2D" uid="uid://cv61ytdoevoch" path="res://Assets/Images/HUD/Mushroom/Mushroom icon 1.png" id="4_4bxt3"]
 
 [node name="Mushroom" type="Control"]
@@ -28,7 +29,6 @@ grow_vertical = 2
 stretch_mode = 2
 
 [node name="Empty" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,6 +41,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_o77fa")
 stretch_mode = 2
 
 [node name="Full" type="TextureRect" parent="."]

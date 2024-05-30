@@ -38,6 +38,9 @@ func _process(delta):
 
 		update_menu()
 
+	if game_mode == GameMode.IN_GAME:
+		get_tree().paused = false
+
 
 func _physics_process(delta):
 	local_delta = delta

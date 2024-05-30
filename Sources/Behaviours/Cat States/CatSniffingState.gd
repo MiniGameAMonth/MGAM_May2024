@@ -13,7 +13,9 @@ func enter():
 	cat_behaviour.graphics.play("sniff")
 	cat_behaviour.interactionArea.disable()
 	cat_behaviour.cat.stop()
-	push_warning("Missing cat sniffing audio trigger.")
+
+	cat_behaviour.magicalCatSound.play()
+	cat_behaviour.sniffingSound.play()
 
 func update(_delta: float):
 	if mushroom.get_ref() == null:
@@ -21,3 +23,5 @@ func update(_delta: float):
 
 func exit():
 	cat_behaviour.interactionArea.enable()
+	cat_behaviour.magicalCatSound.stop()
+	cat_behaviour.sniffingSound.stop()
