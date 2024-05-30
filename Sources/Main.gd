@@ -54,7 +54,7 @@ func is_in_game():
 	return game_mode == GameMode.IN_GAME
 
 
-func start_game(gamemode: GameMode = GameMode.IN_GAME):
+func start_game(gamemode: GameMode = GameMode.CUTSCENE):
 	if !is_game_was_started:
 		is_game_was_started = true
 		menu_node.get_node("MainMenu/MainMenu/PlayButton").hide()
