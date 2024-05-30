@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cfwf8twm0q50s"]
+
+[ext_resource type="Texture2D" uid="uid://cn8ltusj6fguc" path="res://Assets/Images/HUD/Mushroom/unfilledmushroomteal.png" id="1_0s1ll"]
+
+[resource]
+atlas = ExtResource("1_0s1ll")
+region = Rect2(0, 0, 17, 20)
+margin = Rect2(11, 10, 10, 10)

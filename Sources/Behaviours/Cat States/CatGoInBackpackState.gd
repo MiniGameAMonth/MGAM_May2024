@@ -15,7 +15,7 @@ func enter():
 	player = behaviour.get_tree().get_first_node_in_group(GroupNames.Player)
 	cat_behaviour.cat.follow(player)
 
-	push_warning("Missing sound trigger for cat getting scared.")
+	cat_behaviour.scaredCatSound.play()
 
 	cat_behaviour.interactionArea.disable()
 	cat_behaviour.graphics.play("walk")
@@ -24,7 +24,7 @@ func update(_delta):
 	cat_behaviour.cat.follow(player)
 	if cat_behaviour.cat.is_at_target() and not in_backpack:
 		cat_behaviour.graphics.visible = false
-		push_warning("Missing sound trigger for cat going in backpack.")
+		cat_behaviour.backpackSound.play()
 		in_backpack = true
 	
 	if in_backpack:
@@ -35,7 +35,7 @@ func update(_delta):
 
 func exit():
 	if in_backpack:
-		push_warning("Missing out of backpack sound trigger.")
+		cat_behaviour.backpackSound.play()
 	
 	in_backpack = false
 	cat_behaviour.graphics.visible = true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpsnmnn8bvqbi"]
+[gd_scene load_steps=8 format=3 uid="uid://cpsnmnn8bvqbi"]
 
 [ext_resource type="Script" path="res://Sources/HUD/FillableIcon.gd" id="1_pmhko"]
+[ext_resource type="Texture2D" uid="uid://cujjwm5uhbdsq" path="res://Assets/Images/HUD/Hearts/empty_heart.tres" id="2_64xeg"]
 [ext_resource type="Texture2D" uid="uid://cjfmuebmngmu1" path="res://Assets/Images/HUD/Hearts/heart icon 1.png" id="2_geurg"]
 [ext_resource type="Texture2D" uid="uid://b3qdmpp13632r" path="res://Assets/Images/HUD/Hearts/Heart Frame 1.png" id="2_yyli7"]
 [ext_resource type="Texture2D" uid="uid://dnp7ntq6t2dlo" path="res://Assets/Images/HUD/Hearts/Heart Frame 2.png" id="3_ckkgw"]
@@ -64,19 +65,10 @@ grow_vertical = 2
 stretch_mode = 2
 
 [node name="Empty" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_64xeg")
 stretch_mode = 2
 
 [node name="Full" type="TextureRect" parent="."]

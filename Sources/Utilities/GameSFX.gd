@@ -41,6 +41,9 @@ func borrow_player():
 	return player
 
 func return_player(player : AudioStreamPlayer3D):
+	if player == null:
+		push_warning("Trying to return a null player.")
+		return
 	borrowed.remove_at(borrowed.find(player))
 	pool.append(player)
 

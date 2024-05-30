@@ -10,10 +10,8 @@ func _ready():
 	area_exited.connect(on_area_exited)
 
 func on_area_entered(area):
-	print("Area entered ", area, " ", area.get_parent())
 	var parent = area.get_parent()
 	if parent is FootstepsPlayer3D:
-		print("Adding footstep")
 		add_footstep(parent)
 
 func on_area_exited(area):

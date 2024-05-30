@@ -34,8 +34,8 @@ func update(_delta : float):
 	if cat.is_at_target():
 		behaviour.change_state(CatSniffingState.new(behaviour, mushroom.get_ref()))
 	else:
-		if not lineOfSight.in_sight:
-			behaviour.change_state(CatWaitForPlayerState.new(behaviour))
+		if not lineOfSight.in_sight or behaviour.player_distance() > behaviour.maxDistanceFromPlayer:
+			behaviour.change_state(CatWaitForPlayerState.new(behaviour, true))
 
 func exit():
 	graphics.play("idle")

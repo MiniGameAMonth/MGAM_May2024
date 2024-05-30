@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cujjwm5uhbdsq"]
+
+[ext_resource type="Texture2D" uid="uid://dchmviyvb4488" path="res://Assets/Images/HUD/Hearts/empty heart.png" id="1_513ws"]
+
+[resource]
+atlas = ExtResource("1_513ws")
+region = Rect2(0, 0, 21, 18)

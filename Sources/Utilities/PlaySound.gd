@@ -5,6 +5,7 @@ extends Node3D
 @export var stopAfterFinished: bool = false
 @export var loop: bool = false
 @export var loop_delay: float = 0
+@export_range(-60, 10) var volume_db: float = 0
 
 @export var player: AudioStreamPlayer3D
 @export var sound: AudioStream
@@ -39,6 +40,7 @@ func play():
 	if tempPlayer == null:
 		return
 
+	tempPlayer.volume_db = volume_db
 	tempPlayer.global_position = global_transform.origin
 	tempPlayer.play()
 	stopped = false
@@ -64,18 +66,20 @@ func stop():
 	if tempPlayer:
 		if tempPlayer.playing:
 			if stopAfterFinished:
-				tempPlayer.finished.connect(_int_stop_after_finished)
-				return
+				if not tempPlayer.finished.is_connected(_int_stop_after_finished):
+					tempPlayer.finished.connect(_int_stop_after_finished)
+					return
 
-		tempPlayer.stop()
-		tempPlayer.autoplay = false
-		if tempPlayer.finished.is_connected(loop_sound):
-			tempPlayer.finished.disconnect(loop_sound)
+		_int_stop_after_finished()
+		#tempPlayer.stop()
+		#tempPlayer.autoplay = false
+		#if tempPlayer.finished.is_connected(loop_sound):
+		#	tempPlayer.finished.disconnect(loop_sound)
 
-		if tempPlayer != player:
-			GameSfx.return_player(tempPlayer)
+		#if tempPlayer != player:
+		#	GameSfx.return_player(tempPlayer)
 
-		tempPlayer = null
+		#tempPlayer = null
 
 func _exit_tree():
 	if tempPlayer != player:
