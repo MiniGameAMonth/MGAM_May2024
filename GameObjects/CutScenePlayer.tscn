@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7qwde4lksqfd"]
+[gd_scene load_steps=10 format=3 uid="uid://b7qwde4lksqfd"]
 
 [ext_resource type="Theme" uid="uid://dhnrp2bw2eh3c" path="res://Themes/CutSceen_UI.tres" id="1_xlvar"]
+[ext_resource type="VideoStream" uid="uid://b74nejjyw7nce" path="res://Assets/Videos/Intro Movie Mode_WSubs.ogg" id="2_ho07e"]
+[ext_resource type="Script" path="res://GameObjects/CutScenePlayer.gd" id="2_j3e40"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yic2g"]
 
@@ -14,7 +16,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_74wcd"]
 
-[node name="Control" type="Control"]
+[node name="CutScenePlayer" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,11 +24,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xlvar")
+script = ExtResource("2_j3e40")
+path_to_movie_video = "res://Assets/Videos/Intro Movie Mode_WSubs.ogg"
+path_to_book_video = "res://Assets/Videos/Intro Book Mode.ogg"
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
+scale = Vector2(0.34, 0.333)
+stream = ExtResource("2_ho07e")
+volume_db = -10.0
 
 [node name="SkipButton" type="Button" parent="."]
 layout_mode = 0
@@ -35,7 +43,7 @@ offset_top = 325.0
 offset_right = 632.0
 offset_bottom = 349.0
 
-[node name="Movie-Book_CheckBox" type="CheckBox" parent="."]
+[node name="ModeSwitch" type="CheckBox" parent="."]
 layout_mode = 0
 offset_left = 560.0
 offset_top = 325.0
