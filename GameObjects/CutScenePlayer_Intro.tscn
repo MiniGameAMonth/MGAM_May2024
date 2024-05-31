@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgwnda6vl8w3f"]
+[gd_scene load_steps=11 format=3 uid="uid://bgwnda6vl8w3f"]
 
 [ext_resource type="Theme" uid="uid://dhnrp2bw2eh3c" path="res://Themes/CutSceen_UI.tres" id="1_2kdwh"]
+[ext_resource type="Script" path="res://Sources/Level.gd" id="1_jqxxl"]
 [ext_resource type="Script" path="res://GameObjects/CutScenePlayer.gd" id="2_hewci"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_ib7q1"]
@@ -17,7 +18,11 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_74wcd"]
 
-[node name="CutScenePlayer_Intro" type="Control"]
+[node name="Node" type="Node3D"]
+script = ExtResource("1_jqxxl")
+gamemode = 1
+
+[node name="CutScenePlayer_Intro" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,21 +35,22 @@ path_to_movie_video = "res://Assets/Intro_movie_Subs1.ogv"
 path_to_book_video = "res://Assets/Intro_book_mode1.ogv"
 level_to_load_path = "res://Levels/Level1.tscn"
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CutScenePlayer_Intro"]
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 stream = SubResource("VideoStreamTheora_ib7q1")
 volume_db = -10.0
+bus = &"Music"
 
-[node name="SkipButton" type="Button" parent="."]
+[node name="SkipButton" type="Button" parent="CutScenePlayer_Intro"]
 layout_mode = 0
 offset_left = 600.0
 offset_top = 325.0
 offset_right = 632.0
 offset_bottom = 349.0
 
-[node name="ModeSwitch" type="CheckBox" parent="."]
+[node name="ModeSwitch" type="CheckBox" parent="CutScenePlayer_Intro"]
 layout_mode = 0
 offset_left = 560.0
 offset_top = 325.0

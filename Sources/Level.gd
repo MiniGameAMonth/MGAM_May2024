@@ -5,8 +5,10 @@ var player = null
 @export_range(-60, 10) var ambientVolume : float
 @export var musicSound : AudioStream
 @export_range(-60, 10) var musicVolume : float
+@export var gamemode: Main.GameMode
 
 var mushroom_count = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,6 +42,7 @@ func spawn_player():
 
 	if spawn_point == null:
 		push_error("Players spawn position not found on the level")
+		return
 
 	player = load("res://GameObjects/Player.tscn").instantiate()
 	player.global_transform = spawn_point.global_transform

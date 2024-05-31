@@ -15,7 +15,7 @@ func _ready():
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
     skip_button.pressed.connect(on_skip_button_pressed)
-    mode_switch.pressed.connect(on_mode_switch_toggled)
+    mode_switch.toggled.connect(on_mode_switch_toggled)
 
     video_player = get_node("VideoStreamPlayer")
     video_player.finished.connect(on_video_finished)
@@ -33,16 +33,18 @@ func on_skip_button_pressed():
     video_player.stop()
     on_video_finished()
 
-func on_mode_switch_toggled():
-    if !mode_switch.pressed:
+func on_mode_switch_toggled(toggle: bool):
+    if !toggle:
         video_player.stop()
         
         var video_stream = VideoStreamTheora.new()
         video_stream.file = path_to_book_video
         video_player.stream = video_stream
+        video_player.play()
     else:
         video_player.stop()
         
         var video_stream = VideoStreamTheora.new()
         video_stream.file = path_to_movie_video
         video_player.stream = video_stream
+        video_player.play()
