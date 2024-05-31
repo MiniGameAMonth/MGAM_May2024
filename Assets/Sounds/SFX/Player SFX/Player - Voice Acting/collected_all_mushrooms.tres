@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://xhrkroxct6s0"]
+
+[ext_resource type="AudioStream" uid="uid://dmap3txqx8ivn" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Exit/Player - Voice Acting - Exit - 1.ogg" id="1_xlaah"]
+
+[resource]
+streams_count = 1
+stream_0/stream = ExtResource("1_xlaah")
+stream_0/weight = 1.0

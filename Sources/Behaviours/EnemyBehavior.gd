@@ -8,6 +8,7 @@ extends Behaviour
 @onready var sight : Sight = $Sight
 @export var max_distance : float = 50
 @export var sightedSound : PlaySound3D
+@export var idleSound : PlaySound3D
 @onready var targetLineOfSight : LineOfSight3D = $LineOfSight3D
 
 var attackTarget : Node3D = null
@@ -34,7 +35,7 @@ func _process(_delta):
 	super._process(_delta)
 
 func attack_target(target:Node3D):
-	if target.name != "Player":
+	if target.name != "Players":
 		return
 	attackTarget = target
 	targetLineOfSight.target = target
@@ -43,4 +44,6 @@ func play_attack():
 	weapon.try_attack()
 
 func die():
+	follower.stop()
 	remove_from_group(GroupNames.Enemies)
+	process_mode = Node.PROCESS_MODE_DISABLED

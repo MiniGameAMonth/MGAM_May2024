@@ -5,12 +5,18 @@ var poolSize = 10
 var pool : Array[AudioStreamPlayer3D] = []
 var borrowed : Array[AudioStreamPlayer3D] = []
 var defaultPlayer : AudioStreamPlayer3D
+var musicPlayer : AudioStreamPlayer
+var ambientPlayer : AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	defaultPlayer = add_player()
 	defaultPlayer.area_mask = 1 << 7
 	pool.remove_at(0)
+	musicPlayer = AudioStreamPlayer.new()
+	add_child(musicPlayer)
+	ambientPlayer = AudioStreamPlayer.new()
+	add_child(ambientPlayer)
 
 	for i in range(poolSize):
 		var new_player = add_player()
@@ -83,8 +89,25 @@ func play_sound_at(sound : AudioStream, position : Vector3, bus : String = "Soun
 
 	player.play()
 	return player
-	
 
-		
+func play_music(music : AudioStream, bus : String = "Music"):
+	musicPlayer.stream = music
+	musicPlayer.bus = bus
+	musicPlayer.play()
 
-	
+func set_music_volume(volume : float):
+	musicPlayer.volume_db = volume
+
+func stop_music():
+	musicPlayer.stop()
+
+func play_ambient(ambient : AudioStream, bus : String = "Sounds"):
+	ambientPlayer.stream = ambient
+	ambientPlayer.bus = bus
+	ambientPlayer.play()
+
+func set_ambient_volume(volume : float):
+	ambientPlayer.volume_db = volume
+
+func stop_ambient():
+	ambientPlayer.stop()

@@ -10,7 +10,7 @@ func enter():
     cat_behaviour.graphics.play("walk")
     cat_behaviour.cat.resume()
 
-    player = behaviour.get_tree().get_first_node_in_group(GroupNames.Player)
+    player = behaviour.get_tree().get_first_node_in_group(GroupNames.Players)
 
     var exit_node = behaviour.get_tree().get_first_node_in_group(GroupNames.Exit)
     cat_behaviour.cat.follow(exit_node)

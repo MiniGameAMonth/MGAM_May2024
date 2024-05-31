@@ -6,7 +6,7 @@ enum FootstepType { None, Stone, Grass, Water }
 @export var character : CharacterBody3D
 
 @export var footstep_type : FootstepType = FootstepType.Stone
-var footstep_override : FootstepType = FootstepType.None
+@export var footstep_override : FootstepType = FootstepType.None
 
 var playing : bool = false
 var enabled : bool = true

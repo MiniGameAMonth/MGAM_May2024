@@ -1,7 +1,7 @@
 extends CheckBox
 
 func _ready():    
-    pressed.connect(on_toggle)
+    toggled.connect(on_toggle)
 
-func on_toggle():    
-    TTS.toggle_TTS()
+func on_toggle(is_toggled):
+    TTS.disabled = not is_toggled

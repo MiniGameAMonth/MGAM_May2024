@@ -37,7 +37,7 @@ func _process(delta):
 
 		update_menu()
 
-	if game_mode == GameMode.IN_GAME:
+	if game_mode == GameMode.IN_GAME or game_mode == GameMode.CUTSCENE:
 		get_tree().paused = false
 
 
@@ -54,11 +54,12 @@ func is_in_game():
 	return game_mode == GameMode.IN_GAME
 
 
-func start_game(gamemode: GameMode = GameMode.CUTSCENE):
+func start_game(gamemode: GameMode = GameMode.IN_GAME):
 	if !is_game_was_started:
 		is_game_was_started = true
 		menu_node.get_node("MainMenu/MainMenu/PlayButton").hide()
 		menu_node.get_node("MainMenu/MainMenu/ContinueButton").show()
+		gamemode = GameMode.CUTSCENE
 		load_level("res://GameObjects/CutScenePlayer.tscn", true)
 
 	game_mode = gamemode

@@ -15,6 +15,7 @@ func enter():
 	enemy_behaviour.animationPlayer.animation_finished.connect(animation_finished)
 
 	enemy_behaviour.follower.follow(null)
+	enemy_behaviour.follower.stop()
 	
 
 	if not is_instance_valid(attackTarget):
@@ -22,14 +23,11 @@ func enter():
 		return
 
 func update(_delta):
-	if enemy_behaviour.weapon.in_range(attackTarget):
-		if enemy_behaviour.weapon.can_attack():
-			enemy_behaviour.animationPlayer.play("attack")
-	else:
-		behaviour.change_state(EnemyFollowState.new(behaviour, attackTarget))
+	enemy_behaviour.animationPlayer.play("attack")
 
 func exit():
 	enemy_behaviour.animationPlayer.animation_finished.disconnect(animation_finished)
+	enemy_behaviour.follower.resume()
 
 func animation_finished(name : String):
 	if name == "attack":

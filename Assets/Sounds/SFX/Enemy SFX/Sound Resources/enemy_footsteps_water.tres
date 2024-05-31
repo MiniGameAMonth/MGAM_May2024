@@ -1,3 +1,17 @@
-[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://c2sdokp63ug3a"]
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://c2sdokp63ug3a"]
+
+[ext_resource type="AudioStream" uid="uid://d0fplkov4u3kv" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Footsteps/Enemy - Footsteps - Water/Enemy - Footsteps - Water - 1.ogg" id="1_7iudh"]
+[ext_resource type="AudioStream" uid="uid://oeqa85ljeokq" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Footsteps/Enemy - Footsteps - Water/Enemy - Footsteps - Water - 2.ogg" id="2_0svs6"]
+[ext_resource type="AudioStream" uid="uid://cihcxnk6hu584" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Footsteps/Enemy - Footsteps - Water/Enemy - Footsteps - Water - 3.ogg" id="3_huwl5"]
+[ext_resource type="AudioStream" uid="uid://cyc77ncspsgkr" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Footsteps/Enemy - Footsteps - Water/Enemy - Footsteps - Water - 4.ogg" id="4_1qvrp"]
 
 [resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_7iudh")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_0svs6")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_huwl5")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_1qvrp")
+stream_3/weight = 1.0

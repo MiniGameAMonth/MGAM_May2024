@@ -36,7 +36,7 @@ func _ready():
 
 func _process(_delta):
 	if player == null:
-		player = get_tree().get_first_node_in_group(GroupNames.Player)
+		player = get_tree().get_first_node_in_group(GroupNames.Players)
 		if player == null:
 			return
 		else:
