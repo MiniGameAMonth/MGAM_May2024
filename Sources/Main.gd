@@ -59,7 +59,7 @@ func start_game(gamemode: GameMode = GameMode.IN_GAME):
 		is_game_was_started = true
 		menu_node.get_node("MainMenu/MainMenu/PlayButton").hide()
 		menu_node.get_node("MainMenu/MainMenu/ContinueButton").show()
-		load_level("res://GameObjects/CutScenePlayer.tscn", true)
+		load_level("res://GameObjects/CutScenePlayer_Intro.tscn", true)
 
 	game_mode = gamemode
 	update_menu()

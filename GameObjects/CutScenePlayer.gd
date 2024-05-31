@@ -4,6 +4,8 @@ extends Control
 @export var path_to_movie_video: String
 ##Path to the book mode video. It's played when the mode is switched.
 @export var path_to_book_video: String
+##Path to the level to load after the video is finished.
+@export var level_to_load_path: String
 
 var video_player: VideoStreamPlayer
 @onready var skip_button: Button = $SkipButton
@@ -24,7 +26,8 @@ func _ready():
     video_player.play()   
 
 func on_video_finished():
-    Main.load_level("res://Levels/Level1.tscn")
+    if level_to_load_path != "":
+        Main.load_level(level_to_load_path)    
 
 func on_skip_button_pressed():
     video_player.stop()
