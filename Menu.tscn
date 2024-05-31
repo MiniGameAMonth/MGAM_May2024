@@ -278,6 +278,7 @@ script = ExtResource("1_wgstm")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_px7oi")
+volume_db = -16.0
 autoplay = true
 bus = &"Music"
 
