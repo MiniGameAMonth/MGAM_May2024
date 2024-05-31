@@ -35,7 +35,7 @@ func _process(_delta):
 	super._process(_delta)
 
 func attack_target(target:Node3D):
-	if target.name != "Players":
+	if target.name != "Player":
 		return
 	attackTarget = target
 	targetLineOfSight.target = target
@@ -47,3 +47,6 @@ func die():
 	follower.stop()
 	remove_from_group(GroupNames.Enemies)
 	process_mode = Node.PROCESS_MODE_DISABLED
+
+func behaviour_destroyed():
+	GlobalEvents.enemy_died.emit(self)

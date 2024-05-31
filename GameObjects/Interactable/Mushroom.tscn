@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://brb42cfhxdj3o" path="res://Assets/Sounds/Mushrooms/Mushroom_Pickup.wav" id="4_8uaba"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4qh64"]
+radius = 1.5
 
 [node name="Mushroom" type="Area3D"]
 collision_layer = 8
@@ -13,7 +14,7 @@ collision_mask = 0
 monitoring = false
 script = ExtResource("1_duxxf")
 mushroomData = ExtResource("2_umgh6")
-interactionPrompt = "Pick up"
+interactionPrompt = "Pick up %s"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

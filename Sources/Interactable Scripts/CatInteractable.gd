@@ -48,7 +48,8 @@ func stop_interact(_who):
 		animationPlayer.play("stop_pet_animation")
 		animationPlayer.connect("animation_finished", animationEnd)
 	isPetting = false
-	
 	pet_timer.stop()
+
+	GlobalEvents.player_stopped_petting.emit()
 	#start cat
 	#play sound
