@@ -26,8 +26,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_2kdwh")
 script = ExtResource("2_hewci")
-path_to_movie_video = "res://Assets/Intro_movie_Subs1.ogg"
-path_to_book_video = "res://Assets/Intro_book_mode1.ogg"
+path_to_movie_video = "res://Assets/Intro_movie_Subs1.ogv"
+path_to_book_video = "res://Assets/Intro_book_mode1.ogv"
 level_to_load_path = "res://Levels/Level1.tscn"
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]

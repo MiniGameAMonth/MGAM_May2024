@@ -26,8 +26,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_agr33")
 script = ExtResource("2_x32iv")
-path_to_movie_video = "res://Assets/ending_movie_subs1.ogg"
-path_to_book_video = "res://Assets/Ending_book_mode1.ogg"
+path_to_movie_video = "res://Assets/ending_movie_subs1.ogv"
+path_to_book_video = "res://Assets/Ending_book_mode1.ogv"
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 0
