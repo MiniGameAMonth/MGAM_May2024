@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cpg0tvw8kxvld"]
+[gd_scene load_steps=52 format=3 uid="uid://cpg0tvw8kxvld"]
 
 [ext_resource type="Script" path="res://Sources/Level.gd" id="1_ho28i"]
 [ext_resource type="Texture2D" uid="uid://de53xloktvowj" path="res://Assets/LevelsTextures/cave exploration asset.png" id="2_e8ba6"]
@@ -7,9 +7,10 @@
 [ext_resource type="Material" uid="uid://bc67nx3xu300j" path="res://Levels/Level1_moss_wall.material" id="5_sdurk"]
 [ext_resource type="Material" uid="uid://4cjd5iawv86k" path="res://Levels/Level2_pink_grass.material" id="6_xnsep"]
 [ext_resource type="Texture2D" uid="uid://bkf4iab8ocxsm" path="res://Assets/LevelsTextures/Forest_tileset.png" id="12_0cyjv"]
-[ext_resource type="MeshLibrary" uid="uid://dao36q1b2u5fq" path="res://GameObjects/forest_tiles.meshlib" id="12_sdmep"]
-[ext_resource type="PackedScene" uid="uid://d14htgqon53hs" path="res://GameObjects/house.tscn" id="13_7oy4s"]
-[ext_resource type="PackedScene" uid="uid://bry4kj7piykoo" path="res://GameObjects/inn.tscn" id="14_bsxl2"]
+[ext_resource type="MeshLibrary" path="res://GameObjects/forest_tiles.meshlib" id="12_sdmep"]
+[ext_resource type="Script" path="res://Sources/GameEndTrigger.gd" id="12_ur4vp"]
+[ext_resource type="PackedScene" path="res://GameObjects/house.tscn" id="13_7oy4s"]
+[ext_resource type="PackedScene" path="res://GameObjects/inn.tscn" id="14_bsxl2"]
 [ext_resource type="PackedScene" uid="uid://bkjqoodkmlp54" path="res://GameObjects/Interactable/Mushroom.tscn" id="16_n4vea"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyygg"]
@@ -8593,6 +8594,7 @@ region_enabled = true
 region_rect = Rect2(128, 640, 64, 64)
 
 [node name="GameEndTrigger" type="Area3D" parent="."]
+script = ExtResource("12_ur4vp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameEndTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 567.549, -9.80648, -436.292)

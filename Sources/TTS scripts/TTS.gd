@@ -16,7 +16,7 @@ func _ready():
 static func say_phrase(text: String):
 	if !disabled:		
 		DisplayServer.tts_stop()		
-		DisplayServer.tts_speak(text, voice_id, voice_volume)	
+		DisplayServer.tts_speak(text, voice_id, voice_volume, true)	
 
 static func toggle_TTS(is_enabled : int = 0):
 	if is_enabled == 0:

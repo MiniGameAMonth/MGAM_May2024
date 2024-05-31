@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ce4shit56obq2"]
+
+[ext_resource type="Texture2D" uid="uid://8fnetyvja0ub" path="res://Assets/Images/Menu/skip-cutscene.png" id="1_lmnk6"]
+
+[resource]
+atlas = ExtResource("1_lmnk6")
+region = Rect2(3.70311, -2.45873, 28.2969, 26.4856)

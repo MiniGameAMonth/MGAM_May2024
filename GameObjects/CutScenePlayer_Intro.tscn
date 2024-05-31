@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgwnda6vl8w3f"]
+[gd_scene load_steps=14 format=3 uid="uid://bgwnda6vl8w3f"]
 
 [ext_resource type="Theme" uid="uid://dhnrp2bw2eh3c" path="res://Themes/CutSceen_UI.tres" id="1_2kdwh"]
 [ext_resource type="Script" path="res://Sources/Level.gd" id="1_jqxxl"]
 [ext_resource type="Script" path="res://GameObjects/CutScenePlayer.gd" id="2_hewci"]
+[ext_resource type="Script" path="res://Sources/SkipButton.gd" id="4_caxir"]
+[ext_resource type="Texture2D" uid="uid://c48b4by4cde4o" path="res://Assets/Images/0. Epilepsy Warning.png" id="4_gfjyy"]
+[ext_resource type="Script" path="res://Sources/TTS scripts/TTS_Button_Attachment.gd" id="6_gy6kd"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_ib7q1"]
 
@@ -43,19 +46,39 @@ stream = SubResource("VideoStreamTheora_ib7q1")
 volume_db = -10.0
 bus = &"Music"
 
-[node name="SkipButton" type="Button" parent="CutScenePlayer_Intro"]
+[node name="TextureRect" type="TextureRect" parent="CutScenePlayer_Intro"]
 layout_mode = 0
-offset_left = 600.0
-offset_top = 325.0
-offset_right = 632.0
-offset_bottom = 349.0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("4_gfjyy")
 
-[node name="ModeSwitch" type="CheckBox" parent="CutScenePlayer_Intro"]
+[node name="Panel" type="Panel" parent="CutScenePlayer_Intro"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 560.0
-offset_top = 325.0
-offset_right = 601.0
-offset_bottom = 352.0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="Container" type="HBoxContainer" parent="CutScenePlayer_Intro"]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 327.0
+offset_right = 634.0
+offset_bottom = 354.0
+
+[node name="SkipButton" type="Button" parent="CutScenePlayer_Intro/Container" node_paths=PackedStringArray("parentNode")]
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 2
+script = ExtResource("4_caxir")
+parentNode = NodePath("../..")
+
+[node name="TTS_Button_Attachment" type="Node" parent="CutScenePlayer_Intro/Container/SkipButton" node_paths=PackedStringArray("button")]
+script = ExtResource("6_gy6kd")
+button = NodePath("..")
+alternate_text = "Skip button"
+
+[node name="ModeSwitch" type="CheckBox" parent="CutScenePlayer_Intro/Container"]
+custom_minimum_size = Vector2(41, 27)
+layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yic2g")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_hv55n")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_4nt5x")
@@ -63,3 +86,17 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_0q8x3")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_yk4br")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_74wcd")
 button_pressed = true
+
+[node name="TTS_Button_Attachment" type="Node" parent="CutScenePlayer_Intro/Container/ModeSwitch" node_paths=PackedStringArray("button")]
+script = ExtResource("6_gy6kd")
+button = NodePath("..")
+alternate_text = "Movie mode"
+
+[node name="Label" type="Label" parent="CutScenePlayer_Intro"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 326.0
+offset_right = 390.0
+offset_bottom = 349.0
+text = "Click to Continue
+"

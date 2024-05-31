@@ -1,29 +1,33 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dhnrp2bw2eh3c"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dhnrp2bw2eh3c"]
 
 [ext_resource type="Texture2D" uid="uid://cvghpqmqi1o3s" path="res://Assets/Images/Menu/skip-cutscene-focus-1.png" id="1_4lmyn"]
-[ext_resource type="Texture2D" uid="uid://8fnetyvja0ub" path="res://Assets/Images/Menu/skip-cutscene.png" id="1_8tqbx"]
+[ext_resource type="Texture2D" uid="uid://ce4shit56obq2" path="res://Assets/Images/Menu/Atlases/skip_button.tres" id="2_hlnn0"]
 [ext_resource type="Texture2D" uid="uid://bt8poq4wt7t5l" path="res://Assets/Images/Menu/skip-cutscene-pressed.png" id="3_4jd11"]
 [ext_resource type="Texture2D" uid="uid://lrqit2ij01b4" path="res://Assets/Images/Menu/movie-enabled.png" id="4_8tmjb"]
 [ext_resource type="Texture2D" uid="uid://ci5qy4ya7yff3" path="res://Assets/Images/Menu/book-enabled.png" id="5_2vc00"]
+[ext_resource type="Texture2D" uid="uid://ctak02trc6flo" path="res://Assets/Images/Menu/movie-enabled - pressed.png" id="5_ycvgx"]
+[ext_resource type="Texture2D" uid="uid://25r331rq87o5" path="res://Assets/Images/Menu/book-enabled-pressed.png" id="7_l514j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67coc"]
+texture = ExtResource("3_4jd11")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vycj4"]
 texture = ExtResource("1_4lmyn")
 texture_margin_left = 1.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b8nfp"]
+texture = ExtResource("1_4lmyn")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xuck1"]
-texture = ExtResource("1_8tqbx")
+texture = ExtResource("2_hlnn0")
 texture_margin_left = 5.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_74g7q"]
-texture = ExtResource("3_4jd11")
-texture_margin_left = 3.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ailtd"]
-
 [resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_67coc")
 Button/styles/focus = SubResource("StyleBoxTexture_vycj4")
+Button/styles/hover = SubResource("StyleBoxTexture_b8nfp")
 Button/styles/normal = SubResource("StyleBoxTexture_xuck1")
-Button/styles/pressed = SubResource("StyleBoxTexture_74g7q")
 CheckBox/icons/checked = ExtResource("4_8tmjb")
+CheckBox/icons/checked_disabled = ExtResource("5_ycvgx")
 CheckBox/icons/unchecked = ExtResource("5_2vc00")
-CheckBox/styles/focus = SubResource("StyleBoxEmpty_ailtd")
+CheckBox/icons/unchecked_disabled = ExtResource("7_l514j")
