@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7qwde4lksqfd"]
+[gd_scene load_steps=9 format=3 uid="uid://b7qwde4lksqfd"]
 
 [ext_resource type="Theme" uid="uid://dhnrp2bw2eh3c" path="res://Themes/CutSceen_UI.tres" id="1_xlvar"]
-[ext_resource type="VideoStream" uid="uid://b74nejjyw7nce" path="res://Assets/Videos/Intro Movie Mode_WSubs.ogg" id="2_ho07e"]
 [ext_resource type="Script" path="res://GameObjects/CutScenePlayer.gd" id="2_j3e40"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yic2g"]
@@ -25,15 +24,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xlvar")
 script = ExtResource("2_j3e40")
-path_to_movie_video = "res://Assets/Videos/Intro Movie Mode_WSubs.ogg"
-path_to_book_video = "res://Assets/Videos/Intro Book Mode.ogg"
+path_to_movie_video = "res://Assets/Videos/Intro Movie Mode_WSubs.ogv"
+path_to_book_video = "res://Assets/Videos/Intro Book Mode.ogv"
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(0.34, 0.333)
-stream = ExtResource("2_ho07e")
 volume_db = -10.0
 
 [node name="SkipButton" type="Button" parent="."]
