@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cpg0tvw8kxvld"]
+[gd_scene load_steps=51 format=3 uid="uid://cpg0tvw8kxvld"]
 
 [ext_resource type="Script" path="res://Sources/Level.gd" id="1_ho28i"]
 [ext_resource type="Texture2D" uid="uid://de53xloktvowj" path="res://Assets/LevelsTextures/cave exploration asset.png" id="2_e8ba6"]
@@ -6,7 +6,6 @@
 [ext_resource type="Material" uid="uid://dbj1lr5caui1t" path="res://Levels/Level1_wall.material" id="4_8uvfw"]
 [ext_resource type="Material" uid="uid://bc67nx3xu300j" path="res://Levels/Level1_moss_wall.material" id="5_sdurk"]
 [ext_resource type="Material" uid="uid://4cjd5iawv86k" path="res://Levels/Level2_pink_grass.material" id="6_xnsep"]
-[ext_resource type="PackedScene" uid="uid://bkimy18ql6y7v" path="res://GameObjects/ExitTrigger.tscn" id="10_f8ruj"]
 [ext_resource type="Texture2D" uid="uid://bkf4iab8ocxsm" path="res://Assets/LevelsTextures/Forest_tileset.png" id="12_0cyjv"]
 [ext_resource type="MeshLibrary" uid="uid://dao36q1b2u5fq" path="res://GameObjects/forest_tiles.meshlib" id="12_sdmep"]
 [ext_resource type="PackedScene" uid="uid://d14htgqon53hs" path="res://GameObjects/house.tscn" id="13_7oy4s"]
@@ -316,9 +315,6 @@ transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 33
 transform = Transform3D(-4.36848e-08, -1.52551e-09, -1, -0.0348995, 0.999391, 0, 0.999391, 0.0348995, -4.37114e-08, -78.546, 89.437, -480.917)
 mesh = SubResource("ArrayMesh_xm6y3")
 skeleton = NodePath("")
-
-[node name="ExitTrigger" parent="." instance=ExtResource("10_f8ruj")]
-next_level = "res://Levels/TestLevel.tscn"
 
 [node name="Mushrooms" type="Node3D" parent="."]
 
