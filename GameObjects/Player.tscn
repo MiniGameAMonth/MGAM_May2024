@@ -1,17 +1,22 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhktw4y7gkww3"]
+[gd_scene load_steps=24 format=3 uid="uid://dhktw4y7gkww3"]
 
 [ext_resource type="Script" path="res://Sources/Player.gd" id="1_l3ge4"]
+[ext_resource type="AudioStream" uid="uid://br2vaqmuh7sbt" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/guide_star.tres" id="2_4byr6"]
+[ext_resource type="Script" path="res://Sources/Utilities/PlaySound.gd" id="2_8a28v"]
 [ext_resource type="PackedScene" uid="uid://duwyhw72cnmpd" path="res://GameObjects/Utilities/footsteps.tscn" id="2_b6p3w"]
 [ext_resource type="PackedScene" uid="uid://c18ga08e55buv" path="res://GameObjects/Interactable/InteractionArea.tscn" id="2_ppcc5"]
+[ext_resource type="AudioStream" uid="uid://ynksa10wemwq" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/player_hurt.tres" id="3_0mxnr"]
+[ext_resource type="AudioStream" uid="uid://xhrkroxct6s0" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/collected_all_mushrooms.tres" id="3_0x0p0"]
+[ext_resource type="Script" path="res://Sources/Entities/VoicelinePlayer.gd" id="3_fsqwo"]
 [ext_resource type="Script" path="res://Sources/Weapons/RangedWeapon.gd" id="3_htsy1"]
 [ext_resource type="AudioStream" uid="uid://fpb34t8og5vq" path="res://Assets/Sounds/SFX/Player SFX/player_footsteps_water.tres" id="3_msc4k"]
 [ext_resource type="AudioStream" uid="uid://c84ka5jgmwatl" path="res://Assets/Sounds/SFX/Player SFX/player_footsteps_grass.tres" id="4_1ttep"]
 [ext_resource type="AudioStream" uid="uid://tnnhwxcg2p8n" path="res://Assets/Sounds/SFX/Player SFX/wand_sounds.tres" id="4_vnv0v"]
+[ext_resource type="AudioStream" uid="uid://d18np6pyw2xeo" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/finished_healing.tres" id="4_x0jus"]
 [ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="5_aokh4"]
 [ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="6_213k8"]
 [ext_resource type="PackedScene" uid="uid://b80qtulhkax1j" path="res://GameObjects/PlayerHUD.tscn" id="6_fsf8v"]
 [ext_resource type="Theme" uid="uid://b52ts8rtppg4j" path="res://Themes/MenuTheme.tres" id="8_ws50j"]
-[ext_resource type="Script" path="res://Sources/Utilities/SRTParser.gd" id="12_55kyb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5s06"]
 
@@ -127,15 +132,31 @@ _data = {
 collision_layer = 5
 script = ExtResource("1_l3ge4")
 mouse_sensitivity = 0.2
+ask_guide_star_voiceline = ExtResource("2_4byr6")
+collected_all_mushrooms_voiceline = ExtResource("3_0x0p0")
+good_kitten_voiceline = ExtResource("4_x0jus")
+
+[node name="VoicelinePlayer" type="Node3D" parent="."]
+script = ExtResource("3_fsqwo")
+audio_bus = "Speech"
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="PlayerHurt" type="Node3D" parent="Sounds"]
+script = ExtResource("2_8a28v")
+sound = ExtResource("3_0mxnr")
+audio_bus = "Sounds"
 
 [node name="FootstepsPlayer3D(Stone)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_b6p3w")]
 character = NodePath("..")
+footstep_override = 1
 loop_delay = 0.15
 audio_bus = "Sounds"
 
 [node name="FootstepsPlayer3D(Water)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_b6p3w")]
 character = NodePath("..")
 footstep_type = 3
+footstep_override = 1
 loop_delay = 0.1
 sound = ExtResource("3_msc4k")
 audio_bus = "Sounds"
@@ -143,6 +164,7 @@ audio_bus = "Sounds"
 [node name="FootstepsPlayer3D(Grass)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_b6p3w")]
 character = NodePath("..")
 footstep_type = 2
+footstep_override = 1
 loop_delay = 0.1
 sound = ExtResource("4_1ttep")
 audio_bus = "Sounds"
@@ -222,10 +244,8 @@ light_energy = 5.425
 shadow_enabled = true
 omni_range = 10.743
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource("12_55kyb")
-
-[connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction"]
 [connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="set_interactable"]
-[connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction_end"]
+[connection signal="on_interaction" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction"]
 [connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="clear_interactable"]
+[connection signal="on_interaction_end" from="InteractionArea" to="CanvasLayer/PlayerHud" method="on_interaction_end"]
+[connection signal="hurt" from="Character" to="Sounds/PlayerHurt" method="play"]

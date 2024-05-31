@@ -5,6 +5,7 @@ extends Node3D
 
 signal health_changed(health : int)
 signal damaged(damage : int)
+signal hurt()
 signal mana_changed(mana : int)
 signal on_death()
 
@@ -14,6 +15,7 @@ func _ready():
 
 func take_damage(damage : int):
 	damaged.emit(damage)
+	hurt.emit()
 	characterStats.health -= damage
 	health_changed.emit(characterStats.health)
 

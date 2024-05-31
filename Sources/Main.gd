@@ -37,7 +37,7 @@ func _process(delta):
 
 		update_menu()
 
-	if game_mode == GameMode.IN_GAME:
+	if game_mode == GameMode.IN_GAME or game_mode == GameMode.CUTSCENE:
 		get_tree().paused = false
 
 

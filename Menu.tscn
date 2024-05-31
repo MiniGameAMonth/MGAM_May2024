@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://du7l74rq77kfn"]
+[gd_scene load_steps=53 format=3 uid="uid://du7l74rq77kfn"]
 
 [ext_resource type="Script" path="res://Sources/Menu.gd" id="1_wgstm"]
 [ext_resource type="Texture2D" uid="uid://62f1j0sxnhtx" path="res://Assets/Images/Menu/MenuBG/main.menu0.png" id="2_qoswh"]
@@ -35,9 +35,12 @@
 [ext_resource type="Script" path="res://Sources/TTS scripts/tts_slider_attachment.gd" id="28_v8brc"]
 [ext_resource type="PackedScene" uid="uid://d1k8cwmy8kul4" path="res://GameObjects/UI/SFX Presets/DefaultSliderSFX.tscn" id="30_10u2p"]
 [ext_resource type="Script" path="res://NarrationVolumeSlider.gd" id="31_7ov4g"]
+[ext_resource type="Script" path="res://Sources/Menu/Utilities/CheckboxControlConfig.gd" id="31_myv0t"]
 [ext_resource type="Script" path="res://Sources/TakeFocusButton.gd" id="32_vbk7r"]
 [ext_resource type="Script" path="res://Sources/Menu/VolumeSlider.gd" id="34_6ibl2"]
+[ext_resource type="Script" path="res://Sources/Menu/Utilities/SliderControlConfig.gd" id="34_ge4al"]
 [ext_resource type="Script" path="res://Sources/GoBackButton_TakeFocus.gd" id="34_jclbd"]
+[ext_resource type="Script" path="res://SliderValue.gd" id="35_qqco6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jf5c"]
 bg_color = Color(0.847059, 0.364706, 0.545098, 0.788235)
@@ -496,6 +499,11 @@ alternate_text = "Text to Speech"
 
 [node name="DefaultButtonSfx" parent="OptionsMenu/VBoxContainer/GridContainer/TTSCheckBox" instance=ExtResource("28_1is5f")]
 
+[node name="CheckboxControlConfig" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/TTSCheckBox"]
+script = ExtResource("31_myv0t")
+section = "Config"
+config_name = "TTS_Enabled"
+
 [node name="UseAutoAimLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -513,6 +521,11 @@ alternate_text = "Use auto-aim"
 
 [node name="DefaultButtonSfx" parent="OptionsMenu/VBoxContainer/GridContainer/UseAutoAimBox" instance=ExtResource("28_1is5f")]
 
+[node name="CheckboxControlConfig" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/UseAutoAimBox"]
+script = ExtResource("31_myv0t")
+section = "Config"
+config_name = "UseAutoAim"
+
 [node name="AutoAimDegLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -526,6 +539,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme = ExtResource("3_cx58u")
+min_value = 10.0
 max_value = 90.0
 value = 45.0
 
@@ -537,10 +551,18 @@ unit_value = "degrees"
 
 [node name="DefaultButtonSfx" parent="OptionsMenu/VBoxContainer/GridContainer/HBoxContainer/AutoAimZoneSlider" instance=ExtResource("30_10u2p")]
 
-[node name="AutoAimZoneValueLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer/HBoxContainer"]
+[node name="SliderControlConfig" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/HBoxContainer/AutoAimZoneSlider"]
+script = ExtResource("34_ge4al")
+section = "Config"
+config_name = "AutoAimZone"
+
+[node name="AutoAimZoneValueLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer/HBoxContainer" node_paths=PackedStringArray("slider")]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
 text = "45°"
+script = ExtResource("35_qqco6")
+slider = NodePath("../AutoAimZoneSlider")
+suffix = "°"
 
 [node name="ControlsSchemeLabel" type="Label" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -896,6 +918,11 @@ unit_value = "%"
 [node name="VolumeSlider" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/MasterVolumeSlider"]
 script = ExtResource("34_6ibl2")
 
+[node name="SliderControlConfig" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/MasterVolumeSlider"]
+script = ExtResource("34_ge4al")
+section = "Volume"
+config_name = "Master"
+
 [node name="InterfaceVolumeLabel" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -924,6 +951,11 @@ mouse_over_sfx = NodePath("../../MasterVolumeSlider/DefaultButtonSfx/AudioStream
 script = ExtResource("34_6ibl2")
 bus = "Interface"
 
+[node name="SliderControlConfig" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/InterfaceVolumeSlider"]
+script = ExtResource("34_ge4al")
+section = "Volume"
+config_name = "Interface"
+
 [node name="MusicVolumeLabel" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -948,6 +980,11 @@ unit_value = "%"
 [node name="VolumeSlider" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/MusicVolumeSlider"]
 script = ExtResource("34_6ibl2")
 bus = "Music"
+
+[node name="SliderControlConfig" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/MusicVolumeSlider"]
+script = ExtResource("34_ge4al")
+section = "Volume"
+config_name = "Music"
 
 [node name="SoundsVolumeLabel" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -974,6 +1011,11 @@ unit_value = "%"
 script = ExtResource("34_6ibl2")
 bus = "Sounds"
 
+[node name="SliderControlConfig" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/SoundsVolumeSlider"]
+script = ExtResource("34_ge4al")
+section = "Volume"
+config_name = "Sounds"
+
 [node name="NarrationVolume" type="Label" parent="SoundOptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -999,6 +1041,11 @@ unit_value = "%"
 [node name="VolumeSlider" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/NarrationVolumeSlider"]
 script = ExtResource("34_6ibl2")
 bus = "Narration"
+
+[node name="SliderControlConfig" type="Node" parent="SoundOptionsMenu/VBoxContainer/GridContainer/NarrationVolumeSlider"]
+script = ExtResource("34_ge4al")
+section = "Volume"
+config_name = "Narration"
 
 [node name="Label" type="Label" parent="SoundOptionsMenu"]
 layout_mode = 1

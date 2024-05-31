@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://bqrs3wdxj526s"]
+
+[ext_resource type="AudioStream" uid="uid://dgv73vo2n8qgf" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Call/Player - Voice Acting - Call - 1.ogg" id="1_5y6gs"]
+[ext_resource type="AudioStream" uid="uid://babwlwircwqrl" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Call/Player - Voice Acting - Call - 2.ogg" id="2_bv7ti"]
+
+[resource]
+playback_mode = 1
+random_volume_offset_db = 1.0
+streams_count = 2
+stream_0/stream = ExtResource("1_5y6gs")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_bv7ti")
+stream_1/weight = 3.0

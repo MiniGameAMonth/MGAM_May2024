@@ -1,0 +1,332 @@
+[gd_scene load_steps=57 format=3 uid="uid://boa7trdhajn5d"]
+
+[ext_resource type="Texture2D" uid="uid://cjfebf1dn00jd" path="res://Assets/LevelsTextures/ForestTiles/row-1-column-9.png" id="1_1ak2k"]
+[ext_resource type="Texture2D" uid="uid://b8j8fhm2ihfnh" path="res://Assets/LevelsTextures/ForestTiles/row-1-column-10.png" id="2_cufjm"]
+[ext_resource type="Texture2D" uid="uid://cyk8s8js1gtw8" path="res://Assets/LevelsTextures/ForestTiles/row-1-column-11.png" id="3_4eo7j"]
+[ext_resource type="Texture2D" uid="uid://y3qaynb67kjy" path="res://Assets/LevelsTextures/ForestTiles/row-1-column-12.png" id="4_ev4h1"]
+[ext_resource type="Texture2D" uid="uid://owew7d1ac12i" path="res://Assets/LevelsTextures/ForestTiles/row-2-column-12.png" id="5_oqfrf"]
+[ext_resource type="Texture2D" uid="uid://cheteda868soq" path="res://Assets/LevelsTextures/ForestTiles/row-2-column-11.png" id="6_j7vnj"]
+[ext_resource type="Texture2D" uid="uid://s3bj2pfnr7q7" path="res://Assets/LevelsTextures/ForestTiles/row-2-column-10.png" id="7_46o8g"]
+[ext_resource type="Texture2D" uid="uid://ysc10300lcyo" path="res://Assets/LevelsTextures/ForestTiles/row-2-column-9.png" id="8_6hmd3"]
+[ext_resource type="Texture2D" uid="uid://ccsoukottkmfu" path="res://Assets/LevelsTextures/ForestTiles/row-3-column-12.png" id="9_a5yoc"]
+[ext_resource type="Texture2D" uid="uid://ccqrsqfl36t70" path="res://Assets/LevelsTextures/ForestTiles/row-3-column-11.png" id="10_mwxum"]
+[ext_resource type="Texture2D" uid="uid://dmbma3fwormdq" path="res://Assets/LevelsTextures/ForestTiles/row-3-column-10.png" id="11_5bpfn"]
+[ext_resource type="Texture2D" uid="uid://dw1rkmbehi3un" path="res://Assets/LevelsTextures/ForestTiles/row-3-column-9.png" id="12_5lr88"]
+[ext_resource type="Texture2D" uid="uid://bhngxphs4lvbp" path="res://Assets/LevelsTextures/ForestTiles/row-4-column-12.png" id="13_5vlv1"]
+[ext_resource type="Texture2D" uid="uid://bpe3i4kf1motu" path="res://Assets/LevelsTextures/ForestTiles/row-5-column-11.png" id="14_kqskx"]
+[ext_resource type="Texture2D" uid="uid://crc820xcql7pe" path="res://Assets/LevelsTextures/ForestTiles/row-5-column-10.png" id="15_4q5kn"]
+[ext_resource type="Texture2D" uid="uid://cw3exspmes4oh" path="res://Assets/LevelsTextures/ForestTiles/row-5-column-9.png" id="16_88x0g"]
+[ext_resource type="Texture2D" uid="uid://dehn40844uxa8" path="res://Assets/LevelsTextures/ForestTiles/row-6-column-11.png" id="17_rfmyw"]
+[ext_resource type="Texture2D" uid="uid://dpwjwyts2f2by" path="res://Assets/LevelsTextures/ForestTiles/row-5-column-12.png" id="18_ayp0u"]
+[ext_resource type="Texture2D" uid="uid://x1sg3vjd4tbb" path="res://Assets/LevelsTextures/ForestTiles/row-6-column-10.png" id="19_fo608"]
+[ext_resource type="Texture2D" uid="uid://dhkhh0iv8g1ix" path="res://Assets/LevelsTextures/ForestTiles/row-6-column-9.png" id="20_xymcn"]
+[ext_resource type="Texture2D" uid="uid://cthimfxmv4cyh" path="res://Assets/LevelsTextures/ForestTiles/row-7-column-11.png" id="21_msj5n"]
+[ext_resource type="Texture2D" uid="uid://djkx4r1ietcsl" path="res://Assets/LevelsTextures/ForestTiles/row-7-column-10.png" id="22_blhqc"]
+[ext_resource type="Texture2D" uid="uid://b8l7120uasc8h" path="res://Assets/LevelsTextures/ForestTiles/row-7-column-9.png" id="23_hk23i"]
+[ext_resource type="Texture2D" uid="uid://s38x2dtdqrxo" path="res://Assets/LevelsTextures/ForestTiles/Corner1.png" id="24_lta2t"]
+[ext_resource type="Texture2D" uid="uid://bfutlwrty7lfv" path="res://Assets/LevelsTextures/ForestTiles/Corner2.png" id="25_7jjli"]
+[ext_resource type="Texture2D" uid="uid://cl6y3jni2nxu3" path="res://Assets/LevelsTextures/ForestTiles/Corner3.png" id="26_5wn6u"]
+[ext_resource type="Texture2D" uid="uid://ctcu1ah0brlvn" path="res://Assets/LevelsTextures/ForestTiles/Corner4.png" id="27_jlp7p"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0vgyp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04bkp"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("1_1ak2k")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqgwd"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("2_cufjm")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpxhh"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("3_4eo7j")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bg2c"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("4_ev4h1")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpu8j"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("5_oqfrf")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c563"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("6_j7vnj")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0x0id"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("7_46o8g")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c4bq"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("8_6hmd3")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mp2p"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("9_a5yoc")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7280v"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("10_mwxum")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w21bh"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("11_5bpfn")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkycw"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("12_5lr88")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nquca"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("13_5vlv1")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qe2p8"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("14_kqskx")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4q4r"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("15_4q5kn")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5011x"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("16_88x0g")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5lrb"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("17_rfmyw")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ed01d"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("18_ayp0u")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpvu5"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("19_fo608")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppi2r"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("20_xymcn")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_buibp"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("21_msj5n")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45mgt"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("22_blhqc")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwykf"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("23_hk23i")
+texture_filter = 4
+
+[sub_resource type="QuadMesh" id="QuadMesh_dbdr4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dnh54"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("24_lta2t")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wk514"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("25_7jjli")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qscfp"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("26_5wn6u")
+texture_filter = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2p1k"]
+diffuse_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("27_jlp7p")
+texture_filter = 4
+
+[node name="ForestTiles" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_04bkp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_kqgwd")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_bpxhh")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_2bg2c")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_hpu8j")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_3c563")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0x0id")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_0c4bq")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_5mp2p")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_7280v")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_w21bh")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_tkycw")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_nquca")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_qe2p8")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_h4q4r")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_5011x")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_u5lrb")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_ed01d")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_fpvu5")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_ppi2r")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_buibp")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_45mgt")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0vgyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_rwykf")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_dbdr4")
+surface_material_override/0 = SubResource("StandardMaterial3D_dnh54")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_dbdr4")
+surface_material_override/0 = SubResource("StandardMaterial3D_wk514")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_dbdr4")
+surface_material_override/0 = SubResource("StandardMaterial3D_qscfp")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_dbdr4")
+surface_material_override/0 = SubResource("StandardMaterial3D_v2p1k")

@@ -23,6 +23,14 @@ func _ready():
 		timer.timeout.connect(_int_loop_sound)
 		add_child(timer)
 
+func set_stream(stream: AudioStream):
+	if player:
+		player.stream = stream
+	sound = stream
+
+	if tempPlayer:
+		tempPlayer.stream = stream
+
 func play():
 	if tempPlayer == null:
 		if player:
@@ -100,3 +108,12 @@ func _int_stop_after_finished():
 	if tempPlayer != player:
 		GameSfx.return_player(tempPlayer)
 	tempPlayer = null
+
+func is_playing():
+	if is_instance_valid(tempPlayer):
+		return tempPlayer.playing
+	return false
+
+
+func _on_character_hurt():
+	pass # Replace with function body.

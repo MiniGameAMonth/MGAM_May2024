@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://d18np6pyw2xeo"]
+
+[ext_resource type="AudioStream" uid="uid://b0i6twnpixhh5" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Level 1/Player - Voice Acting - Level 1 - Line 14.ogg" id="1_ohopk"]
+
+[resource]
+streams_count = 1
+stream_0/stream = ExtResource("1_ohopk")
+stream_0/weight = 1.0

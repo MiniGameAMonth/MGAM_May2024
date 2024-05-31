@@ -1,10 +1,15 @@
-[gd_scene load_steps=32 format=3 uid="uid://c2ul40d4fk526"]
+[gd_scene load_steps=39 format=3 uid="uid://c2ul40d4fk526"]
 
+[ext_resource type="Script" path="res://Sources/Entities/VoicelinePlayer.gd" id="1_be8id"]
 [ext_resource type="Script" path="res://Sources/Follower.gd" id="1_klhdc"]
+[ext_resource type="PackedScene" uid="uid://duwyhw72cnmpd" path="res://GameObjects/Utilities/footsteps.tscn" id="1_p26iv"]
+[ext_resource type="AudioStream" uid="uid://fkt3nfi2xf1n" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_footsteps_stone.tres" id="2_d1kot"]
 [ext_resource type="Script" path="res://Sources/Utilities/DirectionalAnimatedSprite3D.gd" id="2_xe2w5"]
+[ext_resource type="AudioStream" uid="uid://c2sdokp63ug3a" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_footsteps_water.tres" id="3_1e2ma"]
 [ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="3_fy1hx"]
 [ext_resource type="SpriteFrames" uid="uid://dkg303nebv6ga" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/RootEnemy_Back.tres" id="3_v65vu"]
 [ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="4_8k3t3"]
+[ext_resource type="AudioStream" uid="uid://bdnlaq35jge3m" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_footsteps_grass.tres" id="4_itjlm"]
 [ext_resource type="SpriteFrames" uid="uid://cqadijutl163k" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/RootEnemy_Front.tres" id="4_x73ht"]
 [ext_resource type="SpriteFrames" uid="uid://rmrfr4n144lt" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/RootEnemy_Side.tres" id="5_bgo4g"]
 [ext_resource type="Script" path="res://Sources/Behaviours/EnemyBehavior.gd" id="5_lv5l2"]
@@ -21,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://cncy2sjyh0tjg" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_detected.tres" id="14_fe2h2"]
 [ext_resource type="Script" path="res://Sources/Utilities/LineOfSight3D.gd" id="15_smt6h"]
 [ext_resource type="Material" uid="uid://y6o4re0j2yeg" path="res://Assets/Images/particle_material.tres" id="20_0m223"]
+[ext_resource type="AudioStream" uid="uid://60i2e5ig682s" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_idle.tres" id="22_rdb0x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx0fy"]
 
@@ -64,28 +70,28 @@ _data = {
 radius = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_en381"]
-radius = 8.0
+radius = 25.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_frlsq"]
 size = Vector3(3, 2, 3)
 
 [sub_resource type="Animation" id="Animation_2o3l0"]
 resource_name = "death"
-length = 2.3
+length = 3.1
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("AnimatedSprite3D")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.4, 1, 0, 0.809971, 0.962343, 0.8, 1, 0, -0.265275, 1.60147, 1, 1, 0, -2.35331, 1.60147)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.5, 1, 0, 0.809971, 0.962343, 1, 1, 0, -0.265275, 1.60147, 1.2, 1, 0, -2.35331, 1.60147)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("AnimatedSprite3D")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.4, 1, 0.633547, -0.154523, 0.0120967, 0.758021, 0.8, 1, 0.965811, -0.164902, 0.135315, 0.147329)
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0.633547, -0.154523, 0.0120967, 0.758021, 1, 1, 0.965811, -0.164902, 0.135315, 0.147329)
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
@@ -93,7 +99,7 @@ tracks/2/path = NodePath("AnimatedSprite3D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0.350913, 0.284113, 1)]
@@ -105,7 +111,7 @@ tracks/3/path = NodePath("FreeNode")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(2.3),
+"times": PackedFloat32Array(3.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -119,15 +125,46 @@ tracks/4/path = NodePath("DeathParticles:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.8),
+"times": PackedFloat32Array(1.6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_inrpa"]
+resource_name = "hurt"
+length = 0.6
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character/PlayHurtParticles")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_particles"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.65087, 0.635232, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ftmbm"]
 _data = {
-"death": SubResource("Animation_2o3l0")
+"death": SubResource("Animation_2o3l0"),
+"hurt": SubResource("Animation_inrpa")
 }
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ukusr"]
@@ -142,11 +179,31 @@ point_count = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 4
 
+[node name="FootstepsPlayer3D(Grass)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_p26iv")]
+character = NodePath("..")
+footstep_type = 2
+sound = ExtResource("4_itjlm")
+audio_bus = "Sounds"
+
+[node name="FootstepsPlayer3D(Stone)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_p26iv")]
+character = NodePath("..")
+sound = ExtResource("2_d1kot")
+audio_bus = "Sounds"
+
+[node name="FootstepsPlayer3D(Water)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_p26iv")]
+character = NodePath("..")
+footstep_type = 3
+sound = ExtResource("3_1e2ma")
+audio_bus = "Sounds"
+
+[node name="VoicelinePlayer" type="Node3D" parent="."]
+script = ExtResource("1_be8id")
+audio_bus = "Speech"
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sx0fy")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 offset = Vector2(0, 13)
 pixel_size = 0.0315
 texture_filter = 0
@@ -198,7 +255,7 @@ stream = ExtResource("9_cr6mh")
 bus = &"Sounds"
 area_mask = 128
 
-[node name="Node" type="Node" parent="Character" node_paths=PackedStringArray("particles")]
+[node name="PlayHurtParticles" type="Node" parent="Character" node_paths=PackedStringArray("particles")]
 script = ExtResource("10_7auoc")
 particles = NodePath("../../Hurt Particles")
 
@@ -217,14 +274,14 @@ stream = ExtResource("11_jjmfs")
 bus = &"Sounds"
 area_mask = 128
 
-[node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "animationPlayer", "graphics", "sightedSound", "behaviour_owner")]
+[node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "animationPlayer", "graphics", "sightedSound", "idleSound", "behaviour_owner")]
 script = ExtResource("5_lv5l2")
 follower = NodePath("../Follower")
 weapon = NodePath("../Weapon")
 animationPlayer = NodePath("../AnimatedSprite3D/AnimationPlayer")
 graphics = NodePath("../AnimatedSprite3D")
-max_distance = null
 sightedSound = NodePath("PlaySound3D")
+idleSound = NodePath("IdleSound")
 behaviour_owner = NodePath("..")
 debug_states = true
 
@@ -249,6 +306,13 @@ area_mask = 128
 [node name="LineOfSight3D" type="RayCast3D" parent="Behaviour"]
 collision_mask = 5
 script = ExtResource("15_smt6h")
+
+[node name="IdleSound" type="Node3D" parent="Behaviour"]
+script = ExtResource("7_5xdx2")
+loop = true
+loop_delay = 5.0
+sound = ExtResource("22_rdb0x")
+audio_bus = "Sounds"
 
 [node name="ProjectedNode2D" parent="." instance=ExtResource("6_m22q1")]
 
@@ -331,7 +395,7 @@ scale_amount_curve = SubResource("Curve_ow7b6")
 color = Color(0.521948, 0.416927, 0.304568, 1)
 
 [connection signal="damaged" from="Character" to="Character/EnemyHurtSound" method="play" unbinds=1]
-[connection signal="damaged" from="Character" to="Character/Node" method="play_particles" unbinds=1]
+[connection signal="hurt" from="Character" to="AnimationPlayer" method="play" binds= [&"hurt"]]
 [connection signal="on_death" from="Character" to="Character/EnemyDyingSound" method="play"]
 [connection signal="on_death" from="Character" to="Behaviour" method="die"]
 [connection signal="on_death" from="Character" to="AnimationPlayer" method="play" binds= [&"death"]]

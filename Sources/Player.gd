@@ -1,4 +1,8 @@
+class_name Player
 extends CharacterBody3D
+
+signal call_star()
+signal ask_guide_star()
 
 const SPEED = 15.0
 
@@ -12,12 +16,18 @@ var local_delta = 0
 @export var enable_input = true
 @export var block_movement = false
 
+@export var ask_guide_star_voiceline : AudioStream
+@export var collected_all_mushrooms_voiceline : AudioStream
+@export var good_kitten_voiceline : AudioStream
+
 
 @onready var interactions : InteractionArea3D = $InteractionArea
 var interaction : Interactable
 @onready var weapon : Weapon = $Weapon
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 @onready var hud : PlayerHUD = $CanvasLayer/PlayerHud
+@onready var voicelinePlayer : VoicelinePlayer = $VoicelinePlayer
+
 
 var menu_node = null
 
@@ -30,6 +40,10 @@ func _ready():
 
 	interactions.connect("on_interaction", on_interact)
 	interactions.connect("on_interaction_end", on_interact_end)
+	GlobalEvents.collected_all_mushrooms.connect(on_collected_all_mushrooms)
+
+func on_collected_all_mushrooms():
+	voicelinePlayer.request_voiceline(collected_all_mushrooms_voiceline, 3)
 
 
 func on_interact(interactable: Interactable):
@@ -80,6 +94,13 @@ func _input(event):
 			interaction.interact(self)
 		if Input.is_action_just_released("Use"):
 			interaction.stop_interact(self)
+			if interaction is CatInteractable:
+				voicelinePlayer.request_voiceline(good_kitten_voiceline, 0)
+
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("Cat. Search an exit"):
+			ask_guide_star.emit()
+			voicelinePlayer.play_voiceline(ask_guide_star_voiceline, 1)
 
 	# Detect mouse double click
 	if event is InputEventMouseButton and enable_input:

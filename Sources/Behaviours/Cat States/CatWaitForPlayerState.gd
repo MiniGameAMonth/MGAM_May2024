@@ -21,7 +21,7 @@ func enter():
 	follower = behaviour.behaviour_owner.get_node("Follower")
 	follower.stop()
 
-	player = behaviour.get_tree().get_first_node_in_group(GroupNames.Player)
+	player = behaviour.get_tree().get_first_node_in_group(GroupNames.Players)
 
 	lineOfSight = behaviour.behaviour_owner.get_node("LineOfSight3D")
 	behaviour.waitForPlayerSound.play()

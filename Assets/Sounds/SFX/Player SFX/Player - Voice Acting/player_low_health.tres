@@ -1,0 +1,23 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://ceber3c5bvtdd"]
+
+[ext_resource type="AudioStream" uid="uid://hvh0crrih647" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Tired/Player - Voice Acting - Tired - 1.ogg" id="1_vyie2"]
+[ext_resource type="AudioStream" uid="uid://qtaok1awwosj" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Tired/Player - Voice Acting - Tired - 2.ogg" id="2_ooukn"]
+[ext_resource type="AudioStream" uid="uid://cosa8m0me8nfe" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Tired/Player - Voice Acting - Tired - 3.ogg" id="3_4wmsh"]
+[ext_resource type="AudioStream" uid="uid://dgu3uhrk023uj" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Tired/Player - Voice Acting - Tired - 4.ogg" id="4_yc65m"]
+[ext_resource type="AudioStream" uid="uid://vvesk56wqi81" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Tired/Player - Voice Acting - Tired - 5.ogg" id="5_6ysab"]
+[ext_resource type="AudioStream" uid="uid://d1g2c5r287xqm" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Tired/Player - Voice Acting - Tired - 6.ogg" id="6_afeho"]
+
+[resource]
+streams_count = 6
+stream_0/stream = ExtResource("1_vyie2")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_ooukn")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_4wmsh")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_yc65m")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_6ysab")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_afeho")
+stream_5/weight = 1.0

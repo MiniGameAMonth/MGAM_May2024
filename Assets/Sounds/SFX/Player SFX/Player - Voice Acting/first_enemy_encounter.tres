@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://323mj80lgsi"]
+
+[ext_resource type="AudioStream" uid="uid://euy32lhich74" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Level 1/Player - Voice Acting - Level 1 - Line 10.ogg" id="1_8n8ho"]
+
+[resource]
+streams_count = 1
+stream_0/stream = ExtResource("1_8n8ho")
+stream_0/weight = 1.0

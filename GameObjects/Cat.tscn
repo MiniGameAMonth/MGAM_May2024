@@ -35,6 +35,7 @@ collision_layer = 2
 
 [node name="FootstepsPlayer3D(Stone)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_rgi8t")]
 character = NodePath("..")
+footstep_override = 1
 loop_delay = 0.2
 volume_db = -16.0
 sound = ExtResource("2_qvwl2")
@@ -43,12 +44,14 @@ audio_bus = "Sounds"
 [node name="FootstepsPlayer3D(Water)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_rgi8t")]
 character = NodePath("..")
 footstep_type = 3
+footstep_override = 1
 volume_db = -16.0
 audio_bus = "Sounds"
 
 [node name="FootstepsPlayer3D(Grass)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_rgi8t")]
 character = NodePath("..")
 footstep_type = 2
+footstep_override = 1
 sound = ExtResource("3_2xjh2")
 audio_bus = "Sounds"
 
@@ -80,6 +83,7 @@ characterBody = NodePath("..")
 
 [node name="Cat Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("cat", "graphics", "interactionArea", "lineOfSight", "behaviour_owner")]
 script = ExtResource("6_kqk0s")
+maxDistanceFromPlayer = 50.0
 cat = NodePath("../Follower")
 graphics = NodePath("../Graphics")
 interactionArea = NodePath("../Interactable")

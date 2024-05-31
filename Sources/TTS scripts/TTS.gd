@@ -18,11 +18,16 @@ static func say_phrase(text: String):
 		DisplayServer.tts_stop()		
 		DisplayServer.tts_speak(text, voice_id, voice_volume)	
 
-static func toggle_TTS():
-	if disabled:
+static func toggle_TTS(is_enabled : int = 0):
+	if is_enabled == 0:
+		if disabled:
+			disabled = false
+			say_phrase("Text-to-speech: on")
+		else:
+			disabled = true
+	if is_enabled == 1:
 		disabled = false
-		say_phrase("Text-to-speech: on")
-	else:
+	if is_enabled == 2:
 		disabled = true
 
 static func set_voice_volume(volume: int):

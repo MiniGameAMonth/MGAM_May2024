@@ -1,0 +1,41 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=13 format=3 uid="uid://ynksa10wemwq"]
+
+[ext_resource type="AudioStream" uid="uid://b8sxbph0jy7q1" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 1.ogg" id="1_xn6kt"]
+[ext_resource type="AudioStream" uid="uid://hg6v4bw7fjcm" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 2.ogg" id="2_yqsih"]
+[ext_resource type="AudioStream" uid="uid://d3k6yc7tlnotn" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 11.ogg" id="3_uo5pe"]
+[ext_resource type="AudioStream" uid="uid://c6cmwkh7kfsay" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 12.ogg" id="4_3ygdj"]
+[ext_resource type="AudioStream" uid="uid://dml1johjdqgd" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 3.ogg" id="5_d4k3f"]
+[ext_resource type="AudioStream" uid="uid://cbtb64y0o5481" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 4.ogg" id="6_l1c3v"]
+[ext_resource type="AudioStream" uid="uid://bxfhhgn2tuiql" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 5.ogg" id="7_ntxie"]
+[ext_resource type="AudioStream" uid="uid://btl32ychj5svc" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 6.ogg" id="8_qy72t"]
+[ext_resource type="AudioStream" uid="uid://c4j5w3p81btnq" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 7.ogg" id="9_t5mow"]
+[ext_resource type="AudioStream" uid="uid://cccnb8kth32ad" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 8.ogg" id="10_wjafo"]
+[ext_resource type="AudioStream" uid="uid://blqdadahfc2ji" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 9.ogg" id="11_6l7xp"]
+[ext_resource type="AudioStream" uid="uid://c5wyn5lx3xcr4" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Hurt/Player - Voice Acting - Hurt - 10.ogg" id="12_wwrxk"]
+
+[resource]
+streams_count = 12
+stream_0/stream = ExtResource("1_xn6kt")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_yqsih")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_d4k3f")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("6_l1c3v")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("7_ntxie")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("8_qy72t")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("9_t5mow")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("10_wjafo")
+stream_7/weight = 1.0
+stream_8/stream = ExtResource("11_6l7xp")
+stream_8/weight = 1.0
+stream_9/stream = ExtResource("12_wwrxk")
+stream_9/weight = 1.0
+stream_10/stream = ExtResource("3_uo5pe")
+stream_10/weight = 1.0
+stream_11/stream = ExtResource("4_3ygdj")
+stream_11/weight = 1.0

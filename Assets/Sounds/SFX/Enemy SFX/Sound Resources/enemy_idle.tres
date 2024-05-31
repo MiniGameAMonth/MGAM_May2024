@@ -1,0 +1,17 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://60i2e5ig682s"]
+
+[ext_resource type="AudioStream" uid="uid://nh1kb2mqjypa" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Idle/Enemy - Idle - 1.ogg" id="1_400aw"]
+[ext_resource type="AudioStream" uid="uid://cu1aq4nuyerbp" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Idle/Enemy - Idle - 2.ogg" id="2_2oplk"]
+[ext_resource type="AudioStream" uid="uid://dyytny13tl7vy" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Idle/Enemy - Idle - 3.ogg" id="3_kldfm"]
+[ext_resource type="AudioStream" uid="uid://dkxcfhr7mafn6" path="res://Assets/Sounds/SFX/Enemy SFX/Enemy - Idle/Enemy - Idle - 4.ogg" id="4_7vijp"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_400aw")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_2oplk")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_kldfm")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_7vijp")
+stream_3/weight = 1.0

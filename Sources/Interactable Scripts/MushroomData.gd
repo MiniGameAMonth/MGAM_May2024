@@ -11,3 +11,4 @@ enum MushroomType {
 @export var mushroomName : String;
 @export var mushroomAnimations : SpriteFrames;
 @export var mushroomType : MushroomType;
+@export var voiceline: AudioStream;

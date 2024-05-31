@@ -3,7 +3,7 @@ extends BehaviourState
 
 var cat : Follower
 var parent : Node
-var player : Node3D
+var player : Player
 var graphics : AnimatedSprite3D
 
 func _init(_behaviour : Behaviour):
@@ -16,7 +16,9 @@ func enter():
 	graphics = parent.get_node("Graphics")
 	cat.resume()
 
-	player = behaviour.get_tree().get_first_node_in_group(GroupNames.Player)
+	player = behaviour.get_tree().get_first_node_in_group(GroupNames.Players)
+	player.ask_guide_star.connect(find_mushroom)
+
 	var player_front = -player.global_transform.basis.z*7 + player.global_position
 	cat.follow_position(player_front)
 
@@ -31,10 +33,8 @@ func update(_delta):
 	else:
 		graphics.play("idle")
 
-func input(event):
-	if event is InputEventKey:
-		if Input.is_action_just_pressed("Cat. Search an exit"):
-			find_mushroom()
+func exit():
+	player.ask_guide_star.disconnect(find_mushroom)
 
 func find_mushroom():
 	var mushrooms = behaviour.get_tree().get_nodes_in_group(GroupNames.Mushrooms)

@@ -12,7 +12,7 @@ func _init(_behaviour : Behaviour):
 
 func enter():
 	cat_behaviour = behaviour as CatBehaviour
-	player = behaviour.get_tree().get_first_node_in_group(GroupNames.Player)
+	player = behaviour.get_tree().get_first_node_in_group(GroupNames.Players)
 	cat_behaviour.cat.follow(player)
 
 	cat_behaviour.scaredCatSound.play()
