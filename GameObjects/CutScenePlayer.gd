@@ -36,8 +36,7 @@ func _ready():
 		video_player.stream = video_stream
 		video_player.play()
 		return
-
-	skip_button.disabled = true
+	
 	mode_switch.disabled = true
 
 	start_warning_timer = Timer.new()
@@ -81,8 +80,7 @@ func on_warning_duration_timer_timeout():
 	warning_image.visible = false
 	panel.visible = false
 	label.visible = false
-
-	skip_button.disabled = false
+	
 	mode_switch.disabled = false
 
 	video_player = get_node("VideoStreamPlayer")
@@ -108,7 +106,7 @@ func on_start_warning_timer_timeout():
 	warning_duration_timer.start(20)
 
 	TTS.stop()
-	TTS.say_phrase("Click to skip warning.
+	TTS.say_phrase("Click anywhere to skip warning.
 	The following cutscene uses patterns that may induce seizures in people who have photosensitive epilepsy.
 	Immediatly stop playing and consult a doctor if you experience any symptoms.
 	For a safer experience: Skip the cutscene or toggle it from movie mode the book mode.") 
