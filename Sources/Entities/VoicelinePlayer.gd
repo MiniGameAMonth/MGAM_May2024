@@ -3,13 +3,7 @@ extends PlaySound3D
 
 var current_voiceline_priority = 0
 
-func _ready():
-	pass
-
-func _process(_delta):
-	pass
-
-func request_voiceline(voiceline: AudioStream, priority: int):
+func request_voiceline(voiceline: AudioStream, priority: int = 0):
 	if is_playing():
 		if priority > current_voiceline_priority:
 			stop()
@@ -17,7 +11,7 @@ func request_voiceline(voiceline: AudioStream, priority: int):
 	else:
 		play_voiceline(voiceline, priority)
 	
-func play_voiceline(voiceline: AudioStream, priority: int):
+func play_voiceline(voiceline: AudioStream, priority: int = 0):
 	current_voiceline_priority = priority
 	set_stream(voiceline)
 	play()

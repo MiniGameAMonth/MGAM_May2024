@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://c3hirseo06gyb"]
+
+[ext_resource type="SpriteFrames" uid="uid://dms1cgjr5v8wt" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_3_frames.tres" id="1_3uwjx"]
+[ext_resource type="Script" path="res://Sources/Interactable Scripts/MushroomData.gd" id="2_0qma4"]
+
+[resource]
+script = ExtResource("2_0qma4")
+mushroomName = "Small white mushroom"
+mushroomAnimations = ExtResource("1_3uwjx")
+mushroomType = 2

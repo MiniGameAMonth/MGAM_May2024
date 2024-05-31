@@ -1,6 +1,8 @@
 class_name PlaySound3D
 extends Node3D
 
+signal finished()
+
 @export var separateFromNode: bool = false
 @export var stopAfterFinished: bool = false
 @export var loop: bool = false
@@ -22,6 +24,11 @@ func _ready():
 		timer.set_one_shot(true)
 		timer.timeout.connect(_int_loop_sound)
 		add_child(timer)
+
+func _process(_delta):
+	if is_instance_valid(tempPlayer):
+		if tempPlayer.playing:
+			tempPlayer.global_position = global_transform.origin
 
 func set_stream(stream: AudioStream):
 	if player:
@@ -56,6 +63,12 @@ func play():
 	if loop:
 		if not tempPlayer.finished.is_connected(loop_sound):
 			tempPlayer.finished.connect(loop_sound)
+
+	if not tempPlayer.finished.is_connected(_audio_finished):
+		tempPlayer.finished.connect(_audio_finished)
+
+func _audio_finished():
+	finished.emit()
 
 func loop_sound():
 	if loop_delay > 0:
@@ -99,6 +112,8 @@ func _int_stop_after_finished():
 	
 	if tempPlayer.finished.is_connected(_int_stop_after_finished):
 		tempPlayer.finished.disconnect(_int_stop_after_finished)
+	if tempPlayer.finished.is_connected(_audio_finished):
+		tempPlayer.finished.disconnect(_audio_finished)
 
 	tempPlayer.stop()
 	tempPlayer.autoplay = false
@@ -113,7 +128,3 @@ func is_playing():
 	if is_instance_valid(tempPlayer):
 		return tempPlayer.playing
 	return false
-
-
-func _on_character_hurt():
-	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cpg0tvw8kxvld"]
+[gd_scene load_steps=57 format=3 uid="uid://cpg0tvw8kxvld"]
 
 [ext_resource type="Script" path="res://Sources/Level.gd" id="1_ho28i"]
 [ext_resource type="Texture2D" uid="uid://de53xloktvowj" path="res://Assets/LevelsTextures/cave exploration asset.png" id="2_e8ba6"]
@@ -7,11 +7,15 @@
 [ext_resource type="Material" uid="uid://bc67nx3xu300j" path="res://Levels/Level1_moss_wall.material" id="5_sdurk"]
 [ext_resource type="Material" uid="uid://4cjd5iawv86k" path="res://Levels/Level2_pink_grass.material" id="6_xnsep"]
 [ext_resource type="Texture2D" uid="uid://bkf4iab8ocxsm" path="res://Assets/LevelsTextures/Forest_tileset.png" id="12_0cyjv"]
-[ext_resource type="MeshLibrary" path="res://GameObjects/forest_tiles.meshlib" id="12_sdmep"]
+[ext_resource type="MeshLibrary" uid="uid://dao36q1b2u5fq" path="res://GameObjects/forest_tiles.meshlib" id="12_sdmep"]
 [ext_resource type="Script" path="res://Sources/GameEndTrigger.gd" id="12_ur4vp"]
-[ext_resource type="PackedScene" path="res://GameObjects/house.tscn" id="13_7oy4s"]
-[ext_resource type="PackedScene" path="res://GameObjects/inn.tscn" id="14_bsxl2"]
+[ext_resource type="PackedScene" uid="uid://d14htgqon53hs" path="res://GameObjects/house.tscn" id="13_7oy4s"]
+[ext_resource type="Script" path="res://Sources/Voicelines/VoicelineArea.gd" id="13_ewhdr"]
+[ext_resource type="PackedScene" uid="uid://bry4kj7piykoo" path="res://GameObjects/inn.tscn" id="14_bsxl2"]
+[ext_resource type="AudioStream" uid="uid://bcm8lex2pjsiu" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Level 3/Player - Voice Acting - Level 3 - Line 1.ogg" id="14_d1pal"]
+[ext_resource type="AudioStream" uid="uid://cfwqjmyydxohs" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Level 3/Player - Voice Acting - Level 3 - Line 3.ogg" id="15_xabq8"]
 [ext_resource type="PackedScene" uid="uid://bkjqoodkmlp54" path="res://GameObjects/Interactable/Mushroom.tscn" id="16_n4vea"]
+[ext_resource type="AudioStream" uid="uid://dgob6num5c8iu" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Level 3/Player - Voice Acting - Level 3 - Line 4.ogg" id="16_wf2u7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyygg"]
 size = Vector3(2.6196, 3.60547, 19.74)
@@ -237,6 +241,9 @@ size = Vector3(226.551, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_cq8fx"]
 size = Vector3(22.9121, 2.84326, 4.86182)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubyoy"]
+size = Vector3(1, 2.70081, 66.3643)
+
 [node name="Level" type="Node3D"]
 script = ExtResource("1_ho28i")
 
@@ -332,7 +339,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 617.929, -10.9972, -611.278)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 639.948, -10.9972, -461.49)
 
 [node name="Mushroom5" parent="Mushrooms" instance=ExtResource("16_n4vea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 561.722, -10.9972, -457.144)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 660.338, -10.9972, -593.537)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n4d2t")
@@ -8602,3 +8609,32 @@ shape = SubResource("BoxShape3D_cq8fx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.302772, -0.815022, 0.494032, 0.107531, 0.544266, 0.831993, -0.946977, -0.198781, 0.252428, 626.653, 134.364, -452.198)
+
+[node name="Voicelines" type="Node3D" parent="."]
+
+[node name="Voiceline_voice1" type="Area3D" parent="Voicelines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 523.085, -6.76266, -635.806)
+script = ExtResource("13_ewhdr")
+voiceline = ExtResource("14_d1pal")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Voicelines/Voiceline_voice1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.64526, 0)
+shape = SubResource("BoxShape3D_ubyoy")
+
+[node name="Voiceline_voice3" type="Area3D" parent="Voicelines"]
+transform = Transform3D(0.0712886, 0, 0.997456, 0, 1, 0, -0.997456, 0, 0.0712886, 579.982, -7.25437, -581.117)
+script = ExtResource("13_ewhdr")
+voiceline = ExtResource("15_xabq8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Voicelines/Voiceline_voice3"]
+transform = Transform3D(0.997079, 0, 0.076371, 0, 1, 0, -0.076371, 0, 0.997079, 0, -2.59613, 0)
+shape = SubResource("BoxShape3D_ubyoy")
+
+[node name="Voiceline_voice4" type="Area3D" parent="Voicelines"]
+transform = Transform3D(0.0712886, 0, 0.997456, 0, 1, 0, -0.997456, 0, 0.0712886, 567.404, -7.25437, -443.321)
+script = ExtResource("13_ewhdr")
+voiceline = ExtResource("16_wf2u7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Voicelines/Voiceline_voice4"]
+transform = Transform3D(0.997079, 0, 0.076371, 0, 1, 0, -0.076371, 0, 0.997079, -0.028717, -2.59613, -0.373596)
+shape = SubResource("BoxShape3D_ubyoy")

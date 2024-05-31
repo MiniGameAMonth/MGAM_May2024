@@ -94,8 +94,6 @@ func _input(event):
 			interaction.interact(self)
 		if Input.is_action_just_released("Use"):
 			interaction.stop_interact(self)
-			if interaction is CatInteractable:
-				voicelinePlayer.request_voiceline(good_kitten_voiceline, 0)
 
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("Cat. Search an exit"):

@@ -53,7 +53,7 @@ func stop_pet():
 
 func set_interactable(_interactable : Interactable):
 	interactable = _interactable
-	interactionText.text = "Interact with (" + interactable.interactableName + ") to " + interactable.interactionPrompt 
+	interactionText.text = interactable.interactionPrompt.replace("%s", interactable.interactableName)
 	on_label_changed.emit(interactionText.text)
 
 func clear_interactable(_interactable : Interactable):

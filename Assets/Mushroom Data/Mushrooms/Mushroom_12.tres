@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://bo8jld8xwutvm"]
+
+[ext_resource type="SpriteFrames" uid="uid://csrajpo0tfjxt" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_12_frames.tres" id="1_hbv23"]
+[ext_resource type="Script" path="res://Sources/Interactable Scripts/MushroomData.gd" id="2_rlhkb"]
+
+[resource]
+script = ExtResource("2_rlhkb")
+mushroomName = "Poison group mushroom"
+mushroomAnimations = ExtResource("1_hbv23")
+mushroomType = 2

@@ -45,6 +45,10 @@ func _process(_delta):
 
 	super._process(_delta)
 
+func change_state(newState : BehaviourState):
+	super.change_state(newState)
+	GlobalEvents.cat_changed_state.emit(newState)
+
 func player_distance():
 	return player.global_position.distance_to(self.global_position)
 
