@@ -44,6 +44,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 stream = SubResource("VideoStreamTheora_ib7q1")
 volume_db = -10.0
+buffering_msec = 1000
 bus = &"Music"
 
 [node name="TextureRect" type="TextureRect" parent="CutScenePlayer_Intro"]

@@ -275,6 +275,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wgstm")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = &"Music"
+
 [node name="MenuBg" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(320, 180)
@@ -501,6 +505,7 @@ alternate_text = "Text to Speech"
 
 [node name="CheckboxControlConfig" type="Node" parent="OptionsMenu/VBoxContainer/GridContainer/TTSCheckBox"]
 script = ExtResource("31_myv0t")
+defaultValue = true
 section = "Config"
 config_name = "TTS_Enabled"
 

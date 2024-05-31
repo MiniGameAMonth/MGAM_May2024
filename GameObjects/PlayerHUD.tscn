@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b80qtulhkax1j"]
+[gd_scene load_steps=21 format=3 uid="uid://b80qtulhkax1j"]
 
 [ext_resource type="Script" path="res://Sources/HUD/PlayerHUD.gd" id="1_lsokv"]
 [ext_resource type="SpriteFrames" uid="uid://ckvoa8lmhd6at" path="res://Assets/Images/Sprite Sheets/Pet Cat HUD/Pet_Cat_HUD.tres" id="1_mi8lc"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://q16ycfbnj2a5" path="res://GameObjects/UI/Radar.tscn" id="6_xdbgq"]
 [ext_resource type="Texture2D" uid="uid://b5q7knetexoo6" path="res://Assets/Images/HUD/Sprite Sheets/Wand Hand/hand.wand5.png" id="7_tk28n"]
 [ext_resource type="Script" path="res://Sources/TTS scripts/TTS_label_attachment.gd" id="8_gnwyr"]
+[ext_resource type="FontFile" uid="uid://cdlklu6q1dr1m" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="10_vd0wr"]
 
 [sub_resource type="Animation" id="Animation_ftpu5"]
 resource_name = "cat_end_pet"
@@ -215,6 +216,13 @@ _data = {
 "shoot": SubResource("Animation_uw6e0")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_ri3lp"]
+font = ExtResource("10_vd0wr")
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 7
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
+
 [node name="PlayerHud" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -261,17 +269,21 @@ libraries = {
 
 [node name="InteractionLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -11.5
-offset_right = 50.0
-offset_bottom = 11.5
+anchor_bottom = 1.0
+offset_left = -119.0
+offset_top = -66.0
+offset_right = 121.0
+offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 2
+label_settings = SubResource("LabelSettings_ri3lp")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="TTS_label_attachment" type="Node" parent="InteractionLabel" node_paths=PackedStringArray("label", "hud")]
 script = ExtResource("8_gnwyr")

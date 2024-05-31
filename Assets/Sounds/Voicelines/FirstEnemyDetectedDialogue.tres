@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VoicelineDialogue" load_steps=4 format=3 uid="uid://hp6kgx4nfvdu"]
+
+[ext_resource type="Script" path="res://Sources/Voicelines/VoicelineDialogue.gd" id="1_gmi5g"]
+[ext_resource type="AudioStream" uid="uid://bavqmtyhsom36" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/first_enemy_killed.tres" id="2_l5qob"]
+[ext_resource type="AudioStream" uid="uid://1n6kw6j7vmd5" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Meow/Cat - Meow - 3.ogg" id="3_0dy5b"]
+
+[resource]
+script = ExtResource("1_gmi5g")
+voicelines = Array[AudioStream]([ExtResource("2_l5qob"), ExtResource("3_0dy5b")])
+different_speakers = true
