@@ -27,10 +27,10 @@ func _ready():
 	mode_switch.toggled.connect(on_mode_switch_toggled)
 	panel.gui_input.connect(on_input)
 
-	if is_ending:
-		video_player = get_node("VideoStreamPlayer")
-		video_player.finished.connect(on_video_finished)
+	video_player = get_node("VideoStreamPlayer")
+	video_player.finished.connect(on_video_finished)
 
+	if is_ending:
 		var video_stream = VideoStreamTheora.new()
 		video_stream.file = path_to_movie_video
 		video_player.stream = video_stream
