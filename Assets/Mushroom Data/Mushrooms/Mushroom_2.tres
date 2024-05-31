@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://crri5scbtla3w"]
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://t45m7bbi2n57"]
 
-[ext_resource type="SpriteFrames" uid="uid://5yuetu0kdaje" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_2_frames.tres" id="1_e0rqy"]
+[ext_resource type="SpriteFrames" uid="uid://jlh8lr23iibc" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_2_frames.tres" id="1_e0rqy"]
 [ext_resource type="Script" path="res://Sources/Interactable Scripts/MushroomData.gd" id="2_b3bs2"]
 
 [resource]
