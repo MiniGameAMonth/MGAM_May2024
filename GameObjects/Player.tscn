@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhktw4y7gkww3"]
+[gd_scene load_steps=27 format=3 uid="uid://dhktw4y7gkww3"]
 
 [ext_resource type="Script" path="res://Sources/Player.gd" id="1_l3ge4"]
 [ext_resource type="AudioStream" uid="uid://br2vaqmuh7sbt" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/guide_star.tres" id="2_4byr6"]
@@ -14,9 +14,14 @@
 [ext_resource type="AudioStream" uid="uid://tnnhwxcg2p8n" path="res://Assets/Sounds/SFX/Player SFX/wand_sounds.tres" id="4_vnv0v"]
 [ext_resource type="AudioStream" uid="uid://d18np6pyw2xeo" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/finished_healing.tres" id="4_x0jus"]
 [ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="5_aokh4"]
+[ext_resource type="Script" path="res://GameObjects/SniffingStarListener.gd" id="5_y4xv8"]
 [ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="6_213k8"]
 [ext_resource type="PackedScene" uid="uid://b80qtulhkax1j" path="res://GameObjects/PlayerHUD.tscn" id="6_fsf8v"]
+[ext_resource type="AudioStream" uid="uid://bv155m545ov5c" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Level 1/Player - Voice Acting - Level 1 - Line 5.ogg" id="6_ssjsh"]
 [ext_resource type="Theme" uid="uid://b52ts8rtppg4j" path="res://Themes/MenuTheme.tres" id="8_ws50j"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_20xbv"]
+radius = 8.01585
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5s06"]
 
@@ -135,6 +140,15 @@ mouse_sensitivity = 0.2
 ask_guide_star_voiceline = ExtResource("2_4byr6")
 collected_all_mushrooms_voiceline = ExtResource("3_0x0p0")
 good_kitten_voiceline = ExtResource("4_x0jus")
+
+[node name="SniffingStarListener" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_y4xv8")
+found_star_voiceline = ExtResource("6_ssjsh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SniffingStarListener"]
+shape = SubResource("SphereShape3D_20xbv")
 
 [node name="VoicelinePlayer" type="Node3D" parent="."]
 script = ExtResource("3_fsqwo")

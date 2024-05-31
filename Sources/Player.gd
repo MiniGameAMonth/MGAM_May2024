@@ -40,11 +40,6 @@ func _ready():
 
 	interactions.connect("on_interaction", on_interact)
 	interactions.connect("on_interaction_end", on_interact_end)
-	GlobalEvents.collected_all_mushrooms.connect(on_collected_all_mushrooms)
-
-func on_collected_all_mushrooms():
-	voicelinePlayer.request_voiceline(collected_all_mushrooms_voiceline, 3)
-
 
 func on_interact(interactable: Interactable):
 	interaction = interactable

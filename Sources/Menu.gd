@@ -19,6 +19,7 @@ var waiting_new_input_for_action
 var is_waiting_new_input_for_action_alt : bool
 var is_waiting_new_input_for_action_changed = false
 var input_ignore_masks = ["ui_.*"]
+@onready var music_player = $AudioStreamPlayer
 
 ################################################################################
 #################################  SIGNALS  ####################################

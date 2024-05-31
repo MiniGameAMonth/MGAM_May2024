@@ -95,12 +95,15 @@ func change_level(path):
 
 func update_menu():
 	if game_mode == GameMode.MENU:
+		menu_node.get_node("AudioStreamPlayer").stream_paused = false
 		menu_node.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif game_mode == GameMode.IN_GAME:
+		menu_node.get_node("AudioStreamPlayer").stream_paused = true
 		menu_node.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
+		menu_node.get_node("AudioStreamPlayer").stream_paused = true
 		menu_node.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 

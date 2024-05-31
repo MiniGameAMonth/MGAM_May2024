@@ -13,7 +13,8 @@ func enter():
 	#enemy_behaviour.idleSound.play()
 
 func _start_idle():
-	enemy_behaviour.idleSound.play()
+	if is_instance_valid(behaviour):
+		enemy_behaviour.idleSound.play()
 
 func update(_delta):
 	for body in enemy_behaviour.sight.sighted_bodies:

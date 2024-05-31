@@ -1,6 +1,7 @@
-[gd_scene load_steps=53 format=3 uid="uid://du7l74rq77kfn"]
+[gd_scene load_steps=54 format=3 uid="uid://du7l74rq77kfn"]
 
 [ext_resource type="Script" path="res://Sources/Menu.gd" id="1_wgstm"]
+[ext_resource type="AudioStream" uid="uid://bbs02hrete7jl" path="res://Assets/Sounds/Music/Guiding Star - Music - Title Screen.ogg" id="2_px7oi"]
 [ext_resource type="Texture2D" uid="uid://62f1j0sxnhtx" path="res://Assets/Images/Menu/MenuBG/main.menu0.png" id="2_qoswh"]
 [ext_resource type="Theme" uid="uid://b52ts8rtppg4j" path="res://Themes/MenuTheme.tres" id="3_cx58u"]
 [ext_resource type="PackedScene" uid="uid://dqev3j3woaqm3" path="res://GameObjects/Menu/SubMenu.tscn" id="3_kfsru"]
@@ -276,6 +277,7 @@ grow_vertical = 2
 script = ExtResource("1_wgstm")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_px7oi")
 autoplay = true
 bus = &"Music"
 

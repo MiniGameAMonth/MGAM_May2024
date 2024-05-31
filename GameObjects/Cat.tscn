@@ -88,7 +88,6 @@ characterBody = NodePath("..")
 
 [node name="Cat Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("cat", "graphics", "interactionArea", "lineOfSight", "behaviour_owner")]
 script = ExtResource("6_kqk0s")
-maxDistanceFromPlayer = 50.0
 cat = NodePath("../Follower")
 graphics = NodePath("../Graphics")
 interactionArea = NodePath("../Interactable")
@@ -98,7 +97,7 @@ behaviour_owner = NodePath("..")
 [node name="WaitForPlayerSound" type="Node3D" parent="Cat Behaviour" node_paths=PackedStringArray("player")]
 script = ExtResource("7_052mf")
 loop = true
-loop_delay = 5.0
+loop_delay = 2.0
 player = NodePath("AudioStreamPlayer3D")
 audio_bus = "Sounds"
 

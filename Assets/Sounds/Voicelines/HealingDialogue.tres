@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VoicelineDialogue" load_steps=4 format=3 uid="uid://dtx2lltcak5q3"]
+
+[ext_resource type="Script" path="res://Sources/Voicelines/VoicelineDialogue.gd" id="1_pncc5"]
+[ext_resource type="AudioStream" uid="uid://dgma2mtoym847" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Level 1/Player - Voice Acting - Level 1 - Line 13.ogg" id="2_wqb6r"]
+[ext_resource type="AudioStream" uid="uid://cp30s1fop5g6h" path="res://Assets/Sounds/SFX/Cat SFX/Cat - Meow Call/Cat - Meow Call - 4.ogg" id="3_n1fom"]
+
+[resource]
+script = ExtResource("1_pncc5")
+voicelines = Array[AudioStream]([ExtResource("2_wqb6r"), ExtResource("3_n1fom")])
+different_speakers = true
