@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dvclscn64hm1p"]
+
+[ext_resource type="Texture2D" uid="uid://dx2s6phnkagg4" path="res://Assets/Images/Sprite Sheets/Mushrooms/Mushrooms0.png" id="1_hi8mh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csccp"]
+atlas = ExtResource("1_hi8mh")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sisgm"]
+atlas = ExtResource("1_hi8mh")
+region = Rect2(448, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eonlp"]
+atlas = ExtResource("1_hi8mh")
+region = Rect2(512, 192, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csccp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sisgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eonlp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
