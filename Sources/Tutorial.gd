@@ -81,6 +81,10 @@ func _on_intro_timer_timeout():
 
 	$AudioPlayer.play()
 
+func _exit_tree():
+	$AudioPlayer.stop()
+	tutorialHUD.fade_out()
+
 
 func _on_audio_player_finished():
 	tutorialHUD.fade_out()
