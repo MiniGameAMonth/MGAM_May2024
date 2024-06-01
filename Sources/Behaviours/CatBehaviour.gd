@@ -58,5 +58,4 @@ func check_enemies_in_sight(body : Node3D):
 	
 	if body.is_in_group(GroupNames.Enemies):
 		change_state(CatGoInBackpackState.new(self))
-
-
+		TTS.say_phrase("I'm scared of enemies!")
