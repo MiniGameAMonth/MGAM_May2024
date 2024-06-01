@@ -1,0 +1,418 @@
+[gd_scene load_steps=39 format=3 uid="uid://df8a1ifyp1t2x"]
+
+[ext_resource type="PackedScene" uid="uid://duwyhw72cnmpd" path="res://GameObjects/Utilities/footsteps.tscn" id="1_062hc"]
+[ext_resource type="AudioStream" uid="uid://bdnlaq35jge3m" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_footsteps_grass.tres" id="2_khd0m"]
+[ext_resource type="AudioStream" uid="uid://fkt3nfi2xf1n" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_footsteps_stone.tres" id="3_gdc0x"]
+[ext_resource type="AudioStream" uid="uid://c2sdokp63ug3a" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_footsteps_water.tres" id="4_tdo5c"]
+[ext_resource type="Script" path="res://Sources/Entities/VoicelinePlayer.gd" id="5_hv7rk"]
+[ext_resource type="SpriteFrames" uid="uid://cqadijutl163k" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/RootEnemy_Front.tres" id="6_2dgtw"]
+[ext_resource type="Script" path="res://Sources/Utilities/DirectionalAnimatedSprite3D.gd" id="7_d0tow"]
+[ext_resource type="SpriteFrames" uid="uid://dkg303nebv6ga" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/RootEnemy_Back.tres" id="8_o2wi8"]
+[ext_resource type="SpriteFrames" uid="uid://rmrfr4n144lt" path="res://Assets/Images/Sprite Sheets/Enemies/Root enemy/RootEnemy_Side.tres" id="9_fuw58"]
+[ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="10_r1n70"]
+[ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="11_twrqv"]
+[ext_resource type="Script" path="res://Sources/Utilities/PlaySound.gd" id="12_cnw7h"]
+[ext_resource type="AudioStream" uid="uid://de4uuqooypfw0" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_hurt.tres" id="13_mu8bo"]
+[ext_resource type="AudioStream" uid="uid://biw2vjohjysli" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_dying.tres" id="14_fv5hr"]
+[ext_resource type="Script" path="res://GameObjects/PlayParticles.gd" id="15_xnf43"]
+[ext_resource type="Script" path="res://Sources/Weapons/RangedWeapon.gd" id="16_4kw0c"]
+[ext_resource type="AudioStream" uid="uid://byv5gn3vhs7dy" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_attack.tres" id="17_88j04"]
+[ext_resource type="Script" path="res://Sources/Behaviours/EnemyBehavior.gd" id="18_hlbax"]
+[ext_resource type="Script" path="res://Sources/Behaviours/Sight.gd" id="19_86aen"]
+[ext_resource type="AudioStream" uid="uid://cncy2sjyh0tjg" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_detected.tres" id="20_jdt27"]
+[ext_resource type="Script" path="res://Sources/Utilities/LineOfSight3D.gd" id="21_h1pns"]
+[ext_resource type="AudioStream" uid="uid://60i2e5ig682s" path="res://Assets/Sounds/SFX/Enemy SFX/Sound Resources/enemy_idle.tres" id="22_tjpgd"]
+[ext_resource type="PackedScene" uid="uid://bwftaqfadvwp0" path="res://GameObjects/Utilities/ProjectedNode.tscn" id="23_pada4"]
+[ext_resource type="Script" path="res://Sources/Entities/EntityHitbox2D.gd" id="24_f4nke"]
+[ext_resource type="Script" path="res://Sources/Utilities/FreeNode.gd" id="25_yfukt"]
+[ext_resource type="Script" path="res://Sources/Follower.gd" id="26_f2emb"]
+[ext_resource type="Material" uid="uid://y6o4re0j2yeg" path="res://Assets/Images/particle_material.tres" id="27_2fnqa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx0fy"]
+
+[sub_resource type="Animation" id="Animation_5bm7i"]
+resource_name = "attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Behaviour")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_attack"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x308v"]
+_data = {
+"attack": SubResource("Animation_5bm7i")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dsfvp"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_en381"]
+radius = 25.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_frlsq"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="Animation" id="Animation_2o3l0"]
+resource_name = "death"
+length = 3.1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.5, 1, 0, 0.809971, 0.962343, 1, 1, 0, -0.265275, 1.60147, 1.2, 1, 0, -2.35331, 1.60147)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0.633547, -0.154523, 0.0120967, 0.758021, 1, 1, 0.965811, -0.164902, 0.135315, 0.147329)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.350913, 0.284113, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FreeNode")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"free_node"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeathParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Behaviour")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"behaviour_destroyed"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_inrpa"]
+resource_name = "hurt"
+length = 0.6
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character/PlayHurtParticles")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_particles"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.65087, 0.635232, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ftmbm"]
+_data = {
+"death": SubResource("Animation_2o3l0"),
+"hurt": SubResource("Animation_inrpa")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ukusr"]
+material = ExtResource("27_2fnqa")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_ow7b6"]
+_data = [Vector2(0, 0.909915), 0.0, 0.491208, 0, 0, Vector2(0.993134, 0.00675189), -3.35585, 0.0, 0, 0]
+point_count = 2
+
+[node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 4
+
+[node name="FootstepsPlayer3D(Grass)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_062hc")]
+character = NodePath("..")
+footstep_type = 2
+sound = ExtResource("2_khd0m")
+audio_bus = "Sounds"
+
+[node name="FootstepsPlayer3D(Stone)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_062hc")]
+character = NodePath("..")
+sound = ExtResource("3_gdc0x")
+audio_bus = "Sounds"
+
+[node name="FootstepsPlayer3D(Water)" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_062hc")]
+character = NodePath("..")
+footstep_type = 3
+sound = ExtResource("4_tdo5c")
+audio_bus = "Sounds"
+
+[node name="VoicelinePlayer" type="Node3D" parent="."]
+script = ExtResource("5_hv7rk")
+audio_bus = "Speech"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sx0fy")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+offset = Vector2(0, 13)
+pixel_size = 0.0315
+texture_filter = 0
+sprite_frames = ExtResource("6_2dgtw")
+animation = &"idle"
+script = ExtResource("7_d0tow")
+back_sprite_frames = ExtResource("8_o2wi8")
+front_sprite_frames = ExtResource("6_2dgtw")
+side_sprite_frames = ExtResource("9_fuw58")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite3D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_x308v")
+}
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Character" type="Node3D" parent="." node_paths=PackedStringArray("characterStats")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0032053, 0.0115881, 0.00347805)
+script = ExtResource("10_r1n70")
+characterStats = NodePath("EnemyStats")
+
+[node name="EnemyStats" type="Node3D" parent="Character"]
+script = ExtResource("11_twrqv")
+health = 4
+max_health = 2
+mana = 2
+max_mana = 2
+
+[node name="EnemyHurtSound" type="Node3D" parent="Character" node_paths=PackedStringArray("player")]
+script = ExtResource("12_cnw7h")
+player = NodePath("AudioStreamPlayer3D")
+audio_bus = "Sounds"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Character/EnemyHurtSound"]
+stream = ExtResource("13_mu8bo")
+bus = &"Sounds"
+area_mask = 128
+
+[node name="EnemyDyingSound" type="Node3D" parent="Character" node_paths=PackedStringArray("player")]
+script = ExtResource("12_cnw7h")
+separateFromNode = true
+player = NodePath("AudioStreamPlayer3D")
+audio_bus = "Sounds"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Character/EnemyDyingSound"]
+stream = ExtResource("14_fv5hr")
+bus = &"Sounds"
+area_mask = 128
+
+[node name="PlayHurtParticles" type="Node" parent="Character" node_paths=PackedStringArray("particles")]
+script = ExtResource("15_xnf43")
+particles = NodePath("../../Hurt Particles")
+
+[node name="Weapon" type="Node3D" parent="."]
+script = ExtResource("16_4kw0c")
+attackDistance = 15.0
+projectileOffset = 2.0
+invertZ = -1.0
+removeAutoaim = true
+weaponDamage = 1
+cooldownTime = 2.0
+
+[node name="Cooldown" type="Timer" parent="Weapon"]
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Weapon"]
+stream = ExtResource("17_88j04")
+bus = &"Sounds"
+area_mask = 128
+
+[node name="Behaviour" type="Node3D" parent="." node_paths=PackedStringArray("follower", "weapon", "animationPlayer", "graphics", "sightedSound", "idleSound", "behaviour_owner")]
+script = ExtResource("18_hlbax")
+follower = NodePath("../Follower")
+weapon = NodePath("../Weapon")
+animationPlayer = NodePath("../AnimatedSprite3D/AnimationPlayer")
+graphics = NodePath("../AnimatedSprite3D")
+sightedSound = NodePath("DetectedPlayerSound")
+idleSound = NodePath("IdleSound")
+behaviour_owner = NodePath("..")
+debug_states = true
+
+[node name="Sight" type="Area3D" parent="Behaviour"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.3263)
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("19_86aen")
+require_line_of_sight = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Behaviour/Sight"]
+shape = SubResource("SphereShape3D_dsfvp")
+
+[node name="DetectedPlayerSound" type="Node3D" parent="Behaviour" node_paths=PackedStringArray("player")]
+script = ExtResource("12_cnw7h")
+player = NodePath("AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Behaviour/DetectedPlayerSound"]
+stream = ExtResource("20_jdt27")
+bus = &"Sounds"
+area_mask = 128
+
+[node name="LineOfSight3D" type="RayCast3D" parent="Behaviour"]
+collision_mask = 5
+script = ExtResource("21_h1pns")
+
+[node name="IdleSound" type="Node3D" parent="Behaviour"]
+script = ExtResource("12_cnw7h")
+loop = true
+loop_delay = 5.0
+sound = ExtResource("22_tjpgd")
+audio_bus = "Sounds"
+
+[node name="ProjectedNode2D" parent="." instance=ExtResource("23_pada4")]
+
+[node name="EntityHitbox" type="StaticBody2D" parent="ProjectedNode2D" node_paths=PackedStringArray("character")]
+script = ExtResource("24_f4nke")
+character = NodePath("../../Character")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectedNode2D/EntityHitbox"]
+shape = SubResource("CircleShape2D_en381")
+
+[node name="FreeNode" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("25_yfukt")
+node = NodePath("..")
+
+[node name="Follower" type="Node" parent="." node_paths=PackedStringArray("agent", "characterBody")]
+script = ExtResource("26_f2emb")
+stopAtDistance = 3.0
+lookAtSpeed = 5.0
+agent = NodePath("../NavigationAgent3D")
+characterBody = NodePath("..")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("BoxShape3D_frlsq")
+target_position = Vector3(0, 0, -2.1)
+collision_mask = 4
+debug_shape_custom_color = Color(0.845459, 0.00164376, 0.974288, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ftmbm")
+}
+
+[node name="DeathParticles" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247163, 1.62648)
+emitting = false
+amount = 20
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.8
+draw_order = 1
+mesh = SubResource("PlaneMesh_ukusr")
+emission_shape = 2
+emission_sphere_radius = 0.1
+emission_colors = PackedColorArray(0.568627, 0.482353, 0.309804, 1)
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 4.0
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_curve = SubResource("Curve_ow7b6")
+color = Color(0.521948, 0.416927, 0.304568, 1)
+
+[node name="Hurt Particles" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.321665, -0.320307)
+emitting = false
+amount = 5
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.8
+draw_order = 1
+mesh = SubResource("PlaneMesh_ukusr")
+emission_shape = 2
+emission_sphere_radius = 0.1
+emission_colors = PackedColorArray(0.568627, 0.482353, 0.309804, 1)
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 4.0
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_curve = SubResource("Curve_ow7b6")
+color = Color(0.521948, 0.416927, 0.304568, 1)
+
+[connection signal="damaged" from="Character" to="Character/EnemyHurtSound" method="play" unbinds=1]
+[connection signal="hurt" from="Character" to="AnimationPlayer" method="play" binds= [&"hurt"]]
+[connection signal="on_death" from="Character" to="Character/EnemyDyingSound" method="play"]
+[connection signal="on_death" from="Character" to="Behaviour" method="die"]
+[connection signal="on_death" from="Character" to="AnimationPlayer" method="play" binds= [&"death"]]

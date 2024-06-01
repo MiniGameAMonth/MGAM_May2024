@@ -2,6 +2,9 @@ class_name RangedWeapon
 extends Weapon
 
 @export var attackDistance : float = 10
+@export var projectileOffset : float = 1
+@export var invertZ : float = 1
+@export var removeAutoaim : bool = false
 
 var bullet;
 
@@ -12,7 +15,8 @@ func _ready():
 
 func in_range(_target : Node3D):
 	var distance = global_position.distance_to(_target.global_position)
-	return distance <= attackDistance
+	var angle = (_target.global_position - global_position).angle_to(global_transform.basis.z * invertZ)
+	return distance <= attackDistance and angle < PI/20 and angle > -PI/20
 
 func attack():
 	if can_attack():
@@ -23,11 +27,11 @@ func attack():
 func shoot():
 	var bulletInstance : Projectile = bullet.instantiate()
 	get_tree().root.add_child(bulletInstance)
-	bulletInstance.global_position = global_position
-	bulletInstance.set_direction(global_transform.basis.z)
+	bulletInstance.global_position = global_position + global_transform.basis.z * projectileOffset * invertZ
+	bulletInstance.set_direction(global_transform.basis.z * invertZ)
 	bulletInstance.damage = weaponDamage
 
-	if GC.get_config_value("Config", "UseAutoAim", false):
+	if GC.get_config_value("Config", "UseAutoAim", false) and not removeAutoaim:
 		var angle = GC.get_config_value("Config", "AutoAimZone", 10)
 		print("Autoaiming with angle: " + str(angle))
 		var target = autoaim(angle, bulletInstance)
