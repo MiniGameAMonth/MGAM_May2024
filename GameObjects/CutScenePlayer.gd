@@ -109,4 +109,4 @@ func on_start_warning_timer_timeout():
 	TTS.say_phrase("Click anywhere to skip warning.
 	The following cutscene uses patterns that may induce seizures in people who have photosensitive epilepsy.
 	Immediatly stop playing and consult a doctor if you experience any symptoms.
-	For a safer experience: Skip the cutscene or toggle it from movie mode the book mode.") 
+	For a safer experience: Skip the cutscene or toggle it from movie mode to book mode.") 

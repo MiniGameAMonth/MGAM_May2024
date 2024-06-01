@@ -1,7 +1,5 @@
 extends Area3D
 
-@export var level: Node
-
 var mushrooms_collected: bool = false
 
 func _ready():

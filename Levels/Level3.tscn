@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://dypwbr2xeeslt" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_8.tres" id="9_2l44v"]
 [ext_resource type="Resource" uid="uid://bo8jld8xwutvm" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_12.tres" id="9_4jboy"]
 [ext_resource type="Resource" uid="uid://c3hirseo06gyb" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_3.tres" id="9_44q4l"]
-[ext_resource type="Resource" uid="uid://b2dtfr7xwwiev" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_14.tres" id="10_88pgx"]
+[ext_resource type="Resource" uid="uid://bx071lhaxy3ih" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_14.tres" id="10_88pgx"]
 [ext_resource type="Resource" uid="uid://b5b3y8f4vpsio" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_9.tres" id="11_iven2"]
 [ext_resource type="Texture2D" uid="uid://bkf4iab8ocxsm" path="res://Assets/LevelsTextures/Forest_tileset.png" id="12_0cyjv"]
 [ext_resource type="MeshLibrary" path="res://GameObjects/forest_tiles.meshlib" id="12_sdmep"]
