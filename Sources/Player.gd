@@ -4,7 +4,7 @@ extends CharacterBody3D
 signal call_star()
 signal ask_guide_star()
 
-const SPEED = 15.0
+var SPEED = 15.0
 
 @export var mouse_sensitivity = 0.1
 @export var mouse_double_click_speed = 200
@@ -20,6 +20,9 @@ var local_delta = 0
 @export var collected_all_mushrooms_voiceline : AudioStream
 @export var good_kitten_voiceline : AudioStream
 
+@export var footsteps : Array[FootstepsPlayer3D]
+var footsteps_delays : Array[float]
+
 
 @onready var interactions : InteractionArea3D = $InteractionArea
 var interaction : Interactable
@@ -31,10 +34,23 @@ var interaction : Interactable
 
 var menu_node = null
 
+func low_health():
+	SPEED = 5
+	for i in range(footsteps.size()):
+		footsteps[i].set_loop_delay(footsteps_delays[i] + 1)
+
+func high_health():
+	SPEED = 15
+	for i in range(footsteps.size()):
+		footsteps[i].set_loop_delay(footsteps_delays[i])
+
 
 func _ready():
 	menu_node = get_node("/root/MainRoot/UICanvas/Menu")
 	#root_node = get_tree().root.get_child(0)
+	footsteps_delays = []
+	for i in range(footsteps.size()):
+		footsteps_delays.append(footsteps[i].loop_delay)
 
 	add_to_group("Player")
 

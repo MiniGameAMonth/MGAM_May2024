@@ -38,6 +38,11 @@ func set_stream(stream: AudioStream):
 	if tempPlayer:
 		tempPlayer.stream = stream
 
+func set_loop_delay(delay: float):
+	loop_delay = delay
+	if timer:
+		timer.set_wait_time(delay)
+
 func play():
 	if tempPlayer == null:
 		if player:

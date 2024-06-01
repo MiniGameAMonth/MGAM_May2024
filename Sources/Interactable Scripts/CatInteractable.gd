@@ -39,6 +39,7 @@ func interact(_who):
 
 func stop_interact(_who):
 	if isPetting:
+		GlobalEvents.player_stopped_petting.emit()
 		var animationPlayer = _who.get_node("AnimationPlayer")
 		animationEnd = Callable(
 			func(_x):
@@ -50,6 +51,6 @@ func stop_interact(_who):
 	isPetting = false
 	pet_timer.stop()
 
-	GlobalEvents.player_stopped_petting.emit()
+	
 	#start cat
 	#play sound
