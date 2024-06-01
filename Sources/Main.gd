@@ -71,16 +71,6 @@ func quit_game():
 
 
 func load_level(path, is_cutscene = false):	
-	var player = get_tree().root.get_node("MainRoot/Level/Level/Player")
-	
-	if !is_cutscene:
-		if player:
-			player.block_movement = true
-			player.enable_input = false
-
-		get_tree().root.get_node("MainRoot/UICanvas/LoadingScreen").show()
-		await get_tree().create_timer(0.3).timeout
-
 	level = load(path).instantiate()
 
 	for child in level_container.get_children():
@@ -94,13 +84,6 @@ func load_level(path, is_cutscene = false):
 		game_mode = GameMode.IN_GAME
 
 	update_menu()
-
-	if !is_cutscene:
-		if player:
-			player.block_movement = false
-			player.enable_input = true
-
-		get_tree().root.get_node("MainRoot/UICanvas/LoadingScreen").hide()
 
 
 func change_level(path):
