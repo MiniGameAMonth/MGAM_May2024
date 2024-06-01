@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://204i3o81yrff"]
+[gd_scene load_steps=5 format=3 uid="uid://204i3o81yrff"]
 
 [ext_resource type="PackedScene" uid="uid://du7l74rq77kfn" path="res://Menu.tscn" id="1_xfmy7"]
 [ext_resource type="Script" path="res://Sources/TTS scripts/TTS.gd" id="2_12wlv"]
 [ext_resource type="PackedScene" uid="uid://c3hybkk72t0kd" path="res://UI/tutorial.tscn" id="2_fy8tk"]
+[ext_resource type="Theme" uid="uid://b52ts8rtppg4j" path="res://Themes/MenuTheme.tres" id="4_jenla"]
 
 [node name="MainRoot" type="Node3D"]
 
@@ -16,6 +17,38 @@ script = ExtResource("2_12wlv")
 [node name="Menu" parent="UICanvas" instance=ExtResource("1_xfmy7")]
 
 [node name="TutorialHUD" parent="UICanvas" instance=ExtResource("2_fy8tk")]
+
+[node name="LoadingScreen" type="Control" parent="UICanvas"]
+visible = false
+z_index = 10
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UICanvas/LoadingScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.901961)
+
+[node name="Label" type="Label" parent="UICanvas/LoadingScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_jenla")
+text = "LOADING LEVEL..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.553101, 0.833114, 0, -0.833114, 0.553101, 0, 3.96135, 0)
