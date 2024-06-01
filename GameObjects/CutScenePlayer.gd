@@ -32,6 +32,7 @@ func _ready():
 	#panel.gui_input.connect(on_input)
 
 	audio_player = get_node("AudioStreamPlayer")
+	audio_player.finished.connect(on_video_finished)
 
 	#video_player = get_node("VideoStreamPlayer")
 	#video_player.finished.connect(on_video_finished)

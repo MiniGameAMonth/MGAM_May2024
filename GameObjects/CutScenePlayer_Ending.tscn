@@ -36,7 +36,7 @@ grow_vertical = 2
 theme = ExtResource("1_agr33")
 script = ExtResource("2_x32iv")
 level_to_load_path = "res://Menu.tscn"
-time = 8.0
+time = 10.0
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CutScenePlayer_Ending"]
 visible = false
@@ -67,11 +67,10 @@ offset_top = 327.0
 offset_right = 634.0
 offset_bottom = 354.0
 
-[node name="SkipButton" type="Button" parent="CutScenePlayer_Ending/Container" node_paths=PackedStringArray("parentNode")]
+[node name="SkipButton" type="Button" parent="CutScenePlayer_Ending/Container"]
 custom_minimum_size = Vector2(32, 24)
 layout_mode = 2
 script = ExtResource("5_nwite")
-parentNode = NodePath("../..")
 
 [node name="TTS_Button_Attachment" type="Node" parent="CutScenePlayer_Ending/Container/SkipButton" node_paths=PackedStringArray("button")]
 script = ExtResource("6_ajb1q")

@@ -85,11 +85,10 @@ script = ExtResource("6_gy6kd")
 button = NodePath("..")
 alternate_text = "Movie mode"
 
-[node name="SkipButton" type="Button" parent="CutScenePlayer_Intro/Container" node_paths=PackedStringArray("parentNode")]
+[node name="SkipButton" type="Button" parent="CutScenePlayer_Intro/Container"]
 custom_minimum_size = Vector2(32, 24)
 layout_mode = 2
 script = ExtResource("4_caxir")
-parentNode = NodePath("../..")
 
 [node name="TTS_Button_Attachment" type="Node" parent="CutScenePlayer_Intro/Container/SkipButton" node_paths=PackedStringArray("button")]
 script = ExtResource("6_gy6kd")
