@@ -4,6 +4,7 @@ extends Node3D
 @export var speed: float = 0
 @export var life_time: float = 0
 @export var target: Node3D = null
+@export var enable_aim: bool = true
 var target_ref : WeakRef
 
 var damage: float = 0
@@ -29,7 +30,8 @@ func _ready():
 func set_direction(dir: Vector3) -> void:
 	direction = dir
 	target = null
-	check_for_target()
+	if enable_aim:
+		check_for_target()
 
 func set_speed(spd: float) -> void:
 	speed = spd
@@ -40,7 +42,7 @@ func set_target(tgt: Node3D) -> void:
 	direction = (target.global_transform.origin - global_transform.origin).normalized()
 
 func _physics_process(delta):
-	if is_instance_valid(target):
+	if is_instance_valid(target) and enable_aim:
 		direction = (target.global_transform.origin - global_transform.origin).normalized()
 	global_transform.origin += direction * speed * delta
 

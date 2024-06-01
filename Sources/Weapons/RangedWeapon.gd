@@ -5,11 +5,14 @@ extends Weapon
 @export var projectileOffset : float = 1
 @export var invertZ : float = 1
 @export var removeAutoaim : bool = false
+@export var use_red_bullet : bool = false
 
 var bullet;
 
 func _ready():
 	bullet = preload("res://GameObjects/Projectile.tscn")
+	if use_red_bullet:
+		bullet = preload("res://GameObjects/RedProjectile.tscn")
 	if bullet == null:
 		push_error("Projectile is not set.")
 

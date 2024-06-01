@@ -275,12 +275,14 @@ particles = NodePath("../../Hurt Particles")
 
 [node name="Weapon" type="Node3D" parent="."]
 script = ExtResource("16_4kw0c")
-attackDistance = 15.0
+attackDistance = 25.0
 projectileOffset = 2.0
 invertZ = -1.0
 removeAutoaim = true
+use_red_bullet = true
 weaponDamage = 1
 cooldownTime = 2.0
+playSoundOnAttack = null
 
 [node name="Cooldown" type="Timer" parent="Weapon"]
 one_shot = true

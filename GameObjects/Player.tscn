@@ -231,8 +231,14 @@ shape = SubResource("BoxShape3D_o0bt6")
 [node name="Weapon" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
 script = ExtResource("3_htsy1")
+attackDistance = null
+projectileOffset = null
+invertZ = null
+removeAutoaim = null
+use_red_bullet = null
 weaponDamage = 1
 cooldownTime = 1.0
+playSoundOnAttack = null
 
 [node name="Cooldown" type="Timer" parent="Weapon"]
 one_shot = true
