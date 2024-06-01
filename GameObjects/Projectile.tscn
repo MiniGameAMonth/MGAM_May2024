@@ -3,20 +3,24 @@
 [ext_resource type="Script" path="res://Sources/Weapons/Projectile.gd" id="1_jof4h"]
 [ext_resource type="PackedScene" uid="uid://bwftaqfadvwp0" path="res://GameObjects/Utilities/ProjectedNode.tscn" id="2_8llr7"]
 [ext_resource type="Script" path="res://Sources/Utilities/FreeNode.gd" id="4_h2xc4"]
+[ext_resource type="SpriteFrames" uid="uid://b4do6p663qjy1" path="res://Assets/Images/Ball of fire/ball_of_fire.tres" id="4_u8c13"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yt1d1"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_dbpmv"]
-
 [sub_resource type="Animation" id="Animation_ktupn"]
 resource_name = "start"
-tracks/0/type = "scale_3d"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CSGMesh3D")
-tracks/0/interp = 2
+tracks/0/path = NodePath("AnimatedSprite3D:scale")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2, 2, 2)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ohkl"]
 _data = {
@@ -36,9 +40,6 @@ life_time = 10.0
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_yt1d1")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-mesh = SubResource("SphereMesh_dbpmv")
-
 [node name="FreeNode" type="Node" parent="." node_paths=PackedStringArray("node")]
 script = ExtResource("4_h2xc4")
 node = NodePath("..")
@@ -53,6 +54,14 @@ libraries = {
 "": SubResource("AnimationLibrary_6ohkl")
 }
 autoplay = "start"
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 1
+sprite_frames = ExtResource("4_u8c13")
+autoplay = "default"
+frame = 2
+frame_progress = 0.0357508
 
 [connection signal="body_entered" from="ProjectedNode/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="FreeNode/Timer" to="FreeNode" method="free_node"]

@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://b4do6p663qjy1"]
+
+[ext_resource type="Texture2D" uid="uid://dkud7asd42hi0" path="res://Assets/Images/Ball of fire/ball_attak_rotated3.png" id="1_cahiv"]
+[ext_resource type="Texture2D" uid="uid://dplxnnblmwhbn" path="res://Assets/Images/Ball of fire/ball_attak.png" id="2_jyea3"]
+[ext_resource type="Texture2D" uid="uid://bkd8wcoxmcox" path="res://Assets/Images/Ball of fire/ball_attak_rotated2.png" id="3_0b6nv"]
+[ext_resource type="Texture2D" uid="uid://djpgb7bfynmuk" path="res://Assets/Images/Ball of fire/ball_attak_rotated.png" id="4_uv36r"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cahiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jyea3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0b6nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uv36r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
