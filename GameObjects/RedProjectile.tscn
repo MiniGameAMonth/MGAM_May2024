@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmyme8jecm7n0"]
+
+[ext_resource type="Script" path="res://Sources/Weapons/Projectile.gd" id="1_kuqqm"]
+[ext_resource type="PackedScene" uid="uid://bwftaqfadvwp0" path="res://GameObjects/Utilities/ProjectedNode.tscn" id="2_8u6p5"]
+[ext_resource type="Script" path="res://Sources/Utilities/FreeNode.gd" id="3_hmhae"]
+[ext_resource type="Texture2D" uid="uid://dkbq2pea2i8kx" path="res://Assets/Images/Ball of fire/red_one.png" id="4_s3u5l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yt1d1"]
+
+[sub_resource type="Animation" id="Animation_ktupn"]
+resource_name = "start"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ohkl"]
+_data = {
+"start": SubResource("Animation_ktupn")
+}
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_kuqqm")
+speed = 20.0
+life_time = 10.0
+
+[node name="ProjectedNode" parent="." instance=ExtResource("2_8u6p5")]
+
+[node name="Area2D" type="Area2D" parent="ProjectedNode"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectedNode/Area2D"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_yt1d1")
+
+[node name="FreeNode" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("3_hmhae")
+node = NodePath("..")
+
+[node name="Timer" type="Timer" parent="FreeNode"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6ohkl")
+}
+autoplay = "start"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture = ExtResource("4_s3u5l")
+
+[connection signal="body_entered" from="ProjectedNode/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="FreeNode/Timer" to="FreeNode" method="free_node"]
