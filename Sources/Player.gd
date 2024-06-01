@@ -93,7 +93,6 @@ func _input(event):
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("Cat. Search an exit"):
 			ask_guide_star.emit()
-			voicelinePlayer.play_voiceline(ask_guide_star_voiceline, 1)
 
 	# Detect mouse double click
 	if event is InputEventMouseButton and enable_input:

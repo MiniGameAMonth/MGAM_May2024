@@ -93,6 +93,7 @@ graphics = NodePath("../Graphics")
 interactionArea = NodePath("../Interactable")
 lineOfSight = NodePath("../LineOfSight3D")
 behaviour_owner = NodePath("..")
+debug_states = true
 
 [node name="WaitForPlayerSound" type="Node3D" parent="Cat Behaviour" node_paths=PackedStringArray("player")]
 script = ExtResource("7_052mf")

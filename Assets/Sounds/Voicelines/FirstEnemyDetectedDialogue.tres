@@ -8,3 +8,4 @@
 script = ExtResource("1_gmi5g")
 voicelines = Array[AudioStream]([ExtResource("2_l5qob"), ExtResource("3_0dy5b")])
 different_speakers = true
+dialogue_priority = 0

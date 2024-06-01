@@ -6,3 +6,6 @@ extends Node3D
 func _ready():
 	add_to_group(waypoint_group)
 
+func _exit_tree():
+	remove_from_group(waypoint_group)
+

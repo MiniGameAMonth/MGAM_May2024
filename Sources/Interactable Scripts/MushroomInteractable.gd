@@ -10,6 +10,7 @@ extends Interactable
 func _ready():
 	setup_mushroom(mushroomData)
 	add_to_group(GroupNames.Mushrooms)
+	tree_exited.connect(remove_on_free)
 
 func setup_mushroom(data : MushroomData):
 	interactableName = data.mushroomName
@@ -22,6 +23,9 @@ func setup_mushroom(data : MushroomData):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+
+func remove_on_free():
+	remove_from_group(GroupNames.Mushrooms)
 
 func interact(_who):
 	if is_queued_for_deletion():
