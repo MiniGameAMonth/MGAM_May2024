@@ -311,10 +311,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 210.0
-offset_top = 280.0
-offset_right = 466.0
-offset_bottom = 303.0
+offset_left = -110.0
+offset_top = -80.0
+offset_right = 146.0
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
@@ -629,7 +629,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("6_vjpoo")
 theme_override_font_sizes/normal_font_size = 8
-text = "Game made by:"
+text = "Game made by:
+
+- Game designer:
+Patrícia Mendes, Cydeamon
+
+- Programming:
+Cydeamon, KoalaPanda, Lord Catto
+
+- Art:
+Rafazcruz, Patricia Mendes
+
+- Voice Actors:
+Ross Minor, Zleepy
+
+- Sound Design & Music:
+Hamza Aydin
+
+
+"
 
 [node name="Label" type="Label" parent="CreditsMenu"]
 layout_mode = 1
