@@ -24,10 +24,13 @@ func update(_delta):
 	cat_behaviour.cat.follow(player)
 	if cat_behaviour.cat.is_at_target() and not in_backpack:
 		cat_behaviour.graphics.visible = false
+		cat_behaviour.interactionArea.disable()
 		cat_behaviour.backpackSound.play()
 		in_backpack = true
 	
 	if in_backpack:
+		cat_behaviour.graphics.visible = false
+		cat_behaviour.interactionArea.disable()
 		behaviour.behaviour_owner.global_position = player.global_position + Vector3(0, 0, 0.5)
 
 	if not check_enemies():

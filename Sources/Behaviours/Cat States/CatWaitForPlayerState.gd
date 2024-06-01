@@ -22,9 +22,13 @@ func enter():
 	follower.stop()
 
 	player = behaviour.get_tree().get_first_node_in_group(GroupNames.Players)
+	player.ask_guide_star.connect(_on_ask_guide_star)
 
 	lineOfSight = behaviour.behaviour_owner.get_node("LineOfSight3D")
 	behaviour.waitForPlayerSound.play()
+
+func _on_ask_guide_star():
+	behaviour.change_state(CatIdleState.new(behaviour))
 
 func update(_delta):
 	# either the player is in line of sight or we don't care about line of sight

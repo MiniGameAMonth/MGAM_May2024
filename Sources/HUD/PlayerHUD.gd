@@ -9,6 +9,7 @@ signal on_label_changed(new_label : String)
 @onready var interactionText : Label = $InteractionLabel
 @onready var radar : Radar = $Radar
 @onready var handAnimationPlayer : AnimationPlayer = $Hand/AnimationPlayer
+@onready var purring : Node3D = $PettingAnimation/PlaySound3D
 
 @export var character : Character
 @export var blinks_on_damage : int = 3
@@ -36,6 +37,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	purring.global_position = character.global_position
 	pass
 
 
