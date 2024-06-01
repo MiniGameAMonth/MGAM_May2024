@@ -44,7 +44,6 @@ func high_health():
 	for i in range(footsteps.size()):
 		footsteps[i].set_loop_delay(footsteps_delays[i])
 
-
 func _ready():
 	menu_node = get_node("/root/MainRoot/UICanvas/Menu")
 	#root_node = get_tree().root.get_child(0)

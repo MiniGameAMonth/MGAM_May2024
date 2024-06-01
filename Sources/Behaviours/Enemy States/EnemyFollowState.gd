@@ -26,7 +26,7 @@ func update(_delta : float):
 
 	enemy_behaviour.follower.follow_position(lastTargetPosition)
 
-	if enemy_behaviour.weapon.in_range(attackTarget):
+	if enemy_behaviour.weapon.in_range(attackTarget) and enemy_behaviour.weapon.can_attack():
 		behaviour.change_state(EnemyAttackState.new(behaviour, attackTarget))
 	else:
 		var max_distance = enemy_behaviour.max_distance

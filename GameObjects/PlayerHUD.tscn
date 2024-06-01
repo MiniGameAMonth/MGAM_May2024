@@ -314,3 +314,4 @@ offset_top = 277.0
 offset_right = 554.0
 offset_bottom = 277.0
 iconFloatDistance = 15
+radiusInMeters = 25.0

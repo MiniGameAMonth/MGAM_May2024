@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dhktw4y7gkww3"]
+[gd_scene load_steps=33 format=3 uid="uid://dhktw4y7gkww3"]
 
 [ext_resource type="Script" path="res://Sources/Player.gd" id="1_l3ge4"]
 [ext_resource type="AudioStream" uid="uid://br2vaqmuh7sbt" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/guide_star.tres" id="2_4byr6"]
@@ -15,13 +15,18 @@
 [ext_resource type="AudioStream" uid="uid://d18np6pyw2xeo" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/finished_healing.tres" id="4_x0jus"]
 [ext_resource type="Script" path="res://Sources/Entities/Character.gd" id="5_aokh4"]
 [ext_resource type="Script" path="res://Sources/Voicelines/PlayerVoicelines.gd" id="5_jatlf"]
+[ext_resource type="Script" path="res://Sources/Utilities/Projected2DNode.gd" id="5_xmtu5"]
 [ext_resource type="Script" path="res://GameObjects/SniffingStarListener.gd" id="5_y4xv8"]
+[ext_resource type="Script" path="res://Sources/Entities/EntityHitbox2D.gd" id="6_1hdne"]
 [ext_resource type="Script" path="res://Sources/Entities/CharacterStats.gd" id="6_213k8"]
 [ext_resource type="PackedScene" uid="uid://b80qtulhkax1j" path="res://GameObjects/PlayerHUD.tscn" id="6_fsf8v"]
 [ext_resource type="AudioStream" uid="uid://1rbfshn70vwt" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Call/come_here_star.tres" id="6_n25sn"]
 [ext_resource type="AudioStream" uid="uid://bv155m545ov5c" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Level 1/Player - Voice Acting - Level 1 - Line 5.ogg" id="6_ssjsh"]
 [ext_resource type="Theme" uid="uid://b52ts8rtppg4j" path="res://Themes/MenuTheme.tres" id="8_ws50j"]
 [ext_resource type="AudioStream" uid="uid://baewcen6pujsr" path="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Voice Acting - Tired/tired.tres" id="20_s4c3r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ls7rf"]
+radius = 5.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_20xbv"]
 radius = 8.01585
@@ -144,6 +149,16 @@ ask_guide_star_voiceline = ExtResource("2_4byr6")
 collected_all_mushrooms_voiceline = ExtResource("3_0x0p0")
 good_kitten_voiceline = ExtResource("4_x0jus")
 footsteps = [NodePath("FootstepsPlayer3D(Stone)"), NodePath("FootstepsPlayer3D(Water)"), NodePath("FootstepsPlayer3D(Grass)")]
+
+[node name="Projected2DNode" type="Node2D" parent="."]
+script = ExtResource("5_xmtu5")
+
+[node name="EntityHitbox2D" type="StaticBody2D" parent="Projected2DNode" node_paths=PackedStringArray("character")]
+script = ExtResource("6_1hdne")
+character = NodePath("../../Character")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projected2DNode/EntityHitbox2D"]
+shape = SubResource("CircleShape2D_ls7rf")
 
 [node name="PlayerVoicelines" type="Node3D" parent="." node_paths=PackedStringArray("voiceline_player", "player")]
 script = ExtResource("5_jatlf")
