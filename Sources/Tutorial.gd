@@ -64,7 +64,9 @@ func _on_body_entered(body):
 		tutorialHUD.set_subtitle(subtitle)
 
 		if block_user_actions:
-			get_tree().root.get_node("MainRoot/Level/Level/Player").block_movement = true
+			var level = get_tree().root.get_node("MainRoot/Level").get_child(0)
+			var player = level.get_node("Player")
+			player.block_movement = true			
 			tutorialHUD.get_node("Panel/MovementDisabled").show()
 		else:
 			tutorialHUD.get_node("Panel/MovementDisabled").hide()
