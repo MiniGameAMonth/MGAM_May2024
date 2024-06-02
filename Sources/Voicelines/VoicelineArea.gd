@@ -15,6 +15,8 @@ func _ready():
 	body_entered.connect(on_body_entered)
 
 func trigger_finished():
+	if current_voiceplayer != null and current_voiceplayer.finished.is_connected(trigger_finished):
+		current_voiceplayer.finished.disconnect(trigger_finished)
 	voiceline_finished.emit()
 
 func on_body_entered(body):
@@ -23,7 +25,7 @@ func on_body_entered(body):
 		if current_voiceplayer != null:
 			current_voiceplayer.finished.disconnect(trigger_finished)
 		current_voiceplayer = voice_player
-		current_voiceplayer.finished.connect(trigger_finished)
+		
 		_play_voiceline(voice_player)
 
 func _exit_tree():
@@ -34,8 +36,10 @@ func _play_voiceline(voice_player):
 	if once:
 		if _once:
 			_once = false
+			current_voiceplayer.finished.connect(trigger_finished)
 			voice_player.request_voiceline(voiceline, voice_priority)
 	else:
+		current_voiceplayer.finished.connect(trigger_finished)
 		voice_player.request_voiceline(voiceline, voice_priority)
 
 func reset():
