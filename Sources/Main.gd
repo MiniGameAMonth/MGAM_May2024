@@ -70,7 +70,7 @@ func quit_game():
 	get_tree().quit()
 
 
-func load_level(path, is_cutscene = false):
+func load_level(path, is_cutscene = false):	
 	level = load(path).instantiate()
 
 	for child in level_container.get_children():
@@ -82,6 +82,7 @@ func load_level(path, is_cutscene = false):
 		game_mode = GameMode.CUTSCENE
 	else:
 		game_mode = GameMode.IN_GAME
+
 	update_menu()
 
 
