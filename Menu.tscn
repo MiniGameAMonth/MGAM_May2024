@@ -162,15 +162,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_prwn8"]
-content_margin_left = 5.0
-content_margin_top = 11.0
-texture = ExtResource("19_c0hgw")
-texture_margin_left = 20.0
-texture_margin_top = 10.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5nk3w"]
 content_margin_left = 5.0
 content_margin_top = 11.0
@@ -188,6 +179,15 @@ content_margin_left = 5.0
 content_margin_top = 11.0
 content_margin_bottom = 2.0
 texture = SubResource("CompressedTexture2D_1rwve")
+texture_margin_left = 20.0
+texture_margin_top = 10.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_prwn8"]
+content_margin_left = 5.0
+content_margin_top = 11.0
+texture = ExtResource("19_c0hgw")
 texture_margin_left = 20.0
 texture_margin_top = 10.0
 texture_margin_right = 4.0
@@ -311,10 +311,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 210.0
-offset_top = 280.0
-offset_right = 466.0
-offset_bottom = 303.0
+offset_left = -110.0
+offset_top = -80.0
+offset_right = 146.0
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
@@ -323,10 +323,10 @@ alignment = 1
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
-theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
+theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
 text = "Play"
 script = ExtResource("21_dsmr3")
 
@@ -341,10 +341,10 @@ visible = false
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
-theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
+theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
 text = "Continue"
 
 [node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/ContinueButton" node_paths=PackedStringArray("button")]
@@ -357,10 +357,10 @@ button = NodePath("..")
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
-theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
+theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
 text = "Options"
 
 [node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/OptionsButton" node_paths=PackedStringArray("button")]
@@ -373,10 +373,10 @@ button = NodePath("..")
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
 theme_override_styles/hover = SubResource("StyleBoxTexture_5nk3w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7sxg2")
-theme_override_styles/focus = SubResource("StyleBoxTexture_5nk3w")
+theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
 text = "Credits"
 
 [node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/CreditsButton" node_paths=PackedStringArray("button")]
@@ -444,11 +444,10 @@ horizontal_alignment = 2
 [node name="GameModeSelect" type="OptionButton" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "Full Moon"
 popup/item_0/icon = ExtResource("6_gyvb2")
-popup/item_0/id = 0
 popup/item_1/text = "Half moon"
 popup/item_1/icon = ExtResource("7_pifkp")
 popup/item_1/id = 1
@@ -471,10 +470,9 @@ horizontal_alignment = 2
 [node name="ColorBlindSelect" type="OptionButton" parent="OptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cx58u")
-item_count = 4
 selected = 0
+item_count = 4
 popup/item_0/text = "Normal"
-popup/item_0/id = 0
 popup/item_1/text = "Protanopia"
 popup/item_1/id = 1
 popup/item_2/text = "Deutranopia"
@@ -831,6 +829,9 @@ button = NodePath("..")
 alternate_text = "Double-click strafe for \"use\""
 
 [node name="DefaultButtonSfx" parent="CustomizeControlsMenu/VBoxContainer/GridContainer/HBoxContainer7/DoubleClickForUse" instance=ExtResource("28_1is5f")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CustomizeControlsMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
 
 [node name="ColorRect4" type="ColorRect" parent="CustomizeControlsMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 1)

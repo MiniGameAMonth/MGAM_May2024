@@ -18,7 +18,7 @@ var is_waiting_new_input_for_action : bool
 var waiting_new_input_for_action
 var is_waiting_new_input_for_action_alt : bool
 var is_waiting_new_input_for_action_changed = false
-var input_ignore_masks = ["ui_.*"]
+var input_ignore_masks = ["ui_.*", "skip_to_.*"]
 @onready var music_player = $AudioStreamPlayer
 
 ################################################################################
@@ -169,8 +169,9 @@ func init_inputs_grid_with_scheme(input_config : InputConfig):
 	$CustomizeControlsMenu/VBoxContainer/ErrorLabel.text = ""
 
 	if input_config.config.get_value("INFO", "Locked", false):
-		$CustomizeControlsMenu/VBoxContainer/ErrorLabel.text = "[!] This scheme is locked. Make a copy of it to customize."
+		$CustomizeControlsMenu/VBoxContainer/ErrorLabel.text += "[!] This scheme is locked. Make a copy of it to customize.\n"
 
+	$CustomizeControlsMenu/VBoxContainer/ErrorLabel.text += "[!] Use CTRL+Number to jump to a specific level"
 	$CustomizeControlsMenu/VBoxContainer/ErrorLabel.visible = $CustomizeControlsMenu/VBoxContainer/ErrorLabel.text.length() > 0
 
 	# Init fields
