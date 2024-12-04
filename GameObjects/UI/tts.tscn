@@ -4,4 +4,3 @@
 
 [node name="TTS" type="Node"]
 script = ExtResource("1_bu8kf")
-voice_volume = 80

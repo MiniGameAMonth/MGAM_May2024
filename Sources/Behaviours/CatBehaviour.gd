@@ -8,12 +8,9 @@ var state : State = State.IDLE
 var targetMushroom : Node3D;
 
 @export var maxDistanceFromPlayer : float = 20
-
 @export var cat : Follower;
-
 @export var graphics : AnimatedSprite3D
 @export var interactionArea : Interactable
-
 @export var lineOfSight : LineOfSight3D
 
 @onready var waitForPlayerSound : PlaySound3D = $WaitForPlayerSound
@@ -58,4 +55,3 @@ func check_enemies_in_sight(body : Node3D):
 	
 	if body.is_in_group(GroupNames.Enemies):
 		change_state(CatGoInBackpackState.new(self))
-		TTS.say_phrase("I'm scared of enemies!")

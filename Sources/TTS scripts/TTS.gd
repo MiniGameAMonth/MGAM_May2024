@@ -13,10 +13,14 @@ func _ready():
 	if voice_id == null:
 		printerr("No tex-to-screen voice found")
 
-static func say_phrase(text: String):
+static func say_phrase(text: String, prioritize : bool = false):
 	if !disabled:		
-		DisplayServer.tts_stop()		
-		DisplayServer.tts_speak(text, voice_id, voice_volume, true)	
+		if prioritize:
+			DisplayServer.tts_stop()
+			DisplayServer.tts_speak(text, voice_id, voice_volume, true)	
+		else:
+			if !DisplayServer.tts_is_speaking():
+				DisplayServer.tts_speak(text, voice_id, voice_volume, true)	
 
 static func toggle_TTS(is_enabled : int = 0):
 	if is_enabled == 0:
@@ -38,3 +42,6 @@ static func get_voice_volume():
 
 static func stop():
 	DisplayServer.tts_stop()
+
+static func is_stopped():
+	return !DisplayServer.tts_is_speaking()
