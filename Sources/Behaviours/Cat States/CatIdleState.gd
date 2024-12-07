@@ -38,11 +38,9 @@ func exit():
 
 func find_mushroom():
 	var mushrooms = behaviour.get_tree().get_nodes_in_group(GroupNames.Mushrooms)
-	print("Mushrooms: ", mushrooms.size(), " ", mushrooms)
 
 	if mushrooms.size() > 0:
 		var closestMushroom = find_closest(mushrooms)
-		print("Closest mushroom: ", closestMushroom)
 		behaviour.change_state(CatFindMushroomState.new(behaviour, closestMushroom))
 	else:
 		behaviour.change_state(CatFindExitState.new(behaviour))

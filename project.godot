@@ -159,6 +159,7 @@ skip_tutorial={
 3d_physics/layer_3="ENTITIES"
 3d_physics/layer_4="INTERACTIONS"
 3d_physics/layer_5="FOOTSTEPS"
+3d_physics/layer_6="PLAYER"
 2d_physics/layer_8="SOUND_OVERRIDE_AREAS"
 3d_physics/layer_8="SOUND_OVERRIDE_AREAS"
 

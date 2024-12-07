@@ -22,7 +22,6 @@ func _ready():
 func _on_interacted_with(_who, what):
 	if what is MushroomInteractable:
 		mushroom_count += 1
-		print("Mushroom collected! Total: ", mushroom_count, "/", get_mushrooms_amount())
 		if get_mushrooms_amount() == 1:
 			GlobalEvents.collected_all_mushrooms.emit()
 

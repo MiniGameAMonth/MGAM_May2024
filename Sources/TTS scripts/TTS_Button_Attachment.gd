@@ -28,7 +28,7 @@ func _on_mouse_entered():
 	if is_Toggle:
 		say_phrase_for_toggles()	
 	else:
-		TTS.say_phrase(TTS_text + alternate_text)
+		TTS.say_phrase(TTS_text + alternate_text, true)
 
 func toggled(state: bool):
 	toggle_state = state
@@ -43,39 +43,39 @@ func _on_keyboard_input(event: InputEvent):
 					if is_Toggle:
 						say_phrase_for_toggles()
 					else: 		
-						TTS.say_phrase("You selected " + TTS_text + alternate_text)	
+						TTS.say_phrase("You selected " + TTS_text + alternate_text, true)	
 
 				"Left":
 					if is_Toggle:
 						say_phrase_for_toggles()
 					else: 		
-						TTS.say_phrase(TTS_text + alternate_text)
+						TTS.say_phrase(TTS_text + alternate_text, true)
 
 				"Right":
 					if is_Toggle:
 						say_phrase_for_toggles()
 					else: 		
-						TTS.say_phrase(TTS_text + alternate_text)
+						TTS.say_phrase(TTS_text + alternate_text, true)
 				
 				"Up":
 					if is_Toggle:
 						say_phrase_for_toggles()
 					else: 		
-						TTS.say_phrase(TTS_text + alternate_text)
+						TTS.say_phrase(TTS_text + alternate_text, true)
 				
 				"Down":
 					if is_Toggle:
 						say_phrase_for_toggles()
 					else: 		
-						TTS.say_phrase(TTS_text + alternate_text)
+						TTS.say_phrase(TTS_text + alternate_text, true)
 				
 	return
 
 func say_phrase_for_toggles():
 	if toggle_state:
-		TTS.say_phrase(TTS_text + alternate_text + "...on")
+		TTS.say_phrase(TTS_text + alternate_text + "...on", true)
 	else:
-		TTS.say_phrase(TTS_text + alternate_text + "...off")
+		TTS.say_phrase(TTS_text + alternate_text + "...off", true)
 
 func _on_button_up():
 	if !is_Toggle:

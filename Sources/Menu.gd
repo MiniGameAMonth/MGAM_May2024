@@ -30,7 +30,8 @@ signal quit_game
 ################################################################################
 #######################  MENU INTERACTIONS FUNCTIONS  ##########################
 
-func _on_play_button_pressed():
+func _on_play_button_pressed(turn_on_tutorials):
+	Main.tutorials_enabled = turn_on_tutorials
 	emit_signal("start_game")
 
 
@@ -153,6 +154,9 @@ func open_menu(menu_name : String):
 		$AnimationPlayer.play("HideAnimatedBackground")
 		$MenuBgAnimated.play("LogoHide")
 		$MenuBg/MenuBgRect.visible = true
+
+	if menu_name == "AskTutorialsMenu":
+		TTS.say_phrase("Enable tutorials?", true)
 
 
 func read_controls_scheme(path):
@@ -375,3 +379,7 @@ func _on_controls_select_item_selected(index):
 
 func get_active_controls_scheme() -> InputConfig:
 	return input_configs[controls_scheme_select.selected]
+
+
+func _on_resume_button_pressed() -> void:
+	_on_play_button_pressed(Main.tutorials_enabled)

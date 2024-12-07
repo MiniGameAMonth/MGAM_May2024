@@ -10,10 +10,6 @@ signal mana_changed(mana : int)
 signal on_death()
 signal healed()
 
-func _ready():
-	if characterStats == null:
-		print("CharacterStats not set in Inspector")
-
 func take_damage(damage : int):
 	if characterStats.health <= 0:
 		return
@@ -26,10 +22,17 @@ func take_damage(damage : int):
 		die()
 
 func heal(healh : int):
+	var prev_health = characterStats.health
 	characterStats.health += healh
 	characterStats.health = min(characterStats.health, characterStats.max_health)
 	health_changed.emit(characterStats.health)
-	healed.emit()
+
+	if prev_health != characterStats.health:
+		healed.emit()
+	
+	if characterStats.health == characterStats.max_health:
+		TTS.say_phrase("Full health")	
+
 
 func use_mana(mana : int):
 	characterStats.mana -= mana

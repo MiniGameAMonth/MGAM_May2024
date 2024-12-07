@@ -22,10 +22,6 @@ func change_state(state : BehaviourState):
 	last_state = current_state
 	if last_state != null:
 		last_state.exit()
-		if debug_states:
-			print("Exited state: " + last_state.state_name)
 			
 	current_state = state
 	current_state.enter()
-	if current_state != null and debug_states:
-		print("Entered state: " + current_state.state_name)

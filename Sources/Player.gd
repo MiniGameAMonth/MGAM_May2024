@@ -5,6 +5,7 @@ signal call_star()
 signal ask_guide_star()
 
 var SPEED = 15.0
+var current_speed = 0
 
 @export var mouse_sensitivity = 0.1
 @export var mouse_double_click_speed = 200
@@ -30,7 +31,9 @@ var interaction : Interactable
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 @onready var hud : PlayerHUD = $CanvasLayer/PlayerHud
 @onready var voicelinePlayer : VoicelinePlayer = $VoicelinePlayer
+@onready var bumpingSound : PlaySound3D = $BumpingSound
 
+var move_direction: Vector3
 
 var menu_node = null
 
@@ -55,6 +58,10 @@ func _ready():
 
 	interactions.connect("on_interaction", on_interact)
 	interactions.connect("on_interaction_end", on_interact_end)
+	$Character.connect("healed", on_healed)
+
+func on_healed():
+	$MagicalSound.play()
 
 func on_interact(interactable: Interactable):
 	interaction = interactable
@@ -64,6 +71,22 @@ func on_interact_end(_interactable: Interactable):
 	_interactable.stop_interact(self)
 	interaction = null
 	pass
+
+
+func _process(delta: float) -> void:
+	current_speed = sqrt( velocity.x * velocity.x + velocity.y * velocity.y + velocity.z * velocity.z )
+
+	# If movement vector is not 0 and velocity is 25% of intended - play bump sound
+	if move_direction != Vector3.ZERO:
+		if current_speed <= SPEED * 0.25:
+			if bumpingSound.stopped:
+				bumpingSound.play()
+		else:
+			if !bumpingSound.stopped:
+				bumpingSound.stop()
+	else:
+		if !bumpingSound.stopped:
+			bumpingSound.stop()
 
 
 func _physics_process(delta):
@@ -87,6 +110,7 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
+		move_direction = direction
 		move_and_slide()
 
 

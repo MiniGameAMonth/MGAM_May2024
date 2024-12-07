@@ -33,31 +33,32 @@ var task_completed = false
 var prev_tts_is_stopped = true
 
 func _process(delta: float) -> void:
-	var prev_task_completed = task_completed
+	if Main.tutorials_enabled:
+		var prev_task_completed = task_completed
 
-	if tutorial_started && !task_completed:
-		if TTS.is_stopped() && TTS.is_stopped() != prev_tts_is_stopped:
-			task_completed = true
-			_on_audio_player_finished()
-
-	prev_tts_is_stopped = TTS.is_stopped()
-
-	# Wait for player to look at the object
-	if !task_completed && tutorial_started && tutorial_type == TutorialType.LOOK_AT_OBJECT:
-		if object_to_look_at:
-			var player = get_tree().root.get_node("MainRoot/Level/Level/Player")
-
-			if player.is_looking_at(object_to_look_at):
+		if tutorial_started && !task_completed:
+			if TTS.is_stopped() && TTS.is_stopped() != prev_tts_is_stopped:
 				task_completed = true
-				player.block_movement = false
-				tutorialHUD.get_node("Panel/MovementDisabled").hide()
+				_on_audio_player_finished()
 
-	# After all checks if we completed the task - show "after completion" message
-	if !prev_task_completed && task_completed:
-		if voice_line_after_completion && subtitle_after_completion:
-			tutorialHUD.fade_in()
-			tutorialHUD.set_subtitle(replace_actions_with_buttons(subtitle_after_completion))
-			$IntroTimer.start()
+		prev_tts_is_stopped = TTS.is_stopped()
+
+		# Wait for player to look at the object
+		if !task_completed && tutorial_started && tutorial_type == TutorialType.LOOK_AT_OBJECT:
+			if object_to_look_at:
+				var player = get_tree().root.get_node("MainRoot/Level/Level/Player")
+
+				if player.is_looking_at(object_to_look_at):
+					task_completed = true
+					player.block_movement = false
+					tutorialHUD.get_node("Panel/MovementDisabled").hide()
+
+		# After all checks if we completed the task - show "after completion" message
+		if !prev_task_completed && task_completed:
+			if voice_line_after_completion && subtitle_after_completion:
+				tutorialHUD.fade_in()
+				tutorialHUD.set_subtitle(replace_actions_with_buttons(subtitle_after_completion))
+				$IntroTimer.start()
 
 
 func _ready():
@@ -65,46 +66,51 @@ func _ready():
 
 
 func _on_body_entered(body):
-	if body.name == "Player" && !disabled:
-		disabled = true
-		tutorial_started = true
-		$IntroTimer.start()
-		tutorialHUD.fade_in()
-		tutorialHUD.set_subtitle(replace_actions_with_buttons(tutorial_line))
-		tutorialHUD.tutorial = self;
+	if Main.tutorials_enabled:
+		if body.name == "Player" && !disabled:
+			disabled = true
+			tutorial_started = true
+			$IntroTimer.start()
+			tutorialHUD.fade_in()
+			tutorialHUD.set_subtitle(replace_actions_with_buttons(tutorial_line))
+			tutorialHUD.tutorial = self;
 
-		if block_user_actions:
-			var level = get_tree().root.get_node("MainRoot/Level").get_child(0)
-			var player = level.get_node("Player")
-			player.block_movement = true			
-			tutorialHUD.get_node("Panel/MovementDisabled").show()
-		else:
-			tutorialHUD.get_node("Panel/MovementDisabled").hide()
+			if block_user_actions:
+				var level = get_tree().root.get_node("MainRoot/Level").get_child(0)
+				var player = level.get_node("Player")
+				player.block_movement = true			
+				tutorialHUD.get_node("Panel/MovementDisabled").show()
+			else:
+				tutorialHUD.get_node("Panel/MovementDisabled").hide()
 
 
 func _on_intro_timer_timeout():
-	if !task_completed:
-		$AudioPlayer.stream = voice_line
-	else:
-		$AudioPlayer.stream = voice_line_after_completion
-		tutorialHUD.get_node("Panel/MovementDisabled").hide()
-	
-	TTS.say_phrase(replace_actions_with_buttons(tutorial_line), true)
-	# $AudioPlayer.play()
+	if Main.tutorials_enabled:
+		if !task_completed:
+			$AudioPlayer.stream = voice_line
+		else:
+			$AudioPlayer.stream = voice_line_after_completion
+			tutorialHUD.get_node("Panel/MovementDisabled").hide()
+		
+		TTS.say_phrase(replace_actions_with_buttons(tutorial_line), true)
+		# $AudioPlayer.play()
 
 func _exit_tree():
-	$AudioPlayer.stop()
-	tutorialHUD.fade_out()
-	tutorialHUD.tutorial = null
+	if Main.tutorials_enabled:
+		$AudioPlayer.stop()
+		tutorialHUD.fade_out()
+		tutorialHUD.tutorial = null
 
 
 func _on_audio_player_finished():
-	tutorialHUD.fade_out()
-	tutorialHUD.tutorial = null
+	if Main.tutorials_enabled:
+		tutorialHUD.fade_out()
+		tutorialHUD.tutorial = null
 
-	if tutorial_type == TutorialType.UNTIL_SOUND_IS_PLAYING:
-		var player = get_tree().root.get_node("MainRoot/Level/Level/Player")
-		player.block_movement = false
+		if tutorial_type == TutorialType.UNTIL_SOUND_IS_PLAYING:
+			var player = get_tree().root.get_node("MainRoot/Level/Level/Player")
+			player.block_movement = false
+
 
 func tutorial_skip():
 	task_completed = true;
@@ -113,7 +119,6 @@ func tutorial_skip():
 	TTS.stop()
 
 func replace_actions_with_buttons(line):
-	print(line)
 	var regex = RegEx.new()
 	regex.compile("\\[([^\\[\\]]+)\\]")
 	var results = regex.search_all(line)	
@@ -130,9 +135,6 @@ func replace_actions_with_buttons(line):
 				else:
 					text += " or " + input_event.as_text()
 
-			print(text)
-
 			line = line.replace("[" + action_name + "]", text)
 
-	print(line)
 	return line

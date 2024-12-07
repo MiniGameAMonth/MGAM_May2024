@@ -12,6 +12,7 @@ var local_delta = 0
 var menu_node = null
 var is_game_was_started = false
 var mouse_delta : Vector2
+var tutorials_enabled: bool = true
 
 #################################################################################
 ################################### Functions ###################################
@@ -57,7 +58,7 @@ func is_in_game():
 func start_game(gamemode: GameMode = GameMode.IN_GAME):
 	if !is_game_was_started:
 		is_game_was_started = true
-		menu_node.get_node("MainMenu/MainMenu/PlayButton").hide()
+		menu_node.get_node("MainMenu/MainMenu/AskTutorialsButton").hide()
 		menu_node.get_node("MainMenu/MainMenu/ContinueButton").show()
 		load_level("res://GameObjects/CutScenePlayer_Intro.tscn", true)
 		gamemode = GameMode.CUTSCENE
@@ -117,7 +118,6 @@ func _input(event):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 	if Input.is_action_just_pressed("Fire") && menu_node.get_active_controls_scheme().config.get_value("INFO", "Same button for \"Use\" & \"Fire\"", false):
-		print("use")
 		Input.action_press("Use")
 
 	if event is InputEventMouseMotion:

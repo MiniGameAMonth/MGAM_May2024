@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dtyw2wvxjhtlw"
+path="res://.godot/imported/ugh 1.wav-17ce91618317273cbd731300d989771f.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player SFX/Player - Voice Acting/Player - Bumping into the wall/ugh 1.wav"
+dest_files=["res://.godot/imported/ugh 1.wav-17ce91618317273cbd731300d989771f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

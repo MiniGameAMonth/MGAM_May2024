@@ -8,6 +8,7 @@ var state : State = State.IDLE
 var targetMushroom : Node3D;
 
 @export var maxDistanceFromPlayer : float = 20
+@export var maxDistanceFromPlayerWhenWaiting : float = 25
 @export var cat : Follower;
 @export var graphics : AnimatedSprite3D
 @export var interactionArea : Interactable
@@ -21,6 +22,8 @@ var targetMushroom : Node3D;
 @onready var backpackSound : PlaySound3D = $BackpackSound
 @onready var scaredCatSound : PlaySound3D = $ScaredCatSound
 
+
+
 var player : Node3D = null
 
 func _ready():
@@ -32,6 +35,20 @@ func _ready():
 
 
 func _process(_delta):
+	if current_state is CatFindExitState || current_state is CatSniffingState:
+		if waitForPlayerSound.stopped:
+			waitForPlayerSound.play()
+	else:
+		if !waitForPlayerSound.stopped:
+			waitForPlayerSound.stop()
+
+	# If in "sniffing", "near exit" or "waiting state - resume following when player is too far
+	if current_state is CatWaitForPlayerState || current_state is CatSniffingState:
+		if player_distance() > maxDistanceFromPlayerWhenWaiting || Input.is_action_just_pressed("Cat. Search an exit"):
+			lineOfSight.set_target(player)
+			change_state(CatIdleState.new(self))
+	
+
 	if player == null:
 		player = get_tree().get_first_node_in_group(GroupNames.Players)
 		if player == null:
@@ -55,3 +72,9 @@ func check_enemies_in_sight(body : Node3D):
 	
 	if body.is_in_group(GroupNames.Enemies):
 		change_state(CatGoInBackpackState.new(self))
+
+func is_enemy_nearby():
+	for body in enemyBackpackSight.sighted_bodies:
+		if body.is_in_group(GroupNames.Enemies):
+			return true
+	return false

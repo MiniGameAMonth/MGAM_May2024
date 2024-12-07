@@ -23,7 +23,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01iqy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pob5h"]
-radius = 20.0
+radius = 27.1357
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xkhy6"]
 radius = 35.0

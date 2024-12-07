@@ -36,8 +36,8 @@ func shoot():
 
 	if GC.get_config_value("Config", "UseAutoAim", false) and not removeAutoaim:
 		var angle = GC.get_config_value("Config", "AutoAimZone", 10)
-		print("Autoaiming with angle: " + str(angle))
 		var target = autoaim(angle, bulletInstance)
+
 		if target != null:
 			bulletInstance.set_target(target)
 		else:
@@ -56,20 +56,24 @@ func autoaim(degrees: float, _bullet: Projectile):
 	var steps = distance/projectileWidth
 	var anglePerStep = rads/steps
 	var targets = []
+
 	for i in range(steps):
 		var direction = global_transform.basis.z.rotated(Vector3(0,1,0), anglePerStep*(i - steps/2))
 		_bullet.set_direction(direction)
+
 		if _bullet.target != null:
-			print("Target acquired")
 			targets.append(_bullet.target)
 	
 	var closestTarget = null
 	var closestDistance = 1000000
+
 	for target in targets:
 		var distance_to_target = global_position.distance_to(target.global_position)
+		
 		if distance_to_target < closestDistance:
 			closestDistance = distance
 			closestTarget = target
+
 	return closestTarget
 
 		

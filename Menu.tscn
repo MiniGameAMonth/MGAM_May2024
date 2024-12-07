@@ -319,7 +319,7 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="MainMenu/MainMenu"]
+[node name="AskTutorialsButton" type="Button" parent="MainMenu/MainMenu" groups=["MenuNavButton"]]
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("3_cx58u")
@@ -330,11 +330,11 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_prwn8")
 text = "Play"
 script = ExtResource("21_dsmr3")
 
-[node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/PlayButton" node_paths=PackedStringArray("button")]
+[node name="TTS_Button_Attachment" type="Node" parent="MainMenu/MainMenu/AskTutorialsButton" node_paths=PackedStringArray("button")]
 script = ExtResource("21_gjncb")
 button = NodePath("..")
 
-[node name="DefaultButtonSfx" parent="MainMenu/MainMenu/PlayButton" instance=ExtResource("22_2aq8h")]
+[node name="DefaultButtonSfx" parent="MainMenu/MainMenu/AskTutorialsButton" instance=ExtResource("22_2aq8h")]
 
 [node name="ContinueButton" type="Button" parent="MainMenu/MainMenu"]
 visible = false
@@ -609,6 +609,67 @@ script = ExtResource("21_gjncb")
 button = NodePath("..")
 
 [node name="DefaultButtonSfx" parent="OptionsMenu/VBoxContainer/SoundOptionsButton" instance=ExtResource("22_2aq8h")]
+
+[node name="AskTutorialsMenu" parent="." instance=ExtResource("3_kfsru")]
+visible = false
+layout_mode = 1
+
+[node name="Label" type="Label" parent="AskTutorialsMenu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -5.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_cx58u")
+text = "Enable tutorials?"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="AskTutorialsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 131.0
+offset_top = 193.0
+offset_right = -131.0
+offset_bottom = -151.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="EnableTutorialsButton" type="Button" parent="AskTutorialsMenu/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "YES"
+
+[node name="TTS_Button_Attachment" type="Node" parent="AskTutorialsMenu/VBoxContainer/EnableTutorialsButton" node_paths=PackedStringArray("button")]
+script = ExtResource("21_gjncb")
+button = NodePath("..")
+
+[node name="DefaultButtonSfx" parent="AskTutorialsMenu/VBoxContainer/EnableTutorialsButton" instance=ExtResource("22_2aq8h")]
+
+[node name="Label" type="Label" parent="AskTutorialsMenu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "/"
+horizontal_alignment = 1
+
+[node name="DisableTutorialsButton" type="Button" parent="AskTutorialsMenu/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("3_cx58u")
+text = "NO"
+
+[node name="TTS_Button_Attachment" type="Node" parent="AskTutorialsMenu/VBoxContainer/DisableTutorialsButton" node_paths=PackedStringArray("button")]
+script = ExtResource("21_gjncb")
+button = NodePath("..")
+
+[node name="DefaultButtonSfx" parent="AskTutorialsMenu/VBoxContainer/DisableTutorialsButton" instance=ExtResource("22_2aq8h")]
 
 [node name="CreditsMenu" parent="." instance=ExtResource("3_kfsru")]
 visible = false
@@ -1117,9 +1178,10 @@ libraries = {
 "": SubResource("AnimationLibrary_i12do")
 }
 
-[connection signal="pressed" from="MainMenu/MainMenu/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainMenu/MainMenu/ContinueButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenu/ContinueButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MainMenu/MainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="AskTutorialsMenu/VBoxContainer/EnableTutorialsButton" to="." method="_on_play_button_pressed" binds= [true]]
+[connection signal="pressed" from="AskTutorialsMenu/VBoxContainer/DisableTutorialsButton" to="." method="_on_play_button_pressed" binds= [false]]
 [connection signal="item_selected" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer/SchemeSelect" to="." method="_on_scheme_select_item_selected"]
 [connection signal="pressed" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer/copy_and_modify_button" to="." method="copy"]
 [connection signal="pressed" from="CustomizeControlsMenu/VBoxContainer/HBoxContainer2/save_and_use_button" to="." method="save_and_apply_input_configuration"]

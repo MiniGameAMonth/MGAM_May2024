@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://cpg0tvw8kxvld"]
+[gd_scene load_steps=74 format=4 uid="uid://cpg0tvw8kxvld"]
 
 [ext_resource type="Script" path="res://Sources/Level.gd" id="1_ho28i"]
 [ext_resource type="AudioStream" uid="uid://w4c403w00ya1" path="res://Assets/Sounds/SFX/Environment SFX/Environment - Forest Ambience/Environment - Forest Ambience - 1.ogg" id="2_87e1w"]
@@ -8,12 +8,9 @@
 [ext_resource type="Material" uid="uid://dbj1lr5caui1t" path="res://Levels/Level1_wall.material" id="4_8uvfw"]
 [ext_resource type="Material" uid="uid://bc67nx3xu300j" path="res://Levels/Level1_moss_wall.material" id="5_sdurk"]
 [ext_resource type="Material" uid="uid://4cjd5iawv86k" path="res://Levels/Level2_pink_grass.material" id="6_xnsep"]
-[ext_resource type="Resource" uid="uid://df8ay4rqfbhjy" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_7.tres" id="8_gxglt"]
 [ext_resource type="Resource" uid="uid://dypwbr2xeeslt" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_8.tres" id="9_2l44v"]
-[ext_resource type="Resource" uid="uid://bo8jld8xwutvm" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_12.tres" id="9_4jboy"]
 [ext_resource type="Resource" uid="uid://c3hirseo06gyb" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_3.tres" id="9_44q4l"]
-[ext_resource type="Resource" uid="uid://bx071lhaxy3ih" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_14.tres" id="10_88pgx"]
-[ext_resource type="Resource" uid="uid://b5b3y8f4vpsio" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_9.tres" id="11_iven2"]
+[ext_resource type="Resource" uid="uid://c44d15rtibn4r" path="res://Assets/Mushroom Data/Mushrooms/Mushroom_5.tres" id="11_g8glt"]
 [ext_resource type="Texture2D" uid="uid://bkf4iab8ocxsm" path="res://Assets/LevelsTextures/Forest_tileset.png" id="12_0cyjv"]
 [ext_resource type="MeshLibrary" uid="uid://dao36q1b2u5fq" path="res://GameObjects/forest_tiles.meshlib" id="12_sdmep"]
 [ext_resource type="Script" path="res://Sources/GameEndTrigger.gd" id="12_ur4vp"]
@@ -165,7 +162,7 @@ agent_radius = 2.0
 size = Vector3(217.138, 1, 571.891)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gqjmb"]
-size = Vector3(61.9629, 1, 1)
+size = Vector3(61.9629, 16.2077, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vcupp"]
 size = Vector3(11.735, 1, 1)
@@ -266,6 +263,21 @@ size = Vector3(1, 2.70081, 66.3643)
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6gjo"]
 size = Vector3(200, 100, 500)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_d061c"]
+size = Vector2(100, 500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehs7k"]
+albedo_color = Color(0.752941, 0.254902, 0.454902, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dasr4"]
+size = Vector2(70, 500)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8esvd"]
+size = Vector2(3, 28)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e05y7"]
+size = Vector2(100, 840)
+
 [node name="Level" type="Node3D"]
 script = ExtResource("1_ho28i")
 ambientSound = ExtResource("2_87e1w")
@@ -338,6 +350,7 @@ region_enabled = true
 region_rect = Rect2(405, -1, 103, 128)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Gates"]
+collision_layer = 33
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gates/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132462, 1.30273, 0)
@@ -347,19 +360,37 @@ shape = SubResource("BoxShape3D_gyygg")
 transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 335.658, -41.65, -54.93)
 
 [node name="MainGeometry" type="MeshInstance3D" parent="GeometryL2"]
-transform = Transform3D(-4.36848e-08, -1.52551e-09, -1, -0.0348995, 0.999391, 0, 0.999391, 0.0348995, -4.37114e-08, -78.546, 89.437, -480.917)
+transform = Transform3D(-4.36848e-08, -1.52551e-09, -1, -0.0348995, 0.999391, 0, 0.999391, 0.0348995, -4.37114e-08, -78.546, 89.937, -476.407)
 mesh = SubResource("ArrayMesh_xm6y3")
 skeleton = NodePath("")
+
+[node name="Sprite3D12" type="Sprite3D" parent="GeometryL2/MainGeometry"]
+transform = Transform3D(0.111469, -2.02726e-28, 1.99689, -2.32829e-10, 2, -2.98023e-08, -1.99689, 0, 0.111469, 736.711, 1.29198, -911.303)
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(0, 256, 128, 128)
+
+[node name="Sprite3D13" type="Sprite3D" parent="GeometryL2/MainGeometry"]
+transform = Transform3D(0.111469, -2.02726e-28, 1.99689, -2.32829e-10, 2, -2.98023e-08, -1.99689, 0, 0.111469, 736.643, 1.29196, -906.778)
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(0, 256, 128, 128)
+
+[node name="Sprite3D15" type="Sprite3D" parent="GeometryL2/MainGeometry"]
+transform = Transform3D(0.331782, -2.02726e-28, 1.97229, -1.86264e-09, 2, -3.52602e-16, -1.97229, 0, 0.331782, 737.086, 1.13206, -915.539)
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(0, 128, 256, 126)
 
 [node name="Mushrooms" type="Node3D" parent="."]
 
 [node name="Mushroom" parent="Mushrooms" instance=ExtResource("16_n4vea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 560.071, -10.9972, -706.144)
-mushroomData = ExtResource("8_gxglt")
+mushroomData = ExtResource("11_g8glt")
 
 [node name="Mushroom7" parent="Mushrooms" instance=ExtResource("16_n4vea")]
 transform = Transform3D(-0.936225, 0, 0.351401, 0, 1, 0, -0.351401, 0, -0.936225, 579.719, -10.9972, -630.692)
-mushroomData = ExtResource("9_4jboy")
+mushroomData = ExtResource("9_2l44v")
 
 [node name="Mushroom6" parent="Mushrooms" instance=ExtResource("16_n4vea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600.083, -10.9972, -678.774)
@@ -374,11 +405,11 @@ mushroomData = ExtResource("9_44q4l")
 
 [node name="Mushroom4" parent="Mushrooms" instance=ExtResource("16_n4vea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 639.948, -10.9972, -461.49)
-mushroomData = ExtResource("10_88pgx")
+mushroomData = ExtResource("11_g8glt")
 
 [node name="Mushroom5" parent="Mushrooms" instance=ExtResource("16_n4vea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 660.338, -10.9972, -593.537)
-mushroomData = ExtResource("11_iven2")
+mushroomData = ExtResource("11_g8glt")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n4d2t")
@@ -454,6 +485,7 @@ navigation_mesh = SubResource("NavigationMesh_r0xbf")
 [node name="LevelCollisions" type="Node" parent="NavigationRegion3D"]
 
 [node name="Ground" type="StaticBody3D" parent="NavigationRegion3D/LevelCollisions"]
+collision_layer = 33
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/LevelCollisions/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 573.518, -11.5007, -472.798)
@@ -462,6 +494,7 @@ shape = SubResource("BoxShape3D_j3re7")
 [node name="Walls" type="Node" parent="NavigationRegion3D/LevelCollisions"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/LevelCollisions/Walls"]
+collision_layer = 33
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/LevelCollisions/Walls/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 563.036, -9.88609, -712.461)
@@ -654,6 +687,14 @@ shape = SubResource("BoxShape3D_u3b7m")
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="NavigationRegion3D/LevelCollisions/Walls/StaticBody3D"]
 transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, 528.955, -9.88609, -664.553)
 shape = SubResource("BoxShape3D_x8e3w")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D/LevelCollisions/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 515.321, -4.94616, -631.242)
+collision_layer = 33
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/LevelCollisions/Walls/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.553055, 0)
+shape = SubResource("BoxShape3D_gqjmb")
 
 [node name="Trees" type="Node3D" parent="."]
 
@@ -3473,6 +3514,166 @@ texture = ExtResource("12_0cyjv")
 region_enabled = true
 region_rect = Rect2(768, 512, 256, 256)
 
+[node name="Sprite3D275" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 818.539, -5.84388, -252.157)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D313" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 810.66, -5.84388, -181.525)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D314" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 801.89, -5.79185, -197.015)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D315" type="Sprite3D" parent="Trees"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 790.042, -5.84257, -239.722)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D316" type="Sprite3D" parent="Trees"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 838.116, -5.84257, -214.786)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D321" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 776.883, -5.84388, -294.731)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D322" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 769.004, -5.84388, -224.098)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D323" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 760.234, -5.79185, -239.589)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D324" type="Sprite3D" parent="Trees"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 748.386, -5.84257, -282.296)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D325" type="Sprite3D" parent="Trees"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 796.461, -5.84257, -257.36)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D326" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 796.342, -5.84388, -285.643)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D327" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 815.84, -5.84388, -327.021)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D328" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 784.721, -5.79185, -303.185)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D329" type="Sprite3D" parent="Trees"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 772.872, -5.84257, -345.892)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D331" type="Sprite3D" parent="Trees"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 803.625, -5.84257, -354.313)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D332" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 750.918, -5.84388, -262.95)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D334" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 705.024, -5.84388, -289.936)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D338" type="Sprite3D" parent="Trees"]
+transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 744.896, -5.79185, -262.872)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D339" type="Sprite3D" parent="Trees"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 720.195, -5.84257, -237.228)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D340" type="Sprite3D" parent="Trees"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 753.174, -5.84257, -258.936)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
 [node name="Sprite3D265" type="Sprite3D" parent="Trees"]
 transform = Transform3D(5.24537e-07, 0, -4, 0, 4, 0, 4, 0, 5.24537e-07, 629.232, -8.53966, -708.469)
 billboard = 2
@@ -5288,6 +5489,1598 @@ texture_filter = 4
 texture = ExtResource("12_0cyjv")
 region_enabled = true
 region_rect = Rect2(256, 512, 256, 256)
+
+[node name="Sprite3D732" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 609.875, -9.6643, -546.087)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D745" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 609.875, -9.6643, -538.468)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D746" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 609.875, -9.6643, -529.468)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D747" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 609.875, -9.6643, -521.479)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D748" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 621.074, -9.6643, -546.087)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D749" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 621.074, -9.6643, -538.468)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D750" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 621.074, -9.6643, -529.468)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D751" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 621.074, -9.6643, -521.479)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D752" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 630.002, -9.6643, -546.087)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D753" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 630.002, -9.6643, -538.468)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D754" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 630.002, -9.6643, -529.468)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D770" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 630.002, -9.6643, -521.479)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D785" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 638.674, -9.6643, -546.087)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D786" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 638.674, -9.6643, -538.468)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D787" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 638.674, -9.6643, -529.468)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D791" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 638.674, -9.6643, -521.479)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D792" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 635.055, -9.6643, -552.042)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D793" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 635.055, -9.6643, -544.423)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D794" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 635.055, -9.6643, -535.423)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D797" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 635.055, -9.6643, -527.434)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D798" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 618.186, -9.6643, -561.675)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D799" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 625.304, -9.6643, -558.958)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D800" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 633.712, -9.6643, -555.747)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D801" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 641.175, -9.6643, -552.898)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D802" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 621.395, -9.6643, -563.557)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D803" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 628.513, -9.6643, -560.839)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D804" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 636.921, -9.6643, -557.629)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D805" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 644.384, -9.6643, -554.779)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D806" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 626.395, -9.6643, -552.557)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D807" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 633.513, -9.6643, -549.839)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D823" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 641.921, -9.6643, -546.629)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D840" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 649.384, -9.6643, -543.779)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D841" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 626.395, -9.6643, -531.61)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D843" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 633.513, -9.6643, -528.892)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D844" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 641.921, -9.6643, -525.681)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D851" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 649.384, -9.6643, -522.832)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D864" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 626.395, -9.6643, -519.314)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D865" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 633.513, -9.6643, -516.596)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D937" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 641.921, -9.6643, -513.386)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D938" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 649.384, -9.6643, -510.536)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D939" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 618.342, -9.6643, -513.281)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D940" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 625.46, -9.6643, -510.563)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D941" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 633.867, -9.6643, -507.353)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D942" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 641.331, -9.6643, -504.503)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D943" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 607.321, -9.6643, -509.818)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D944" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 614.439, -9.6643, -507.101)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D945" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 622.847, -9.6643, -503.89)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D946" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 630.31, -9.6643, -501.041)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D947" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 594.463, -9.6643, -508.538)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D952" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 601.581, -9.6643, -505.82)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D953" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 609.989, -9.6643, -502.61)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D956" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 617.452, -9.6643, -499.76)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D958" type="Sprite3D" parent="Trees"]
+transform = Transform3D(1.84173, 0, -3.55078, 0, 4, 0, 3.55078, 0, 1.84173, 597.741, -9.6643, -513.941)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D959" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 595.21, -9.6643, -510.58)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D960" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 613.371, -9.6643, -510.733)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D961" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 597.629, -9.6643, -502.118)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D962" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 606.628, -9.6643, -502.299)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D963" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 597.714, -9.6643, -494.952)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D964" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 605.701, -9.6643, -495.113)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D965" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 594.264, -9.6643, -489.098)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D966" type="Sprite3D" parent="Trees"]
+transform = Transform3D(1.84173, 0, -3.55078, 0, 4, 0, 3.55078, 0, 1.84173, 649.752, -9.6643, -508.674)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D967" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 647.221, -9.6643, -505.313)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D972" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 654.839, -9.6643, -505.467)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D973" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 649.64, -9.6643, -496.851)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D975" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 658.638, -9.6643, -497.033)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1028" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 649.725, -9.6643, -489.686)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1030" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 657.712, -9.6643, -489.847)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1106" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 646.275, -9.6643, -483.832)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1107" type="Sprite3D" parent="Trees"]
+transform = Transform3D(1.84173, 0, -3.55078, 0, 4, 0, 3.55078, 0, 1.84173, 635.409, -9.6643, -510.045)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1108" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 632.878, -9.6643, -506.683)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1109" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 640.496, -9.6643, -506.837)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1110" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 635.297, -9.6643, -498.221)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1111" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 644.296, -9.6643, -498.403)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1131" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 632.022, -9.6643, -493.185)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(0, 640, 64, 64)
+
+[node name="Sprite3D1133" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 622.542, -9.6643, -513.873)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(0, 640, 64, 64)
+
+[node name="Sprite3D1134" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 643.128, -9.6643, -494.881)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(0, 640, 64, 64)
+
+[node name="Sprite3D1112" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 635.382, -9.6643, -491.056)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1132" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 639.794, -9.6643, -492.804)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1113" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 643.369, -9.6643, -491.217)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1114" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 631.932, -9.6643, -485.202)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1115" type="Sprite3D" parent="Trees"]
+transform = Transform3D(1.84173, 0, -3.55078, 0, 4, 0, 3.55078, 0, 1.84173, 647.866, -9.6643, -537.005)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1116" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 645.336, -9.6643, -533.644)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1117" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 652.953, -9.6643, -533.798)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1118" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 647.755, -9.6643, -525.182)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1119" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 656.753, -9.6643, -525.364)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1120" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 647.839, -9.6643, -518.017)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1121" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 655.826, -9.6643, -518.178)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1122" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 644.39, -9.6643, -512.163)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1135" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 582.123, -9.6643, -569.575)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1136" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 590.794, -9.6643, -569.575)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1137" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 601.504, -9.6643, -570.927)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1138" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 585.633, -9.6643, -564.692)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1139" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 594.041, -9.6643, -561.482)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1140" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 601.504, -9.6643, -558.632)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1141" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 585.988, -9.6643, -555.448)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1142" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 593.451, -9.6643, -552.599)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1143" type="Sprite3D" parent="Trees"]
+transform = Transform3D(1.84173, 0, -3.55078, 0, 4, 0, 3.55078, 0, 1.84173, 601.872, -9.6643, -556.77)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1144" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 599.342, -9.6643, -553.408)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1145" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 606.959, -9.6643, -553.562)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1146" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 601.761, -9.6643, -544.946)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1147" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 601.845, -9.6643, -537.781)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1148" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 609.832, -9.6643, -537.942)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1149" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 598.396, -9.6643, -531.927)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1150" type="Sprite3D" parent="Trees"]
+transform = Transform3D(1.84173, 0, -3.55078, 0, 4, 0, 3.55078, 0, 1.84173, 587.529, -9.6643, -558.14)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1151" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 584.999, -9.6643, -554.779)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1152" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 592.616, -9.6643, -554.932)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1153" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 587.418, -9.6643, -546.317)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1154" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 596.416, -9.6643, -546.498)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1155" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 584.142, -9.6643, -541.28)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(0, 640, 64, 64)
+
+[node name="Sprite3D1156" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 595.249, -9.6643, -542.976)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(0, 640, 64, 64)
+
+[node name="Sprite3D1157" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 587.502, -9.6643, -539.151)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1158" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 591.915, -9.6643, -540.9)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1159" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 595.49, -9.6643, -539.313)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1160" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 584.053, -9.6643, -533.298)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1161" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 599.96, -9.6643, -566.112)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1162" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 607.947, -9.6643, -566.274)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1163" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 596.51, -9.6643, -560.259)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1164" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 582.123, -9.6643, -522.575)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1165" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 590.794, -9.6643, -522.575)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1166" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 601.504, -9.6643, -523.927)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1167" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 585.633, -9.6643, -517.692)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1168" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 594.041, -9.6643, -514.482)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1169" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 601.504, -9.6643, -511.632)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1170" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 585.988, -9.6643, -508.448)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1171" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 593.451, -9.6643, -505.599)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1172" type="Sprite3D" parent="Trees"]
+transform = Transform3D(1.84173, 0, -3.55078, 0, 4, 0, 3.55078, 0, 1.84173, 601.872, -9.6643, -509.77)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1173" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 599.342, -9.6643, -506.408)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1174" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 606.959, -9.6643, -506.562)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1175" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 601.761, -9.6643, -497.946)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1176" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 601.845, -9.6643, -490.781)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1177" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 609.832, -9.6643, -490.942)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1178" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 598.396, -9.6643, -484.927)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1179" type="Sprite3D" parent="Trees"]
+transform = Transform3D(1.84173, 0, -3.55078, 0, 4, 0, 3.55078, 0, 1.84173, 587.529, -9.6643, -511.14)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1180" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 584.999, -9.6643, -507.779)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1181" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 592.616, -9.6643, -507.932)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1182" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 587.418, -9.6643, -499.317)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1183" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 596.416, -9.6643, -499.498)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1184" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 584.142, -9.6643, -494.28)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(0, 640, 64, 64)
+
+[node name="Sprite3D1185" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 595.249, -9.6643, -495.976)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(0, 640, 64, 64)
+
+[node name="Sprite3D1186" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 587.502, -9.6643, -492.151)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1187" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 591.915, -9.6643, -493.9)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1188" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 595.49, -9.6643, -492.313)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1189" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 584.053, -9.6643, -486.298)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1190" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 599.96, -9.6643, -519.112)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1191" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 607.947, -9.6643, -519.274)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1192" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 596.51, -9.6643, -513.259)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1193" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 630.37, -9.6643, -570.399)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1194" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 639.041, -9.6643, -570.399)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1195" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 649.752, -9.6643, -571.752)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1196" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 633.88, -9.6643, -565.516)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1197" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 642.288, -9.6643, -562.306)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1198" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 649.752, -9.6643, -559.456)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1199" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 622.876, -9.6643, -550.072)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1200" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.85381, 0, -1.07151, 0, 4, 0, 1.07151, 0, 3.85381, 641.698, -9.6643, -553.423)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1201" type="Sprite3D" parent="Trees"]
+transform = Transform3D(1.84173, 0, -3.55078, 0, 4, 0, 3.55078, 0, 1.84173, 650.119, -9.6643, -557.594)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1202" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 647.589, -9.6643, -554.233)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1203" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 655.206, -9.6643, -554.387)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1204" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 650.008, -9.6643, -545.771)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1205" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 650.092, -9.6643, -538.605)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1206" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 658.079, -9.6643, -538.767)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1207" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 646.643, -9.6643, -532.752)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1208" type="Sprite3D" parent="Trees"]
+transform = Transform3D(1.84173, 0, -3.55078, 0, 4, 0, 3.55078, 0, 1.84173, 635.777, -9.6643, -558.964)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1209" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 633.246, -9.6643, -555.603)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1210" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 640.864, -9.6643, -555.757)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1211" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 635.665, -9.6643, -547.141)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1212" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 644.663, -9.6643, -547.323)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1213" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 632.389, -9.6643, -542.105)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(0, 640, 64, 64)
+
+[node name="Sprite3D1214" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 644.004, -9.6643, -519.738)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(64, 640, 64, 64)
+
+[node name="Sprite3D1222" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 622.634, -9.6643, -497.909)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(64, 640, 64, 64)
+
+[node name="Sprite3D1223" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 572.088, -9.6643, -497.909)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(64, 640, 64, 64)
+
+[node name="Sprite3D1224" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 573.419, -9.6643, -566.133)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(64, 640, 64, 64)
+
+[node name="Sprite3D1225" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 607.419, -9.6643, -585.133)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(64, 640, 64, 64)
+
+[node name="Sprite3D1226" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 647.876, -9.6643, -583.67)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(64, 640, 64, 64)
+
+[node name="Sprite3D1227" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 658.135, -15.4466, -583.67)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(64, 640, 64, 64)
+
+[node name="Sprite3D1228" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 595.135, -9.79097, -583.67)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(64, 640, 64, 64)
+
+[node name="Sprite3D1229" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 539.727, -9.79097, -616.277)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(64, 640, 64, 64)
+
+[node name="Sprite3D1230" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 592.547, -9.79097, -631.443)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(64, 640, 64, 64)
+
+[node name="Sprite3D1215" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 635.75, -9.6643, -539.976)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1216" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 640.162, -9.6643, -541.724)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1217" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 643.737, -9.6643, -540.137)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1218" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 632.3, -9.6643, -534.122)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1219" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 648.207, -9.6643, -566.937)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1220" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 656.194, -9.6643, -567.098)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1221" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 644.757, -9.6643, -561.083)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1123" type="Sprite3D" parent="Trees"]
+transform = Transform3D(1.84173, 0, -3.55078, 0, 4, 0, 3.55078, 0, 1.84173, 598.765, -9.6643, -550.982)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1124" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 596.235, -9.6643, -547.621)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1125" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 603.852, -9.6643, -547.774)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1126" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 598.654, -9.6643, -539.159)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1127" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 607.652, -9.6643, -539.34)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1128" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 598.738, -9.6643, -531.993)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1129" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 606.725, -9.6643, -532.154)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D1130" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97415, 0, 0.453992, 0, 4, 0, -0.453992, 0, 3.97415, 595.289, -9.6643, -526.139)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D733" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 611.677, -9.6643, -558.517)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D734" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 613.677, -9.6643, -548.819)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D738" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 616.355, -9.6643, -539.819)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D739" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 619.355, -9.6643, -545.155)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D740" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 621.169, -9.6643, -555.63)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D741" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 624.169, -9.6643, -554.22)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
+
+[node name="Sprite3D744" type="Sprite3D" parent="Trees"]
+transform = Transform3D(0.373653, 0, -3.98251, 0, 4, 0, 3.98251, 0, 0.373653, 624.169, -9.6643, -539.165)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(128, 574, 128, 64)
 
 [node name="Sprite3D714" type="Sprite3D" parent="Trees"]
 transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 568.738, -5.84388, -552.146)
@@ -7442,7 +9235,7 @@ region_enabled = true
 region_rect = Rect2(256, 512, 256, 256)
 
 [node name="Sprite3D1031" type="Sprite3D" parent="Trees"]
-transform = Transform3D(3.99945, 0, 0.0663201, 0, 4, 0, -0.0663201, 0, 3.99945, 518.184, -5.84388, -594.318)
+transform = Transform3D(3.99945, 0, 0.0663201, 0, 4, 0, -0.0663201, 0, 3.99945, 518.184, -4.81267, -594.318)
 billboard = 2
 texture_filter = 4
 texture = ExtResource("12_0cyjv")
@@ -7506,7 +9299,7 @@ region_enabled = true
 region_rect = Rect2(768, 512, 256, 256)
 
 [node name="Sprite3D1039" type="Sprite3D" parent="Trees"]
-transform = Transform3D(0.0663201, 0, -3.99945, 0, 4, 0, 3.99945, 0, 0.0663201, 524.633, -5.84388, -599.724)
+transform = Transform3D(0.0663201, 0, -3.99945, 0, 4, 0, 3.99945, 0, 0.0663201, 524.633, -5.91857, -599.724)
 billboard = 2
 texture_filter = 4
 texture = ExtResource("12_0cyjv")
@@ -7514,7 +9307,7 @@ region_enabled = true
 region_rect = Rect2(256, 512, 256, 256)
 
 [node name="Sprite3D1040" type="Sprite3D" parent="Trees"]
-transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 515.061, -5.84388, -603.155)
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 515.061, -0.872526, -603.155)
 billboard = 2
 texture_filter = 4
 texture = ExtResource("12_0cyjv")
@@ -7522,7 +9315,7 @@ region_enabled = true
 region_rect = Rect2(768, 512, 256, 256)
 
 [node name="Sprite3D1041" type="Sprite3D" parent="Trees"]
-transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 518.917, -5.84388, -601.269)
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 518.917, -5.34541, -601.269)
 billboard = 2
 texture_filter = 4
 texture = ExtResource("12_0cyjv")
@@ -7544,14 +9337,6 @@ texture_filter = 4
 texture = ExtResource("12_0cyjv")
 region_enabled = true
 region_rect = Rect2(256, 512, 256, 256)
-
-[node name="Sprite3D1044" type="Sprite3D" parent="Trees"]
-transform = Transform3D(3.99945, 0, 0.0663201, 0, 4, 0, -0.0663201, 0, 3.99945, 512.909, -8.53966, -601.164)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(128, 384, 128, 128)
 
 [node name="Sprite3D1045" type="Sprite3D" parent="Trees"]
 transform = Transform3D(3.90544, 0, 0.8646, 0, 4, 0, -0.8646, 0, 3.90544, 597.298, -5.84388, -448.375)
@@ -7961,46 +9746,6 @@ texture = ExtResource("12_0cyjv")
 region_enabled = true
 region_rect = Rect2(128, 384, 128, 128)
 
-[node name="Sprite3D948" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-1.70211, 0, 3.61978, 0, 4, 0, -3.61978, 0, -1.70211, 503.397, -6.41266, -588.871)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D949" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-1.70211, 0, 3.61978, 0, 4, 0, -3.61978, 0, -1.70211, 490.562, -5.84388, -613.71)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D950" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-1.70211, 0, 3.61978, 0, 4, 0, -3.61978, 0, -1.70211, 494.5, -6.50446, -605.334)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D951" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-1.70211, 0, 3.61978, 0, 4, 0, -3.61978, 0, -1.70211, 497.824, -5.82083, -598.266)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D954" type="Sprite3D" parent="Trees"]
-transform = Transform3D(1.70211, 0, -3.61978, 0, 4, 0, 3.61978, 0, 1.70211, 508.605, -5.84388, -592.322)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(256, 512, 256, 256)
-
 [node name="Sprite3D955" type="Sprite3D" parent="Trees"]
 transform = Transform3D(-3.61978, 0, -1.70211, 0, 4, 0, 1.70211, 0, -3.61978, 526.374, -5.84388, -584.576)
 billboard = 2
@@ -8042,148 +9787,932 @@ region_enabled = true
 region_rect = Rect2(768, 512, 256, 256)
 
 [node name="Sprite3D971" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-1.70211, 0, 3.61978, 0, 4, 0, -3.61978, 0, -1.70211, 519.859, -5.84388, -587.535)
+transform = Transform3D(-1.70211, 0, 3.61978, 0, 4, 0, -3.61978, 0, -1.70211, 519.859, -3.5587, -587.535)
 billboard = 2
 texture_filter = 4
 texture = ExtResource("12_0cyjv")
 region_enabled = true
 region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D974" type="Sprite3D" parent="Trees"]
-transform = Transform3D(1.70211, 0, -3.61978, 0, 4, 0, 3.61978, 0, 1.70211, 508.507, -5.84388, -610.93)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(512, 512, 256, 256)
 
 [node name="Sprite3D976" type="Sprite3D" parent="Trees"]
-transform = Transform3D(2.0328, 0, -3.44496, 0, 4, 0, 3.44496, 0, 2.0328, 515.382, -5.84388, -598.797)
+transform = Transform3D(2.0328, 0, -3.44496, 0, 4, 0, 3.44496, 0, 2.0328, 515.382, -2.6471, -598.797)
 billboard = 2
 texture_filter = 4
 texture = ExtResource("12_0cyjv")
 region_enabled = true
 region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1044" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.99945, 0, 0.0663201, 0, 4, 0, -0.0663201, 0, 3.99945, 511.728, 4.38837, -593.633)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(256, 512, 256, 256)
+
+[node name="Sprite3D1231" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 508.605, 7.10329, -602.47)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1232" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 512.461, 4.06591, -600.584)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1234" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 500.646, 26.6062, -533.214)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1235" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 504.502, 22.0895, -531.328)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1236" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 500.646, 26.6062, -525.936)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1237" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 504.502, 22.0895, -524.05)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1238" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 500.646, 26.6062, -515.936)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1239" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 504.502, 22.0895, -514.05)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1240" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 492.39, 38.7509, -515.936)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1241" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 496.246, 34.2342, -514.05)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1242" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 492.39, 38.7509, -525.995)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1243" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 496.246, 34.2342, -524.109)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1244" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 492.39, 38.7509, -533.995)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1245" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 496.246, 34.2342, -532.109)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1250" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 511.996, 11.4206, -533.214)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1251" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 515.852, 6.9039, -531.328)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1252" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 503.739, 23.5653, -533.995)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1253" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 507.595, 19.0486, -532.109)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1254" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 511.996, 7.425, -543.116)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1255" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 515.852, 2.90831, -541.23)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1256" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 503.739, 19.5697, -543.897)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1257" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 507.595, 15.053, -542.011)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1246" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 471.368, 63.1855, -533.995)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1247" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 475.224, 58.6688, -532.109)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1248" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 478.368, 56.0351, -533.995)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1249" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 482.224, 51.5184, -532.109)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1258" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 500.646, 26.6062, -487.393)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1259" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 504.502, 22.0895, -485.507)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1260" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 500.646, 26.6062, -480.115)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1261" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 504.502, 22.0895, -478.229)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1262" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 492.39, 38.7509, -480.174)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1263" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 496.246, 34.2342, -478.288)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1264" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 492.39, 38.7509, -488.174)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1265" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 496.246, 34.2342, -486.288)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1266" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 511.996, 11.4206, -487.393)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1267" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 515.852, 6.9039, -485.507)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1268" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 503.739, 23.5653, -488.174)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1269" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 507.595, 19.0486, -486.288)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1270" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 511.996, 7.425, -497.295)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1271" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 515.852, 2.90831, -495.409)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1272" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 503.739, 19.5697, -498.077)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1273" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 507.595, 15.053, -496.19)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1274" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 482.224, 51.5184, -486.288)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1275" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 508.944, 26.6062, -440.393)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1276" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 512.8, 22.0895, -438.507)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1277" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 508.944, 26.6062, -433.115)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1278" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 512.8, 22.0895, -431.229)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1279" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 500.688, 38.7509, -433.174)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1280" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 504.544, 34.2342, -431.288)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1281" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 500.688, 38.7509, -441.174)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1282" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 504.544, 34.2342, -439.288)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1283" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 520.294, 11.4206, -440.393)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1284" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 524.15, 6.9039, -438.507)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1285" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 512.037, 23.5653, -441.174)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1286" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 515.893, 19.0486, -439.288)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1287" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 520.294, 7.425, -450.295)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1288" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 524.15, 2.90831, -448.409)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1289" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 512.037, 19.5697, -451.077)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1290" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 515.893, 15.053, -449.19)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1291" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 490.522, 51.5184, -439.288)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1292" type="Sprite3D" parent="Trees"]
+transform = Transform3D(-3.72651, 0, -1.45366, 0, 4, 0, 1.45366, 0, -3.72651, 537.663, -5.84388, -736.416)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(256, 512, 256, 256)
+
+[node name="Sprite3D1293" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 479.119, 26.6062, -818.606)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1294" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 482.975, 22.0895, -816.72)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1295" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 479.119, 26.6062, -811.328)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1296" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 482.975, 22.0895, -809.442)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1297" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 479.119, 26.6062, -801.328)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1298" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 482.975, 22.0895, -799.442)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1299" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 470.862, 38.7509, -801.328)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1300" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 474.718, 34.2342, -799.442)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1301" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 470.862, 38.7509, -811.387)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1302" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 474.718, 34.2342, -809.501)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1303" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 470.862, 38.7509, -819.387)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1304" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 474.718, 34.2342, -817.501)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1305" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 490.468, 11.4206, -818.606)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1307" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 482.211, 23.5653, -819.387)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1308" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 486.067, 19.0486, -817.501)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1309" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 490.468, 7.425, -828.508)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1311" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 482.211, 19.5697, -829.289)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1312" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 486.067, 15.053, -827.403)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1313" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 456.84, 56.0351, -874.392)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1314" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 460.696, 51.5184, -872.506)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1315" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 479.119, 26.6062, -772.785)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1316" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 482.975, 22.0895, -770.899)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1317" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 479.119, 26.6062, -765.507)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1318" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 482.975, 22.0895, -763.621)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1319" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 470.862, 38.7509, -765.567)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1320" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 474.718, 34.2342, -763.681)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1321" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 470.862, 38.7509, -773.567)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1322" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 474.718, 34.2342, -771.681)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1323" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 490.468, 11.4206, -772.785)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1324" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 494.324, 6.9039, -770.899)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1325" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 482.211, 23.5653, -773.567)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1326" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 486.067, 19.0486, -771.681)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1327" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 490.468, 7.425, -782.687)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1329" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 482.211, 19.5697, -783.469)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1330" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 486.067, 15.053, -781.583)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1331" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 460.696, 51.5184, -771.681)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1332" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 480.614, 26.6062, -725.785)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1333" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 484.47, 22.0895, -723.899)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1334" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 480.614, 26.6062, -718.507)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1335" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 484.47, 22.0895, -704.146)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1336" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 472.357, 38.7509, -718.567)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1337" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 476.213, 34.2342, -657.355)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1338" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 472.357, 38.7509, -726.567)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1339" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 476.213, 34.2342, -724.681)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1340" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 491.963, 11.4206, -725.785)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1342" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 483.707, 23.5653, -726.567)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1343" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 487.563, 19.0486, -708.907)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1346" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 483.707, 19.5697, -736.469)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1347" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 487.563, 15.053, -734.583)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1348" type="Sprite3D" parent="Trees"]
+transform = Transform3D(3.97577, 0, 0.439632, 0, 4, 0, -0.439632, 0, 3.97577, 462.191, 51.5184, -724.681)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(768, 512, 256, 256)
+
+[node name="Sprite3D1233" type="Sprite3D" parent="Trees"]
+transform = Transform3D(-3.72651, 0, -1.45366, 0, 4, 0, 1.45366, 0, -3.72651, 514.204, 2.00549, -596.08)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("12_0cyjv")
+region_enabled = true
+region_rect = Rect2(256, 512, 256, 256)
 
 [node name="Sprite3D977" type="Sprite3D" parent="Trees"]
-transform = Transform3D(2.0328, 0, -3.44496, 0, 4, 0, 3.44496, 0, 2.0328, 512.355, -5.84388, -606.599)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(256, 512, 256, 256)
-
-[node name="Sprite3D978" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-3.61978, 0, -1.70211, 0, 4, 0, 1.70211, 0, -3.61978, 507.689, -5.84388, -605.342)
+transform = Transform3D(2.0328, 0, -3.44496, 0, 4, 0, 3.44496, 0, 2.0328, 508.926, 5.20226, -598.112)
 billboard = 2
 texture_filter = 4
 texture = ExtResource("12_0cyjv")
 region_enabled = true
 region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D979" type="Sprite3D" parent="Trees"]
-transform = Transform3D(2.0328, 0, -3.44496, 0, 4, 0, 3.44496, 0, 2.0328, 515.245, -5.84388, -594.507)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D980" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-2.85515, 0, 2.80144, 0, 4, 0, -2.80144, 0, -2.85515, 506.91, -5.84388, -597.821)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D981" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-2.85515, 0, 2.80144, 0, 4, 0, -2.80144, 0, -2.85515, 511.853, -5.84388, -591.069)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(256, 512, 256, 256)
-
-[node name="Sprite3D982" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-2.85515, 0, 2.80144, 0, 4, 0, -2.80144, 0, -2.85515, 505.933, -5.84388, -602.001)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D983" type="Sprite3D" parent="Trees"]
-transform = Transform3D(2.0328, 0, -3.44496, 0, 4, 0, 3.44496, 0, 2.0328, 512.218, -5.84388, -602.308)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(256, 512, 256, 256)
-
-[node name="Sprite3D984" type="Sprite3D" parent="Trees"]
-transform = Transform3D(1.70211, 0, -3.61978, 0, 4, 0, 3.61978, 0, 1.70211, 503.772, -5.84388, -618.903)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D985" type="Sprite3D" parent="Trees"]
-transform = Transform3D(1.70211, 0, -3.61978, 0, 4, 0, 3.61978, 0, 1.70211, 500.319, -5.84388, -619.546)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D986" type="Sprite3D" parent="Trees"]
-transform = Transform3D(1.70211, 0, -3.61978, 0, 4, 0, 3.61978, 0, 1.70211, 502.293, -5.84388, -607.894)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D987" type="Sprite3D" parent="Trees"]
-transform = Transform3D(1.70211, 0, -3.61978, 0, 4, 0, 3.61978, 0, 1.70211, 498.355, -6.50446, -616.27)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D988" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-1.70211, 0, 3.61978, 0, 4, 0, -3.61978, 0, -1.70211, 502.053, -5.84388, -611.25)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(512, 512, 256, 256)
-
-[node name="Sprite3D989" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-1.70211, 0, 3.61978, 0, 4, 0, -3.61978, 0, -1.70211, 502.969, -7.69537, -614.09)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D990" type="Sprite3D" parent="Trees"]
-transform = Transform3D(-1.70211, 0, 3.61978, 0, 4, 0, -3.61978, 0, -1.70211, 507.521, -7.69537, -616.231)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(768, 512, 256, 256)
-
-[node name="Sprite3D991" type="Sprite3D" parent="Trees"]
-transform = Transform3D(1.70211, 0, -3.61978, 0, 4, 0, 3.61978, 0, 1.70211, 512.683, -8.53966, -599.942)
-billboard = 2
-texture_filter = 4
-texture = ExtResource("12_0cyjv")
-region_enabled = true
-region_rect = Rect2(128, 384, 128, 128)
 
 [node name="Sprite3D7" type="Sprite3D" parent="Trees"]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 546.586, -9.7925, -641.001)
@@ -8642,10 +11171,13 @@ region_enabled = true
 region_rect = Rect2(128, 640, 64, 64)
 
 [node name="GameEndTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.757, 0, 0)
+collision_layer = 33
+collision_mask = 33
 script = ExtResource("12_ur4vp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameEndTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 567.549, -9.80648, -436.292)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 447.865, -10.2569, -436.292)
 shape = SubResource("BoxShape3D_cq8fx")
 
 [node name="Waypoint3D" type="Node3D" parent="GameEndTrigger/CollisionShape3D"]
@@ -8689,24 +11221,51 @@ shape = SubResource("BoxShape3D_ubyoy")
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("26_xqh8t")]
 transform = Transform3D(0.871702, 0, 0.490037, 0, 1, 0, -0.490037, 0, 0.871702, 625.422, 1, -496.593)
+collision_layer = 33
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("26_xqh8t")]
 transform = Transform3D(0.504889, 0, 0.863184, 0, 1, 0, -0.863184, 0, 0.504889, 648.38, 1, -525.779)
+collision_layer = 33
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource("21_ita1l")]
 transform = Transform3D(-0.269811, 0, 0.962913, 0, 1, 0, -0.962913, 0, -0.269811, 597.725, -9.93161, -645.111)
+collision_layer = 33
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource("21_ita1l")]
 transform = Transform3D(-0.276963, 0, 0.960881, 0, 1, 0, -0.960881, 0, -0.276963, 600.592, -9.97392, -706.403)
+collision_layer = 33
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("21_ita1l")]
 transform = Transform3D(0.0578951, 0, -0.998323, 0, 1, 0, 0.998323, 0, 0.0578951, 563.396, -9.8218, -457.047)
+collision_layer = 33
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("21_ita1l")]
-transform = Transform3D(0.895238, 0, 0.445589, 0, 1, 0, -0.445589, 0, 0.895238, 596.522, -9.77612, -543.588)
+transform = Transform3D(0.895238, 0, 0.445589, 0, 1, 0, -0.445589, 0, 0.895238, 617.378, -9.77612, -537.125)
+collision_layer = 33
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource("26_xqh8t")]
+transform = Transform3D(0.286023, 0, 0.958223, 0, 1, 0, -0.958223, 0, 0.286023, 656.966, 1, -478.734)
+collision_layer = 33
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource("26_xqh8t")]
+transform = Transform3D(-0.237059, 0, 0.971495, 0, 1, 0, -0.971495, 0, -0.237059, 649.796, 1, -545.74)
+collision_layer = 33
+
+[node name="Enemy10" parent="Enemies" instance=ExtResource("21_ita1l")]
+transform = Transform3D(0.33384, 0, 0.94263, 0, 1, 0, -0.94263, 0, 0.33384, 600.137, -9.77612, -522.495)
+collision_layer = 33
+
+[node name="Enemy11" parent="Enemies" instance=ExtResource("26_xqh8t")]
+transform = Transform3D(-0.237059, 0, 0.971495, 0, 1, 0, -0.971495, 0, -0.237059, 649.796, 1, -573.489)
+collision_layer = 33
+
+[node name="Enemy12" parent="Enemies" instance=ExtResource("21_ita1l")]
+transform = Transform3D(0.33384, 0, 0.94263, 0, 1, 0, -0.94263, 0, 0.33384, 600.137, -9.77612, -540.082)
+collision_layer = 33
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("21_ita1l")]
 transform = Transform3D(0.837881, 0, 0.545854, 0, 1, 0, -0.545854, 0, 0.837881, 546.406, -9.907, -591.786)
+collision_layer = 33
 
 [node name="Cat" parent="." instance=ExtResource("24_e8swy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 524.997, -11.0007, -620.004)
@@ -8723,3 +11282,33 @@ footstep_type = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/FootstepArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.7945, 0, 121.538)
 shape = SubResource("BoxShape3D_b6gjo")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.581712, 0.808674, 0.0875035, -0.811788, 0.583952, 0, -0.0510978, -0.0710343, 0.996164, 517.453, 16.7894, -374.683)
+mesh = SubResource("PlaneMesh_d061c")
+surface_material_override/0 = SubResource("StandardMaterial3D_ehs7k")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.583952, 0.811788, 0, -0.811788, 0.583952, 0, 0, 0, 1, 486.898, 8.94, -897.832)
+mesh = SubResource("PlaneMesh_d061c")
+surface_material_override/0 = SubResource("StandardMaterial3D_ehs7k")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.583952, 0.811788, 0, -0.811788, 0.583952, 0, 0, 0, 1, 478.585, 34.4614, -740.062)
+mesh = SubResource("PlaneMesh_dasr4")
+surface_material_override/0 = SubResource("StandardMaterial3D_ehs7k")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.583952, 0.811788, 0, -0.811788, 0.583952, 0, 0, 0, 1, 517.418, 5.42134, -636.055)
+mesh = SubResource("PlaneMesh_8esvd")
+surface_material_override/0 = SubResource("StandardMaterial3D_ehs7k")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.209344, 0.158274, 0.964948, -0.603083, 0.797679, 1.29112e-08, -0.769718, -0.581943, 0.262442, 677.326, 17.2037, -166.877)
+mesh = SubResource("PlaneMesh_d061c")
+surface_material_override/0 = SubResource("StandardMaterial3D_ehs7k")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.854497, -0.514812, 0.0693158, -0.517268, 0.855523, -0.0226572, -0.0476371, -0.0552154, -0.997337, 896.309, 2.96457, -463.709)
+mesh = SubResource("PlaneMesh_e05y7")
+surface_material_override/0 = SubResource("StandardMaterial3D_ehs7k")

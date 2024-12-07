@@ -10,7 +10,7 @@ var cat_behaviour : CatBehaviour
 
 const distance_ratio = 0.8
 
-func _init(_behaviour : Behaviour,useDistance:bool = false, useLineOfSight : bool = true):
+func _init(_behaviour : Behaviour,useDistance:bool = true, useLineOfSight : bool = true):
 	super._init(_behaviour)
 	self.state_name = "WaitForPlayer"
 	use_distance = useDistance
