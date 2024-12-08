@@ -157,6 +157,7 @@ func open_menu(menu_name : String):
 
 	if menu_name == "AskTutorialsMenu":
 		TTS.say_phrase("Enable tutorials?", true)
+		$AskTutorialsMenu/VBoxContainer/EnableTutorialsButton.grab_focus()
 
 
 func read_controls_scheme(path):

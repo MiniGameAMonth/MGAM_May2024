@@ -15,6 +15,7 @@ var targetMushroom : Node3D;
 @export var lineOfSight : LineOfSight3D
 
 @onready var waitForPlayerSound : PlaySound3D = $WaitForPlayerSound
+@onready var calledSound : PlaySound3D = $CalledSound
 @onready var enemySight : Sight = $EnemySight
 @onready var enemyBackpackSight : Sight = $EnemyBackpackSight
 @onready var magicalCatSound : PlaySound3D = $MagicalCatSound
@@ -47,6 +48,12 @@ func _process(_delta):
 		if player_distance() > maxDistanceFromPlayerWhenWaiting || Input.is_action_just_pressed("Cat. Search an exit"):
 			lineOfSight.set_target(player)
 			change_state(CatIdleState.new(self))
+
+	# "Meow" when called
+	if Input.is_action_just_pressed("Cat. Search an exit"):
+		calledSound.stop()
+		calledSound.loop = current_state is CatFindMushroomState || current_state is CatFindExitState
+		calledSound.play()
 	
 
 	if player == null:

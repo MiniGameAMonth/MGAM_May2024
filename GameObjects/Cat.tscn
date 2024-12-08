@@ -95,20 +95,6 @@ lineOfSight = NodePath("../LineOfSight3D")
 behaviour_owner = NodePath("..")
 debug_states = true
 
-[node name="WaitForPlayerSound" type="Node3D" parent="Cat Behaviour" node_paths=PackedStringArray("player")]
-script = ExtResource("7_052mf")
-loop = true
-loop_delay = 2.0
-player = NodePath("AudioStreamPlayer3D")
-audio_bus = "Sounds"
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cat Behaviour/WaitForPlayerSound"]
-stream = ExtResource("8_6pw8b")
-volume_db = -12.0
-max_distance = 30.0
-bus = &"Sounds"
-area_mask = 128
-
 [node name="SniffingSound" type="Node3D" parent="Cat Behaviour" node_paths=PackedStringArray("player")]
 script = ExtResource("7_052mf")
 loop = true
@@ -153,6 +139,33 @@ script = ExtResource("10_b078p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cat Behaviour/EnemyBackpackSight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.564511, 0)
 shape = SubResource("SphereShape3D_xkhy6")
+
+[node name="WaitForPlayerSound" type="Node3D" parent="Cat Behaviour" node_paths=PackedStringArray("player")]
+script = ExtResource("7_052mf")
+loop = true
+loop_delay = 2.0
+player = NodePath("AudioStreamPlayer3D")
+audio_bus = "Sounds"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cat Behaviour/WaitForPlayerSound"]
+stream = ExtResource("8_6pw8b")
+volume_db = -12.0
+max_distance = 30.0
+bus = &"Sounds"
+area_mask = 128
+
+[node name="CalledSound" type="Node3D" parent="Cat Behaviour" node_paths=PackedStringArray("player")]
+script = ExtResource("7_052mf")
+loop_delay = 3.0
+player = NodePath("AudioStreamPlayer3D")
+audio_bus = "Sounds"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cat Behaviour/CalledSound"]
+stream = ExtResource("8_6pw8b")
+volume_db = -12.0
+max_distance = 30.0
+bus = &"Sounds"
+area_mask = 128
 
 [node name="Interactable" type="Area3D" parent="." node_paths=PackedStringArray("graphics")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523047, 0)
