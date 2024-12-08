@@ -54,6 +54,9 @@ func _process(_delta):
 		calledSound.stop()
 		calledSound.loop = current_state is CatFindMushroomState || current_state is CatFindExitState
 		calledSound.play()
+
+	if current_state is CatGoInBackpackState || current_state is CatIdleState || current_state is CatSniffingState:
+		calledSound.stop()
 	
 
 	if player == null:
